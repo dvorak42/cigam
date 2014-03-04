@@ -1,1 +1,2 @@
-Repository for the Cigam game.
+# Cigam: The Magic Game
+
