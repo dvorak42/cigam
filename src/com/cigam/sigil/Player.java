@@ -1,5 +1,8 @@
 package com.cigam.sigil;
 
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.BodyDef;
+import org.jbox2d.dynamics.BodyType;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
@@ -10,12 +13,20 @@ public class Player extends Entity {
 	public CigamGame game;
 	public Direction attackDirection;
 	public int hurtTimer;
-	public int MOLOTOV_DEPTH = 0;
-
-	public Player(CigamGame g) {
+	
+	public Player(CigamGame eg) {
 		super();
-		game = g;
 		hurtTimer = 0;
+        BodyDef fb = new BodyDef();
+        fb.type = BodyType.DYNAMIC;
+        fb.position = new Vec2(10, 10);
+        fb.awake = true;
+        fb.angle = 0f;
+        fb.userData = this;
+        this.body = game.world.createBody(fb);
+        direction = Constants.Direction.NORTH;
+        game = eg;
+        this.health = Constants.FIRE_LIFE;
 		restart();
 	}
 

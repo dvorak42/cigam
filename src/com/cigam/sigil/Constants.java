@@ -4,7 +4,7 @@ public class Constants {
 	public static final int MAX_HEALTH = 80;
 	public static final int ENEMY_MAX_HEALTH = 1;
 	public static final int FIRE_LIFE = 500;
-	public static final double ENEMY_MOVE_SPEED = 0.5;
+	public static final double ENEMY_MOVE_SPEED = 0.2;
 	public static final int[] DISPLAY_DIMS = {800, 600};
 	public static final float AGGRO_RANGE = 10;
 	public static final double ENEMY_FIRE_RATE = 16;

@@ -2,6 +2,8 @@ package com.cigam.sigil.screens;
 
 import java.util.ArrayList;
 
+import org.jbox2d.common.*;
+import org.jbox2d.dynamics.World;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -13,7 +15,7 @@ import com.cigam.sigil.Constants;
 import com.cigam.sigil.Drawing;
 import com.cigam.sigil.Enemy;
 import com.cigam.sigil.Entity;
-import com.cigam.sigil.Fireball;
+import com.cigam.sigil.SolidProjectile;
 import com.cigam.sigil.Helper;
 import com.cigam.sigil.CigamGame;
 import com.cigam.sigil.Player;
@@ -23,25 +25,25 @@ import com.cigam.sigil.graphics.DirectedImage;
 import com.cigam.sigil.graphics.TileMap;
 
 public class BattleScreen extends Screen {
-	public TileMap hitmap;
-
+	public TileMap hitmap;;
+	public World world;
 	public ArrayList<Entity> entities;
-    public ArrayList<Fireball> fireballs;
+    public ArrayList<SolidProjectile> fireballs;
     public ArrayList<Enemy> enemies;
     public Drawing drawing;
 	public int fireDelay = 0;
 	public int molotovDelay = 0;
 	public int startDelay = 1000;
 	Image enemyImage = null;
-	public static int INIT_ENEMIES = 8;
+	public static int INIT_ENEMIES = 0;
 	private boolean zPressed;
 
 	@Override
 	public Screen transition(int state) {
 		if(state == 0)
-			INIT_ENEMIES *= 2;
+			INIT_ENEMIES *= 1;
 		else
-			INIT_ENEMIES /= 2;
+			INIT_ENEMIES /= 1;
 		if(INIT_ENEMIES < 1)
 			INIT_ENEMIES = 1;
 		
@@ -61,10 +63,11 @@ public class BattleScreen extends Screen {
 	@Override
 	public void init() throws SlickException {
 		entities = new ArrayList<Entity>();
-		fireballs = new ArrayList<Fireball>();
+		fireballs = new ArrayList<SolidProjectile>();
 		enemies = new ArrayList<Enemy>();
 		hitmap = new TileMap(0, 0);
 		drawing = new Drawing();
+		world = new World(new Vec2());
 		background = Assets.loadImage("art/background.png");
 		restart();
 	}
@@ -117,7 +120,7 @@ public class BattleScreen extends Screen {
     {
         ArrayList<Entity> trash = new ArrayList<Entity>();
 
-        for (Fireball f: fireballs)
+        for (SolidProjectile f: fireballs)
         {
         	if(!f.active())
         		continue;
@@ -154,7 +157,7 @@ public class BattleScreen extends Screen {
             entities.remove(e);
             if(e instanceof Enemy)
             	enemies.remove(e);
-            if(e instanceof Fireball)
+            if(e instanceof SolidProjectile)
             	fireballs.remove(e);
         }
         
@@ -173,7 +176,7 @@ public class BattleScreen extends Screen {
         
     public void createFireball(Entity e, Direction dir, boolean player)
     {
-        Fireball f = new Fireball(game, dir);
+        SolidProjectile f = new SolidProjectile(game, dir);
         if(e instanceof Player)
 	{
         	this.player.direction = dir;
@@ -264,7 +267,7 @@ public class BattleScreen extends Screen {
         //Move fireballs across the screen
         for(int i = 0; i < fireballs.size(); i++)
         {
-        	Fireball f = fireballs.get(i);
+        	SolidProjectile f = fireballs.get(i);
             Vector2f projMoveVec = Helper.directionToVector(f.direction);
             projMoveVec.normalise();
 			if(f.parent instanceof Player)
@@ -283,7 +286,7 @@ public class BattleScreen extends Screen {
         
         if(!player.active())
         	game.transition(-1);
-        else if(enemies.size() == 0)
-            game.transition(0);
+        //else if(enemies.size() == 0)
+        //    game.transition(0);
 	}
 }

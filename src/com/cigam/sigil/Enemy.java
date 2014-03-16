@@ -13,10 +13,10 @@ public class Enemy extends Entity {
 	int timeout = 0;
 	public int hurtTimer;
 	
-	public Enemy(CigamGame g, BattleScreen p){
+	public Enemy(CigamGame g, BattleScreen battleScreen){
 		super();
 		game = g;
-		pScreen = p;
+		pScreen = battleScreen;
 		hurtTimer = 100;
 	}
 
@@ -83,8 +83,8 @@ public class Enemy extends Entity {
 			direction = Helper.randomDirection();
 		}
 		
-		if(Math.random() < Constants.ENEMY_FIRE_RATE)
-			pScreen.createFireball(this, direction, false);
+		//if(Math.random() < Constants.ENEMY_FIRE_RATE)
+			//pScreen.createFireball(this, direction, false);
 		
 		
 	}

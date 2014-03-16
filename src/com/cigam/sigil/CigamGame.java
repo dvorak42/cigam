@@ -2,6 +2,9 @@ package com.cigam.sigil;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.geom.Vector2f;
+import org.jbox2d.*;
+import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.World;
 
 import com.cigam.sigil.graphics.Assets;
 import com.cigam.sigil.graphics.DirectedImage;
@@ -12,8 +15,8 @@ import com.cigam.sigil.screens.Screen;
 public class CigamGame extends BasicGame
 {
 	public Player player;
-	public Screen current;
-	
+	public Screen current;	
+	public World world;
 	public int timeout = 0;
 	
 	public CigamGame() {
@@ -32,7 +35,7 @@ public class CigamGame extends BasicGame
 	public void init(GameContainer gc) throws SlickException {
 		Assets.load();
 		player = new Player(this);
-		player.position = new Vector2f(32, 32);
+		world = new World(new Vec2());;
 		player.img = new DirectedImage(Assets.loadImage("art/player.png"));
 		player.size = new Vector2f(Constants.TILE_SIZE * 0.9f, Constants.TILE_SIZE * 0.9f);
 		System.out.println("Pre current");
@@ -47,7 +50,6 @@ public class CigamGame extends BasicGame
 		timeout -= delta;
 		if(timeout > 0)
 			return;
-		
 		current.update(gc, delta);
 	}
  
