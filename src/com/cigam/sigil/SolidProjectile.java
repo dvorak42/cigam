@@ -37,10 +37,4 @@ public class SolidProjectile extends PhysicalEntity {
 		direction = Helper.angleToDirection(bd.angle);
         game = eg;
     }
-    
-	public void draw(Graphics g) {
-		System.out.println(position);
-		if(visible)
-			img.draw(body.getPosition().x - img.width / 2, body.getPosition().y - img.height / 2, img.width, img.height, direction);
-	}
 }
