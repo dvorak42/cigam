@@ -1,5 +1,6 @@
 package com.cigam.sigil;
 
+import org.jbox2d.common.Vec2;
 import org.newdawn.slick.geom.Vector2f;
 
 public class Helper {
@@ -52,5 +53,21 @@ public class Helper {
 		case WEST : return new Vector2f(-1, 0);
 		}
 		return new Vector2f(0, 0);
+	}
+	
+	public static Constants.Direction angleToDirection(float a) {
+		return directionTo(new Vector2f(), new Vector2f(1, 0).add(a));
+	}
+
+	public static float directionToAngle(Constants.Direction dir) {
+		return (float)directionToVector(dir).getTheta();
+	}
+
+	public static Vector2f v2v(Vec2 v) {
+		return new Vector2f(v.x, v.y);
+	}
+	
+	public static Vec2 v2v(Vector2f v) {
+		return new Vec2(v.x, v.y);
 	}
 }

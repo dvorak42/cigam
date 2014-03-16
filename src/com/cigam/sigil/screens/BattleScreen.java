@@ -12,7 +12,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.cigam.sigil.Constants;
-import com.cigam.sigil.Drawing;
 import com.cigam.sigil.Enemy;
 import com.cigam.sigil.Entity;
 import com.cigam.sigil.SolidProjectile;
@@ -30,13 +29,10 @@ public class BattleScreen extends Screen {
 	public ArrayList<Entity> entities;
     public ArrayList<SolidProjectile> fireballs;
     public ArrayList<Enemy> enemies;
-    public Drawing drawing;
 	public int fireDelay = 0;
-	public int molotovDelay = 0;
 	public int startDelay = 1000;
 	Image enemyImage = null;
-	public static int INIT_ENEMIES = 0;
-	private boolean zPressed;
+	public static int INIT_ENEMIES = 5;
 
 	@Override
 	public Screen transition(int state) {
@@ -66,7 +62,6 @@ public class BattleScreen extends Screen {
 		fireballs = new ArrayList<SolidProjectile>();
 		enemies = new ArrayList<Enemy>();
 		hitmap = new TileMap(0, 0);
-		drawing = new Drawing();
 		world = new World(new Vec2());
 		background = Assets.loadImage("art/background.png");
 		restart();
@@ -78,11 +73,8 @@ public class BattleScreen extends Screen {
 		entities.clear();
         fireballs.clear();
         enemies.clear();
-        player.resetHealth();
-        player.position = new Vector2f(player.size.copy().scale(2));
-        player.direction = Direction.SOUTH;
+        player.setPosition(new Vector2f(128, 128));
         entities.add(player);
-		entities.add(drawing);
         
         enemyImage = Assets.loadImage("art/enemy.png");
         int num_enemies = INIT_ENEMIES;
@@ -92,17 +84,11 @@ public class BattleScreen extends Screen {
             DirectedImage da = new DirectedImage(Assets.loadImage("art/enemy.png"));
 
             Enemy enemy = new Enemy(game, this);
-            enemy.position = new Vector2f((int)(Math.random()*500)+100, (int)(Math.random()*500)+100);
+            enemy.setPosition(new Vector2f((int)(Math.random()*500)+100, (int)(Math.random()*500)+100));
             enemy.img = da;
-            enemy.direction = Helper.randomDirection();
-            enemy.size = new Vector2f(Constants.TILE_SIZE * 0.7f, Constants.TILE_SIZE * 0.7f);
-            if(!hitmap.valid(0, 0, enemy.position.add(enemy.size.copy().scale(-0.5f)), enemy.position.add(enemy.size.copy().scale(0.5f))))
-            	i--;
-            else
-            {
-            	entities.add(enemy);
-            	enemies.add(enemy);
-            }
+            enemy.setDirection(Helper.randomDirection());
+            entities.add(enemy);
+            enemies.add(enemy);
         }
 	}
 	
@@ -116,75 +102,14 @@ public class BattleScreen extends Screen {
 	}
 	
 
-    public void updateRangedCollisions(int dt)
-    {
-        ArrayList<Entity> trash = new ArrayList<Entity>();
-
-        for (SolidProjectile f: fireballs)
-        {
-        	if(!f.active())
-        		continue;
-            for(Entity e : entities)
-            {
-            	if(!e.active())
-            		continue;
-            	if(e == f || e == f.parent)
-            		continue;
-                if(f.position.distance(e.position) < 18 && f.parent != e)
-                {
-                    f.kill();
-                    if(!(f.parent instanceof Enemy && e instanceof Enemy))
-                    {
-                        if(e instanceof Enemy) {
-                    		((Enemy)e).hurtTimer = 1000;
-                            e.damage(Constants.DEFAULT_DAMAGE);
-                        }
-                        if(e instanceof Player && f.parent instanceof Enemy)
-                    	{
-                    		((Player)e).hurtTimer = 1000;
-                            e.damage(Constants.DEFAULT_DAMAGE);
-                        }
-                    }
-                }
-            }
-            f.damage(dt);
-        }
-        for(Entity e : entities)
-            if(!e.active() && e.deathTimer <= 0)
-                trash.add(e);
-        for(Entity e : trash)
-        {
-            entities.remove(e);
-            if(e instanceof Enemy)
-            	enemies.remove(e);
-            if(e instanceof SolidProjectile)
-            	fireballs.remove(e);
-        }
-        
-    }
-	
-	public void updateSpriteCollisions(int dt) {
-		for(Enemy enemy : enemies) {
-			if(enemy.position.distance(player.position) < 32 && player.invulnerable <= 0 && enemy.deathTimer <= 0 && enemy.active())
-			{
-				player.damage(Constants.DEFAULT_DAMAGE);
-				player.invulnerable = 2000;
-			}
-		}
-		player.invulnerable-=dt;
-	}
-        
     public void createFireball(Entity e, Direction dir, boolean player)
     {
-        SolidProjectile f = new SolidProjectile(game, dir);
+        SolidProjectile f = new SolidProjectile(game, Helper.directionToAngle(dir), e, 1, Helper.v2v(Helper.directionToVector(dir)));
         if(e instanceof Player)
-	{
-        	this.player.direction = dir;
+        {
+        	this.player.setDirection(dir);
         }
-	f.position = e.position.copy().add(Helper.directionToVector(dir).scale(16));
-	f.size = new Vector2f(Constants.TILE_SIZE * .25f, Constants.TILE_SIZE * .25f);
-        f.parent = e;
-			f.img = new DirectedImage(Assets.loadImage("art/fireball.png"));
+        f.img = new DirectedImage(Assets.loadImage("art/fireball.png"));
 		fireballs.add(f);
         entities.add(f);
     }
@@ -192,19 +117,6 @@ public class BattleScreen extends Screen {
 	@Override
 	public void update(GameContainer gc, int dt) throws SlickException {
         Input in = gc.getInput();
-        // drawing
-        if(in.isMousePressed(0) && in.isKeyDown(Input.KEY_Z)){
-        	System.out.println("X: " + in.getAbsoluteMouseX() + " Y: " + in.getAbsoluteMouseY());
-        	drawing.AddPoint(in.getAbsoluteMouseX(), in.getAbsoluteMouseY());
-        	zPressed = true;
-        }
-        if(!in.isKeyDown(Input.KEY_Z) && zPressed){
-        	drawing.breakPoint();
-        	zPressed = false;
-        }
-        if(in.isKeyPressed(Input.KEY_Q))
-        	drawing.reset();
-        
 		if(startDelay > 0)
 		{
 			startDelay -= dt;
@@ -221,23 +133,16 @@ public class BattleScreen extends Screen {
             playerMoveVec.y++;
         if(in.isKeyDown(Input.KEY_W))
             playerMoveVec.y--;
-        if(in.isKeyDown(Input.KEY_ADD))
-        	player.MOLOTOV_DEPTH++;
-        if(in.isKeyDown(Input.KEY_SUBTRACT))
-        	player.MOLOTOV_DEPTH--;
-        if(in.isKeyDown(Input.KEY_EQUALS))
-        	player.MOLOTOV_DEPTH = 0;
         
         playerMoveVec.normalise();
             
-        player.move(playerMoveVec.scale((int)(dt * Constants.PLAYER_MOVE_SPEED)), 0, 0, gc.getWidth(), gc.getHeight(), hitmap);
-        //End of moving the player
+        player.body.applyForceToCenter(Helper.v2v(playerMoveVec.scale((int)(dt * Constants.PLAYER_MOVE_SPEED))));
         
         if(fireDelay <= 0)
         {
         	fireDelay = Constants.FIRE_DELAY;
         	Vector2f moff = new Vector2f(in.getMouseX(), in.getMouseY());
-        	Direction mFire = Helper.directionTo(player.position, moff);
+        	Direction mFire = Helper.directionTo(player.getPosition(), moff);
         	if(in.isMouseButtonDown(Input.MOUSE_LEFT_BUTTON)&&in.isKeyDown(Input.KEY_Z))
         		createFireball(player, mFire, true);
         	else if(in.isKeyDown(Input.KEY_LEFT) && in.isKeyDown(Input.KEY_UP))
@@ -261,32 +166,15 @@ public class BattleScreen extends Screen {
 	        //End of creating a projectile
         }
         
+        game.world.step(dt, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
         player.update(dt);
         fireDelay -= dt;
-        molotovDelay -= dt;
-        //Move fireballs across the screen
-        for(int i = 0; i < fireballs.size(); i++)
-        {
-        	SolidProjectile f = fireballs.get(i);
-            Vector2f projMoveVec = Helper.directionToVector(f.direction);
-            projMoveVec.normalise();
-			if(f.parent instanceof Player)
-				f.move(projMoveVec.scale(dt * Constants.PLAYER_PROJECTILE_SPEED), 0, 0, gc.getWidth(), gc.getHeight());
-			else
-				f.move(projMoveVec.scale(dt * Constants.ENEMY_PROJECTILE_SPEED), 0, 0, gc.getWidth(), gc.getHeight());
-        }
         
 
         for(Enemy e : enemies)
         	e.update(dt);
         
-        this.updateRangedCollisions(dt);
-		
-		this.updateSpriteCollisions(dt);
-        
         if(!player.active())
         	game.transition(-1);
-        //else if(enemies.size() == 0)
-        //    game.transition(0);
 	}
 }

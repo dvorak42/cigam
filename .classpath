@@ -3,7 +3,11 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/ibxm.jar"/>
 	<classpathentry kind="lib" path="lib/jbox2d-library-2.2.1.1-javadoc.jar"/>
-	<classpathentry kind="lib" path="lib/jbox2d-library-2.2.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jbox2d-library-2.2.1.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/dvorak42/cigam/lib/jbox2d-library-2.2.1.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/jinput.jar"/>
 	<classpathentry kind="lib" path="lib/jnlp.jar"/>
 	<classpathentry kind="lib" path="lib/jogg-0.0.7.jar"/>

@@ -1,8 +1,6 @@
 package com.cigam.sigil;
 
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Vector2f;
-import org.jbox2d.*;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.World;
 
@@ -15,7 +13,7 @@ import com.cigam.sigil.screens.Screen;
 public class CigamGame extends BasicGame
 {
 	public Player player;
-	public Screen current;	
+	public Screen current;
 	public World world;
 	public int timeout = 0;
 	
@@ -34,10 +32,9 @@ public class CigamGame extends BasicGame
 	@Override
 	public void init(GameContainer gc) throws SlickException {
 		Assets.load();
+		world = new World(new Vec2());
 		player = new Player(this);
-		world = new World(new Vec2());;
 		player.img = new DirectedImage(Assets.loadImage("art/player.png"));
-		player.size = new Vector2f(Constants.TILE_SIZE * 0.9f, Constants.TILE_SIZE * 0.9f);
 		System.out.println("Pre current");
 		current = new BattleScreen(this, null);
 		System.out.println("Post current");
@@ -50,6 +47,7 @@ public class CigamGame extends BasicGame
 		timeout -= delta;
 		if(timeout > 0)
 			return;
+		//world.step(delta, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
 		current.update(gc, delta);
 	}
  

@@ -1,74 +1,70 @@
 package com.cigam.sigil;
 
-import org.jbox2d.dynamics.Body;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.cigam.sigil.Constants.Direction;
 import com.cigam.sigil.graphics.DirectedImage;
-import com.cigam.sigil.graphics.TileMap;
 
 public abstract class Entity {
-	public Body body;
-	public Direction direction;
 	public DirectedImage img;
-	public Vector2f size;
-	public int health;
+	Vector2f position;
+	Direction direction;
 	boolean active = true;
-	public int invulnerable = 0;
-	public int deathTimer = 0;
-	public boolean moving = true;
+	boolean visible = true;
 	
 	public Entity() {
+		position = new Vector2f();
 		direction = Constants.Direction.SOUTH;
-		size = new Vector2f();
-		resetHealth();
 		img = new DirectedImage();
 	}
 	
-	public abstract int maxHealth();
-	
-	public boolean active()
-	{
+	public boolean active() {
 		return active;
 	}
 	
-	public void setActive(boolean a)
-	{
-		if(!a)
-			deathTimer = 1000;
+	public void setActive(boolean a) {
 		active = a;
 	}
 	
-	public void damage(int am) {
-		health -= am;
-		if(health <= 0)
-			setActive(false);
+	public boolean visible() {
+		return visible;
 	}
 	
-	public void resetHealth() {
-		health = maxHealth();
+	public void setVisible(boolean v) {
+		visible = v;
 	}
-
 	
 	public void update(int dt) {
-		if(moving)
+		if(active) {
 			img.update(dt);
-		
-		if(deathTimer > 0)
-			deathTimer -= dt;
+		}
+	}
+	
+	public void setPosition(Vector2f pos) {
+		position = pos;
+	}
+
+	public Vector2f getPosition() {
+		return position;
+	}
+	
+	public void setDirection(Constants.Direction dir) {
+		direction = dir;
+	}
+	
+	public Constants.Direction getDirection() {
+		return direction;
 	}
 	
 	public void draw(Graphics g) {
-		if(active)
-			img.draw(body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, direction);
+		Vector2f position = getPosition();
+		if(visible)
+			img.draw(position.x - img.width / 2, position.y - img.height / 2, img.width, img.height, direction);
 	}
         
 	public void kill()
 	{
-		this.health = 0;
-		active = false;
+		setActive(false);
 	}
-
-	
 }

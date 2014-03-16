@@ -10,6 +10,7 @@ import com.cigam.sigil.Constants.Direction;
 
 public class DirectedImage {
 	public Map<Direction, Image> imgs;
+	public int width, height;
 	
 	public DirectedImage()
 	{
@@ -24,6 +25,8 @@ public class DirectedImage {
 	public DirectedImage(Image d, Image[] a)
 	{
 		this();
+		width = d.getWidth();
+		height = d.getHeight();
 		imgs.put(Constants.Direction.SOUTH, d);
 		for(int i = 0; i < a.length; i++)
 		{
