@@ -12,7 +12,7 @@
 	<classpathentry kind="lib" path="lib/lwjgl-debug.jar"/>
 	<classpathentry kind="lib" path="lib/lwjgl.jar">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/dvorak42/cigam/lib/natives-linux"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="lib/natives"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/natives-linux.jar"/>
