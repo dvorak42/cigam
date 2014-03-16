@@ -24,6 +24,10 @@ public class PhysicalEntity extends Entity {
 		img = new DirectedImage();
 	}
 	
+	public void setImage(DirectedImage img){
+		this.img = img;
+	}
+	
 	public void updateBody(BodyDef bd, FixtureDef[] fds) {
 		if(bd != null) {
 			body = world.createBody(bd);

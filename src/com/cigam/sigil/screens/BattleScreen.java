@@ -3,6 +3,8 @@ package com.cigam.sigil.screens;
 import java.util.ArrayList;
 
 import org.jbox2d.common.*;
+import org.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.World;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -14,6 +16,7 @@ import org.newdawn.slick.geom.Vector2f;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.Enemy;
 import com.cigam.sigil.Entity;
+import com.cigam.sigil.ImmovableWall;
 import com.cigam.sigil.SolidProjectile;
 import com.cigam.sigil.Helper;
 import com.cigam.sigil.CigamGame;
@@ -24,14 +27,14 @@ import com.cigam.sigil.graphics.DirectedImage;
 import com.cigam.sigil.graphics.TileMap;
 
 public class BattleScreen extends Screen {
-	public TileMap hitmap;;
+	public TileMap hitmap;
 	public World world;
+	public BodyDef borderDef;
 	public ArrayList<Entity> entities;
     public ArrayList<SolidProjectile> fireballs;
     public ArrayList<Enemy> enemies;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
-	Image enemyImage = null;
 	public static int INIT_ENEMIES = 5;
 
 	@Override
@@ -49,6 +52,11 @@ public class BattleScreen extends Screen {
     
 	public BattleScreen(CigamGame g, Screen par)
 	{
+		new ImmovableWall(g, new Vec2(0f,0f), new Vec2(0f, Constants.DISPLAY_DIMS[1]));
+		new ImmovableWall(g, new Vec2(0f,0f), new Vec2(Constants.DISPLAY_DIMS[0], 0f));
+		new ImmovableWall(g, new Vec2(0f, Constants.DISPLAY_DIMS[1]), new Vec2(Constants.DISPLAY_DIMS[0],Constants.DISPLAY_DIMS[1]));
+		new ImmovableWall(g, new Vec2(Constants.DISPLAY_DIMS[0], 0f), new Vec2(Constants.DISPLAY_DIMS[0],Constants.DISPLAY_DIMS[1]));
+
 		game = g;
 		player = game.player;
 		parent = par;
@@ -76,7 +84,6 @@ public class BattleScreen extends Screen {
         player.setPosition(new Vector2f(128, 128));
         entities.add(player);
         
-        enemyImage = Assets.loadImage("art/enemy.png");
         int num_enemies = INIT_ENEMIES;
 
         for(int i = 0; i < num_enemies; i++)
@@ -85,7 +92,7 @@ public class BattleScreen extends Screen {
 
             Enemy enemy = new Enemy(game, this);
             enemy.setPosition(new Vector2f((int)(Math.random()*500)+100, (int)(Math.random()*500)+100));
-            enemy.img = da;
+            enemy.setImage(da);
             enemy.setDirection(Helper.randomDirection());
             entities.add(enemy);
             enemies.add(enemy);

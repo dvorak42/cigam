@@ -25,8 +25,9 @@ public class Player extends PhysicalEntity {
 		bd.position = new Vec2(0, 0);
 		
 		FixtureDef fd = new FixtureDef();
+		fd.filter.groupIndex = -1;
 		PolygonShape ps = new PolygonShape();
-		ps.setAsBox(64, 32);
+		ps.setAsBox(26, 28);
 		fd.shape = ps;
 		fd.density = 1;
 		updateBody(bd, new FixtureDef[]{fd});
