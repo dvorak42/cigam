@@ -24,6 +24,7 @@ public class Create extends Verb {
 		this.setArea(area);
 	}
 	
+	//Should take and return specifications, not runes themselves
 	@Override
 	public String topEvalEffect() {
 		this.evalModifiers();

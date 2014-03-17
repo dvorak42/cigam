@@ -23,7 +23,9 @@ public class SolidProjectile extends PhysicalEntity {
 		bd.angle = angle;
 		bd.awake = true;
 		bd.bullet = true;
-		bd.position = Helper.v2v(parent.position).add(vel.mul(50.0f));
+		Vec2 dir = vel.clone();
+		dir.normalize();
+		bd.position = Helper.v2v(parent.position).add(dir.mul(50.0f));
 		FixtureDef fd = new FixtureDef();
 		fd.density = 10;
 		fd.filter.groupIndex = -1;

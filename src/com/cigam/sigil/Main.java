@@ -7,6 +7,7 @@ public class Main {
      AppGameContainer app = new AppGameContainer(new CigamGame());
  
      app.setDisplayMode(Constants.DISPLAY_DIMS[0], Constants.DISPLAY_DIMS[1], false);
+     app.setTargetFrameRate(60);
      app.start();
   }
 }

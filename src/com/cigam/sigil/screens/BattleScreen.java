@@ -35,7 +35,7 @@ public class BattleScreen extends Screen {
     public ArrayList<Enemy> enemies;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
-	public static int INIT_ENEMIES = 5;
+	public static int INIT_ENEMIES = 2;
 
 	@Override
 	public Screen transition(int state) {
@@ -111,7 +111,8 @@ public class BattleScreen extends Screen {
 
     public void createFireball(Entity e, Direction dir, boolean player)
     {
-        SolidProjectile f = new SolidProjectile(game, Helper.directionToAngle(dir), e, 1, Helper.v2v(Helper.directionToVector(dir)));
+        SolidProjectile f = new SolidProjectile(game, Helper.directionToAngle(dir), e, 1, 
+        		Helper.v2v(Helper.directionToVector(dir)).mul(Constants.PLAYER_PROJECTILE_SPEED));
         if(e instanceof Player)
         {
         	this.player.setDirection(dir);
@@ -143,7 +144,9 @@ public class BattleScreen extends Screen {
         
         playerMoveVec.normalise();
             
-        player.body.applyForceToCenter(Helper.v2v(playerMoveVec.scale((int)(dt * Constants.PLAYER_MOVE_SPEED))));
+        player.body.applyForceToCenter(Helper.v2v(playerMoveVec.scale((int)(dt/1000f * Constants.PLAYER_ACCELERATION_FACTOR))));
+        System.out.println(player.body.m_mass + "is player mass");
+        System.out.println(player.body.getLinearVelocity() + "is player velocity");
         
         if(fireDelay <= 0)
         {
@@ -173,7 +176,7 @@ public class BattleScreen extends Screen {
 	        //End of creating a projectile
         }
         
-        game.world.step(dt, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
+        game.world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
         player.update(dt);
         fireDelay -= dt;
         

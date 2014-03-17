@@ -24,6 +24,7 @@ public class Enemy extends PhysicalEntity {
 		bd.type = BodyType.DYNAMIC;
 		bd.userData = this;
 		bd.angle = 0;
+		bd.fixedRotation = true;
 		bd.awake = true;
 		bd.position = new Vec2(0, 0);
 		
@@ -48,11 +49,7 @@ public class Enemy extends PhysicalEntity {
 
 		if(!active)
 			return;
-		
-		for(int i = 0; i < Constants.ENEMY_MOVE_SPEED * dt; i++)
-		{
-			body.applyForce(Helper.v2v(Helper.directionToVector(direction).normalise().scale(1)), body.getWorldCenter());
-		}				
+		body.applyForce(Helper.v2v(Helper.directionToVector(direction).scale((float) (Constants.ENEMY_MOVE_SPEED*dt))), body.getWorldCenter());			
 		
 		direction = Helper.randomDirection();
 	}

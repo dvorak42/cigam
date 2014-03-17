@@ -23,13 +23,15 @@ public class Player extends PhysicalEntity {
 		bd.angle = 0;
 		bd.awake = true;
 		bd.position = new Vec2(0, 0);
+		bd.fixedRotation = true;
+		bd.linearDamping = 1f;
 		
 		FixtureDef fd = new FixtureDef();
 		fd.filter.groupIndex = -1;
 		PolygonShape ps = new PolygonShape();
 		ps.setAsBox(26, 28);
 		fd.shape = ps;
-		fd.density = 1;
+		fd.density = 0.1f;
 		updateBody(bd, new FixtureDef[]{fd});
 		direction = Constants.Direction.NORTH;
         game = eg;

@@ -49,6 +49,7 @@ public class CigamGame extends BasicGame
 			return;
 		//world.step(delta, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
 		current.update(gc, delta);
+		System.out.println(delta);
 	}
  
 	@Override
