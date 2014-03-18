@@ -25,6 +25,11 @@ import com.cigam.sigil.Constants.Direction;
 import com.cigam.sigil.graphics.Assets;
 import com.cigam.sigil.graphics.DirectedImage;
 import com.cigam.sigil.graphics.TileMap;
+import com.cigam.sigil.magic.SpellEffect;
+import com.cigam.sigil.magic.Verb;
+import com.cigam.sigil.magic.targets.Material;
+import com.cigam.sigil.magic.verbs.Create;
+import com.cigam.sigil.materials.Fire;
 
 public class BattleScreen extends Screen {
 	public TileMap hitmap;
@@ -33,9 +38,11 @@ public class BattleScreen extends Screen {
 	public ArrayList<Entity> entities;
     public ArrayList<SolidProjectile> fireballs;
     public ArrayList<Enemy> enemies;
+    public ArrayList<SpellEffect> spells;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
 	public static int INIT_ENEMIES = 2;
+	public Verb testSpell;
 
 	@Override
 	public Screen transition(int state) {
@@ -69,8 +76,11 @@ public class BattleScreen extends Screen {
 		entities = new ArrayList<Entity>();
 		fireballs = new ArrayList<SolidProjectile>();
 		enemies = new ArrayList<Enemy>();
+		spells = new ArrayList<SpellEffect>();
 		hitmap = new TileMap(0, 0);
 		world = new World(new Vec2());
+		testSpell = new Create(player, game, new Material(new Fire()), null);
+		testSpell.topEvalEffect();
 		background = Assets.loadImage("art/background.png");
 		restart();
 	}
@@ -81,6 +91,7 @@ public class BattleScreen extends Screen {
 		entities.clear();
         fireballs.clear();
         enemies.clear();
+        spells.clear();
         player.setPosition(new Vector2f(128, 128));
         entities.add(player);
         
@@ -122,6 +133,11 @@ public class BattleScreen extends Screen {
         entities.add(f);
     }
 
+    public void createSpellEffect(SpellEffect e){
+    	entities.add(e);
+    	spells.add(e);
+    	e.img = new DirectedImage(Assets.loadImage("art/fireball.png"));
+    }
 	@Override
 	public void update(GameContainer gc, int dt) throws SlickException {
         Input in = gc.getInput();
@@ -145,8 +161,8 @@ public class BattleScreen extends Screen {
         playerMoveVec.normalise();
             
         player.body.applyForceToCenter(Helper.v2v(playerMoveVec.scale((int)(dt/1000f * Constants.PLAYER_ACCELERATION_FACTOR))));
-        System.out.println(player.body.m_mass + "is player mass");
-        System.out.println(player.body.getLinearVelocity() + "is player velocity");
+        //System.out.println(player.body.m_mass + "is player mass");
+        //System.out.println(player.body.getLinearVelocity() + "is player velocity");
         
         if(fireDelay <= 0)
         {
@@ -171,6 +187,8 @@ public class BattleScreen extends Screen {
 	            createFireball(player, Direction.SOUTH, true);
 	        else if(in.isKeyDown(Input.KEY_UP))
 	            createFireball(player, Direction.NORTH, true);
+	        else if(in.isKeyDown(Input.KEY_SPACE))
+	        	testSpell.cast();
 	        else
 	        	fireDelay = 0;
 	        //End of creating a projectile

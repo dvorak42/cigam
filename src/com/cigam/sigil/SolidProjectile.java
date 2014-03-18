@@ -27,7 +27,6 @@ public class SolidProjectile extends PhysicalEntity {
 		dir.normalize();
 		bd.position = Helper.v2v(parent.position).add(dir.mul(50.0f));
 		FixtureDef fd = new FixtureDef();
-		fd.density = 10;
 		fd.filter.groupIndex = -1;
 		CircleShape cs = new CircleShape();
 		cs.setRadius(1f);

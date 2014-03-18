@@ -11,6 +11,7 @@ import com.cigam.sigil.graphics.DirectedImage;
 public class PhysicalEntity extends Entity {
 	public World world;
 	public Body body;
+	//TODO: All physical entities should have a materialDescriptor associated with them
 	
 	public PhysicalEntity(World world) {
 		this(world, null, null);
