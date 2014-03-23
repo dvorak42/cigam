@@ -9,7 +9,6 @@ public class Material extends Target {
 	
 	public Material(MaterialDescriptor mat){
 		this.material = mat;
-		this.duration = 1;
 	}
 	
 	@Override

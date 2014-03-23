@@ -79,7 +79,9 @@ public class BattleScreen extends Screen {
 		spells = new ArrayList<SpellEffect>();
 		hitmap = new TileMap(0, 0);
 		world = new World(new Vec2());
-		testSpell = new Create(player, game, new Material(new Fire()), null);
+		//testSpell = new Create(player, game, new Material(new Fire()), null);
+		//testSpell = new Create(player, game, new Create(player, game, new Material(new Fire()), null), null);
+		testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new Material(new Fire()), null), null), null);
 		testSpell.topEvalEffect();
 		background = Assets.loadImage("art/background.png");
 		restart();
@@ -135,7 +137,7 @@ public class BattleScreen extends Screen {
 
     public void createSpellEffect(SpellEffect e){
     	entities.add(e);
-    	spells.add(e);
+    	e.mat.OnCreate();
     	e.img = new DirectedImage(Assets.loadImage("art/fireball.png"));
     }
 	@Override

@@ -7,22 +7,24 @@ import org.jbox2d.dynamics.World;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.cigam.sigil.graphics.DirectedImage;
+import com.cigam.sigil.magic.MaterialDescriptor;
 
 public class PhysicalEntity extends Entity {
 	public World world;
 	public Body body;
-	//TODO: All physical entities should have a materialDescriptor associated with them
+	public MaterialDescriptor mat;
 	
 	public PhysicalEntity(World world) {
-		this(world, null, null);
+		this(world, null, null, null);
 	}
 	
-	public PhysicalEntity(World world, BodyDef bd, FixtureDef[] fds) {
+	public PhysicalEntity(World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds) {
 		this.world = world;
 		updateBody(bd, fds);
 		position = Helper.v2v(body.getPosition());
 		direction = Constants.Direction.SOUTH;
 		img = new DirectedImage();
+		mat = material;
 	}
 	
 	public void setImage(DirectedImage img){

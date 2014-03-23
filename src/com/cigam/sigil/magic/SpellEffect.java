@@ -10,8 +10,8 @@ public class SpellEffect extends PhysicalEntity {
 	public float duration;
 
 	
-	public SpellEffect(float duration, World world, BodyDef bd, FixtureDef[] fds) {
-		super(world, bd, fds);
+	public SpellEffect(float duration, World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds) {
+		super(world, material, bd, fds);
 		this.duration = duration;
 		bd.userData = this;
 	}

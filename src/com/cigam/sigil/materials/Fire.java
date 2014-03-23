@@ -23,11 +23,17 @@ public class Fire extends MaterialDescriptor {
 		cs.setRadius(1f);
 		cs.m_p.set(0, 0);
 		fd.shape = cs;
-		this.init(null, 0.5f, 0.0001f, 0, Area.baseArea.CIRCLE, fd, bd);
+		this.init(null, 0.5f, 0.0001f, 0, 10,Area.baseArea.CIRCLE, fd, bd);
 	}
 
 	@Override
 	public void OnCollide(MaterialDescriptor m) {
 		// TODO Does damage, sets things on fire, etc...
+	}
+
+	@Override
+	public void OnCreate() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -12,4 +12,10 @@ public class SelfMat extends MaterialDescriptor {
 	@Override
 	public void OnCollide(MaterialDescriptor m) {}
 
+	@Override
+	public void OnCreate() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -29,7 +29,7 @@ public class Summon extends Verb {
 		Vec2 castDir = Helper.v2v(Helper.directionToVector(caster.getDirection()));
 		castDir.normalize();
 		mat.bd.position = caster.body.getTransform().p.add(castDir.mul(this.defaultRad));
-		effect = new SpellEffect(finalDuration, game.world, mat.bd, new FixtureDef[]{mat.fd});
+		effect = new SpellEffect(finalDuration, game.world, mat, mat.bd, new FixtureDef[]{mat.fd});
 
 	}
 

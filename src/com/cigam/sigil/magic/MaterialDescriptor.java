@@ -18,10 +18,11 @@ public abstract class MaterialDescriptor {
 	public BodyDef bd;
 	public FixtureDef fd;
 	public Die effectFactor;
+	public float duration;
 	
 	public MaterialDescriptor(){
 	}
-	public void init(Image img, float md, float mc, float h, Area.baseArea shape, FixtureDef fd, BodyDef bd){
+	public void init(Image img, float md, float mc, float h, float dur, Area.baseArea shape, FixtureDef fd, BodyDef bd){
 			this.image = img;
 			this.manaDensityFactor = md;
 			this.manaCapacityFactor = mc;
@@ -29,8 +30,10 @@ public abstract class MaterialDescriptor {
 			this.defaultArea = new Area(shape, 1);
 			this.bd = bd;
 			this.fd = fd;
+			this.duration = dur;
 			this.effectFactor = new Die(1, 1);
 	}
 	public abstract void OnCollide(MaterialDescriptor m);
+	public abstract void OnCreate();
 
 }
