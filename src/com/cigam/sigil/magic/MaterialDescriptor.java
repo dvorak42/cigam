@@ -4,6 +4,8 @@ import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.FixtureDef;
 import org.newdawn.slick.Image;
 
+import com.cigam.sigil.PhysicalEntity;
+
 public abstract class MaterialDescriptor {
 	public Image image;
 	public float manaDensityFactor;
@@ -30,10 +32,12 @@ public abstract class MaterialDescriptor {
 			this.defaultArea = new Area(shape, 1);
 			this.bd = bd;
 			this.fd = fd;
-			this.duration = dur;
+			this.duration = dur;	
 			this.effectFactor = new Die(1, 1);
 	}
-	public abstract void OnCollide(MaterialDescriptor m);
-	public abstract void OnCreate();
+	public abstract void OnCollide(PhysicalEntity p);
+	public abstract void NoCollide(PhysicalEntity b);
+	public abstract void Update();
+	public abstract void OnCreate(PhysicalEntity manifestation);
 
 }

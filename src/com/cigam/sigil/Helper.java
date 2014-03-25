@@ -1,7 +1,11 @@
 package com.cigam.sigil;
 
 import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.Body;
+import org.jbox2d.dynamics.World;
 import org.newdawn.slick.geom.Vector2f;
+
+import com.cigam.sigil.magic.MaterialDescriptor;
 
 public class Helper {
 	public static Vector2f bound(Vector2f vec, float minX, float minY, float maxX, float maxY)

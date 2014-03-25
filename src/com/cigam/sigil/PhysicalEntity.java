@@ -37,6 +37,7 @@ public class PhysicalEntity extends Entity {
 		} else {
 			body = world.createBody(new BodyDef());
 		}
+		body.setUserData(this);
 		if(fds != null) {
 			for(FixtureDef fd : fds)
 				body.createFixture(fd);

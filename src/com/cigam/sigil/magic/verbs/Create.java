@@ -30,16 +30,15 @@ public class Create extends Verb {
 	@Override
 	public MaterialDescriptor evalEffect() {
 		mat = target.evalEffect();
-		return new Creation(mat, caster.getDirection(), this.duration, game);
+		return new Creation(mat, caster.getDirection(), this.duration, game, caster.body.getTransform().p);
 	}
 	@Override
 	public void cast() {
-		Vec2 castDir = Helper.v2v(Helper.directionToVector(caster.getDirection()));
-		castDir.normalize();
-		mat.bd.position = caster.body.getTransform().p.add(castDir.mul(this.defaultRad));
+		mat.bd.position = caster.body.getTransform().p;
 		//System.out.println(caster.body.getTransform().p + " is caster location");
 		//System.out.println(mat.bd.position + " is created object location");
-		SpellEffect effect = new SpellEffect(target.duration*this.duration, game.world, mat, mat.bd, new FixtureDef[]{mat.fd});
+		Creation c =  new Creation(mat, caster.getDirection(), this.duration, game, caster.body.getPosition());
+		SpellEffect effect = new SpellEffect(target.duration*this.duration, game.world, c, c.bd, new FixtureDef[]{c.fd});
 		((BattleScreen) game.current).createSpellEffect(effect);
 	}
 }

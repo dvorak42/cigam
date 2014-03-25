@@ -5,6 +5,7 @@ import org.jbox2d.dynamics.BodyDef;
 import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 
+import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.magic.Area;
 import com.cigam.sigil.magic.MaterialDescriptor;
 
@@ -27,12 +28,24 @@ public class Fire extends MaterialDescriptor {
 	}
 
 	@Override
-	public void OnCollide(MaterialDescriptor m) {
+	public void OnCollide(PhysicalEntity p) {
 		// TODO Does damage, sets things on fire, etc...
 	}
 
 	@Override
-	public void OnCreate() {
+	public void OnCreate(PhysicalEntity p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void NoCollide(PhysicalEntity b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void Update() {
 		// TODO Auto-generated method stub
 		
 	}

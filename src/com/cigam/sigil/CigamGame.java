@@ -1,11 +1,16 @@
 package com.cigam.sigil;
 
 import org.newdawn.slick.*;
+import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
+import org.jbox2d.dynamics.BodyDef;
+import org.jbox2d.dynamics.BodyType;
+import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 
 import com.cigam.sigil.graphics.Assets;
 import com.cigam.sigil.graphics.DirectedImage;
+import com.cigam.sigil.materials.SelfMat;
 import com.cigam.sigil.screens.BattleScreen;
 import com.cigam.sigil.screens.Screen;
 
@@ -33,7 +38,24 @@ public class CigamGame extends BasicGame
 	public void init(GameContainer gc) throws SlickException {
 		Assets.load();
 		world = new World(new Vec2());
-		player = new Player(this);
+		world.setContactListener(new CigamContactListener());
+		BodyDef bd = new BodyDef();
+		bd.active = true;
+		bd.type = BodyType.DYNAMIC;
+		bd.userData = this;
+		bd.angle = 0;
+		bd.awake = true;
+		bd.position = new Vec2(0, 0);
+		bd.fixedRotation = true;
+		bd.linearDamping = 1f;
+		
+		FixtureDef fd = new FixtureDef();
+		fd.filter.groupIndex = -1;
+		PolygonShape ps = new PolygonShape();
+		ps.setAsBox(26, 28);
+		fd.shape = ps;
+		fd.density = 0.1f;
+		player = new Player(this, new SelfMat(), bd, new FixtureDef[]{fd});
 		player.img = new DirectedImage(Assets.loadImage("art/player.png"));
 		System.out.println("Pre current");
 		current = new BattleScreen(this, null);
