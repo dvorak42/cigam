@@ -9,7 +9,6 @@ import org.newdawn.slick.geom.Vector2f;
 
 import com.cigam.sigil.screens.BattleScreen;
 
-
 public class Enemy extends PhysicalEntity {
 	public CigamGame game;
 	public BattleScreen pScreen;
