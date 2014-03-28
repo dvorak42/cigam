@@ -49,6 +49,7 @@ public class Enemy extends PhysicalEntity {
 
 		if(!active)
 			return;
+		
 		body.applyForce(Helper.v2v(Helper.directionToVector(direction).scale((float) (Constants.ENEMY_MOVE_SPEED*dt))), body.getWorldCenter());			
 		
 		direction = Helper.randomDirection();
