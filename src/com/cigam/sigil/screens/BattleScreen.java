@@ -2,9 +2,14 @@ package com.cigam.sigil.screens;
 
 import java.util.ArrayList;
 
+import org.jbox2d.collision.shapes.CircleShape;
+import org.jbox2d.collision.shapes.EdgeShape;
+import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.*;
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.BodyDef;
+import org.jbox2d.dynamics.BodyType;
+import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -12,11 +17,14 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.tiled.TiledMap;
 
+import com.cigam.sigil.CigamContactListener;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.Enemy;
 import com.cigam.sigil.Entity;
 import com.cigam.sigil.ImmovableWall;
+import com.cigam.sigil.MaterialDescriptor;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.SolidProjectile;
 import com.cigam.sigil.Helper;
@@ -26,12 +34,14 @@ import com.cigam.sigil.Constants.Direction;
 import com.cigam.sigil.graphics.Assets;
 import com.cigam.sigil.graphics.DirectedImage;
 import com.cigam.sigil.graphics.TileMap;
+import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.magic.Verb;
 import com.cigam.sigil.magic.targets.MaterialRune;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.materials.Fire;
+import com.cigam.sigil.materials.SelfMat;
 
 public class BattleScreen extends Screen {
 	public TileMap hitmap;
@@ -47,7 +57,7 @@ public class BattleScreen extends Screen {
 	public ArrayList<Verb> testSpells;
 	private GameContainer gc;
 	private int dt;
-	
+	private TiledMap map;
 
 	@Override
 	public Screen transition(int state) {
@@ -64,13 +74,11 @@ public class BattleScreen extends Screen {
     
 	public BattleScreen(CigamGame g, Screen par)
 	{
-		new ImmovableWall(g, new Vec2(0f,0f), new Vec2(0f, Constants.DISPLAY_DIMS[1]));
-		new ImmovableWall(g, new Vec2(0f,0f), new Vec2(Constants.DISPLAY_DIMS[0], 0f));
-		new ImmovableWall(g, new Vec2(0f, Constants.DISPLAY_DIMS[1]), new Vec2(Constants.DISPLAY_DIMS[0],Constants.DISPLAY_DIMS[1]));
-		new ImmovableWall(g, new Vec2(Constants.DISPLAY_DIMS[0], 0f), new Vec2(Constants.DISPLAY_DIMS[0],Constants.DISPLAY_DIMS[1]));
-
+		//new ImmovableWall(g, new Vec2(0f,0f), new Vec2(0f, Constants.DISPLAY_DIMS[1]));
+		//new ImmovableWall(g, new Vec2(0f,0f), new Vec2(Constants.DISPLAY_DIMS[0], 0f));
+		//new ImmovableWall(g, new Vec2(0f, Constants.DISPLAY_DIMS[1]), new Vec2(Constants.DISPLAY_DIMS[0],Constants.DISPLAY_DIMS[1]));
+		//new ImmovableWall(g, new Vec2(Constants.DISPLAY_DIMS[0], 0f), new Vec2(Constants.DISPLAY_DIMS[0],Constants.DISPLAY_DIMS[1]));
 		game = g;
-		player = game.player;
 		parent = par;
 		cleanRestart();
 	}
@@ -83,22 +91,48 @@ public class BattleScreen extends Screen {
 		spells = new ArrayList<PhysicalEntity>();
 		hitmap = new TileMap(0, 0);
 		world = new World(new Vec2());
+		world.setContactListener(new CigamContactListener());
+		BodyDef bd = new BodyDef();
+		bd.active = true;
+		bd.type = BodyType.DYNAMIC;
+		bd.userData = this;
+		bd.angle = 0;
+		bd.awake = true;
+		bd.position = new Vec2(0, 0);
+		bd.fixedRotation = true;
+		bd.linearDamping = 1f;
+		FixtureDef fd = new FixtureDef();
+		fd.filter.groupIndex = -1;
+		PolygonShape ps = new PolygonShape();
+		ps.setAsBox(26, 28);
+		fd.shape = ps;
+		fd.density = 0.1f;
+		player = new Player(this, new SelfMat(), bd, new FixtureDef[]{fd});
+		
+		player.img = new DirectedImage(Assets.loadImage("art/player.png"));
+		
 		testSpells = new ArrayList<Verb>();
-		testSpells.add(new Create(player, game, new MaterialRune(new Fire()), null));
+		CircleShape c = new CircleShape();
+		c.setRadius(10);
+		SpellDescriptor FireRune = new SpellDescriptor(new Fire(), 10, null, null, Direction.SOUTH, c, new Vec2(0,0));
+		testSpells.add(new Create(player, this, new MaterialRune(FireRune), null));
 		//testSpells.add(new Summon(player, game, new MaterialRune(new Fire()), null));
-		testSpells.add(new Create(player, game, new Summon(player, game, new MaterialRune(new Fire()), null), null));
+		testSpells.add(new Create(new Summon(player, this, new MaterialRune(FireRune), null), null));
 		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
 		//testSpell = new Summon()
 		for(Verb s: testSpells){
 			s.topEvalEffect();
 		}
-		background = Assets.loadImage("art/background.png");
+		map = Assets.loadMap("maps/testmap.tmx");
+		//background = Assets.loadImage("art/background.png");
+
 		restart();
 	}
 	
 	
 	@Override
 	public void restart() throws SlickException {
+
 		entities.clear();
         enemies.clear();
         spells.clear();
@@ -118,15 +152,46 @@ public class BattleScreen extends Screen {
             entities.add(enemy);
             enemies.add(enemy);
         }
+        /*
+        int groups = map.getObjectGroupCount();
+        for(int i = 0; i < groups; i++){
+        	int objs = map.getObjectCount(i);
+        	for(int j = 0; j < objs; j++){
+        		int x = map.getObjectX(i, j);
+        		int y = map.getObjectY(i, j);
+        		int height = map.getObjectHeight(i, j);
+        		int width  = map.getObjectWidth(i, j);
+        		String material = map.getObjectProperty(i, j, "material", "backgroundium");
+        		MaterialDescriptor m = MaterialDescriptor.strToMats.get(material);
+        		BodyDef b = new BodyDef();
+        		b.active = true;
+        		b.awake = true;
+        		b.type = BodyType.STATIC;
+        		b.position = new Vec2(x,y);
+        		FixtureDef f = new FixtureDef();
+        		PolygonShape psd = new PolygonShape();
+        		psd.setAsBox(height, width);
+        		f.shape = psd;
+        		f.density = 1.0f;
+        		PhysicalEntity p = new PhysicalEntity(world, m, b, new FixtureDef[]{f});
+        		p.setImage(new DirectedImage(Assets.loadImage("art/fireball.png")));
+        		entities.add(p);
+        	}
+        }*/
 	}
 	
 
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException
 	{
+		int dx = Math.round((gc.getWidth() / 2 - player.getPosition().x));
+		int dy = Math.round((gc.getHeight() / 2 - player.getPosition().y));
+		g.translate(dx, dy);
 		super.render(gc, g);
-		for(Entity e : entities)
+		map.render(0, 0);
+		for(Entity e : entities) {
 			e.draw(g);
+		}
 	}
 	
 
@@ -141,19 +206,25 @@ public class BattleScreen extends Screen {
         f.img = new DirectedImage(Assets.loadImage("art/fireball.png"));
         entities.add(f);
     }
-
-    public void createSpellEffect(SpellEffect e){
-    	entities.add(e);
+    
+    public void createSpellEffect(SpellDescriptor s) {
+		SpellEffect e = new SpellEffect(world,s);
+		entities.add(e);
     	spells.add(e);
-    	game.world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
-        game.world.clearForces();
-    	e.mat.OnCreate(e);
+    	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
+        world.clearForces();
     	e.img = new DirectedImage(Assets.loadImage("art/fireball.png"));
-    }
+    	s.mat.OnCreate(e, this);
+		
+	}
     @Override
 	public void update(GameContainer gc, int dt) throws SlickException {
     	this.dt = dt;
         Input in = gc.getInput();
+        if(in.isKeyDown(Input.KEY_P)){
+        	game.transition(Constants.PAUSE_STATE);
+        	return;
+        }
 		if(startDelay > 0)
 		{
 			startDelay -= dt;
@@ -228,15 +299,15 @@ public class BattleScreen extends Screen {
 	        //End of creating a projectile
         }
         
-        game.world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
-        game.world.clearForces();
+        world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
+        world.clearForces();
         player.update(dt);
         fireDelay -= dt;
         
 
         for(Enemy e : enemies)
         	e.update(dt);
-        
+
         if(!player.active())
         	game.transition(-1);
 	}

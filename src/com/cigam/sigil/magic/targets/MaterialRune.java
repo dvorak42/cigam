@@ -1,13 +1,12 @@
 package com.cigam.sigil.magic.targets;
 
-import com.cigam.sigil.PhysicalEntity;
-import com.cigam.sigil.magic.MaterialDescriptor;
+import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.Target;
 
 public class MaterialRune extends Target {
-	public MaterialDescriptor material;
+	public SpellDescriptor material;
 	
-	public MaterialRune(MaterialDescriptor mat){
+	public MaterialRune(SpellDescriptor mat){
 		this.material = mat;
 	}
 	
@@ -16,8 +15,8 @@ public class MaterialRune extends Target {
 	}
 
 	@Override
-	public MaterialDescriptor evalEffect() {
-		return this.material;
+	public SpellDescriptor evalEffect() {
+		return material;
 	}
 
 }

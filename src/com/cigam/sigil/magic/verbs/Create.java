@@ -1,10 +1,14 @@
 package com.cigam.sigil.magic.verbs;
 
 import java.util.ArrayList;
+
+import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.FixtureDef;
 import com.cigam.sigil.CigamGame;
+import com.cigam.sigil.Constants.Direction;
 import com.cigam.sigil.Helper;
+import com.cigam.sigil.MaterialDescriptor;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.magic.*;
 import com.cigam.sigil.materials.Creation;
@@ -12,33 +16,39 @@ import com.cigam.sigil.screens.*;
 
 
 public class Create extends Verb {
-	private float defaultRad = 50;
-	private MaterialDescriptor mat;
+	private SpellDescriptor toCreate;
+	private float defaultDuration = 10;
+	private float defaultRadius = 50;
 	
-	public Create(PhysicalEntity c, CigamGame g, Verb target, ArrayList<Spell> args) {
-		super(c, g, target, args);
+	public Create(Verb target, ArrayList<Spell> args) {
+		super(target, args);
 	}
-	public Create(PhysicalEntity c, CigamGame g, Target target, ArrayList<Spell> args) {
-		super(c, g, target, args);
+	public Create(PhysicalEntity c,  BattleScreen b, Target target, ArrayList<Spell> args) {
+		super(c, b, target, args);
 	}
 	
 	@Override
 	public void topEvalEffect(){
-		mat = target.evalEffect();
+		toCreate = target.evalEffect();
 	}
 
 	@Override
-	public MaterialDescriptor evalEffect() {
-		mat = target.evalEffect();
-		return new Creation(mat, caster.getDirection(), this.duration, game, caster.body.getTransform().p);
+	public SpellDescriptor evalEffect() {
+		toCreate = target.evalEffect();
+		CircleShape c = new CircleShape();
+		c.setRadius(defaultRadius);
+		Vec2 pos = caster.body.getPosition().add(Helper.v2v(Helper.directionToVector(caster.direction)));
+		SpellDescriptor effect = new SpellDescriptor(new Creation(), toCreate.duration*defaultDuration, toCreate, null, caster.direction, c, pos);
+		return effect;
 	}
 	@Override
 	public void cast() {
-		mat.bd.position = caster.body.getTransform().p;
-		//System.out.println(caster.body.getTransform().p + " is caster location");
-		//System.out.println(mat.bd.position + " is created object location");
-		Creation c =  new Creation(mat, caster.getDirection(), this.duration, game, caster.body.getPosition());
-		SpellEffect effect = new SpellEffect(target.duration*this.duration, game.world, c, c.bd, new FixtureDef[]{c.fd});
-		((BattleScreen) game.current).createSpellEffect(effect);
+		Vec2 castDir = Helper.v2v(Helper.directionToVector(caster.direction));
+		castDir.normalize();
+		System.out.println(toCreate);
+		toCreate.position = caster.body.getPosition();
+		//System.out.println(target.bd.position + " is caster location");
+		//System.out.println(bd.position.add(castDir.mul(this.fd.shape.m_radius)) + " is created object location");
+		screen.createSpellEffect(evalEffect());
 	}
 }

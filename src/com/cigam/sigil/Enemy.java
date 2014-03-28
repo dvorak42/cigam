@@ -17,7 +17,7 @@ public class Enemy extends PhysicalEntity {
 	public int hurtTimer;
 	
 	public Enemy(CigamGame eg, BattleScreen battleScreen) {
-		super(eg.world);
+		super(((BattleScreen) eg.current).world);
 		
 		BodyDef bd = new BodyDef();
 		bd.active = true;

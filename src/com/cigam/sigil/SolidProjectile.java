@@ -7,6 +7,7 @@ import org.jbox2d.dynamics.*;
 import org.newdawn.slick.Graphics;
 
 import com.cigam.sigil.Constants.Direction;
+import com.cigam.sigil.screens.BattleScreen;
 
 public class SolidProjectile extends PhysicalEntity {
     public CigamGame game;
@@ -15,7 +16,7 @@ public class SolidProjectile extends PhysicalEntity {
     
     public SolidProjectile(CigamGame eg, float angle, Entity parent, float density, Vec2 vel)//TODO move Body and fixture defs to constants 
     {
-        super(eg.world);
+        super(((BattleScreen) eg.current).world);
 		BodyDef bd = new BodyDef();
 		bd.active = true;
 		bd.type = BodyType.DYNAMIC;
