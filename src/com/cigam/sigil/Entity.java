@@ -8,8 +8,8 @@ import com.cigam.sigil.graphics.DirectedImage;
 
 public abstract class Entity {
 	public DirectedImage img;
-	Vector2f position;
-	Direction direction;
+	public Vector2f position;
+	public Direction direction;
 	boolean active = true;
 	boolean visible = true;
 	

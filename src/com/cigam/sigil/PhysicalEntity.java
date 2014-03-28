@@ -2,12 +2,13 @@ package com.cigam.sigil;
 
 import org.jbox2d.dynamics.Body;
 import org.jbox2d.dynamics.BodyDef;
+import org.jbox2d.dynamics.BodyType;
 import org.jbox2d.dynamics.FixtureDef;
 import org.jbox2d.dynamics.World;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.cigam.sigil.graphics.DirectedImage;
-import com.cigam.sigil.magic.MaterialDescriptor;
+import com.cigam.sigil.magic.SpellDescriptor;
 
 public class PhysicalEntity extends Entity {
 	public World world;
@@ -27,6 +28,26 @@ public class PhysicalEntity extends Entity {
 		mat = material;
 	}
 	
+	public PhysicalEntity(World world, SpellDescriptor s) {
+		this.world = world;
+		BodyDef bd = new BodyDef();
+		bd.active = true;
+		bd.position = s.position;
+		bd.type = BodyType.DYNAMIC;
+		bd.userData = this;
+		//TODO: angle for body
+		FixtureDef fd = new FixtureDef();
+		fd.density = 0.1f;
+		//TODO: filter
+		fd.shape = s.shape;
+		fd.isSensor = true;
+		updateBody(bd, new FixtureDef[]{fd});
+		position = Helper.v2v(s.position);
+		mat = s.mat;
+		img = new DirectedImage(); //TODO: proceduraly generate magic
+		//TODO: Rotation direction = Constants.Direction.
+	}
+
 	public void setImage(DirectedImage img){
 		this.img = img;
 	}
@@ -73,8 +94,6 @@ public class PhysicalEntity extends Entity {
 		direction = Helper.angleToDirection(body.getAngle());
 		return direction;
 	}
-	
-
 	
 	public void update(int dt) {
 		if(active) {

@@ -6,20 +6,24 @@ import java.util.Map;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.Sound;
+import org.newdawn.slick.tiled.TiledMap;
 
 public class Assets {
 	
 	public static boolean DEBUG = true;
 	
+	public static Map<String, TiledMap> maps;
 	public static Map<String, Image> images;
 	public static Map<String, Music> musics;
 	public static Map<String, Sound> audios;
 	public static Image DEFAULT_IMAGE;
 	public static Music DEFAULT_MUSIC;
 	public static Sound DEFAULT_AUDIO;
+	public static TiledMap DEFAULT_MAP;
 	
 	public static void load()
 	{
+		maps = new HashMap<String, TiledMap>();
 		images = new HashMap<String, Image>();
 		musics = new HashMap<String, Music>();
 		audios = new HashMap<String, Sound>();
@@ -47,6 +51,23 @@ public class Assets {
 		if(!images.containsKey(path))
 			return DEFAULT_IMAGE;
 		return images.get(path);
+	}
+
+	public static TiledMap loadMap(String path)
+	{
+		try {
+			TiledMap i = new TiledMap(path);
+			if(DEBUG)
+				System.out.println("Assets.loadMap(\"" + path + "\");");
+			maps.put(path, i);
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR LOADING: " + path);
+		}
+		if(!maps.containsKey(path))
+			return DEFAULT_MAP;
+		return maps.get(path);
 	}
 
 	public static Music loadMusic(String path)

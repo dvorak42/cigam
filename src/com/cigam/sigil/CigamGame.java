@@ -12,14 +12,13 @@ import com.cigam.sigil.graphics.Assets;
 import com.cigam.sigil.graphics.DirectedImage;
 import com.cigam.sigil.materials.SelfMat;
 import com.cigam.sigil.screens.BattleScreen;
+import com.cigam.sigil.screens.PauseScreen;
 import com.cigam.sigil.screens.Screen;
 
 
 public class CigamGame extends BasicGame
 {
-	public Player player;
 	public Screen current;
-	public World world;
 	public int timeout = 0;
 	
 	public CigamGame() {
@@ -29,34 +28,17 @@ public class CigamGame extends BasicGame
 	public void transition(int state) {
 		if(current == null)
 			return;
-		current = current.transition(state);
+		if(state == Constants.PAUSE_STATE) {
+			current = new PauseScreen(this,current);
+		} else {
+			current = current.transition(state);
+		}
 		timeout = 500;
-		player.active = true;
 	}
 
 	@Override
 	public void init(GameContainer gc) throws SlickException {
 		Assets.load();
-		world = new World(new Vec2());
-		world.setContactListener(new CigamContactListener());
-		BodyDef bd = new BodyDef();
-		bd.active = true;
-		bd.type = BodyType.DYNAMIC;
-		bd.userData = this;
-		bd.angle = 0;
-		bd.awake = true;
-		bd.position = new Vec2(0, 0);
-		bd.fixedRotation = true;
-		bd.linearDamping = 1f;
-		
-		FixtureDef fd = new FixtureDef();
-		fd.filter.groupIndex = -1;
-		PolygonShape ps = new PolygonShape();
-		ps.setAsBox(26, 28);
-		fd.shape = ps;
-		fd.density = 0.1f;
-		player = new Player(this, new SelfMat(), bd, new FixtureDef[]{fd});
-		player.img = new DirectedImage(Assets.loadImage("art/player.png"));
 		System.out.println("Pre current");
 		current = new BattleScreen(this, null);
 		System.out.println("Post current");

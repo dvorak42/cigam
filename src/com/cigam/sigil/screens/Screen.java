@@ -25,7 +25,6 @@ public class Screen {
 
 	public Screen(CigamGame eg, Screen p) {
 		game = eg;
-		player = game.player;
 		parent = p;
 	}
 	
@@ -51,6 +50,7 @@ public class Screen {
 	
 	public void render(GameContainer gc, Graphics g) throws SlickException
     {
-		background.draw(0, 0, gc.getWidth(), gc.getHeight());
+		if(background != null)
+			background.draw(0, 0, gc.getWidth(), gc.getHeight());
     }
 }

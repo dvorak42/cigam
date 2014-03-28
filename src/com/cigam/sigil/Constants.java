@@ -17,6 +17,7 @@ public class Constants {
 	public static final int FIRE_DELAY = 500;
 	public static final int VELOCITY_ITERS = 8;
 	public static final int POSITION_ITERS = 3;
+	public static final int PAUSE_STATE = 30;
 	public static int MAGIC = 17 * 22;
 	public static int TILE_SIZE = 128;
 	public static enum Direction
