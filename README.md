@@ -1,2 +1,0 @@
-# Cigam: The Magic Game
-
