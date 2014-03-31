@@ -9,23 +9,27 @@ public class SigilContactListener implements ContactListener {
 
 	@Override
 	public void beginContact(Contact c) {
-		PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
-		PhysicalEntity b = ((PhysicalEntity) c.getFixtureB().getBody().getUserData());
-		if(a.mat != null && b.mat != null){
-			//System.out.println("collision started between " + a + " and " + b);
-			a.mat.OnCollide(b);
-			b.mat.OnCollide(a);
+		if(c.getFixtureA().getBody().getUserData() instanceof PhysicalEntity && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
+			PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
+			PhysicalEntity b = ((PhysicalEntity) c.getFixtureB().getBody().getUserData());
+			if(a.mat != null && b.mat != null) {
+				//System.out.println("collision started between " + a + " and " + b);
+				a.mat.OnCollide(b);
+				b.mat.OnCollide(a);
+			}
 		}
 	}
 
 	@Override
 	public void endContact(Contact c) {
-		PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
-		PhysicalEntity b = ((PhysicalEntity) c.getFixtureB().getBody().getUserData());
-		if(a.mat != null && b.mat != null){
-			//System.out.println("collision ended");
-			a.mat.NoCollide(b);
-			b.mat.NoCollide(a);
+		if(c.getFixtureA().getBody().getUserData() instanceof PhysicalEntity && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
+			PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
+			PhysicalEntity b = ((PhysicalEntity) c.getFixtureB().getBody().getUserData());
+			if(a.mat != null && b.mat != null) {
+				//System.out.println("collision ended");
+				a.mat.NoCollide(b);
+				b.mat.NoCollide(a);
+			}
 		}
 	}
 

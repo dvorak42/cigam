@@ -91,9 +91,11 @@ public class AdventureScreen implements Screen {
 		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
 		//testSpell = new Summon()
 
-//		for(Verb s: testSpells){
-//			s.topEvalEffect();
-//		}
+		for(Verb s: testSpells){
+			s.topEvalEffect();
+		}
+
+		Utils.createBounds(world, 500, 500);
 		
 		map = new TmxMapLoader().load("maps/testmap.tmx");
 		mapRenderer = new OrthogonalTiledMapRenderer(map, 1.0f/16, game.batch);
@@ -255,7 +257,7 @@ public class AdventureScreen implements Screen {
         Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.position.set(player.getPosition(), 0);
-		camera.zoom = 10f;
+		camera.zoom = 2f;
 		camera.update();
 
 		game.batch.setProjectionMatrix(camera.combined);

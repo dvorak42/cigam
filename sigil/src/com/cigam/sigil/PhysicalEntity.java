@@ -24,6 +24,7 @@ public abstract class PhysicalEntity extends Entity {
 	public PhysicalEntity(SigilGame g, Sprite s, World world, SpellDescriptor sd) {
 		super(g, s);
 		mat = sd.mat;
+		initBody(world, sd);
 		//TODO: proceduraly generate magic
 		//TODO: Rotation direction = Constants.Direction.
 	}
