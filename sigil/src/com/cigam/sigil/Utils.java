@@ -1,5 +1,6 @@
 package com.cigam.sigil;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -7,8 +8,11 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.cigam.sigil.external.BodyEditorLoader;
 
 public class Utils {
+    public static BodyEditorLoader mainBodies = new BodyEditorLoader(Gdx.files.internal("data/main_bodies.json"));
+
 	public static Body createWall(World w, Vector2 start, Vector2 end) {
 		BodyDef bd = new BodyDef();
 		bd.position.set(start);

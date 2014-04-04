@@ -13,13 +13,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.Array;
 import com.cigam.sigil.SigilContactListener;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.Enemy;
@@ -52,7 +49,7 @@ public class AdventureScreen implements Screen {
     public ArrayList<PhysicalEntity> spells;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
-	public static int INIT_ENEMIES = 1;
+	public static int INIT_ENEMIES = 100;
 	public ArrayList<Verb> testSpells;
 	private int dt;
 	private TiledMap map;
@@ -257,7 +254,6 @@ public class AdventureScreen implements Screen {
         Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.position.set(player.getPosition(), 0);
-		camera.zoom = 2f;
 		camera.update();
 
 		game.batch.setProjectionMatrix(camera.combined);
@@ -277,16 +273,6 @@ public class AdventureScreen implements Screen {
 		debugRenderer.render(world, camera.combined);
 		if(!paused) {
 		world.step(1/60f, 6, 2);
-		}
-		Array<Body> bodies = new Array<Body>();
-		world.getBodies(bodies);
-
-		for(Body b : bodies) {
-			Entity e = (Entity)b.getUserData();
-			if(e != null) {
-				e.setPosition(b.getPosition());
-				e.setRotation(MathUtils.radiansToDegrees * b.getAngle());
-			}
 		}
 	}
 

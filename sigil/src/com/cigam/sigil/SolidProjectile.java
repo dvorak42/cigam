@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.magic.MaterialDescriptor;
@@ -31,15 +30,12 @@ public class SolidProjectile extends PhysicalEntity {
 		body = world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
-		CircleShape cs = new CircleShape();
-		cs.setRadius(1f);
-		fd.shape = cs;
 		fd.density = density; 
 
-		body.createFixture(fd);
+	    Utils.mainBodies.attachFixture(body, "fireball", fd, sprite.getWidth());
+	    modelOrigin = Utils.mainBodies.getOrigin("fireball", sprite.getWidth());
+
 		body.setUserData(this);
 		body.setLinearVelocity(vel);
-		
-		cs.dispose();
 	}
 }

@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.magic.MaterialDescriptor;
 
@@ -22,7 +21,6 @@ public class Enemy extends PhysicalEntity {
 	public void initBody() {
 		Vector2 pos = new Vector2((int)(Math.random()*500)+100, (int)(Math.random()*500)+100);
 
-		setPosition(pos);
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;
 		bd.angle = 0;
@@ -32,15 +30,12 @@ public class Enemy extends PhysicalEntity {
 		body = world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
-		PolygonShape ps = new PolygonShape();
-		ps.setAsBox(64, 32);
-		fd.shape = ps;
 		fd.density = 0.0001f; 
 
-		body.createFixture(fd);
-		body.setUserData(this);
-		
-		ps.dispose();
+	    Utils.mainBodies.attachFixture(body, "enemy", fd, sprite.getWidth());
+	    modelOrigin = Utils.mainBodies.getOrigin("enemy", sprite.getWidth());
+
+	    body.setUserData(this);
 	}
 
 	@Override

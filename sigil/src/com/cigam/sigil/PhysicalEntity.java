@@ -1,9 +1,10 @@
 package com.cigam.sigil;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
@@ -14,6 +15,7 @@ public abstract class PhysicalEntity extends Entity {
 	public World world;
 	public Body body;
 	public MaterialDescriptor mat;
+	Vector2 modelOrigin = Vector2.Zero;
 	
 	public PhysicalEntity(SigilGame g, Sprite s, World world, MaterialDescriptor material) {
 		super(g, s);
@@ -37,16 +39,14 @@ public abstract class PhysicalEntity extends Entity {
 		body = w.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
-		CircleShape circle = new CircleShape();
-		circle.setRadius(10);
-		fd.shape = circle;
 		fd.density = 0.1f; 
 		//TODO: filter
 		fd.isSensor = true;
 
-		body.createFixture(fd);
-		body.setUserData(this);
-		circle.dispose();
+	    Utils.mainBodies.attachFixture(body, "fireball", fd, sprite.getWidth());
+	    modelOrigin = Utils.mainBodies.getOrigin("fireball", sprite.getWidth());
+
+	    body.setUserData(this);
 	}
 	//TODO: needs work translating sd into box2d. Also should live in a subclass
 	public void initBody(World w, SpellDescriptor sd) {
@@ -78,5 +78,46 @@ public abstract class PhysicalEntity extends Entity {
 	public void setActive(boolean a) {
 		active = a;
 		body.setActive(active);
+	}
+
+	@Override
+	public void setPosition(Vector2 pos) {
+		body.setTransform(pos, body.getAngle());
+	}
+
+	@Override
+	public Vector2 getPosition() {
+		return body.getPosition();
+	}
+	        
+	@Override
+	public void setSize(Vector2 size) {
+		sprite.setSize(size.x, size.y);
+	}
+
+	@Override
+	public Vector2 getSize() {
+		return new Vector2(sprite.getWidth(), sprite.getHeight());
+	}
+	
+	@Override
+	public void setRotation(float r) {
+		body.setTransform(body.getPosition(), r);
+	}
+
+	@Override
+	public float getRotation() {
+		return body.getAngle();
+	}
+
+	@Override
+	public void render() {
+		Vector2 spritePos = body.getPosition().sub(modelOrigin);
+		
+		sprite.setPosition(spritePos.x, spritePos.y);
+		sprite.setOrigin(modelOrigin.x, modelOrigin.y);
+		sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+
+		super.render();
 	}
 }
