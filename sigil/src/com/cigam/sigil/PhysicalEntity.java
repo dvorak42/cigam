@@ -15,7 +15,7 @@ public abstract class PhysicalEntity extends Entity {
 	public World world;
 	public Body body;
 	public MaterialDescriptor mat;
-	Vector2 modelOrigin = Vector2.Zero;
+	public Vector2 modelOrigin = Vector2.Zero;
 	
 	public PhysicalEntity(SigilGame g, Sprite s, World world, MaterialDescriptor material) {
 		super(g, s);
@@ -50,13 +50,13 @@ public abstract class PhysicalEntity extends Entity {
 	}
 	//TODO: needs work translating sd into box2d. Also should live in a subclass
 	public void initBody(World w, SpellDescriptor sd) {
-		setPosition(sd.position);
 		world = w;
 		BodyDef bd = new BodyDef();
-		if(sd != null)
+		if(sd != null) {
+			System.out.println(sd.position);
 			bd.position.set(sd.position);
+		}
 		bd.type = BodyType.DynamicBody;
-
 		body = w.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();

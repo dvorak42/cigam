@@ -8,5 +8,8 @@ public class Backgroundium extends MaterialDescriptor {
 		super();
 		this.init(null, 0, 0, 0);
 	}
-
+	@Override
+	public boolean isSameMat(MaterialDescriptor m){
+		return (m instanceof Backgroundium);
+	};
 }

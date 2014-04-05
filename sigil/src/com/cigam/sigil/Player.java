@@ -7,14 +7,15 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.magic.MaterialDescriptor;
+import com.cigam.sigil.materials.SelfMat;
 
 public class Player extends PhysicalEntity {
 	public String name = "John Smith";
 	
 	//World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds
 	//TODO: Don't need to pass material descriptor, should always be selfMat
-	public Player(SigilGame g, Sprite s, World world, MaterialDescriptor mat) {
-		super(g, s, world, mat);
+	public Player(SigilGame g, Sprite s, World world) {
+		super(g, s, world, new SelfMat());
 		initBody();
 	}
 	

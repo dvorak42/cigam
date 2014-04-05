@@ -31,15 +31,19 @@ public class Summon extends Verb {
 	@Override
 	public void topEvalEffect(){
 		toSummonTo = target.evalEffect();
-		//TODO: SummonCriteria;
+		for(Spell s: arguments){
+			summonCriteria.add(s.evalEffect());
+		}
 	}
 
 	@Override
 	public SpellDescriptor evalEffect() {
 		toSummonTo = target.evalEffect();
-		//TODO: summonCriteria
+		for(Spell s: arguments){
+			summonCriteria.add(s.evalEffect());
+		}
 		System.out.println(caster);
-		SpellDescriptor effect = new SpellDescriptor(new Summoning(), defaultDuration, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getPosition());
+		SpellDescriptor effect = new SpellDescriptor(new Summoning(toSummonTo, summonCriteria), defaultDuration, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getPosition());
 		return effect;
 	}
 	@Override

@@ -26,10 +26,12 @@ import com.cigam.sigil.SigilGame;
 import com.cigam.sigil.SolidProjectile;
 import com.cigam.sigil.Player;
 import com.cigam.sigil.Utils;
+import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.magic.Verb;
 import com.cigam.sigil.magic.targets.MaterialRune;
+import com.cigam.sigil.magic.targets.Self;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.materials.Fire;
@@ -49,7 +51,7 @@ public class AdventureScreen implements Screen {
     public ArrayList<PhysicalEntity> spells;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
-	public static int INIT_ENEMIES = 100;
+	public static int INIT_ENEMIES = 0;
 	public ArrayList<Verb> testSpells;
 	private int dt;
 	private TiledMap map;
@@ -76,22 +78,23 @@ public class AdventureScreen implements Screen {
 		Texture playerTexture = new Texture(Gdx.files.internal("art/player.png"));
 		playerTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
-		player = new Player(game, new Sprite(playerTexture), world, new SelfMat());
+		player = new Player(game, new Sprite(playerTexture), world);
 
 		testSpells = new ArrayList<Verb>();
 		CircleShape c = new CircleShape();
 		c.setRadius(10);
 		SpellDescriptor FireRune = new SpellDescriptor(new Fire(), 10, null, null, 0, c, Vector2.Zero);
 		testSpells.add(new Create(player, this, new MaterialRune(FireRune), null));
-		//testSpells.add(new Summon(player, game, new MaterialRune(new Fire()), null));
-		testSpells.add(new Create(new Summon(player, this, new MaterialRune(FireRune), null), null));
+		ArrayList<Spell> args = new ArrayList<Spell>();
+		args.add(new MaterialRune(FireRune));
+		testSpells.add(new Create(new Summon(player, this, new Self(), args), null));
 		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
 		//testSpell = new Summon()
 
 		for(Verb s: testSpells){
 			s.topEvalEffect();
 		}
-
+		
 		Utils.createBounds(world, 500, 500);
 		
 		map = new TmxMapLoader().load("maps/testmap.tmx");

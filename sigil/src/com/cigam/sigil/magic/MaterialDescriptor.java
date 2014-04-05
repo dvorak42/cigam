@@ -38,5 +38,8 @@ public abstract class MaterialDescriptor {
 	public void NoCollide(PhysicalEntity b){};
 	public void Update(){};
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn){};
+	public boolean isSameMat(MaterialDescriptor m){
+		return m.getClass().equals(this.getClass());
+	};
 
 }

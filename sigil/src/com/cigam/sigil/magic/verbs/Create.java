@@ -32,7 +32,7 @@ public class Create extends Verb {
 		toCreate = target.evalEffect();
 		CircleShape c = new CircleShape();
 		c.setRadius(defaultRadius);
-		Vector2 pos = caster.body.getPosition().cpy().rotate(caster.body.getAngle());
+		Vector2 pos = caster.body.getWorldCenter().cpy().rotate(caster.body.getAngle());
 		SpellDescriptor effect = new SpellDescriptor(new Creation(), toCreate.duration*defaultDuration, toCreate, null, caster.body.getAngle(), c, pos);
 		return effect;
 	}
@@ -41,7 +41,7 @@ public class Create extends Verb {
 		Vector2 castDir = new Vector2(1, 0).rotate(caster.body.getAngle());
 		castDir.nor();
 		System.out.println(toCreate);
-		toCreate.position = caster.body.getPosition();
+		toCreate.position = caster.body.getWorldCenter();
 		//System.out.println(target.bd.position + " is caster location");
 		//System.out.println(bd.position.add(castDir.mul(this.fd.shape.m_radius)) + " is created object location");
 		screen.createSpellEffect(evalEffect());
