@@ -47,6 +47,7 @@ import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.magic.Verb;
 import com.cigam.sigil.magic.targets.MaterialRune;
 import com.cigam.sigil.magic.targets.Self;
+import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.materials.Fire;
@@ -105,6 +106,8 @@ public class AdventureScreen implements Screen {
 		ArrayList<Spell> args = new ArrayList<Spell>();
 		args.add(new MaterialRune(FireRune));
 		testSpells.add(new Create(new Summon(player, this, new Self(), args), null));
+		testSpells.add(new Bind(player, this, new Self(), args));
+
 		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
 		//testSpell = new Summon()
 

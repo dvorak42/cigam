@@ -9,14 +9,13 @@ import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.Target;
 import com.cigam.sigil.magic.Verb;
 import com.cigam.sigil.materials.Binding;
-import com.cigam.sigil.materials.Summoning;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class Bind extends Verb {
 	private ArrayList<SpellDescriptor> toBeBound;
 	private SpellDescriptor toBindInto;
 	private float defaultDuration = 10;
-	private float defaultRadius = 50;
+	private float defaultRadius = 200;
 	
 	public Bind(Verb target, ArrayList<Spell> args) {
 		super(target, args);
@@ -27,6 +26,9 @@ public class Bind extends Verb {
 	
 	public Bind(PhysicalEntity caster, AdventureScreen b, Target target, ArrayList<Spell> args) {
 		super(caster, b, target, args);
+		toBeBound = new ArrayList<SpellDescriptor>();
+		area = new CircleShape();
+		area.setRadius(defaultRadius);
 	}
 
 	@Override

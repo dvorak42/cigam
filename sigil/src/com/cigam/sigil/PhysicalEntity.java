@@ -8,7 +8,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.magic.SpellDescriptor;
@@ -19,12 +22,20 @@ public abstract class PhysicalEntity extends Entity {
 	public MaterialDescriptor mat;
 	public Vector2 modelOrigin = Vector2.Zero;
 	public ArrayList<PhysicalEntity> boundEntities;
+	public float totalManaCapacity;
+	public float totalManaWeight;
 	
 	public PhysicalEntity(SigilGame g, Sprite s, World world, MaterialDescriptor material) {
 		super(g, s);
 		this.world = world;
 		mat = material;
+		initBody(world);
 		boundEntities = new ArrayList<PhysicalEntity>();
+		totalManaCapacity = mat.manaCapacityFactor*this.body.getMass();
+		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
+		//System.out.println("Mana stats for " + this + " are as follows: ");
+		//System.out.println("body mass is " + this.body.getMass());
+		//System.out.println("totalMana")
 	}
 	
 	public PhysicalEntity(SigilGame g, Sprite s, World world, SpellDescriptor sd) {
@@ -32,6 +43,10 @@ public abstract class PhysicalEntity extends Entity {
 		mat = sd.mat;
 		initBody(world, sd);
 		boundEntities = new ArrayList<PhysicalEntity>();
+		totalManaCapacity = mat.manaCapacityFactor*this.body.getMass();
+		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
+		//System.out.println("Mana stats for " + this + " are as follows: ");
+		//System.out.println("body mass is " + this.body.getMass());
 		//TODO: proceduraly generate magic
 		//TODO: Rotation direction = Constants.Direction.
 	}
@@ -75,6 +90,34 @@ public abstract class PhysicalEntity extends Entity {
 		body.setUserData(this);
 	}
 	
+	public void bind(PhysicalEntity p){
+		if(this.totalManaCapacity-p.totalManaWeight >=0){
+			this.totalManaCapacity-=p.totalManaWeight;
+			this.boundEntities.add(p);
+			p.setActive(false);
+			p.setVisible(false);
+		} else {
+			this.kill();
+		}
+		System.out.println("Binding " + p + " into " + this);
+		System.out.println("totalManaCapacity is now " + totalManaCapacity);
+	}
+	public void unbind(PhysicalEntity p){
+		if(boundEntities.contains(p)){
+			boundEntities.remove(p);
+			p.body.setTransform(this.body.getWorldCenter(), p.body.getAngle());
+			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
+			p.setActive(true);
+			p.setVisible(true);
+			totalManaCapacity += p.totalManaWeight;
+		}
+	}
+	public void kill(){
+		this.active = false;
+		for(int i = 0; i < boundEntities.size(); i++){
+			unbind(boundEntities.get(i));
+		}
+	}
 	public boolean active() {
 		active = body.isActive();
 		return super.active();
@@ -87,12 +130,12 @@ public abstract class PhysicalEntity extends Entity {
 
 	@Override
 	public void setPosition(Vector2 pos) {
-		body.setTransform(pos, body.getAngle());
+		body.setTransform(pos.cpy().sub(body.getWorldCenter()), body.getAngle());
 	}
 
 	@Override
 	public Vector2 getPosition() {
-		return body.getPosition();
+		return body.getWorldCenter();
 	}
 	        
 	@Override
@@ -117,12 +160,14 @@ public abstract class PhysicalEntity extends Entity {
 
 	@Override
 	public void render() {
-		Vector2 spritePos = body.getPosition().sub(modelOrigin);
-		
-		sprite.setPosition(spritePos.x, spritePos.y);
-		sprite.setOrigin(modelOrigin.x, modelOrigin.y);
-		sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+		if(this.visible){
+			Vector2 spritePos = body.getPosition().sub(modelOrigin);
+			
+			sprite.setPosition(spritePos.x, spritePos.y);
+			sprite.setOrigin(modelOrigin.x, modelOrigin.y);
+			sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
 
 		super.render();
+		}
 	}
 }

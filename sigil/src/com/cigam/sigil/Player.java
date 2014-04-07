@@ -23,7 +23,7 @@ public class Player extends PhysicalEntity {
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;
 		bd.fixedRotation = true;
-		bd.linearDamping = 1f;
+		bd.linearDamping = 8f;
 
 		body = world.createBody(bd);
 		

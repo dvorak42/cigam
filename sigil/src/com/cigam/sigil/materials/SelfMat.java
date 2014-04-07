@@ -7,5 +7,6 @@ public class SelfMat extends MaterialDescriptor {
 
 	public SelfMat() {
 		super();
+		this.init(null,100,5,0);
 	}
 }

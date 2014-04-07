@@ -1,10 +1,12 @@
 package com.cigam.sigil.materials;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.PhysicalEntity;
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
@@ -12,60 +14,74 @@ import com.cigam.sigil.screens.AdventureScreen;
 
 
 public class Binding extends MaterialDescriptor {
-	private PhysicalEntity attractor;
+	private PhysicalEntity toBindInto;
 	private ArrayList<PhysicalEntity> objectsInRange;
 	private MaterialDescriptor attractorType;
-	private ArrayList<MaterialDescriptor> attracteeType;
-	//TODO: This
+	//private ArrayList<MaterialDescriptor> attracteeType;
+	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToBind;
+	
 	public Binding(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType) {
 		super();
-		this.objectsInRange = new ArrayList<PhysicalEntity>();
-		this.attracteeType = new ArrayList<MaterialDescriptor>();
+		entitiesToBind = new HashMap<MaterialDescriptor, PhysicalEntity>();
+		objectsInRange = new ArrayList<PhysicalEntity>();
 		this.attractorType = attractorType.mat;
 		for(SpellDescriptor s: attracteeType){
-			this.attracteeType.add(s.mat);
+			entitiesToBind.put(s.mat, null);
 		}
 		this.init(null,0,0,0);
 	}
 
 	@Override
 	public void OnCollide(PhysicalEntity p) {
-		//System.out.println("collided with " + p);
-		objectsInRange.add(p);
+		if(!objectsInRange.contains(p)){
+			objectsInRange.add(p);
+		}
+		for(MaterialDescriptor m:entitiesToBind.keySet()){
+			if(p.mat.isSameMat(m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p))){
+				entitiesToBind.put(m, p);
+			}
+		}
 	}
 
 	@Override
 	public void NoCollide(PhysicalEntity p) {
-		//System.out.println("not colliding with " + p);
+		if(p.equals(toBindInto)){
+			for(PhysicalEntity q:toBindInto.boundEntities){
+				toBindInto.unbind(q);
+			}
+		}
 		objectsInRange.remove(p);
+		for(MaterialDescriptor m:entitiesToBind.keySet()){
+			if(entitiesToBind.get(m)==p){
+				entitiesToBind.remove(m);
+			}
+		}
 	}
 	@Override
 	public void Update(){
-		if(attractor != null){
-			for(PhysicalEntity p: objectsInRange){
-				if(p.mat.isSameMat((attracteeType.get(0)))){
-					Vector2 dir = attractor.body.getPosition().sub(p.body.getPosition());
-					dir.nor();
-					p.body.applyForceToCenter(dir.scl(10000), true);
+		if(toBindInto != null){
+			for(MaterialDescriptor m:entitiesToBind.keySet()){
+				if(entitiesToBind.get(m)!=null){
+					toBindInto.bind(entitiesToBind.get(m));
+					entitiesToBind.remove(m);
 				}
 			}
 		}
 	}
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
-		Vector2 center = manifestation.body.getPosition();
-		System.out.println("spell centered on " + center);
-		attractor = null;
-		System.out.println("objectsInRange are " + objectsInRange);
+		//System.out.println("spell centered on " + center);
+		toBindInto = null;
+		//System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){
-			float distance = manifestation.body.getPosition().cpy().sub(p.body.getPosition()).len();
+			float distance = Utils.dist(manifestation, p);
 			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
 				min = distance;
-				attractor = p;
+				toBindInto = p;
 			}
 		}
-		System.out.println("Attractor is " + attractor);
+		//System.out.println("toBindInto is " + toBindInto);
 	}
-
+	
 }
