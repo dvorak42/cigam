@@ -21,17 +21,12 @@ public class Creation extends MaterialDescriptor {
 
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen b) {
-		System.out.println("Creation's onCreate goes off");
 		Vector2 castDir = Utils.angleToVector(manifestation.angle);
 		castDir.nor();	
 		//TODO: Use correct offset.
 		Fixture manifestFixture = manifestation.body.getFixtureList().get(0);
 		FindSpecificFixture f = new FindSpecificFixture(manifestFixture);
 		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)),manifestation.body.getPosition());
-
-		if(f.intersectionPoint == null) {
-			System.out.println("null intersection point");
-		}
 		manifestation.target.position = f.intersectionPoint;
 		manifestation.target.duration = manifestation.target.duration*manifestation.duration;
 		//System.out.println(target.bd.position + " is caster location");

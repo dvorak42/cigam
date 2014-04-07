@@ -1,5 +1,7 @@
 package com.cigam.sigil;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -16,17 +18,20 @@ public abstract class PhysicalEntity extends Entity {
 	public Body body;
 	public MaterialDescriptor mat;
 	public Vector2 modelOrigin = Vector2.Zero;
+	public ArrayList<PhysicalEntity> boundEntities;
 	
 	public PhysicalEntity(SigilGame g, Sprite s, World world, MaterialDescriptor material) {
 		super(g, s);
 		this.world = world;
 		mat = material;
+		boundEntities = new ArrayList<PhysicalEntity>();
 	}
 	
 	public PhysicalEntity(SigilGame g, Sprite s, World world, SpellDescriptor sd) {
 		super(g, s);
 		mat = sd.mat;
 		initBody(world, sd);
+		boundEntities = new ArrayList<PhysicalEntity>();
 		//TODO: proceduraly generate magic
 		//TODO: Rotation direction = Constants.Direction.
 	}

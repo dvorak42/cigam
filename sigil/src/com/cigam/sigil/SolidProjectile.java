@@ -28,7 +28,7 @@ public class SolidProjectile extends PhysicalEntity {
 		bd.position.set(parent.getPosition().cpy().add(Utils.angleToVector(angle).scl(50.0f)));
 
 		body = world.createBody(bd);
-		
+
 		FixtureDef fd = new FixtureDef();
 		fd.density = density; 
 
