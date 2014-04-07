@@ -22,6 +22,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
@@ -45,9 +46,6 @@ public class PauseScreen implements Screen {
 		stage = new Stage();
 		Gdx.input.setInputProcessor(stage);
 
-		
-		
-		
 		Skin skin = new Skin();
 		
 		// Generate a 1x1 white texture and store it in the skin named "white".
@@ -71,7 +69,7 @@ public class PauseScreen implements Screen {
 		// Trying to make a textfield
 		TextFieldStyle textFieldStyle = new TextFieldStyle();
 		textFieldStyle.font = skin.getFont("default");
-		textFieldStyle.fontColor = Color.BLUE;
+		textFieldStyle.fontColor = Color.BLACK;
 		skin.add("default", textFieldStyle);
 		spellInput = new TextField("Enter Spell", skin);
 
@@ -100,8 +98,14 @@ public class PauseScreen implements Screen {
 			}
 		});
 		
-		
-		
+		spellInput.setTextFieldListener(new TextFieldListener() {
+			public void keyTyped (TextField textField, char key) {
+				if (key == '\n') {
+					spellString = spellInput.getMessageText();
+					System.out.println(spellString);
+				}
+			}
+		});
 		
 		pauseImage = new Sprite(texture);
 	}
@@ -125,14 +129,7 @@ public class PauseScreen implements Screen {
 		
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
 		stage.draw();
-		Table.drawDebug(stage);
-
-		if(Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
-			spellString = spellInput.getMessageText();
-			System.out.println(spellString);
-			spellInput.setText("Enter Spell");
-		}
-		
+		Table.drawDebug(stage);	
 		
 		if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
 			game.setScreen(parent);
