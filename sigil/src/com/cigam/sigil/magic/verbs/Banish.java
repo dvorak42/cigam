@@ -9,19 +9,19 @@ import com.cigam.sigil.materials.Summoning;
 import com.cigam.sigil.screens.*;
 
 
-public class Summon extends Verb {
+public class Banish extends Verb {
 	private SpellDescriptor toSummonTo;
 	private ArrayList<SpellDescriptor> summonCriteria;
 	private float defaultDuration = 10;
 	private float defaultRadius = 300;
 	
-	public Summon(Verb target, ArrayList<Spell> args) {
+	public Banish(Verb target, ArrayList<Spell> args) {
 		super(target, args);
 		summonCriteria = new ArrayList<SpellDescriptor>();
 		area = new CircleShape();
 		area.setRadius(defaultRadius);
 	}
-	public Summon(PhysicalEntity c, AdventureScreen b, Target target, ArrayList<Spell> args) {
+	public Banish(PhysicalEntity c, AdventureScreen b, Target target, ArrayList<Spell> args) {
 		super(c, b, target, args);
 		summonCriteria = new ArrayList<SpellDescriptor>();
 		area = new CircleShape();
@@ -42,7 +42,7 @@ public class Summon extends Verb {
 		for(Spell s: arguments){
 			summonCriteria.add(s.evalEffect());
 		}
-		//System.out.println(caster);
+		System.out.println(caster);
 		SpellDescriptor effect = new SpellDescriptor(new Summoning(toSummonTo, summonCriteria), defaultDuration, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getPosition());
 		return effect;
 	}
