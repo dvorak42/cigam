@@ -22,6 +22,7 @@ public abstract class PhysicalEntity extends Entity {
 	public MaterialDescriptor mat;
 	public Vector2 modelOrigin = Vector2.Zero;
 	public ArrayList<PhysicalEntity> boundEntities;
+	public ArrayList<PhysicalEntity> imbuedEntities;
 	public float totalManaCapacity;
 	public float totalManaWeight;
 	
@@ -31,6 +32,7 @@ public abstract class PhysicalEntity extends Entity {
 		mat = material;
 		initBody(world);
 		boundEntities = new ArrayList<PhysicalEntity>();
+		imbuedEntities  = new ArrayList<PhysicalEntity>();
 		totalManaCapacity = mat.manaCapacityFactor*this.body.getMass();
 		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
 		//System.out.println("Mana stats for " + this + " are as follows: ");
@@ -43,6 +45,7 @@ public abstract class PhysicalEntity extends Entity {
 		mat = sd.mat;
 		initBody(world, sd);
 		boundEntities = new ArrayList<PhysicalEntity>();
+		imbuedEntities  = new ArrayList<PhysicalEntity>();
 		totalManaCapacity = mat.manaCapacityFactor*this.body.getMass();
 		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
 		//System.out.println("Mana stats for " + this + " are as follows: ");
@@ -110,6 +113,25 @@ public abstract class PhysicalEntity extends Entity {
 			p.setActive(true);
 			p.setVisible(true);
 			totalManaCapacity += p.totalManaWeight;
+		}
+	}
+	//TODO: Joints
+	public void imbue(PhysicalEntity p){
+		if(this.totalManaCapacity-p.totalManaWeight/2.0 >=0){
+			this.totalManaCapacity-=p.totalManaWeight/2;
+			this.imbuedEntities.add(p);
+			
+		} else {
+			this.kill();
+		}
+		System.out.println("Binding " + p + " into " + this);
+		System.out.println("totalManaCapacity is now " + totalManaCapacity);
+	}
+	public void disimbue(PhysicalEntity p){
+		if(boundEntities.contains(p)){
+			boundEntities.remove(p);
+			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
+			totalManaCapacity += p.totalManaWeight/2.0;
 		}
 	}
 	public void kill(){

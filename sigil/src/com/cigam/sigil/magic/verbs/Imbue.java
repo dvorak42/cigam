@@ -9,24 +9,25 @@ import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.Target;
 import com.cigam.sigil.magic.Verb;
 import com.cigam.sigil.materials.Binding;
+import com.cigam.sigil.materials.Imbueing;
 import com.cigam.sigil.screens.AdventureScreen;
 
-public class Bind extends Verb {
-	private ArrayList<SpellDescriptor> toBeBound;
-	private SpellDescriptor toBindInto;
+public class Imbue extends Verb {
+	private ArrayList<SpellDescriptor> toBeImbued;
+	private SpellDescriptor toImbueInto;
 	private float defaultDuration = 10;
-	private float defaultRadius = 50;
+	private float defaultRadius = 100;
 	
-	public Bind(Verb target, ArrayList<Spell> args) {
+	public Imbue(Verb target, ArrayList<Spell> args) {
 		super(target, args);
-		toBeBound = new ArrayList<SpellDescriptor>();
+		toBeImbued = new ArrayList<SpellDescriptor>();
 		area = new CircleShape();
 		area.setRadius(defaultRadius);
 	}
 	
-	public Bind(PhysicalEntity caster, AdventureScreen b, Target target, ArrayList<Spell> args) {
+	public Imbue(PhysicalEntity caster, AdventureScreen b, Target target, ArrayList<Spell> args) {
 		super(caster, b, target, args);
-		toBeBound = new ArrayList<SpellDescriptor>();
+		toBeImbued = new ArrayList<SpellDescriptor>();
 		area = new CircleShape();
 		area.setRadius(defaultRadius);
 	}
@@ -38,19 +39,19 @@ public class Bind extends Verb {
 
 	@Override
 	public void topEvalEffect() {
-		toBindInto = target.evalEffect();
+		toImbueInto = target.evalEffect();
 		for(Spell s: arguments){
-			toBeBound.add(s.evalEffect());
+			toBeImbued.add(s.evalEffect());
 		}
 	}
 
 	@Override
 	public SpellDescriptor evalEffect() {
-		toBindInto = target.evalEffect();
+		toImbueInto = target.evalEffect();
 		for(Spell s: arguments){
-			toBeBound.add(s.evalEffect());
+			toBeImbued.add(s.evalEffect());
 		}
-		SpellDescriptor effect = new SpellDescriptor(new Binding(toBindInto, toBeBound), defaultDuration, toBindInto, toBeBound, caster.body.getAngle(), area, caster.body.getPosition());
+		SpellDescriptor effect = new SpellDescriptor(new Imbueing(toImbueInto, toBeImbued), defaultDuration, toImbueInto, toBeImbued, caster.body.getAngle(), area, caster.body.getPosition());
 		return effect;
 	}
 
