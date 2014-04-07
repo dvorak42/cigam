@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<nifty>
+  <useStyles filename="nifty-default-styles.xml"/>
+  <useControls filename="nifty-default-controls.xml"/>
+  <screen id="pause">
+    <layer childLayout="absolute" id="layer0">
+      <control font="aurulent-sans-16.fnt" height="50px" id="label0" name="label" text="Hello Worlds" width="100px" x="110" y="228"/>
+      <control childLayout="center" id="button0" label="Push Button" name="button" x="140" y="287"/>
+    </layer>
+  </screen>
+</nifty>

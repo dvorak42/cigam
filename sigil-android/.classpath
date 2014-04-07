@@ -9,6 +9,15 @@
 	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="/sigil/libs/bodyeditor-loader.jar" sourcepath="/sigil/libs/bodyeditor-loader-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="/sigil/libs/tween-engine-api.jar" sourcepath="/sigil/libs/tween-engine-api-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/sigil/libs/nifty-core.jar" sourcepath="/sigil/libs/nifty-core-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/sigil/libs/nifty-default-controls.jar" sourcepath="/sigil/libs/nifty-default-controls-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/sigil/libs/nifty-libgdx-renderer.jar" sourcepath="/sigil/libs/nifty-libgdx-renderer-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/sigil/libs/nifty-openal-soundsystem.jar"/>
+	<classpathentry exported="true" kind="lib" path="/sigil/libs/nifty-pauls-soundsystem.jar"/>
+	<classpathentry exported="true" kind="lib" path="/sigil/libs/nifty-style-black.jar" sourcepath="/sigil/libs/nifty-style-black-sources.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="lib" path="/sigil/libs/jglfont-core-1.0.jar"/>
+	<classpathentry kind="lib" path="/sigil/libs/eventbus-1.4.jar"/>
+	<classpathentry kind="lib" path="/sigil/libs/xpp3-1.1.4c.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" exported="true" path="libs/gdx.jar" sourcepath="libs/gdx-sources.jar"/>
-	<classpathentry kind="lib" exported="true" path="libs/bodyeditor-loader.jar" sourcepath="libs/bodyeditor-loader-sources.jar"/>
-	<classpathentry kind="lib" exported="true" path="libs/tween-engine-api.jar" sourcepath="libs/tween-engine-api-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx.jar" sourcepath="libs/gdx-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/bodyeditor-loader.jar" sourcepath="libs/bodyeditor-loader-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/tween-engine-api.jar" sourcepath="libs/tween-engine-api-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/nifty-core.jar" sourcepath="libs/nifty-core-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/nifty-default-controls.jar" sourcepath="libs/nifty-default-controls-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/nifty-libgdx-renderer.jar" sourcepath="libs/nifty-libgdx-renderer-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/nifty-openal-soundsystem.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/nifty-pauls-soundsystem.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/nifty-style-black.jar" sourcepath="libs/nifty-style-black-sources.jar"/>
+	<classpathentry kind="lib" path="libs/jglfont-core-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/eventbus-1.4.jar"/>
+	<classpathentry kind="lib" path="libs/xpp3-1.1.4c.jar"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>

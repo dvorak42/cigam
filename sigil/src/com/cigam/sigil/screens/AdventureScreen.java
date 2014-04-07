@@ -69,7 +69,7 @@ public class AdventureScreen implements Screen {
     public ArrayList<PhysicalEntity> spells;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
-	public static int INIT_ENEMIES = 0;
+	public static int INIT_ENEMIES = 5;
 	public ArrayList<Verb> testSpells;
 	private int dt;
 	private TiledMap map;
