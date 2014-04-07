@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -17,6 +21,17 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.cigam.sigil.SigilContactListener;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.Enemy;
@@ -41,6 +56,8 @@ public class AdventureScreen implements Screen {
 	public World world;
 	SigilGame game;
 	Player player;
+	Stage stage;
+	Skin skin;
 	
 	OrthographicCamera camera;
 	Box2DDebugRenderer debugRenderer;
@@ -65,7 +82,7 @@ public class AdventureScreen implements Screen {
 		enemies = new ArrayList<Enemy>();
 		spells = new ArrayList<PhysicalEntity>();
 		debugRenderer = new Box2DDebugRenderer();
-
+		
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
@@ -268,7 +285,8 @@ public class AdventureScreen implements Screen {
 		for(Entity r : entities)
 			r.render();
 		game.batch.end();
-
+		
+		
 		runPhysics(delta);
 	}
 
@@ -318,6 +336,7 @@ public class AdventureScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
+
 		
 	}
 }
