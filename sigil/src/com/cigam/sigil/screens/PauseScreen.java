@@ -74,7 +74,7 @@ public class PauseScreen implements Screen {
 		game.hudBatch.end();
 		
 		
-		if(Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
+		if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
 			game.setScreen(parent);
 	}
 

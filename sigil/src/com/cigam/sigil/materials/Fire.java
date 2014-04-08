@@ -7,7 +7,7 @@ public class Fire extends MaterialDescriptor {
 
 	public Fire() {
 		super();
-		this.init(null,10,0.2f,0);
+		this.init(null,3,0.2f,0);
 	}
 
 	@Override

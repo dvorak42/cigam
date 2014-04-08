@@ -40,7 +40,7 @@ public class Create extends Verb {
 	public void cast() {
 		Vector2 castDir = new Vector2(1, 0).rotate(caster.body.getAngle());
 		castDir.nor();
-		System.out.println(toCreate);
+		//System.out.println(toCreate);
 		toCreate.position = caster.body.getWorldCenter();
 		//System.out.println(target.bd.position + " is caster location");
 		//System.out.println(bd.position.add(castDir.mul(this.fd.shape.m_radius)) + " is created object location");

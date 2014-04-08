@@ -50,7 +50,7 @@ public class Bind extends Verb {
 		for(Spell s: arguments){
 			toBeBound.add(s.evalEffect());
 		}
-		SpellDescriptor effect = new SpellDescriptor(new Binding(toBindInto, toBeBound), defaultDuration, toBindInto, toBeBound, caster.body.getAngle(), area, caster.body.getPosition());
+		SpellDescriptor effect = new SpellDescriptor(new Binding(toBindInto, toBeBound), defaultDuration, toBindInto, toBeBound, caster.body.getAngle(), area, caster.body.getWorldCenter());
 		return effect;
 	}
 

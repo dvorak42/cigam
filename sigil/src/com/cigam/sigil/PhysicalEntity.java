@@ -76,7 +76,7 @@ public abstract class PhysicalEntity extends Entity {
 		world = w;
 		BodyDef bd = new BodyDef();
 		if(sd != null) {
-			System.out.println(sd.position);
+			//sSystem.out.println(sd.position);
 			bd.position.set(sd.position);
 		}
 		bd.type = BodyType.DynamicBody;

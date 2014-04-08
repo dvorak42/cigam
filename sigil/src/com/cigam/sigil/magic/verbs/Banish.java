@@ -43,7 +43,7 @@ public class Banish extends Verb {
 			summonCriteria.add(s.evalEffect());
 		}
 		System.out.println(caster);
-		SpellDescriptor effect = new SpellDescriptor(new Summoning(toSummonTo, summonCriteria), defaultDuration, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getPosition());
+		SpellDescriptor effect = new SpellDescriptor(new Summoning(toSummonTo, summonCriteria), defaultDuration, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getWorldCenter());
 		return effect;
 	}
 	@Override

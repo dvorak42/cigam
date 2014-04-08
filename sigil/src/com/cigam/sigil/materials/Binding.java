@@ -2,6 +2,7 @@ package com.cigam.sigil.materials;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -17,13 +18,17 @@ public class Binding extends MaterialDescriptor {
 	private PhysicalEntity toBindInto;
 	private ArrayList<PhysicalEntity> objectsInRange;
 	private MaterialDescriptor attractorType;
+	private ArrayList<PhysicalEntity> objectsNoCollided;
+	private ArrayList<PhysicalEntity> objectsCollided;
 	//private ArrayList<MaterialDescriptor> attracteeType;
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToBind;
-	
+
 	public Binding(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType) {
 		super();
 		entitiesToBind = new HashMap<MaterialDescriptor, PhysicalEntity>();
 		objectsInRange = new ArrayList<PhysicalEntity>();
+		objectsNoCollided = new ArrayList<PhysicalEntity>();
+		objectsCollided = new ArrayList<PhysicalEntity>();
 		this.attractorType = attractorType.mat;
 		for(SpellDescriptor s: attracteeType){
 			entitiesToBind.put(s.mat, null);
@@ -33,40 +38,66 @@ public class Binding extends MaterialDescriptor {
 
 	@Override
 	public void OnCollide(PhysicalEntity p) {
-		if(!objectsInRange.contains(p)){
-			objectsInRange.add(p);
-		}
-		for(MaterialDescriptor m:entitiesToBind.keySet()){
-			if(p.mat.isSameMat(m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p))){
-				entitiesToBind.put(m, p);
-			}
-		}
+		if(!objectsCollided.contains(p))
+			objectsCollided.add(p);
 	}
 
 	@Override
 	public void NoCollide(PhysicalEntity p) {
-		if(p.equals(toBindInto)){
-			for(PhysicalEntity q:toBindInto.boundEntities){
-				toBindInto.unbind(q);
-			}
-		}
-		objectsInRange.remove(p);
-		for(MaterialDescriptor m:entitiesToBind.keySet()){
-			if(entitiesToBind.get(m)==p){
-				entitiesToBind.remove(m);
-			}
-		}
+		if(!objectsNoCollided.contains(p))
+			objectsNoCollided.add(p);
 	}
 	@Override
 	public void Update(){
+		//Add new collisions to objectsInRange
+		for(PhysicalEntity p: objectsCollided){
+			if(!objectsInRange.contains(p)){
+				objectsInRange.add(p);
+			}
+		}
+		//Bind things to be bound
 		if(toBindInto != null){
+			ArrayList<MaterialDescriptor> keysToDelete = new ArrayList<MaterialDescriptor>();
 			for(MaterialDescriptor m:entitiesToBind.keySet()){
 				if(entitiesToBind.get(m)!=null){
 					toBindInto.bind(entitiesToBind.get(m));
-					entitiesToBind.remove(m);
+					keysToDelete.add(m);
+				}
+			}
+			for(MaterialDescriptor m: keysToDelete){
+				entitiesToBind.remove(m);
+			}
+		}
+		//Figure out objects to be bound
+		for(PhysicalEntity p:objectsCollided){
+			Object[] keySet =  entitiesToBind.keySet().toArray();
+			for(Object m: keySet){
+				if(p.mat.isSameMat((MaterialDescriptor) m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p))){
+					entitiesToBind.put((MaterialDescriptor) m, p);
 				}
 			}
 		}
+		objectsCollided.clear();
+		//Deal with new no-collisions
+		for(PhysicalEntity p:objectsNoCollided){
+			if(p.equals(toBindInto)){
+				Object[] boundEntities = (Object[]) toBindInto.boundEntities.toArray();
+				for(Object q: boundEntities){
+					toBindInto.unbind((PhysicalEntity) q);
+				}
+			}
+			objectsInRange.remove(p);
+			MaterialDescriptor toRemove = null;
+			for(MaterialDescriptor m:entitiesToBind.keySet()){
+				if(entitiesToBind.get(m)==p){
+					toRemove = m;
+				}
+			}
+			if(toRemove != null){
+				entitiesToBind.remove(toRemove);
+			}
+		}
+		objectsNoCollided.clear();
 	}
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
@@ -74,6 +105,8 @@ public class Binding extends MaterialDescriptor {
 		toBindInto = null;
 		//System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
+		this.Update();
+		System.out.println(objectsInRange);
 		for(PhysicalEntity p: objectsInRange){
 			float distance = Utils.dist(manifestation, p);
 			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
@@ -83,5 +116,5 @@ public class Binding extends MaterialDescriptor {
 		}
 		//System.out.println("toBindInto is " + toBindInto);
 	}
-	
+
 }
