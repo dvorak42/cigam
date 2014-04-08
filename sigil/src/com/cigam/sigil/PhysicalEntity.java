@@ -27,6 +27,8 @@ public abstract class PhysicalEntity extends Entity {
 	public ArrayList<PhysicalEntity> imbuedEntities;
 	public float totalManaCapacity;
 	public float totalManaWeight;
+	public float initManaCapacity;
+	public float totalManaBound;
 	
 	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, MaterialDescriptor material) {
 		super(g, s);
@@ -35,7 +37,9 @@ public abstract class PhysicalEntity extends Entity {
 		initBody(a.world);
 		boundEntities = new ArrayList<PhysicalEntity>();
 		imbuedEntities  = new ArrayList<PhysicalEntity>();
-		totalManaCapacity = mat.manaCapacityFactor*this.body.getMass();
+		initManaCapacity = mat.manaCapacityFactor*this.body.getMass();
+		totalManaCapacity = initManaCapacity;
+		totalManaBound = 0;
 		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
 		//System.out.println("Mana stats for " + this + " are as follows: ");
 		//System.out.println("body mass is " + this.body.getMass());
@@ -94,10 +98,11 @@ public abstract class PhysicalEntity extends Entity {
 		body.setUserData(this);
 	}
 	
-	public void bind(PhysicalEntity p){
-		if(this.totalManaCapacity-p.totalManaWeight >=0){
-			this.totalManaCapacity-=p.totalManaWeight;
-			this.boundEntities.add(p);
+	public void bind(PhysicalEntity p, float bindingValue){
+		totalManaCapacity += bindingValue;
+		if(totalManaCapacity < totalManaBound+p.totalManaWeight||initManaCapacity < (totalManaBound+p.totalManaWeight)/2){
+			totalManaBound+=p.totalManaWeight;
+			boundEntities.add(p);
 			p.setActive(false);
 			p.setVisible(false);
 		} else {
@@ -107,21 +112,22 @@ public abstract class PhysicalEntity extends Entity {
 		System.out.println("totalManaCapacity is now " + totalManaCapacity);
 	}
 	
-	public void unbind(PhysicalEntity p){
+	public void unbind(PhysicalEntity p, float bindingValue){
 		if(boundEntities.contains(p)){
 			boundEntities.remove(p);
 			p.body.setTransform(this.body.getWorldCenter(), p.body.getAngle());
 			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
 			p.setActive(true);
 			p.setVisible(true);
-			totalManaCapacity += p.totalManaWeight;
+			totalManaCapacity -= bindingValue;
+			totalManaBound-= p.totalManaWeight;
 		}
 	}
 	public void kill(){
 		this.setActive(false);
 		this.mat.onDestroy(screen);
 		for(int i = 0; i < boundEntities.size(); i++){
-			unbind(boundEntities.get(i));
+			unbind(boundEntities.get(i),0);
 		}
 		//System.out.println(screen.world);
 		screen.world.destroyBody(this.body);

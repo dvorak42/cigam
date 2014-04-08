@@ -13,6 +13,7 @@ public abstract class Verb extends Spell {
 	public float castDelay;
 	public AdventureScreen screen;
 	public PhysicalEntity caster;
+	public float effectValue;
 		
 	public abstract void cast();
 

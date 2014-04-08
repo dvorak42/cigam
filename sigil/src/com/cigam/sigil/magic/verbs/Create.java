@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.magic.*;
 import com.cigam.sigil.materials.Creation;
@@ -12,14 +13,16 @@ import com.cigam.sigil.screens.*;
 
 public class Create extends Verb {
 	private SpellDescriptor toCreate;
-	private float defaultDuration = 10;
-	private float defaultRadius = 50;
+	private float defaultDuration = Constants.SPELL_DEFAULT_DURATION;
+	private float defaultRadius = Constants.SPELL_SHORT_RANGE;
 	
 	public Create(Verb target, ArrayList<Spell> args) {
 		super(target, args);
+		effectValue = Constants.CREATE_EFFECT_VALUE;
 	}
 	public Create(PhysicalEntity c,  AdventureScreen b, Target target, ArrayList<Spell> args) {
 		super(c, b, target, args);
+		effectValue = Constants.CREATE_EFFECT_VALUE;
 	}
 	
 	@Override
@@ -34,17 +37,14 @@ public class Create extends Verb {
 		c.setRadius(defaultRadius);
 		System.out.println(toCreate.duration);
 		Vector2 pos = caster.body.getWorldCenter().cpy().rotate(caster.body.getAngle());
-		SpellDescriptor effect = new SpellDescriptor(new Creation(), defaultDuration, toCreate, null, caster.body.getAngle(), c, pos);
+		SpellDescriptor effect = new SpellDescriptor(new Creation(effectValue), defaultDuration, effectValue, toCreate, null, caster.body.getAngle(), c, pos);
 		return effect;
 	}
 	@Override
 	public void cast() {
 		Vector2 castDir = new Vector2(1, 0).rotate(caster.body.getAngle());
 		castDir.nor();
-		//System.out.println(toCreate);
 		toCreate.position = caster.body.getWorldCenter();
-		//System.out.println(target.bd.position + " is caster location");
-		//System.out.println(bd.position.add(castDir.mul(this.fd.shape.m_radius)) + " is created object location");
 		screen.createSpellEffect(evalEffect());
 	}
 }

@@ -17,11 +17,13 @@ public class Banishment extends MaterialDescriptor {
 	private PhysicalEntity attractor;
 	private ArrayList<PhysicalEntity> objectsInRange;
 	private MaterialDescriptor attractorType;
+	private float force;
 	//private ArrayList<MaterialDescriptor> attracteeType;
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToPush;
 	
-	public Banishment(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType) {
+	public Banishment(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float f) {
 		super();
+		force = f;
 		entitiesToPush = new HashMap<MaterialDescriptor, PhysicalEntity>();
 		objectsInRange = new ArrayList<PhysicalEntity>();
 		//this.attracteeType = new ArrayList<MaterialDescriptor>();
@@ -65,7 +67,7 @@ public class Banishment extends MaterialDescriptor {
 				if(entitiesToPush.get(m)!=null){
 					Vector2 dir = attractor.body.getPosition().sub(entitiesToPush.get(m).body.getPosition());
 					dir.nor();
-					entitiesToPush.get(m).body.applyForceToCenter(dir.scl(10000), true);
+					entitiesToPush.get(m).body.applyForceToCenter(dir.scl(force), true);
 				}
 			}
 		}
@@ -79,7 +81,6 @@ public class Banishment extends MaterialDescriptor {
 	}
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
-		Vector2 center = manifestation.body.getPosition();
 		//System.out.println("spell centered on " + center);
 		attractor = null;
 		//System.out.println("objectsInRange are " + objectsInRange);

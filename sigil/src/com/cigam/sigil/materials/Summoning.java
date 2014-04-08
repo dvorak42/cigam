@@ -17,11 +17,12 @@ public class Summoning extends MaterialDescriptor {
 	private PhysicalEntity attractor;
 	private ArrayList<PhysicalEntity> objectsInRange;
 	private MaterialDescriptor attractorType;
-	//private ArrayList<MaterialDescriptor> attracteeType;
+	private float force;
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToPush;
 	
-	public Summoning(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType) {
+	public Summoning(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float force) {
 		super();
+		this.force = force;
 		entitiesToPush = new HashMap<MaterialDescriptor, PhysicalEntity>();
 		objectsInRange = new ArrayList<PhysicalEntity>();
 		//this.attracteeType = new ArrayList<MaterialDescriptor>();
@@ -65,7 +66,7 @@ public class Summoning extends MaterialDescriptor {
 				if(entitiesToPush.get(m)!=null){
 					Vector2 dir = attractor.body.getPosition().sub(entitiesToPush.get(m).body.getPosition());
 					dir.nor();
-					entitiesToPush.get(m).body.applyForceToCenter(dir.scl(10000), true);
+					entitiesToPush.get(m).body.applyForceToCenter(dir.scl(force), true);
 				}
 			}
 		}

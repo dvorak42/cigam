@@ -12,11 +12,13 @@ public class SpellDescriptor {
 	public float angle;
 	public Shape shape;
 	public Vector2 position;
+	public float effectValue;
 	
-	public SpellDescriptor(MaterialDescriptor mat, float duration,
+	public SpellDescriptor(MaterialDescriptor mat, float duration, float effectValue,
 			SpellDescriptor target, ArrayList<SpellDescriptor> arguments,
 			float angle, Shape shape, Vector2 pos) {
 		super();
+		this.effectValue = effectValue;
 		this.mat = mat;
 		this.duration = duration;
 		this.target = target;

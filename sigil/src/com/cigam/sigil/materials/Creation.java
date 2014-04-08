@@ -11,8 +11,10 @@ import com.cigam.sigil.screens.AdventureScreen;
 
 public class Creation extends MaterialDescriptor {
 	private SpellEffect created;
-	public Creation() {
+	private float effectValue;
+	public Creation(float effectValue) {
 		super();
+		this.effectValue = effectValue;
 		this.init(null, 0, 0, 0);
 	}
 
@@ -27,8 +29,7 @@ public class Creation extends MaterialDescriptor {
 		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)),manifestation.body.getPosition());
 		manifestation.target.position = f.intersectionPoint;
 		manifestation.target.duration = manifestation.target.duration*manifestation.duration;
-		//System.out.println(target.bd.position + " is caster location");
-		//System.out.println(bd.position.add(castDir.mul(this.fd.shape.m_radius)) + " is created object location");
+		manifestation.target.effectValue*=effectValue;
 		created = b.createSpellEffect(manifestation.target);
 	}
 

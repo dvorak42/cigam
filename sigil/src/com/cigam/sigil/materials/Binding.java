@@ -22,9 +22,11 @@ public class Binding extends MaterialDescriptor {
 	private ArrayList<PhysicalEntity> objectsCollided;
 	//private ArrayList<MaterialDescriptor> attracteeType;
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToBind;
+	private float bindingStrength;
 
-	public Binding(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType) {
+	public Binding(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float effectValue) {
 		super();
+		bindingStrength = effectValue;
 		entitiesToBind = new HashMap<MaterialDescriptor, PhysicalEntity>();
 		objectsInRange = new ArrayList<PhysicalEntity>();
 		objectsNoCollided = new ArrayList<PhysicalEntity>();
@@ -60,7 +62,7 @@ public class Binding extends MaterialDescriptor {
 			ArrayList<MaterialDescriptor> keysToDelete = new ArrayList<MaterialDescriptor>();
 			for(MaterialDescriptor m:entitiesToBind.keySet()){
 				if(entitiesToBind.get(m)!=null){
-					toBindInto.bind(entitiesToBind.get(m));
+					toBindInto.bind(entitiesToBind.get(m), bindingStrength);
 					keysToDelete.add(m);
 				}
 			}
@@ -83,11 +85,11 @@ public class Binding extends MaterialDescriptor {
 			if(p.equals(toBindInto)){
 				Object[] boundEntities = (Object[]) toBindInto.boundEntities.toArray();
 				for(Object q: boundEntities){
-					toBindInto.unbind((PhysicalEntity) q);
+					toBindInto.unbind((PhysicalEntity) q, bindingStrength);
 				}
 				Object[] imbuedEntities = (Object[]) toBindInto.imbuedEntities.toArray();
 				for(Object q: imbuedEntities){
-					toBindInto.unbind((PhysicalEntity) q);
+					toBindInto.unbind((PhysicalEntity) q, bindingStrength);
 				}
 			}
 			objectsInRange.remove(p);

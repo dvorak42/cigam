@@ -101,9 +101,9 @@ public class AdventureScreen implements Screen {
 		testSpells = new ArrayList<Verb>();
 		CircleShape c = new CircleShape();
 		c.setRadius(10);
-		testSpells.add(new Create(player, this, new MaterialRune(new SpellDescriptor(new Fire(), 10, null, null, 0, c, Vector2.Zero)), null));
+		testSpells.add(new Create(player, this, new MaterialRune(new SpellDescriptor(new Fire(), 8, 1, null, null, 0, c, Vector2.Zero)), null));
 		ArrayList<Spell> args = new ArrayList<Spell>();
-		args.add(new MaterialRune(new SpellDescriptor(new Fire(), 8, null, null, 0, c, Vector2.Zero)));
+		args.add(new MaterialRune(new SpellDescriptor(new Fire(), 8, 1, null, null, 0, c, Vector2.Zero)));
 		testSpells.add(new Create(new Summon(player, this, new Self(), (ArrayList<Spell>) args.clone()), null));
 		testSpells.add(new Bind(player, this, new Self(), (ArrayList<Spell>) args.clone()));
 
@@ -185,6 +185,7 @@ public class AdventureScreen implements Screen {
     	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
         world.clearForces();
     	s.mat.OnCreate(e, this);
+		System.out.println("spell with effect value " + e.effectValue);
     	return e;
 	}
     

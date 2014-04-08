@@ -13,10 +13,12 @@ public class SpellEffect extends PhysicalEntity {
 	public float duration;
 	public SpellDescriptor target;
 	public ArrayList<SpellDescriptor> arguments;
+	public float effectValue;
 	public float angle;
 
 	public SpellEffect(SigilGame game, AdventureScreen a, Sprite sprite, SpellDescriptor s){
 		super(game, sprite, a, s);
+		this.effectValue = s.effectValue;
 		this.duration = s.duration;
 		this.body.setUserData(this);
 		this.target = s.target;
@@ -27,7 +29,8 @@ public class SpellEffect extends PhysicalEntity {
 	}
 
 	public void timeStep(float dt){
-		duration -= dt;
+		if(this.active())
+			duration -= dt;
 	}
 	
 	public void render() {

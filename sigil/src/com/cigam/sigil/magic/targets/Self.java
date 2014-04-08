@@ -12,7 +12,7 @@ public class Self extends Target {
 	public Self(){
 		CircleShape c = new CircleShape();
 		c.setRadius(10);
-		self = new SpellDescriptor(new SelfMat(), 10, null, null, 0, c, Vector2.Zero);
+		self = new SpellDescriptor(new SelfMat(), 10, 1, null, null, 0, c, Vector2.Zero);
 	}
 	
 	@Override

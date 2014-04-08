@@ -18,4 +18,21 @@ public class Constants {
 	public static final int POSITION_ITERS = 3;
 	public static int MAGIC = 17 * 22;
 	public static int TILE_SIZE = 128;
+	
+	public static float SPELL_DEFAULT_DURATION = 10;
+	public static float SPELL_LONG_RANGE = 300;
+	public static float SPELL_MEDIUM_RANGE = 150;
+	public static float SPELL_SHORT_RANGE = 50;
+	public static float DENSITY_VERY_LOW;
+	public static float DENSITY_LOW;
+	public static float DENISITY_MEDIUM;
+	public static float DENSITY_HIGH;
+	public static float DENSITY_VERY_HIGH;
+	public static float FORCE_VERY_LOW;
+	public static float FORCE_LOW;
+	public static float FORCE_MEDIUM = 10000;
+	public static float FORCE_HIGH;
+	public static float FORCE_VERY_HIGH;
+	public static float BIND_EFFECT_VALUE = 50;
+	public static float CREATE_EFFECT_VALUE = 2;
 }
