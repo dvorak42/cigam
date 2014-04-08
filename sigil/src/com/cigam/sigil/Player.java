@@ -8,14 +8,15 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.materials.SelfMat;
+import com.cigam.sigil.screens.AdventureScreen;
 
 public class Player extends PhysicalEntity {
 	public String name = "John Smith";
 	
 	//World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds
 	//TODO: Don't need to pass material descriptor, should always be selfMat
-	public Player(SigilGame g, Sprite s, World world) {
-		super(g, s, world, new SelfMat());
+	public Player(SigilGame g, Sprite s,AdventureScreen a) {
+		super(g, s, a, new SelfMat());
 		initBody();
 	}
 	
@@ -25,7 +26,7 @@ public class Player extends PhysicalEntity {
 		bd.fixedRotation = true;
 		bd.linearDamping = 8f;
 
-		body = world.createBody(bd);
+		body = screen.world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
 		fd.density = 0.1f; 

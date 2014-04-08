@@ -93,5 +93,11 @@ public class Banishment extends MaterialDescriptor {
 		}
 		//System.out.println("Attractor is " + attractor);
 	}
+	@Override
+	public void onDestroy(AdventureScreen destroyedIn){
+		attractor = null;
+		entitiesToPush.clear();
+		objectsInRange.clear();
+	}
 
 }

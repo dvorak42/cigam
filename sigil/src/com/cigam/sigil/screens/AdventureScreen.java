@@ -66,7 +66,7 @@ public class AdventureScreen implements Screen {
 
 	public ArrayList<Entity> entities;
     public ArrayList<Enemy> enemies;
-    public ArrayList<PhysicalEntity> spells;
+    public ArrayList<SpellEffect> spells;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
 	public static int INIT_ENEMIES = 5;
@@ -81,7 +81,7 @@ public class AdventureScreen implements Screen {
 		game = g;
 		entities = new ArrayList<Entity>();
 		enemies = new ArrayList<Enemy>();
-		spells = new ArrayList<PhysicalEntity>();
+		spells = new ArrayList<SpellEffect>();
 		debugRenderer = new Box2DDebugRenderer();
 		
 		float w = Gdx.graphics.getWidth();
@@ -96,17 +96,16 @@ public class AdventureScreen implements Screen {
 		Texture playerTexture = new Texture(Gdx.files.internal("art/player.png"));
 		playerTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
-		player = new Player(game, new Sprite(playerTexture), world);
+		player = new Player(game, new Sprite(playerTexture), this);
 
 		testSpells = new ArrayList<Verb>();
 		CircleShape c = new CircleShape();
 		c.setRadius(10);
-		SpellDescriptor FireRune = new SpellDescriptor(new Fire(), 10, null, null, 0, c, Vector2.Zero);
-		testSpells.add(new Create(player, this, new MaterialRune(FireRune), null));
+		testSpells.add(new Create(player, this, new MaterialRune(new SpellDescriptor(new Fire(), 10, null, null, 0, c, Vector2.Zero)), null));
 		ArrayList<Spell> args = new ArrayList<Spell>();
-		args.add(new MaterialRune(FireRune));
-		testSpells.add(new Create(new Summon(player, this, new Self(), args), null));
-		testSpells.add(new Bind(player, this, new Self(), args));
+		args.add(new MaterialRune(new SpellDescriptor(new Fire(), 8, null, null, 0, c, Vector2.Zero)));
+		testSpells.add(new Create(new Summon(player, this, new Self(), (ArrayList<Spell>) args.clone()), null));
+		testSpells.add(new Bind(player, this, new Self(), (ArrayList<Spell>) args.clone()));
 
 		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
 		//testSpell = new Summon()
@@ -133,7 +132,7 @@ public class AdventureScreen implements Screen {
         {
     		Texture enemyTexture = new Texture(Gdx.files.internal("art/enemy.png"));
     		enemyTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-        	Enemy enemy = new Enemy(game, new Sprite(enemyTexture), world, new SelfMat());
+        	Enemy enemy = new Enemy(game, new Sprite(enemyTexture), this, new SelfMat());
             entities.add(enemy);
             enemies.add(enemy);
         }
@@ -170,23 +169,30 @@ public class AdventureScreen implements Screen {
     {
     	Texture fTexture = new Texture(Gdx.files.internal("art/fireball.png"));
     	fTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-    	SolidProjectile f = new SolidProjectile(game, new Sprite(fTexture), world, new Fire(), angle, e, 1, Utils.angleToVector(angle).scl(Constants.PLAYER_PROJECTILE_SPEED));
+    	SolidProjectile f = new SolidProjectile(game, new Sprite(fTexture), this, new Fire(), angle, e, 1, Utils.angleToVector(angle).scl(Constants.PLAYER_PROJECTILE_SPEED));
 
     	//this.player.setRotation(angle);
 
         entities.add(f);
     }
     
-    public void createSpellEffect(SpellDescriptor s) {
+    public SpellEffect createSpellEffect(SpellDescriptor s) {
     	Texture texture = new Texture(Gdx.files.internal("art/fireball.png"));
     	texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-    	SpellEffect e = new SpellEffect(game, world, new Sprite(texture), s);
+    	SpellEffect e = new SpellEffect(game, this, new Sprite(texture), s);
 		entities.add(e);
     	spells.add(e);
     	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
         world.clearForces();
-    	s.mat.OnCreate(e, this);		
+    	s.mat.OnCreate(e, this);
+    	return e;
 	}
+    
+    public void destroySpellEffect(SpellEffect s){
+    	entities.remove(s);
+    	spells.remove(s);
+    	s.kill();
+    }
 
 	@Override
 	public void render(float delta) {
@@ -213,9 +219,14 @@ public class AdventureScreen implements Screen {
         playerMoveVec.nor();
 
         player.body.applyForceToCenter(playerMoveVec.scl((int)(player.body.getMass()*Constants.PLAYER_ACCELERATION_FACTOR)), true);
-
-        for(PhysicalEntity e : spells){
-        	e.mat.Update();
+        
+        for(int i = 0; i < spells.size(); i++){
+        	if(spells.get(i).duration > 0){
+        		spells.get(i).mat.Update();
+        		spells.get(i).timeStep(delta);
+        	} else {
+        		destroySpellEffect(spells.get(i));
+        	}
         }
         
         //System.out.println(player.body.m_mass + "is player mass");
@@ -297,6 +308,7 @@ public class AdventureScreen implements Screen {
 		debugRenderer.render(world, camera.combined);
 		if(!paused) {
 		world.step(1/60f, 6, 2);
+		world.clearForces();
 		}
 	}
 

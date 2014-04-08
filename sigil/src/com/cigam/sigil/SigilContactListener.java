@@ -22,13 +22,15 @@ public class SigilContactListener implements ContactListener {
 
 	@Override
 	public void endContact(Contact c) {
-		if(c.getFixtureA().getBody().getUserData() instanceof PhysicalEntity && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
-			PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
-			PhysicalEntity b = ((PhysicalEntity) c.getFixtureB().getBody().getUserData());
-			if(a.mat != null && b.mat != null) {
-				//System.out.println("collision ended");
-				a.mat.NoCollide(b);
-				b.mat.NoCollide(a);
+		if(c!= null&&c.getFixtureA()!=null&&c.getFixtureB()!=null){
+			if(c.getFixtureA().getBody().getUserData() instanceof PhysicalEntity && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
+				PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
+				PhysicalEntity b = ((PhysicalEntity) c.getFixtureB().getBody().getUserData());
+				if(a.mat != null && b.mat != null) {
+					//System.out.println("collision ended");
+					a.mat.NoCollide(b);
+					b.mat.NoCollide(a);
+				}
 			}
 		}
 	}

@@ -15,9 +15,11 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.magic.SpellDescriptor;
+import com.cigam.sigil.magic.SpellEffect;
+import com.cigam.sigil.screens.AdventureScreen;
 
 public abstract class PhysicalEntity extends Entity {
-	public World world;
+	public AdventureScreen screen;
 	public Body body;
 	public MaterialDescriptor mat;
 	public Vector2 modelOrigin = Vector2.Zero;
@@ -26,11 +28,11 @@ public abstract class PhysicalEntity extends Entity {
 	public float totalManaCapacity;
 	public float totalManaWeight;
 	
-	public PhysicalEntity(SigilGame g, Sprite s, World world, MaterialDescriptor material) {
+	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, MaterialDescriptor material) {
 		super(g, s);
-		this.world = world;
+		this.screen = a;
 		mat = material;
-		initBody(world);
+		initBody(a.world);
 		boundEntities = new ArrayList<PhysicalEntity>();
 		imbuedEntities  = new ArrayList<PhysicalEntity>();
 		totalManaCapacity = mat.manaCapacityFactor*this.body.getMass();
@@ -40,10 +42,11 @@ public abstract class PhysicalEntity extends Entity {
 		//System.out.println("totalMana")
 	}
 	
-	public PhysicalEntity(SigilGame g, Sprite s, World world, SpellDescriptor sd) {
+	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, SpellDescriptor sd) {
 		super(g, s);
+		this.screen = a;
 		mat = sd.mat;
-		initBody(world, sd);
+		initBody(a.world, sd);
 		boundEntities = new ArrayList<PhysicalEntity>();
 		imbuedEntities  = new ArrayList<PhysicalEntity>();
 		totalManaCapacity = mat.manaCapacityFactor*this.body.getMass();
@@ -55,7 +58,6 @@ public abstract class PhysicalEntity extends Entity {
 	}
 	//This should never be called
 	public void initBody(World w) {
-		world = w;
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;
 
@@ -73,7 +75,6 @@ public abstract class PhysicalEntity extends Entity {
 	}
 	//TODO: needs work translating sd into box2d. Also should live in a subclass
 	public void initBody(World w, SpellDescriptor sd) {
-		world = w;
 		BodyDef bd = new BodyDef();
 		if(sd != null) {
 			//sSystem.out.println(sd.position);
@@ -105,6 +106,7 @@ public abstract class PhysicalEntity extends Entity {
 		System.out.println("Binding " + p + " into " + this);
 		System.out.println("totalManaCapacity is now " + totalManaCapacity);
 	}
+	
 	public void unbind(PhysicalEntity p){
 		if(boundEntities.contains(p)){
 			boundEntities.remove(p);
@@ -115,30 +117,14 @@ public abstract class PhysicalEntity extends Entity {
 			totalManaCapacity += p.totalManaWeight;
 		}
 	}
-	//TODO: Joints
-	public void imbue(PhysicalEntity p){
-		if(this.totalManaCapacity-p.totalManaWeight/2.0 >=0){
-			this.totalManaCapacity-=p.totalManaWeight/2;
-			this.imbuedEntities.add(p);
-			
-		} else {
-			this.kill();
-		}
-		System.out.println("Binding " + p + " into " + this);
-		System.out.println("totalManaCapacity is now " + totalManaCapacity);
-	}
-	public void disimbue(PhysicalEntity p){
-		if(boundEntities.contains(p)){
-			boundEntities.remove(p);
-			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
-			totalManaCapacity += p.totalManaWeight/2.0;
-		}
-	}
 	public void kill(){
-		this.active = false;
+		this.setActive(false);
+		this.mat.onDestroy(screen);
 		for(int i = 0; i < boundEntities.size(); i++){
 			unbind(boundEntities.get(i));
 		}
+		//System.out.println(screen.world);
+		screen.world.destroyBody(this.body);
 	}
 	public boolean active() {
 		active = body.isActive();

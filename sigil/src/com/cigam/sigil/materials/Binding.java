@@ -85,6 +85,10 @@ public class Binding extends MaterialDescriptor {
 				for(Object q: boundEntities){
 					toBindInto.unbind((PhysicalEntity) q);
 				}
+				Object[] imbuedEntities = (Object[]) toBindInto.imbuedEntities.toArray();
+				for(Object q: imbuedEntities){
+					toBindInto.unbind((PhysicalEntity) q);
+				}
 			}
 			objectsInRange.remove(p);
 			MaterialDescriptor toRemove = null;
@@ -106,7 +110,7 @@ public class Binding extends MaterialDescriptor {
 		//System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		this.Update();
-		System.out.println(objectsInRange);
+		//System.out.println(objectsInRange);
 		for(PhysicalEntity p: objectsInRange){
 			float distance = Utils.dist(manifestation, p);
 			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
@@ -117,4 +121,10 @@ public class Binding extends MaterialDescriptor {
 		//System.out.println("toBindInto is " + toBindInto);
 	}
 
+	@Override
+	public void onDestroy(AdventureScreen destroyedIn){
+		toBindInto = null;
+		entitiesToBind.clear();
+		objectsInRange.clear();
+	}
 }

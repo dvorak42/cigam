@@ -10,14 +10,12 @@ import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class Creation extends MaterialDescriptor {
+	private SpellEffect created;
 	public Creation() {
 		super();
 		this.init(null, 0, 0, 0);
 	}
 
-	@Override
-	public void OnCollide(PhysicalEntity p) {
-	}
 
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen b) {
@@ -31,19 +29,15 @@ public class Creation extends MaterialDescriptor {
 		manifestation.target.duration = manifestation.target.duration*manifestation.duration;
 		//System.out.println(target.bd.position + " is caster location");
 		//System.out.println(bd.position.add(castDir.mul(this.fd.shape.m_radius)) + " is created object location");
-		b.createSpellEffect(manifestation.target);
+		created = b.createSpellEffect(manifestation.target);
 	}
 
 	@Override
-	public void NoCollide(PhysicalEntity b) {
-		// TODO Auto-generated method stub
-		
+	public void onDestroy(AdventureScreen b){
+		System.out.println("Created = " + created);
+		b.destroySpellEffect(created);
 	}
 
-	@Override
-	public void Update() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 }

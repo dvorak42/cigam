@@ -9,8 +9,8 @@ public abstract class Entity {
 	
 	public Sprite sprite;
 	boolean active = true;
-	boolean visible = true;
-	float elapsedTime;
+	public boolean visible = true;
+	public float elapsedTime;
 	
 	public Entity(SigilGame g, Sprite s) {
 		game = g;

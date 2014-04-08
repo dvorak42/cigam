@@ -79,7 +79,6 @@ public class Summoning extends MaterialDescriptor {
 	}
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
-		Vector2 center = manifestation.body.getPosition();
 		//System.out.println("spell centered on " + center);
 		attractor = null;
 		//System.out.println("objectsInRange are " + objectsInRange);
@@ -93,5 +92,10 @@ public class Summoning extends MaterialDescriptor {
 		}
 		//System.out.println("Attractor is " + attractor);
 	}
-
+	@Override
+	public void onDestroy(AdventureScreen destroyedIn){
+		attractor = null;
+		entitiesToPush.clear();
+		objectsInRange.clear();
+	}
 }

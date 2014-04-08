@@ -7,14 +7,15 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.magic.MaterialDescriptor;
+import com.cigam.sigil.screens.AdventureScreen;
 
 public class SolidProjectile extends PhysicalEntity {
     public SigilGame game;
     public Entity parent;
     
-    public SolidProjectile(SigilGame eg, Sprite sprite, World world, MaterialDescriptor mat, float angle, Entity parent, float density, Vector2 vel)//TODO move Body and fixture defs to constants 
+    public SolidProjectile(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat, float angle, Entity parent, float density, Vector2 vel)//TODO move Body and fixture defs to constants 
     {
-        super(eg, sprite, world, mat);
+        super(eg, sprite, a, mat);
         game = eg;
         this.parent = parent;
         initBody(angle, density, vel);
@@ -27,7 +28,7 @@ public class SolidProjectile extends PhysicalEntity {
 		bd.bullet = true;
 		bd.position.set(parent.getPosition().cpy().add(Utils.angleToVector(angle).scl(50.0f)));
 
-		body = world.createBody(bd);
+		body = screen.world.createBody(bd);
 
 		FixtureDef fd = new FixtureDef();
 		fd.density = density; 

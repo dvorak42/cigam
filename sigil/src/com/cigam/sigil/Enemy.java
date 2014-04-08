@@ -8,12 +8,13 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.magic.MaterialDescriptor;
+import com.cigam.sigil.screens.AdventureScreen;
 
 public class Enemy extends PhysicalEntity {
 	public SigilGame game;
 	
-	public Enemy(SigilGame eg, Sprite sprite, World world, MaterialDescriptor mat) {
-		super(eg, sprite, world, mat);
+	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat) {
+		super(eg, sprite, a, mat);
         game = eg;
 		initBody();
 	}
@@ -27,7 +28,7 @@ public class Enemy extends PhysicalEntity {
 		bd.fixedRotation = true;
 		bd.position.set(pos);
 		
-		body = world.createBody(bd);
+		body = screen.world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
 		fd.density = 0.0001f; 
