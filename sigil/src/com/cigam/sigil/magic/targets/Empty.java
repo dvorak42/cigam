@@ -4,26 +4,23 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
-import com.cigam.sigil.materials.Fire;
+import com.cigam.sigil.materials.EmptyMat;
 import com.cigam.sigil.materials.SelfMat;
 
-public class Self extends Spell {
-	private SpellDescriptor self;
-	public Self(){
+public class Empty extends Spell {
+	private SpellDescriptor mat;
+	public Empty(){
 		CircleShape c = new CircleShape();
 		c.setRadius(10);
-		self = new SpellDescriptor(new SelfMat(), 10, 1, null, null, 0, c, Vector2.Zero);
+		mat = new SpellDescriptor(new EmptyMat(), 10, 1, null, null, 0, c, Vector2.Zero);
 	}
 	
-
-
 	@Override
 	public SpellDescriptor evalEffect() {
-		return self;
+		return mat;
 	}
 
 	@Override
-	public void cast() {
-	}
+	public void cast() {}
 
 }

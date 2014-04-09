@@ -1,22 +1,25 @@
 package com.cigam.sigil.magic.targets;
 
+import com.cigam.sigil.magic.MaterialDescriptor;
+import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
-import com.cigam.sigil.magic.Target;
 
-public class MaterialRune extends Target {
+public class MaterialRune extends Spell {
 	public SpellDescriptor material;
 	
-	public MaterialRune(SpellDescriptor mat){
-		this.material = mat;
-	}
-	
-	@Override
-	public void topEvalEffect() {
+	public MaterialRune(MaterialDescriptor mat){
+		this.material = new SpellDescriptor(mat);
 	}
 
 	@Override
 	public SpellDescriptor evalEffect() {
 		return material;
+	}
+
+	@Override
+	public void cast() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

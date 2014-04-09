@@ -11,12 +11,20 @@ import com.cigam.sigil.materials.Creation;
 import com.cigam.sigil.screens.*;
 
 
-public class Create extends Verb {
+public class Create extends Spell {
 	private SpellDescriptor toCreate;
 	private float defaultDuration = Constants.SPELL_DEFAULT_DURATION;
 	private float defaultRadius = Constants.SPELL_SHORT_RANGE;
 	
-	public Create(Verb target, ArrayList<Spell> args) {
+	public Create(){
+		super();
+		area = new CircleShape();
+		area.setRadius(defaultRadius);
+		effectValue = Constants.CREATE_EFFECT_VALUE;
+		argsNum = 0;
+	}
+	/*
+	public Create(Spell target, ArrayList<Spell> args) {
 		super(target, args);
 		effectValue = Constants.CREATE_EFFECT_VALUE;
 	}
@@ -24,20 +32,14 @@ public class Create extends Verb {
 		super(c, b, target, args);
 		effectValue = Constants.CREATE_EFFECT_VALUE;
 	}
-	
-	@Override
-	public void topEvalEffect(){
-		toCreate = target.evalEffect();
-	}
+	*/
 
 	@Override
-	public SpellDescriptor evalEffect() {
+	public SpellDescriptor evalEffect(){
 		toCreate = target.evalEffect();
-		CircleShape c = new CircleShape();
-		c.setRadius(defaultRadius);
 		System.out.println(toCreate.duration);
 		Vector2 pos = caster.body.getWorldCenter().cpy().rotate(caster.body.getAngle());
-		SpellDescriptor effect = new SpellDescriptor(new Creation(effectValue), defaultDuration, effectValue, toCreate, null, caster.body.getAngle(), c, pos);
+		SpellDescriptor effect = new SpellDescriptor(new Creation(effectValue), defaultDuration, effectValue, toCreate, null, caster.body.getAngle(), area, pos);
 		return effect;
 	}
 	@Override

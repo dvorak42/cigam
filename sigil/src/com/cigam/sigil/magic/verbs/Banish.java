@@ -11,33 +11,33 @@ import com.cigam.sigil.materials.Summoning;
 import com.cigam.sigil.screens.*;
 
 
-public class Banish extends Verb {
+public class Banish extends Spell {
 	private SpellDescriptor toSummonTo;
 	private ArrayList<SpellDescriptor> summonCriteria;
 	private float defaultDuration = Constants.SPELL_DEFAULT_DURATION;
 	private float defaultRadius = Constants.SPELL_LONG_RANGE;
-	
-	public Banish(Verb target, ArrayList<Spell> args) {
+	public Banish(){
+		super();
+		summonCriteria = new ArrayList<SpellDescriptor>();
+		area = new CircleShape();
+		area.setRadius(defaultRadius);
+		effectValue = -Constants.FORCE_MEDIUM;
+		argsNum = 4;
+	}
+	/*
+	public Banish(Spell target,  ArrayList<Spell> args) {
 		super(target, args);
 		summonCriteria = new ArrayList<SpellDescriptor>();
 		area = new CircleShape();
 		area.setRadius(defaultRadius);
 		effectValue = -Constants.FORCE_MEDIUM;
 	}
-	public Banish(PhysicalEntity c, AdventureScreen b, Target target, ArrayList<Spell> args) {
+	public Banish(PhysicalEntity c, AdventureScreen b, Target target,  ArrayList<Spell> args) {
 		super(c, b, target, args);
 		summonCriteria = new ArrayList<SpellDescriptor>();
 		area = new CircleShape();
 		area.setRadius(defaultRadius);
-	}
-	
-	@Override
-	public void topEvalEffect(){
-		toSummonTo = target.evalEffect();
-		for(Spell s: arguments){
-			summonCriteria.add(s.evalEffect());
-		}
-	}
+	}*/
 
 	@Override
 	public SpellDescriptor evalEffect() {

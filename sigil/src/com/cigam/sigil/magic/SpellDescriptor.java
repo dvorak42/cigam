@@ -2,6 +2,7 @@ package com.cigam.sigil.magic;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 
 public class SpellDescriptor {
@@ -17,7 +18,6 @@ public class SpellDescriptor {
 	public SpellDescriptor(MaterialDescriptor mat, float duration, float effectValue,
 			SpellDescriptor target, ArrayList<SpellDescriptor> arguments,
 			float angle, Shape shape, Vector2 pos) {
-		super();
 		this.effectValue = effectValue;
 		this.mat = mat;
 		this.duration = duration;
@@ -26,5 +26,14 @@ public class SpellDescriptor {
 		this.angle = angle;
 		this.shape = shape;
 		this.position = pos;
+	}
+	
+	public SpellDescriptor(MaterialDescriptor m){
+		effectValue = 1;
+		mat = m;
+		duration = Float.MAX_VALUE;
+		shape = new CircleShape();
+		shape.setRadius(10); 
+		position = Vector2.Zero;
 	}
 }

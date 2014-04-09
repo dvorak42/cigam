@@ -10,13 +10,22 @@ import com.cigam.sigil.materials.Summoning;
 import com.cigam.sigil.screens.*;
 
 
-public class Summon extends Verb {
+public class Summon extends Spell {
 	private SpellDescriptor toSummonTo;
 	private ArrayList<SpellDescriptor> summonCriteria;
 	private float defaultDuration = Constants.SPELL_DEFAULT_DURATION;;
 	private float defaultRadius = Constants.SPELL_LONG_RANGE;
 	
-	public Summon(Verb target, ArrayList<Spell> args) {
+	public Summon(){
+		super();
+		summonCriteria = new ArrayList<SpellDescriptor>();
+		area = new CircleShape();
+		area.setRadius(defaultRadius);
+		effectValue = Constants.FORCE_MEDIUM;
+		argsNum = 4;
+	}
+	/*
+	public Summon(Spell target, ArrayList<Spell> args) {
 		super(target, args);
 		summonCriteria = new ArrayList<SpellDescriptor>();
 		area = new CircleShape();
@@ -29,15 +38,7 @@ public class Summon extends Verb {
 		area = new CircleShape();
 		area.setRadius(defaultRadius);
 		effectValue = Constants.FORCE_MEDIUM;
-	}
-	
-	@Override
-	public void topEvalEffect(){
-		toSummonTo = target.evalEffect();
-		for(Spell s: arguments){
-			summonCriteria.add(s.evalEffect());
-		}
-	}
+	}*/
 
 	@Override
 	public SpellDescriptor evalEffect() {

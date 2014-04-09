@@ -48,5 +48,7 @@ public class Utils {
 	public static float dist(PhysicalEntity a, PhysicalEntity b){
 		return a.body.getPosition().cpy().sub(b.body.getPosition()).len();
 	}
-	
+	public static void printError(String toPrint){
+		System.err.println(toPrint);
+	}
 }

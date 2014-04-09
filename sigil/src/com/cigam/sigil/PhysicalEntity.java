@@ -39,6 +39,8 @@ public abstract class PhysicalEntity extends Entity {
 		imbuedEntities  = new ArrayList<PhysicalEntity>();
 		initManaCapacity = mat.manaCapacityFactor*this.body.getMass();
 		totalManaCapacity = initManaCapacity;
+		//System.out.println(this);
+		//System.out.println(totalManaCapacity);
 		totalManaBound = 0;
 		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
 		//System.out.println("Mana stats for " + this + " are as follows: ");
@@ -100,12 +102,13 @@ public abstract class PhysicalEntity extends Entity {
 	
 	public void bind(PhysicalEntity p, float bindingValue){
 		totalManaCapacity += bindingValue;
-		if(totalManaCapacity < totalManaBound+p.totalManaWeight||initManaCapacity < (totalManaBound+p.totalManaWeight)/2){
+		if(totalManaCapacity > totalManaBound+p.totalManaWeight&&initManaCapacity*2 > (totalManaBound+p.totalManaWeight)){
 			totalManaBound+=p.totalManaWeight;
 			boundEntities.add(p);
 			p.setActive(false);
 			p.setVisible(false);
 		} else {
+			System.out.println(p.totalManaWeight + " was totalManaWeight and " + totalManaCapacity + " was totalManaCapacity");
 			this.kill();
 		}
 		System.out.println("Binding " + p + " into " + this);

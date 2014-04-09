@@ -23,13 +23,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.cigam.sigil.SigilContactListener;
@@ -41,15 +35,11 @@ import com.cigam.sigil.SigilGame;
 import com.cigam.sigil.SolidProjectile;
 import com.cigam.sigil.Player;
 import com.cigam.sigil.Utils;
+import com.cigam.sigil.magic.Parser;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
-import com.cigam.sigil.magic.Verb;
-import com.cigam.sigil.magic.targets.MaterialRune;
-import com.cigam.sigil.magic.targets.Self;
-import com.cigam.sigil.magic.verbs.Bind;
-import com.cigam.sigil.magic.verbs.Create;
-import com.cigam.sigil.magic.verbs.Summon;
+import com.cigam.sigil.magic.StringLexer;
 import com.cigam.sigil.materials.Fire;
 import com.cigam.sigil.materials.SelfMat;
 
@@ -65,12 +55,13 @@ public class AdventureScreen implements Screen {
 	OrthogonalTiledMapRenderer mapRenderer;
 
 	public ArrayList<Entity> entities;
+	public Parser parser;
     public ArrayList<Enemy> enemies;
     public ArrayList<SpellEffect> spells;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
 	public static int INIT_ENEMIES = 5;
-	public ArrayList<Verb> testSpells;
+	public ArrayList<Spell> testSpells;
 	private int dt;
 	private TiledMap map;
 	private Sprite background;
@@ -97,21 +88,24 @@ public class AdventureScreen implements Screen {
 		playerTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
 		player = new Player(game, new Sprite(playerTexture), this);
+		
+		testSpells = new ArrayList<Spell>();
+		
+		parser = new Parser(new StringLexer());
+		
+		ArrayList<String> spellsToTest = new ArrayList<String>();
+		spellsToTest.add("Create(fire)");
+		spellsToTest.add("Create(Summon(fire - - - self))");
+		spellsToTest.add("Bind(fire - - - self))");
 
-		testSpells = new ArrayList<Verb>();
-		CircleShape c = new CircleShape();
-		c.setRadius(10);
-		testSpells.add(new Create(player, this, new MaterialRune(new SpellDescriptor(new Fire(), 8, 1, null, null, 0, c, Vector2.Zero)), null));
-		ArrayList<Spell> args = new ArrayList<Spell>();
-		args.add(new MaterialRune(new SpellDescriptor(new Fire(), 8, 1, null, null, 0, c, Vector2.Zero)));
-		testSpells.add(new Create(new Summon(player, this, new Self(), (ArrayList<Spell>) args.clone()), null));
-		testSpells.add(new Bind(player, this, new Self(), (ArrayList<Spell>) args.clone()));
-
+		for(String s: spellsToTest){
+			testSpells.add(parser.parse(player, this, s));
+		}
 		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
 		//testSpell = new Summon()
 
-		for(Verb s: testSpells){
-			s.topEvalEffect();
+		for(Spell s: testSpells){
+			s.evalEffect();
 		}
 		
 		Utils.createBounds(world, 500, 500);
