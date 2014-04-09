@@ -26,6 +26,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.cigam.sigil.SigilContactFilter;
 import com.cigam.sigil.SigilContactListener;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.Enemy;
@@ -83,7 +84,7 @@ public class AdventureScreen implements Screen {
 
 		world = new World(new Vector2(), true);
 		world.setContactListener(new SigilContactListener());
-		
+		world.setContactFilter(new SigilContactFilter());
 		Texture playerTexture = new Texture(Gdx.files.internal("art/player.png"));
 		playerTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
@@ -210,6 +211,11 @@ public class AdventureScreen implements Screen {
             playerMoveVec.y--;
         if(in.isKeyPressed(Input.Keys.W))
             playerMoveVec.y++;
+        if(in.isKeyPressed(Input.Keys.Q))
+            player.plane = Constants.MATERIAL_PLANE;
+        if(in.isKeyPressed(Input.Keys.Z))
+            player.plane = Constants.ETHEREAL_PLANE;
+        
         
         playerMoveVec.nor();
 

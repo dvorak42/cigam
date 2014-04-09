@@ -36,5 +36,4 @@ public class Player extends PhysicalEntity {
 
 		body.setUserData(this);
 	}
-
 }

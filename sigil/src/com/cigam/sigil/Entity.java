@@ -11,11 +11,13 @@ public abstract class Entity {
 	boolean active = true;
 	public boolean visible = true;
 	public float elapsedTime;
+	public int plane;
 	
 	public Entity(SigilGame g, Sprite s) {
 		game = g;
 		sprite = s;
 		elapsedTime = 0.0f;
+		plane = 1;
 	}
 	
 	public boolean active() {
@@ -38,8 +40,10 @@ public abstract class Entity {
 		if(active) {
 			elapsedTime += Gdx.graphics.getDeltaTime();
 		}
-		
-		sprite.draw(game.batch);
+		if(plane == Constants.ETHEREAL_PLANE)
+			sprite.draw(game.batch, 0.5f);
+		else
+			sprite.draw(game.batch);
 	}
 	
 	public void setPosition(Vector2 pos) {

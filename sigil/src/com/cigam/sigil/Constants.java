@@ -35,4 +35,8 @@ public class Constants {
 	public static float FORCE_VERY_HIGH;
 	public static float BIND_EFFECT_VALUE = 50;
 	public static float CREATE_EFFECT_VALUE = 2;
+	
+	public static int MATERIAL_PLANE = 0x01;
+	public static int ETHEREAL_PLANE = 0x02;
+	public static int ALL_PLANES = 0xFF;
 }

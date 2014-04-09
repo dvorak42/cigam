@@ -184,7 +184,7 @@ public abstract class PhysicalEntity extends Entity {
 			sprite.setOrigin(modelOrigin.x, modelOrigin.y);
 			sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
 
-		super.render();
+			super.render();
 		}
 	}
 }
