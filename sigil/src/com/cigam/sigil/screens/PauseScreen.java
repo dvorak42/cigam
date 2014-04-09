@@ -38,6 +38,8 @@ public class PauseScreen implements Screen {
 	AssetManager assetManager;
 	Nifty nifty;
 
+	BatchRenderDevice batchRenderDevice;
+	
 	public PauseScreen(final SigilGame game, final Screen parent) {
 		this.game = game;
 		this.parent = parent;
@@ -48,31 +50,12 @@ public class PauseScreen implements Screen {
 		pauseImage = new Sprite(texture);
 		
 		assetManager = new AssetManager();
-		
-	    BatchRenderDevice batchRenderDevice = new BatchRenderDevice(GdxBatchRenderBackendFactory.create());
-	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
-		nifty.fromXml("data/sample.xml", "pause");
 	}
 
 	@Override
 	public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        game.gameScreen.paused = true;
-		game.gameScreen.render(delta);
-		game.gameScreen.paused = false;
-		assetManager.update();
-		Gdx.gl10.glPushMatrix();
-		Gdx.gl10.glRotatef(180, 0, 0, 1);
-		Gdx.gl10.glTranslatef(0, -Gdx.graphics.getHeight()/2, 0);
-		Gdx.gl10.glScalef(-1, 1, 1);
 		nifty.update();
-		nifty.render(false);
-		Gdx.gl10.glPopMatrix();
-		game.hudBatch.begin();
-		pauseImage.draw(game.hudBatch);
-		game.hudBatch.end();
-		
+		nifty.render(true);
 		
 		if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
 			game.setScreen(parent);
@@ -86,8 +69,9 @@ public class PauseScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
+		batchRenderDevice = new BatchRenderDevice(GdxBatchRenderBackendFactory.create());
+	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
+		nifty.fromXml("data/sample.xml", "pause");
 	}
 
 	@Override

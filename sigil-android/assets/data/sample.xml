@@ -2,10 +2,14 @@
 <nifty>
   <useStyles filename="nifty-default-styles.xml"/>
   <useControls filename="nifty-default-controls.xml"/>
-  <screen id="pause">
+  
+<screen id="pause">
     <layer childLayout="absolute" id="layer0">
-      <control font="aurulent-sans-16.fnt" height="50px" id="label0" name="label" text="Hello Worlds" width="100px" x="110" y="228"/>
-      <control childLayout="center" id="button0" label="Push Button" name="button" x="140" y="287"/>
+      
+      
+    <control backgroundImage="button/button.png" childLayout="center" height="100px" id="button0" imageMode="sprite-resize:100,23,0,2,96,2,2,2,96,2,19,2,96,2,2" label="New Spell" name="button" width="177px" x="347" y="421"/>
+      <control font="aurulent-sans-16.fnt" height="110px" id="label0" name="label" text="Create Spell Pane" width="160px" x="246" y="111"/>
+      <control id="textfield2" name="textfield" width="50%" x="121" y="291"/>
     </layer>
   </screen>
 </nifty>
