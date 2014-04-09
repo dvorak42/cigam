@@ -24,21 +24,6 @@ public class Bind extends Spell {
 		effectValue = Constants.BIND_EFFECT_VALUE;
 		argsNum = 4;
 	}
-	/*
-	public Bind(Spell target, ArrayList<Spell> args) {
-		super(target, args);
-		toBeBound = new ArrayList<SpellDescriptor>();
-		area = new CircleShape();
-		area.setRadius(defaultRadius);
-		effectValue = Constants.BIND_EFFECT_VALUE;
-	}
-	
-	public Bind(PhysicalEntity caster, AdventureScreen b, Target target, ArrayList<Spell> args) {
-		super(caster, b, target, args);
-		toBeBound = new ArrayList<SpellDescriptor>();
-		area = new CircleShape();
-		area.setRadius(defaultRadius);
-	}*/
 
 	@Override
 	public void cast() {

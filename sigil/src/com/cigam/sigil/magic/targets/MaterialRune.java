@@ -17,9 +17,6 @@ public class MaterialRune extends Spell {
 	}
 
 	@Override
-	public void cast() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void cast() {}
 
 }
