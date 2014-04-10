@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
+import com.cigam.sigil.magic.modifiers.*;
 import com.cigam.sigil.magic.targets.*;
 import com.cigam.sigil.magic.verbs.*;
 import com.cigam.sigil.materials.*;
@@ -44,6 +45,18 @@ public class Parser {
 				addRuneChild(new MaterialRune(new Fire()));
 			} else if(tok.getType() == Token.Type.SELF){
 				addRuneChild(new Self());
+			} else if(tok.getType() == Token.Type.AREA_TO_DURATION){
+				addRuneChild(new AreaToDuration());
+			} else if(tok.getType() == Token.Type.DURATION_TO_AREA){
+				addRuneChild(new DurationToArea());
+			} else if(tok.getType() == Token.Type.AREA_TO_EFFECT){
+				addRuneChild(new AreaToEffect());
+			} else if(tok.getType() == Token.Type.EFFECT_TO_AREA){
+				addRuneChild(new EffectToArea());
+			} else if(tok.getType() == Token.Type.DURATION_TO_EFFECT){
+				addRuneChild(new DurationToEffect());
+			} else if(tok.getType() == Token.Type.EFFECT_TO_DURATION){
+				addRuneChild(new EffectToDuration());
 			} else if(tok.getType() == Token.Type.EMPTY){
 				addRuneChild(new Empty());
 			}
