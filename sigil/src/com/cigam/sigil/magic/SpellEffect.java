@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.SigilGame;
@@ -15,17 +18,38 @@ public class SpellEffect extends PhysicalEntity {
 	public ArrayList<SpellDescriptor> arguments;
 	public float effectValue;
 	public float angle;
+	private SpellDescriptor sd;
 
 	public SpellEffect(SigilGame game, AdventureScreen a, Sprite sprite, SpellDescriptor s){
-		super(game, sprite, a, s);
+		super(game, sprite, a, s.mat);
 		this.effectValue = s.effectValue;
 		this.duration = s.duration;
-		this.body.setUserData(this);
 		this.target = s.target;
 		this.angle = s.angle;
 		this.arguments = s.arguments;
+		this.sd = s;
 		System.out.println("Initial duration is" + duration);
+		initEntity();
+	}
+	
+	@Override
+	public void initBody() {
+		BodyDef bd = new BodyDef();
+		if(sd != null)
+			bd.position.set(sd.position);
+		
+		bd.type = BodyType.DynamicBody;
+		body = world.createBody(bd);
+		
+		FixtureDef fd = new FixtureDef();
+		if(sd != null)
+			fd.shape = sd.shape;
+		fd.density = 0.1f;
+		fd.isSensor = true;
+		//TODO: Filter
 
+		body.createFixture(fd);
+		body.setUserData(this);
 	}
 
 	public void timeStep(float dt){

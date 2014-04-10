@@ -21,6 +21,7 @@ import com.cigam.sigil.screens.AdventureScreen;
 public abstract class PhysicalEntity extends Entity {
 	public AdventureScreen screen;
 	public Body body;
+	public World world;
 	public MaterialDescriptor mat;
 	public Vector2 modelOrigin = Vector2.Zero;
 	public ArrayList<PhysicalEntity> boundEntities;
@@ -30,74 +31,27 @@ public abstract class PhysicalEntity extends Entity {
 	public float initManaCapacity;
 	public float totalManaBound;
 	
-	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, MaterialDescriptor material) {
+	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen screen) {
 		super(g, s);
-		this.screen = a;
-		mat = material;
-		initBody(a.world);
+		this.screen = screen;
+		this.world = screen.world;
 		boundEntities = new ArrayList<PhysicalEntity>();
 		imbuedEntities  = new ArrayList<PhysicalEntity>();
-		initManaCapacity = mat.manaCapacityFactor*this.body.getMass();
-		totalManaCapacity = initManaCapacity;
-		//System.out.println(this);
-		//System.out.println(totalManaCapacity);
-		totalManaBound = 0;
-		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
-		//System.out.println("Mana stats for " + this + " are as follows: ");
-		//System.out.println("body mass is " + this.body.getMass());
-		//System.out.println("totalMana")
 	}
 	
-	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, SpellDescriptor sd) {
-		super(g, s);
-		this.screen = a;
-		mat = sd.mat;
-		initBody(a.world, sd);
-		boundEntities = new ArrayList<PhysicalEntity>();
-		imbuedEntities  = new ArrayList<PhysicalEntity>();
-		totalManaCapacity = mat.manaCapacityFactor*this.body.getMass();
+	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, MaterialDescriptor material) {
+		this(g, s, a);
+		mat = material;
+	}
+	
+	public abstract void initBody();
+	
+	public void initEntity() {
+		initBody();
+		initManaCapacity = mat.manaCapacityFactor*this.body.getMass();
+		totalManaCapacity = initManaCapacity;
+		totalManaBound = 0;
 		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
-		//System.out.println("Mana stats for " + this + " are as follows: ");
-		//System.out.println("body mass is " + this.body.getMass());
-		//TODO: proceduraly generate magic
-		//TODO: Rotation direction = Constants.Direction.
-	}
-	//This should never be called
-	public void initBody(World w) {
-		BodyDef bd = new BodyDef();
-		bd.type = BodyType.DynamicBody;
-
-		body = w.createBody(bd);
-		
-		FixtureDef fd = new FixtureDef();
-		fd.density = 0.1f; 
-		//TODO: filter
-		fd.isSensor = true;
-
-	    Utils.mainBodies.attachFixture(body, "fireball", fd, sprite.getWidth());
-	    modelOrigin = Utils.mainBodies.getOrigin("fireball", sprite.getWidth());
-
-	    body.setUserData(this);
-	}
-	//TODO: needs work translating sd into box2d. Also should live in a subclass
-	public void initBody(World w, SpellDescriptor sd) {
-		BodyDef bd = new BodyDef();
-		if(sd != null) {
-			//sSystem.out.println(sd.position);
-			bd.position.set(sd.position);
-		}
-		bd.type = BodyType.DynamicBody;
-		body = w.createBody(bd);
-		
-		FixtureDef fd = new FixtureDef();
-		if(sd != null)
-			fd.shape = sd.shape;
-		fd.density = 0.1f; 
-		//TODO: filter
-		fd.isSensor = true;
-
-		body.createFixture(fd);
-		body.setUserData(this);
 	}
 	
 	public void bind(PhysicalEntity p, float bindingValue){

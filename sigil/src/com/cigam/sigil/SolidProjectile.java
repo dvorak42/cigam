@@ -10,18 +10,23 @@ import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class SolidProjectile extends PhysicalEntity {
-    public SigilGame game;
     public Entity parent;
+	private float angle;
+	private float density;
+	private Vector2 initialVel;
     
     public SolidProjectile(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat, float angle, Entity parent, float density, Vector2 vel)//TODO move Body and fixture defs to constants 
     {
         super(eg, sprite, a, mat);
-        game = eg;
         this.parent = parent;
-        initBody(angle, density, vel);
+        this.angle = angle;
+        this.density = density;
+        this.initialVel = vel;
+        initEntity();
     }
     
-	public void initBody(float angle, float density, Vector2 vel) {
+    @Override
+	public void initBody() {
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;
 		bd.angle = angle;
@@ -37,6 +42,6 @@ public class SolidProjectile extends PhysicalEntity {
 	    modelOrigin = Utils.mainBodies.getOrigin("fireball", sprite.getWidth());
 
 		body.setUserData(this);
-		body.setLinearVelocity(vel);
+		body.setLinearVelocity(initialVel);
 	}
 }

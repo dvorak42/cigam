@@ -284,11 +284,14 @@ public class AdventureScreen implements Screen {
 		camera.update();
 
 		game.batch.setProjectionMatrix(camera.combined);
-		mapRenderer.setView(camera);
-		mapRenderer.render();
 		
 		game.batch.begin();
-		//background.draw(game.batch);
+		background.draw(game.batch);
+		game.batch.end();
+		
+		mapRenderer.setView(camera);
+		mapRenderer.render();
+		game.batch.begin();
 		for(Entity r : entities)
 			r.render();
 		game.batch.end();
@@ -300,8 +303,8 @@ public class AdventureScreen implements Screen {
 	public void runPhysics(float delta) {
 		debugRenderer.render(world, camera.combined);
 		if(!paused) {
-		world.step(1/30f, 6, 2);
-		world.clearForces();
+			world.step(1/30f, 6, 2);
+			world.clearForces();
 		}
 	}
 

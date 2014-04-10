@@ -17,9 +17,10 @@ public class Player extends PhysicalEntity {
 	//TODO: Don't need to pass material descriptor, should always be selfMat
 	public Player(SigilGame g, Sprite s,AdventureScreen a) {
 		super(g, s, a, new SelfMat());
-		initBody();
+		initEntity();
 	}
-	
+
+	@Override
 	public void initBody() {
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;

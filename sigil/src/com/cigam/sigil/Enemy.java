@@ -16,14 +16,12 @@ import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class Enemy extends PhysicalEntity {
-	public SigilGame game;
 	private AIBlackboard bb = new AIBlackboard();
 	private BasicEnemyBT bt = new BasicEnemyBT();
 	
 	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat, Player player) {
 		super(eg, sprite, a, mat);
-        game = eg;
-		initBody();
+		initEntity();
 		initBehaviorTree(player);
 	}
 	
@@ -36,7 +34,7 @@ public class Enemy extends PhysicalEntity {
         bb.actor = this;
 	}
 	
-	//TODO should have override flag?
+	@Override
 	public void initBody() {
 		Vector2 pos = new Vector2(300,300);
 
