@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -103,8 +104,8 @@ public class AdventureScreen implements Screen {
 		
 		Utils.createBounds(world, 500, 500);
 		
-		map = new TmxMapLoader().load("maps/testmap.tmx");
-		mapRenderer = new OrthogonalTiledMapRenderer(map, 1.0f/16, game.batch);
+		map = new TmxMapLoader().load("maps/level1.tmx");
+		mapRenderer = new OrthogonalTiledMapRenderer(map, 2, game.batch);
 		
 		Texture bTexture = new Texture(Gdx.files.internal("art/background.png"));
 		bTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -276,8 +277,7 @@ public class AdventureScreen implements Screen {
         
         fireDelay -= delta;
 		}        
-        runPhysics(delta);
-	
+
         Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		camera.position.set(player.getPosition(), 0);
@@ -286,9 +286,9 @@ public class AdventureScreen implements Screen {
 		game.batch.setProjectionMatrix(camera.combined);
 		mapRenderer.setView(camera);
 		mapRenderer.render();
-
+		
 		game.batch.begin();
-		background.draw(game.batch);
+		//background.draw(game.batch);
 		for(Entity r : entities)
 			r.render();
 		game.batch.end();
@@ -300,7 +300,7 @@ public class AdventureScreen implements Screen {
 	public void runPhysics(float delta) {
 		debugRenderer.render(world, camera.combined);
 		if(!paused) {
-		world.step(1/60f, 6, 2);
+		world.step(1/30f, 6, 2);
 		world.clearForces();
 		}
 	}
