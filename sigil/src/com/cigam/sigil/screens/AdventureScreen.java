@@ -52,7 +52,7 @@ public class AdventureScreen implements Screen {
     public ArrayList<SpellEffect> spells;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
-	public static int INIT_ENEMIES = 5;
+	public static int INIT_ENEMIES = 1;
 	public ArrayList<Spell> testSpells;
 	private int dt;
 	private TiledMap map;
@@ -89,7 +89,7 @@ public class AdventureScreen implements Screen {
 		spellsToTest.add("Create(fire)");
 		spellsToTest.add("Create(Summon(fire - - - self))");
 		spellsToTest.add("Bind(fire - - - self))");
-		spellsToTest.add("Summon(fire quicken quicken quicken self)");
+		//spellsToTest.add("Summon(fire quicken quicken quicken self)");
 
 		for(String s: spellsToTest){
 			testSpells.add(parser.parse(player, this, s));
@@ -119,7 +119,7 @@ public class AdventureScreen implements Screen {
         {
     		Texture enemyTexture = new Texture(Gdx.files.internal("art/enemy.png"));
     		enemyTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-        	Enemy enemy = new Enemy(game, new Sprite(enemyTexture), this, new SelfMat());
+        	Enemy enemy = new Enemy(game, new Sprite(enemyTexture), this, new SelfMat(), player);
             entities.add(enemy);
             enemies.add(enemy);
         }

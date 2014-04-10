@@ -1,5 +1,7 @@
 package com.cigam.sigil;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
@@ -7,20 +9,36 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.cigam.sigil.AI.AIBlackboard;
+import com.cigam.sigil.AI.AIConstants;
+import com.cigam.sigil.AI.BasicEnemyBT;
 import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class Enemy extends PhysicalEntity {
 	public SigilGame game;
+	private AIBlackboard bb = new AIBlackboard();
+	private BasicEnemyBT bt = new BasicEnemyBT();
 	
-	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat) {
+	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat, Player player) {
 		super(eg, sprite, a, mat);
         game = eg;
 		initBody();
+		initBehaviorTree(player);
 	}
+	
+	//Initializes the blackboard and behavior tree
+	public void initBehaviorTree(Player player){
+	    bt.createBehaviourTree(bb);
+        bb.player = player;
+        bb.agentHealth = AIConstants.MAX_HEALTH;
+        bb.playerHealth = 100;
+        bb.actor = this;
+	}
+	
 	//TODO should have override flag?
 	public void initBody() {
-		Vector2 pos = new Vector2((int)(Math.random()*500)+100, (int)(Math.random()*500)+100);
+		Vector2 pos = new Vector2(300,300);
 
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;
@@ -45,7 +63,18 @@ public class Enemy extends PhysicalEntity {
 		if(!active)
 			return;
 		
-		body.applyForceToCenter(Utils.angleToVector(body.getAngle()).scl((float) (Constants.ENEMY_MOVE_SPEED/60f)), true);
-		body.setAngularVelocity(MathUtils.random(MathUtils.PI * 2));
+		bt.updateBehaviorTree();
+		bb.distanceToPlayer = bb.player.getPosition().dst(getPosition());
+		
+		if (bb.movingToTarget){
+		    if (bb.moveTarget == bb.player){
+		        body.applyForceToCenter(bb.player.getPosition().sub(getPosition()).nor().scl((float)Constants.ENEMY_MOVE_SPEED/2), true);
+		    }
+		}
+		
+		if(Gdx.input.isKeyPressed(Input.Keys.M)){
+		    bb.agentHealth -= 50;
+		}
+
 	}
 }

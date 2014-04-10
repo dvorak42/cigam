@@ -13,13 +13,17 @@ public class Sequencer extends ParentTask{
     @Override
     protected void ChildSucceeded(){
         int currentTaskIndex = taskController.subtaskList.indexOf(taskController.currentTask);
+
         //if we reach the end of the subtask list, we have succeeded with the sequencer, so the task returns with success
-        if (currentTaskIndex == taskController.subtaskList.size() - 1){
+        if (currentTaskIndex >= taskController.subtaskList.size() - 1){
             taskController.finishWithSuccess();
         }
+        
         //otherwise we go to the next task
         currentTaskIndex ++;
+        //TODO FIGURE OUT WHERE THERE IS AN INDEX OUT OF BOUNDS ERROR HERE
         Task newTask = taskController.subtaskList.get(currentTaskIndex);
+        
         //fail early if the new task would fail on conditions
         if (!newTask.CheckConditions()){
             taskController.finishWithFailure();
