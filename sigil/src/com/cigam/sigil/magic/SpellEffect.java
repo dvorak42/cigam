@@ -2,6 +2,8 @@ package com.cigam.sigil.magic;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -28,6 +30,11 @@ public class SpellEffect extends PhysicalEntity {
 		this.angle = s.angle;
 		this.arguments = s.arguments;
 		this.sd = s;
+		System.out.println(this.mat.image);
+		if(mat.image!=null){
+			mat.image.setPosition(s.position.x, s.position.y);
+			mat.image.start();
+		}
 		System.out.println("Initial duration is" + duration);
 		initEntity();
 	}
@@ -57,8 +64,11 @@ public class SpellEffect extends PhysicalEntity {
 			duration -= dt;
 	}
 	
-	public void render() {
+	public void render(float delta) {
 		modelOrigin = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
-		super.render();
+		if(this.mat.image!=null&&this.active()&&this.visible){
+			mat.image.draw(screen.game.batch, delta);
+		}
+		super.render(delta);
 	}
 }

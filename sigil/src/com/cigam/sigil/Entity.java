@@ -36,9 +36,9 @@ public abstract class Entity {
 		visible = v;
 	}
 	
-	public void render() {
+	public void render(float delta) {
 		if(active) {
-			elapsedTime += Gdx.graphics.getDeltaTime();
+			elapsedTime += delta;
 		}
 		if(plane == Constants.ETHEREAL_PLANE)
 			sprite.draw(game.batch, 0.5f);

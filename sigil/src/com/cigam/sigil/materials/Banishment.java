@@ -3,6 +3,9 @@ package com.cigam.sigil.materials;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.PhysicalEntity;
@@ -18,12 +21,12 @@ public class Banishment extends MaterialDescriptor {
 	private ArrayList<PhysicalEntity> objectsInRange;
 	private MaterialDescriptor attractorType;
 	private float force;
-	//private ArrayList<MaterialDescriptor> attracteeType;
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToPush;
+	private SpellEffect manifestation;
 	
-	public Banishment(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float f) {
+	public Banishment(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float force) {
 		super();
-		force = f;
+		this.force = force;
 		entitiesToPush = new HashMap<MaterialDescriptor, PhysicalEntity>();
 		objectsInRange = new ArrayList<PhysicalEntity>();
 		//this.attracteeType = new ArrayList<MaterialDescriptor>();
@@ -32,7 +35,9 @@ public class Banishment extends MaterialDescriptor {
 			//this.attracteeType.add(s.mat);
 			entitiesToPush.put(s.mat, null);
 		}
-		this.init(null,0,0,0);
+		ParticleEffect p = new ParticleEffect();
+		p.load(Gdx.files.internal("art/particles/banish.p"), Gdx.files.internal("art/particles"));
+		this.init(p,0,0,0);
 	}
 
 	@Override
@@ -41,7 +46,6 @@ public class Banishment extends MaterialDescriptor {
 			objectsInRange.add(p);
 		}
 		//System.out.println("collided with " + p);
-		objectsInRange.add(p);
 		for(MaterialDescriptor m:entitiesToPush.keySet()){
 			if(p.mat.isSameMat(m)&&entitiesToPush.get(m)==null&&(!entitiesToPush.containsKey(p))){
 				entitiesToPush.put(m, p);
@@ -59,19 +63,37 @@ public class Banishment extends MaterialDescriptor {
 				getEntityToPush(m);
 			}
 		}
+		if(p == attractor){
+			attractor = null;
+		}
 	}
 	@Override
 	public void Update(){
 		if(attractor != null){
+			if(!attractor.active()){
+				attractor = null;
+			}
 			for(MaterialDescriptor m:entitiesToPush.keySet()){
 				if(entitiesToPush.get(m)!=null){
-					Vector2 dir = attractor.body.getPosition().sub(entitiesToPush.get(m).body.getPosition());
-					dir.nor();
-					entitiesToPush.get(m).body.applyForceToCenter(dir.scl(force), true);
+					if(entitiesToPush.get(m).active()){
+						Vector2 dir = attractor.body.getWorldCenter().sub(entitiesToPush.get(m).body.getWorldCenter());
+						dir.nor();
+						entitiesToPush.get(m).body.applyForceToCenter(dir.scl(force), true);
+					}
+					else {
+						entitiesToPush.put(m, null);
+						getEntityToPush(m);
+					}
 				}
 			}
+			if(this.image!=null){
+				//this.image.setPosition(attractor.getPosition().x, attractor.getPosition().y);
+			}
+		} else {
+			OnCreate(manifestation, null);
 		}
 	}
+	
 	private void getEntityToPush(MaterialDescriptor m){
 		for(PhysicalEntity p: objectsInRange){
 			if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
@@ -79,11 +101,12 @@ public class Banishment extends MaterialDescriptor {
 			}
 		}
 	}
+	
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
-		//System.out.println("spell centered on " + center);
 		attractor = null;
-		//System.out.println("objectsInRange are " + objectsInRange);
+		this.manifestation = manifestation;
+		System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){
 			float distance = Utils.dist(manifestation, p);
@@ -92,7 +115,7 @@ public class Banishment extends MaterialDescriptor {
 				attractor = p;
 			}
 		}
-		//System.out.println("Attractor is " + attractor);
+		System.out.println("Attractor is " + attractor);
 	}
 	@Override
 	public void onDestroy(AdventureScreen destroyedIn){
@@ -100,5 +123,4 @@ public class Banishment extends MaterialDescriptor {
 		entitiesToPush.clear();
 		objectsInRange.clear();
 	}
-
 }

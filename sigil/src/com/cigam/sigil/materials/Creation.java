@@ -1,5 +1,7 @@
 package com.cigam.sigil.materials;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.cigam.sigil.FindSpecificFixture;
@@ -16,6 +18,9 @@ public class Creation extends MaterialDescriptor {
 		super();
 		this.effectValue = effectValue;
 		this.init(null, 0, 0, 0);
+		ParticleEffect p = new ParticleEffect();
+		p.load(Gdx.files.internal("art/particles/create.p"), Gdx.files.internal("art/particles"));
+		this.init(p,0,0,0);
 	}
 
 

@@ -3,6 +3,9 @@ package com.cigam.sigil.materials;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.PhysicalEntity;
@@ -19,6 +22,7 @@ public class Summoning extends MaterialDescriptor {
 	private MaterialDescriptor attractorType;
 	private float force;
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToPush;
+	private SpellEffect manifestation;
 	
 	public Summoning(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float force) {
 		super();
@@ -31,7 +35,9 @@ public class Summoning extends MaterialDescriptor {
 			//this.attracteeType.add(s.mat);
 			entitiesToPush.put(s.mat, null);
 		}
-		this.init(null,0,0,0);
+		ParticleEffect p = new ParticleEffect();
+		p.load(Gdx.files.internal("art/particles/summon.p"), Gdx.files.internal("art/particles"));
+		this.init(p,0,0,0);
 	}
 
 	@Override
@@ -57,10 +63,16 @@ public class Summoning extends MaterialDescriptor {
 				getEntityToPush(m);
 			}
 		}
+		if(p == attractor){
+			attractor = null;
+		}
 	}
 	@Override
 	public void Update(){
 		if(attractor != null){
+			if(!attractor.active()){
+				attractor = null;
+			}
 			for(MaterialDescriptor m:entitiesToPush.keySet()){
 				if(entitiesToPush.get(m)!=null){
 					if(entitiesToPush.get(m).active()){
@@ -74,8 +86,14 @@ public class Summoning extends MaterialDescriptor {
 					}
 				}
 			}
+			if(this.image!=null){
+				//this.image.setPosition(attractor.getPosition().x, attractor.getPosition().y);
+			}
+		} else {
+			OnCreate(manifestation, null);
 		}
 	}
+	
 	private void getEntityToPush(MaterialDescriptor m){
 		for(PhysicalEntity p: objectsInRange){
 			if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
@@ -83,9 +101,11 @@ public class Summoning extends MaterialDescriptor {
 			}
 		}
 	}
+	
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
 		attractor = null;
+		this.manifestation = manifestation;
 		System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){

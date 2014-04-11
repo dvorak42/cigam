@@ -56,8 +56,8 @@ public class Enemy extends PhysicalEntity {
 	}
 
 	@Override
-	public void render() {
-		super.render();
+	public void render(float delta) {
+		super.render(delta);
 		if(!active)
 			return;
 		

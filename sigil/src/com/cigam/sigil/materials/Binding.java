@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.PhysicalEntity;
@@ -35,7 +37,9 @@ public class Binding extends MaterialDescriptor {
 		for(SpellDescriptor s: attracteeType){
 			entitiesToBind.put(s.mat, null);
 		}
-		this.init(null,0,0,0);
+		ParticleEffect p = new ParticleEffect();
+		p.load(Gdx.files.internal("art/particles/bind.p"), Gdx.files.internal("art/particles"));
+		this.init(p,0,0,0);
 	}
 
 	@Override

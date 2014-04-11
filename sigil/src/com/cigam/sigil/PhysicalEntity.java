@@ -130,7 +130,7 @@ public abstract class PhysicalEntity extends Entity {
 	}
 
 	@Override
-	public void render() {
+	public void render(float delta) {
 		if(this.visible){
 			Vector2 spritePos = body.getPosition().sub(modelOrigin);
 			
@@ -138,7 +138,7 @@ public abstract class PhysicalEntity extends Entity {
 			sprite.setOrigin(modelOrigin.x, modelOrigin.y);
 			sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
 
-			super.render();
+			super.render(delta);
 		}
 	}
 }

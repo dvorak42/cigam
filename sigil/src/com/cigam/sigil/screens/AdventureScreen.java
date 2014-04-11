@@ -38,7 +38,7 @@ import com.cigam.sigil.materials.SelfMat;
 
 public class AdventureScreen implements Screen {
 	public World world;
-	SigilGame game;
+	public SigilGame game;
 	Player player;
 	Stage stage;
 	Skin skin;
@@ -293,7 +293,7 @@ public class AdventureScreen implements Screen {
 		mapRenderer.render();
 		game.batch.begin();
 		for(Entity r : entities)
-			r.render();
+			r.render(delta);
 		game.batch.end();
 		
 		

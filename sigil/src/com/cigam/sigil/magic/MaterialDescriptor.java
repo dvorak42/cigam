@@ -2,13 +2,14 @@ package com.cigam.sigil.magic;
 
 import java.util.HashMap;
 
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.materials.*;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public abstract class MaterialDescriptor {
-	public Sprite image;
+	public ParticleEffect image;
 	public float manaDensityFactor;
 	public float manaCapacityFactor;
 	//TODO: animated base stats
@@ -22,7 +23,7 @@ public abstract class MaterialDescriptor {
 	
 	public MaterialDescriptor(){
 	}
-	public void init(Sprite img, float md, float mc, float h){
+	public void init(ParticleEffect img, float md, float mc, float h){
 			this.image = img;
 			this.manaDensityFactor = md;
 			this.manaCapacityFactor = mc;
