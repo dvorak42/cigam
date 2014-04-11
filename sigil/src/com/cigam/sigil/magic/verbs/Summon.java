@@ -24,21 +24,6 @@ public class Summon extends Spell {
 		effectValue = Constants.FORCE_MEDIUM;
 		argsNum = 4;
 	}
-	/*
-	public Summon(Spell target, ArrayList<Spell> args) {
-		super(target, args);
-		summonCriteria = new ArrayList<SpellDescriptor>();
-		area = new CircleShape();
-		area.setRadius(defaultRadius);
-		effectValue = Constants.FORCE_MEDIUM;
-	}
-	public Summon(PhysicalEntity c, AdventureScreen b, Target target, ArrayList<Spell> args) {
-		super(c, b, target, args);
-		summonCriteria = new ArrayList<SpellDescriptor>();
-		area = new CircleShape();
-		area.setRadius(defaultRadius);
-		effectValue = Constants.FORCE_MEDIUM;
-	}*/
 
 	@Override
 	public SpellDescriptor evalEffect() {
@@ -54,6 +39,6 @@ public class Summon extends Spell {
 	public void cast() {
 	//System.out.println(target.bd.position + " is caster location");
 	//System.out.println(bd.position.add(castDir.mul(this.fd.shape.m_radius)) + " is created object location");
-	screen.createSpellEffect(evalEffect());
+		screen.createSpellEffect(evalEffect());
 	}
 }

@@ -48,15 +48,15 @@ public class Parser {
 			} else if(tok.getType() == Token.Type.AREA_TO_DURATION){
 				addRuneChild(new AreaToDuration());
 			} else if(tok.getType() == Token.Type.DURATION_TO_AREA){
-				addRuneChild(new DurationToArea());
+				addModifier(new DurationToArea());
 			} else if(tok.getType() == Token.Type.AREA_TO_EFFECT){
-				addRuneChild(new AreaToEffect());
+				addModifier(new AreaToEffect());
 			} else if(tok.getType() == Token.Type.EFFECT_TO_AREA){
-				addRuneChild(new EffectToArea());
+				addModifier(new EffectToArea());
 			} else if(tok.getType() == Token.Type.DURATION_TO_EFFECT){
-				addRuneChild(new DurationToEffect());
+				addModifier(new DurationToEffect());
 			} else if(tok.getType() == Token.Type.EFFECT_TO_DURATION){
-				addRuneChild(new EffectToDuration());
+				addModifier(new EffectToDuration());
 			} else if(tok.getType() == Token.Type.EMPTY){
 				addRuneChild(new Empty());
 			}
@@ -68,10 +68,31 @@ public class Parser {
 		//System.out.println("adding " + s + " to " + getCurrent());
 		getCurrent().addChild(s);
 		stack.add(s);
+		System.out.println(stack);
 	}
 	private void addRuneChild(Spell t){
-		//System.out.println("adding " + t + " to " + getCurrent());
+		System.out.println("adding " + t + " to " + getCurrent());
 		getCurrent().addChild(t);
+		System.out.println(stack);
+	}
+	private void addModifier(Spell m){
+		Spell parent = stack.get(stack.size()-2);
+		//System.out.println(parent);
+		if(parent.target == getCurrent()){
+			parent.target = null;
+		} else {
+			for(int i = 0; i < parent.arguments.size(); i++){
+				if(parent.arguments.get(i)==getCurrent()){
+					parent.arguments.remove(i);
+				}
+			}
+		}
+		parent.addChild(m);
+		m.target = getCurrent();
+		m.target.addChild(new Empty());
+		stack.add(stack.size()-1, m);
+		System.out.println(stack);
+		
 	}
 	private Spell getCurrent(){
 		return stack.get(stack.size()-1);

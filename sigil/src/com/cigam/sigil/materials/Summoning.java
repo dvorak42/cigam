@@ -40,7 +40,6 @@ public class Summoning extends MaterialDescriptor {
 			objectsInRange.add(p);
 		}
 		//System.out.println("collided with " + p);
-		objectsInRange.add(p);
 		for(MaterialDescriptor m:entitiesToPush.keySet()){
 			if(p.mat.isSameMat(m)&&entitiesToPush.get(m)==null&&(!entitiesToPush.containsKey(p))){
 				entitiesToPush.put(m, p);
@@ -64,9 +63,15 @@ public class Summoning extends MaterialDescriptor {
 		if(attractor != null){
 			for(MaterialDescriptor m:entitiesToPush.keySet()){
 				if(entitiesToPush.get(m)!=null){
-					Vector2 dir = attractor.body.getPosition().sub(entitiesToPush.get(m).body.getPosition());
-					dir.nor();
-					entitiesToPush.get(m).body.applyForceToCenter(dir.scl(force), true);
+					if(entitiesToPush.get(m).active()){
+						Vector2 dir = attractor.body.getWorldCenter().sub(entitiesToPush.get(m).body.getWorldCenter());
+						dir.nor();
+						entitiesToPush.get(m).body.applyForceToCenter(dir.scl(force), true);
+					}
+					else {
+						entitiesToPush.put(m, null);
+						getEntityToPush(m);
+					}
 				}
 			}
 		}
@@ -80,9 +85,8 @@ public class Summoning extends MaterialDescriptor {
 	}
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
-		//System.out.println("spell centered on " + center);
 		attractor = null;
-		//System.out.println("objectsInRange are " + objectsInRange);
+		System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){
 			float distance = Utils.dist(manifestation, p);
@@ -91,7 +95,7 @@ public class Summoning extends MaterialDescriptor {
 				attractor = p;
 			}
 		}
-		//System.out.println("Attractor is " + attractor);
+		System.out.println("Attractor is " + attractor);
 	}
 	@Override
 	public void onDestroy(AdventureScreen destroyedIn){

@@ -15,6 +15,8 @@ public class DurationToArea extends Spell{
 	}
 
 	@Override
-	public void cast() {}
+	public void cast() {
+		screen.createSpellEffect(toModify);
+	}
 
 }

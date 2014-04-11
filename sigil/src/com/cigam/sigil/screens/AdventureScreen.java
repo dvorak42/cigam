@@ -87,10 +87,10 @@ public class AdventureScreen implements Screen {
 		parser = new Parser(new StringLexer());
 		
 		ArrayList<String> spellsToTest = new ArrayList<String>();
-		spellsToTest.add("Create(fire)");
+		/**/spellsToTest.add("Create(fire)");
 		spellsToTest.add("Create(Summon(fire - - - self))");
-		spellsToTest.add("Bind(fire - - - self))");
-		//spellsToTest.add("Summon(fire quicken quicken quicken self)");
+		spellsToTest.add("Bind(fire - - - self))");/**/
+		spellsToTest.add("Summon(fire expand slow slow self)");
 
 		for(String s: spellsToTest){
 			testSpells.add(parser.parse(player, this, s));
