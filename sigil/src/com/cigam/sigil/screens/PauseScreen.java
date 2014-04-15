@@ -51,10 +51,6 @@ public class PauseScreen implements Screen {
 		
 		assetManager = new AssetManager();
 	}
-	
-	public void SetSpell(){
-		System.out.println("test");
-	}
 
 	@Override
 	public void render(float delta) {
@@ -75,7 +71,7 @@ public class PauseScreen implements Screen {
 	public void show() {
 		batchRenderDevice = new BatchRenderDevice(GdxBatchRenderBackendFactory.create());
 	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
-		nifty.fromXml("data/sample.xml", "pause");
+	    nifty.fromXml("data/sample.xml", "pause", new PauseScreenController());
 	}
 
 	@Override
@@ -100,6 +96,11 @@ public class PauseScreen implements Screen {
 	public void dispose() {
 		// TODO Auto-generated method stub
 	}
+	
+	public void setSpell(){
+		System.out.println("test");
+	}
+
 }
 
 
