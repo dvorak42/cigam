@@ -23,14 +23,13 @@ public class Enemy extends PhysicalEntity {
 		super(eg, sprite, a, mat);
 		initEntity();
 		initBehaviorTree(player);
+		health = Constants.DEFAULT_HEALTH;
 	}
 	
 	//Initializes the blackboard and behavior tree
 	public void initBehaviorTree(Player player){
 	    bt.createBehaviourTree(bb);
         bb.player = player;
-        bb.agentHealth = AIConstants.MAX_HEALTH;
-        bb.playerHealth = 100;
         bb.actor = this;
 	}
 	
@@ -69,10 +68,5 @@ public class Enemy extends PhysicalEntity {
 		        body.applyForceToCenter(bb.player.getPosition().sub(getPosition()).nor().scl((float)Constants.ENEMY_MOVE_SPEED/2), true);
 		    }
 		}
-		
-		if(Gdx.input.isKeyPressed(Input.Keys.M)){
-		    bb.agentHealth -= 50;
-		}
-
 	}
 }

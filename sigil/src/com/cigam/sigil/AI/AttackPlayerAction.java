@@ -29,7 +29,7 @@ public class AttackPlayerAction extends LeafTask {
             taskController.finishWithFailure();
         }
         
-        if (blackboard.playerHealth <= 0){
+        if (blackboard.player.health <= 0){
             taskController.finishWithSuccess();
         }
     }

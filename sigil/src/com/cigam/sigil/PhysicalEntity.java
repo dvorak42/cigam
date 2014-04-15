@@ -87,7 +87,7 @@ public abstract class PhysicalEntity extends Entity {
 			unbind(boundEntities.get(i),0);
 		}
 		//System.out.println(screen.world);
-		screen.world.destroyBody(this.body);
+		screen.toDestroy.add(this);
 	}
 	public boolean active() {
 		active = body.isActive();
@@ -96,7 +96,6 @@ public abstract class PhysicalEntity extends Entity {
 	
 	public void setActive(boolean a) {
 		active = a;
-		body.setActive(active);
 	}
 
 	@Override

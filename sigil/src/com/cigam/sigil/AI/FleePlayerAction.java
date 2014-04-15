@@ -8,7 +8,7 @@ public class FleePlayerAction extends LeafTask {
 
     @Override
     public boolean CheckConditions() {
-        return blackboard.agentHealth <= AIConstants.HEALTH_NEEDED_TO_ATTACK;
+        return blackboard.actor.health <= AIConstants.HEALTH_NEEDED_TO_ATTACK;
     }
 
     @Override

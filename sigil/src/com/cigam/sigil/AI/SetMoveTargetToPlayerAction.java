@@ -8,7 +8,7 @@ public class SetMoveTargetToPlayerAction extends LeafTask {
 
     @Override
     public boolean CheckConditions() {
-        return blackboard.agentHealth >= AIConstants.HEALTH_NEEDED_TO_ATTACK;
+        return blackboard.actor.health >= AIConstants.HEALTH_NEEDED_TO_ATTACK;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class SetMoveTargetToPlayerAction extends LeafTask {
             taskController.finishWithSuccess();
         }
         
-        if (blackboard.agentHealth < AIConstants.HEALTH_NEEDED_TO_ATTACK){
+        if (blackboard.actor.health < AIConstants.HEALTH_NEEDED_TO_ATTACK){
             taskController.finishWithFailure();
         }
     }

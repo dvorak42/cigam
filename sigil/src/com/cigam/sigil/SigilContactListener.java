@@ -17,6 +17,8 @@ public class SigilContactListener implements ContactListener {
 				a.mat.OnCollide(b);
 				b.mat.OnCollide(a);
 			}
+			a.damage(50);
+			b.damage(50);
 		}
 	}
 

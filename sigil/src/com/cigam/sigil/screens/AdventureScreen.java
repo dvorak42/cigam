@@ -19,6 +19,8 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.utils.Array;
+import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.SigilContactFilter;
 import com.cigam.sigil.SigilContactListener;
 import com.cigam.sigil.Constants;
@@ -59,6 +61,7 @@ public class AdventureScreen implements Screen {
 	private TiledMap map;
 	private Sprite background;
 	public boolean paused = false;
+	public Array<PhysicalEntity> toDestroy;
 	
 	public AdventureScreen(SigilGame g)
 	{
@@ -66,6 +69,7 @@ public class AdventureScreen implements Screen {
 		entities = new ArrayList<Entity>();
 		enemies = new ArrayList<Enemy>();
 		spells = new ArrayList<SpellEffect>();
+		toDestroy = new Array<PhysicalEntity>();
 		debugRenderer = new Box2DDebugRenderer();
 		
 		float w = Gdx.graphics.getWidth();
@@ -306,6 +310,13 @@ public class AdventureScreen implements Screen {
 			world.step(1/30f, 6, 2);
 			world.clearForces();
 		}
+		
+		for(PhysicalEntity p : toDestroy) {
+			world.destroyBody(p.body);
+			p.body.setActive(false);
+			entities.remove(p);
+		}
+		toDestroy.clear();
 	}
 
 

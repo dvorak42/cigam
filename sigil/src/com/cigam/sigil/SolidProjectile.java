@@ -23,6 +23,7 @@ public class SolidProjectile extends PhysicalEntity {
         this.density = density;
         this.initialVel = vel;
         initEntity();
+        health = 1;
     }
     
     @Override

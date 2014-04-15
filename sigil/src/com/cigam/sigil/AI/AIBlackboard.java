@@ -21,9 +21,7 @@ public class AIBlackboard {
     public PhysicalEntity attackTarget;
     //set by actor, read by BT
     public float distanceToPlayer;
-    public float playerHealth;
     public PhysicalEntity player;
-    public float agentHealth;
     public float actorSpeed = (float) com.cigam.sigil.Constants.ENEMY_MOVE_SPEED;
     public PhysicalEntity actor;
 }

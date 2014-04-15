@@ -12,12 +12,14 @@ public abstract class Entity {
 	public boolean visible = true;
 	public float elapsedTime;
 	public int plane;
+	public float health;
 	
 	public Entity(SigilGame g, Sprite s) {
 		game = g;
 		sprite = s;
 		elapsedTime = 0.0f;
 		plane = 1;
+		health = -1;
 	}
 	
 	public boolean active() {
@@ -68,6 +70,21 @@ public abstract class Entity {
 
 	public float getRotation() {
 		return sprite.getRotation();
+	}
+	
+	public void damage(float dmg) {
+		if(health != -1) {
+			health -= dmg;
+			if(health < 0) {
+				kill();
+			}
+		}
+	}
+	
+	public void heal(float heal) {
+		if(health != -1) {
+			health += heal;
+		}
 	}
 	        
 	public void kill()

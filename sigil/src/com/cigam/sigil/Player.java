@@ -18,6 +18,7 @@ public class Player extends PhysicalEntity {
 	public Player(SigilGame g, Sprite s,AdventureScreen a) {
 		super(g, s, a, new SelfMat());
 		initEntity();
+		health = Constants.DEFAULT_HEALTH;
 	}
 
 	@Override

@@ -24,8 +24,7 @@ public class IdleAboutAction extends LeafTask {
 
     @Override
     public void DoTask() {
-        blackboard.agentHealth += AIConstants.HEALTH_REGEN_PER_FRAME;
-        blackboard.agentHealth = Math.min(blackboard.agentHealth, AIConstants.MAX_HEALTH);
+        blackboard.actor.heal(AIConstants.HEALTH_REGEN_PER_FRAME);
         if (blackboard.distanceToPlayer <= AIConstants.ENGAGE_RANGE){
             taskController.finishWithFailure();
         }
