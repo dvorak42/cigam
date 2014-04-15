@@ -7,7 +7,9 @@
     <layer childLayout="absolute" id="layer0">
       
       
-    <control backgroundImage="button/button.png" childLayout="center" height="100px" id="button0" imageMode="sprite-resize:100,23,0,2,96,2,2,2,96,2,19,2,96,2,2" label="New Spell" name="button" width="177px" x="347" y="421"/>
+    <control backgroundImage="button/button.png" childLayout="center" height="100px" id="button0" imageMode="sprite-resize:100,23,0,2,96,2,2,2,96,2,19,2,96,2,2" label="New Spell" name="button" width="177px" x="347" y="421">
+      <interact onClick="SetSpell()"/>
+    </control>
       <control font="aurulent-sans-16.fnt" height="110px" id="label0" name="label" text="Create Spell Pane" width="160px" x="246" y="111"/>
       <control id="textfield2" name="textfield" width="50%" x="121" y="291"/>
     </layer>

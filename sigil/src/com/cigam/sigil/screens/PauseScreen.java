@@ -51,6 +51,10 @@ public class PauseScreen implements Screen {
 		
 		assetManager = new AssetManager();
 	}
+	
+	public void SetSpell(){
+		System.out.println("test");
+	}
 
 	@Override
 	public void render(float delta) {
@@ -97,3 +101,5 @@ public class PauseScreen implements Screen {
 		// TODO Auto-generated method stub
 	}
 }
+
+
