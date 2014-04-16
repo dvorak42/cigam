@@ -168,7 +168,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\sigil-android\assets\art\particles\firelarge1.png
+firelarge1.png
 
 
 1
@@ -312,4 +312,4 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\sigil-android\assets\art\particles\firelarge1.png
+firelarge1.png

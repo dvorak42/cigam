@@ -82,10 +82,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 0.0
-lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
+lowMin: 0.0000
+lowMax: 0.0000
+highMin: 0.0000
+highMax: 0.0000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -142,8 +142,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 1
 - Delay -
@@ -229,10 +228,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 22.5
-lowMax: 22.5
-highMin: 22.5
-highMax: 22.5
+lowMin: 11.2500
+lowMax: 11.2500
+highMin: 11.2500
+highMax: 11.2500
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -289,8 +288,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 2
 - Delay -
@@ -376,10 +374,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 45
-lowMax: 45
-highMin: 45
-highMax: 45
+lowMin: 22.5000
+lowMax: 22.5000
+highMin: 22.5000
+highMax: 22.5000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -436,8 +434,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 3
 - Delay -
@@ -523,10 +520,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 67.5
-lowMax: 67.5
-highMin: 67.5
-highMax: 67.5
+lowMin: 33.7500
+lowMax: 33.7500
+highMin: 33.7500
+highMax: 33.7500
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -583,8 +580,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 4
 - Delay -
@@ -670,10 +666,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 90
-lowMax: 90
-highMin: 90
-highMax: 90
+lowMin: 45.0000
+lowMax: 45.0000
+highMin: 45.0000
+highMax: 45.0000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -730,8 +726,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 5
 - Delay -
@@ -817,10 +812,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 112.5
-lowMax: 112.5
-highMin: 112.5
-highMax: 112.5
+lowMin: 56.2500
+lowMax: 56.2500
+highMin: 56.2500
+highMax: 56.2500
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -877,8 +872,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 6
 - Delay -
@@ -964,10 +958,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 135
-lowMax: 135
-highMin: 135
-highMax: 135
+lowMin: 67.5000
+lowMax: 67.5000
+highMin: 67.5000
+highMax: 67.5000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1024,8 +1018,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 7
 - Delay -
@@ -1111,10 +1104,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 157.5
-lowMax: 157.5
-highMin: 157.5
-highMax: 157.5
+lowMin: 78.7500
+lowMax: 78.7500
+highMin: 78.7500
+highMax: 78.7500
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1171,8 +1164,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 8
 - Delay -
@@ -1258,10 +1250,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 180
-lowMax: 180
-highMin: 180
-highMax: 180
+lowMin: 90.0000
+lowMax: 90.0000
+highMin: 90.0000
+highMax: 90.0000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1318,8 +1310,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 9
 - Delay -
@@ -1405,10 +1396,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 202.5
-lowMax: 202.5
-highMin: 202.5
-highMax: 202.5
+lowMin: 101.2500
+lowMax: 101.2500
+highMin: 101.2500
+highMax: 101.2500
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1465,8 +1456,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 10
 - Delay -
@@ -1552,10 +1542,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 225
-lowMax: 225
-highMin: 225
-highMax: 225
+lowMin: 112.5000
+lowMax: 112.5000
+highMin: 112.5000
+highMax: 112.5000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1612,8 +1602,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 11
 - Delay -
@@ -1699,10 +1688,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 247.5
-lowMax: 247.5
-highMin: 247.5
-highMax: 247.5
+lowMin: 123.7500
+lowMax: 123.7500
+highMin: 123.7500
+highMax: 123.7500
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1759,8 +1748,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 12
 - Delay -
@@ -1846,10 +1834,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 270
-lowMax: 270
-highMin: 270
-highMax: 270
+lowMin: 135.0000
+lowMax: 135.0000
+highMin: 135.0000
+highMax: 135.0000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1906,8 +1894,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 13
 - Delay -
@@ -1993,10 +1980,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 292.5
-lowMax: 292.5
-highMin: 292.5
-highMax: 292.5
+lowMin: 146.2500
+lowMax: 146.2500
+highMin: 146.2500
+highMax: 146.2500
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2053,8 +2040,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 14
 - Delay -
@@ -2140,10 +2126,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 315
-lowMax: 315
-highMin: 315
-highMax: 315
+lowMin: 157.5000
+lowMax: 157.5000
+highMin: 157.5000
+highMax: 157.5000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2200,8 +2186,7 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
-
+firelarge1.png
 
 15
 - Delay -
@@ -2287,10 +2272,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 337.5
-lowMax: 337.5
-highMin: 337.5
-highMax: 337.5
+lowMin: 168.7500
+lowMax: 168.7500
+highMin: 168.7500
+highMax: 168.7500
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2347,4 +2332,2340 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-C:\Users\Eli Davis\Documents\Eli's Stuff\School Stuff\Junior Stuff\CMS.617\cigam\firelarge1.png
+firelarge1.png
+
+16
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 180.0000
+lowMax: 180.0000
+highMin: 180.0000
+highMax: 180.0000
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+17
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 191.2500
+lowMax: 191.2500
+highMin: 191.2500
+highMax: 191.2500
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+18
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 202.5000
+lowMax: 202.5000
+highMin: 202.5000
+highMax: 202.5000
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+19
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 213.7500
+lowMax: 213.7500
+highMin: 213.7500
+highMax: 213.7500
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+20
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 225.0000
+lowMax: 225.0000
+highMin: 225.0000
+highMax: 225.0000
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+21
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 236.2500
+lowMax: 236.2500
+highMin: 236.2500
+highMax: 236.2500
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+22
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 247.5000
+lowMax: 247.5000
+highMin: 247.5000
+highMax: 247.5000
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+23
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 258.7500
+lowMax: 258.7500
+highMin: 258.7500
+highMax: 258.7500
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+24
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 270.0000
+lowMax: 270.0000
+highMin: 270.0000
+highMax: 270.0000
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+25
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 281.2500
+lowMax: 281.2500
+highMin: 281.2500
+highMax: 281.2500
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+26
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 292.5000
+lowMax: 292.5000
+highMin: 292.5000
+highMax: 292.5000
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+27
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 303.7500
+lowMax: 303.7500
+highMin: 303.7500
+highMax: 303.7500
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+28
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 315.0000
+lowMax: 315.0000
+highMin: 315.0000
+highMax: 315.0000
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+29
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 326.2500
+lowMax: 326.2500
+highMin: 326.2500
+highMax: 326.2500
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+30
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 337.5000
+lowMax: 337.5000
+highMin: 337.5000
+highMax: 337.5000
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
+
+31
+- Delay -
+active: false
+- Duration - 
+lowMin: 3000.0
+lowMax: 3000.0
+- Count - 
+min: 0
+max: 200
+- Emission - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 7.0
+highMax: 7.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Life - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 3000.0
+highMax: 4500.0
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.92365754
+timeline2: 1.0
+- Life Offset - 
+active: false
+- X Offset - 
+active: false
+- Y Offset - 
+active: false
+- Spawn Shape - 
+shape: point
+- Spawn Width - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Spawn Height - 
+lowMin: 200.0
+lowMax: 200.0
+highMin: 200.0
+highMax: 200.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Scale - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 16.0
+highMax: 16.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Velocity - 
+active: true
+lowMin: 40.0
+lowMax: 40.0
+highMin: 80.0
+highMax: 100.0
+relative: false
+scalingCount: 1
+scaling0: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Angle - 
+active: true
+lowMin: 348.7500
+lowMax: 348.7500
+highMin: 348.7500
+highMax: 348.7500
+relative: false
+scalingCount: 3
+scaling0: 1.0
+scaling1: 1.0
+scaling2: 1.0
+timelineCount: 3
+timeline0: 0.0
+timeline1: 0.999
+timeline2: 1.0
+- Rotation - 
+active: true
+lowMin: 0.0
+lowMax: 0.0
+highMin: 0.0
+highMax: 360.0
+relative: true
+scalingCount: 2
+scaling0: 0.50980395
+scaling1: 0.50980395
+timelineCount: 2
+timeline0: 0.0
+timeline1: 1.0
+- Wind - 
+active: false
+- Gravity - 
+active: false
+- Tint - 
+colorsCount: 3
+colors0: 1.0
+colors1: 1.0
+colors2: 1.0
+timelineCount: 1
+timeline0: 0.0
+- Transparency - 
+lowMin: 0.0
+lowMax: 0.0
+highMin: 1.0
+highMax: 1.0
+relative: false
+scalingCount: 4
+scaling0: 0.0
+scaling1: 1.0
+scaling2: 0.75
+scaling3: 0.0
+timelineCount: 4
+timeline0: 0.0
+timeline1: 0.2
+timeline2: 0.8
+timeline3: 1.0
+- Options - 
+attached: true
+continuous: true
+aligned: false
+additive: true
+behind: false
+- Image Path -
+firelarge1.png
