@@ -16,11 +16,25 @@ import com.badlogic.gdx.graphics.Pixmap.Format;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader.Inputs;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Vector2;
 import com.cigam.sigil.SigilGame;
+import com.cigam.sigil.magic.modifiers.AreaToDuration;
+import com.cigam.sigil.magic.modifiers.AreaToEffect;
+import com.cigam.sigil.magic.modifiers.DurationToArea;
+import com.cigam.sigil.magic.modifiers.DurationToEffect;
+import com.cigam.sigil.magic.modifiers.EffectToArea;
+import com.cigam.sigil.magic.modifiers.EffectToDuration;
+import com.cigam.sigil.magic.targets.Self;
+import com.cigam.sigil.magic.verbs.Banish;
+import com.cigam.sigil.magic.verbs.Bind;
+import com.cigam.sigil.magic.verbs.Create;
+import com.cigam.sigil.magic.verbs.Summon;
+import com.cigam.sigil.materials.Fire;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.gdx.input.GdxInputSystem;
@@ -40,16 +54,35 @@ public class PauseScreen implements Screen {
 
 	BatchRenderDevice batchRenderDevice;
 	
+	ShapeRenderer sr;
+	OrthographicCamera camera;
+	
+	RadialMenu rMenu;
+	boolean wasDown = false;
+	
 	public PauseScreen(final SigilGame game, final Screen parent) {
 		this.game = game;
 		this.parent = parent;
 		Texture texture = new Texture(Gdx.files.internal("art/screens/pause.png"));
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-
 		
 		pauseImage = new Sprite(texture);
 		
 		assetManager = new AssetManager();
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		rMenu = new RadialMenu();
+		rMenu.color = Color.BLACK;
+		RadialMenu verbMenu = new RadialMenu(new Banish(), new Bind(), new Create(), new Summon());
+		verbMenu.color = Color.BLUE;
+		RadialMenu targetMenu = new RadialMenu(new Fire(), new Self());
+		targetMenu.color = Color.RED;
+		RadialMenu modifierMenu = new RadialMenu(new AreaToDuration(), new AreaToEffect(), new DurationToArea(), new DurationToEffect(), new EffectToArea(), new EffectToDuration());
+		modifierMenu.color = Color.GREEN;
+		rMenu.addMenu(verbMenu);
+		rMenu.addMenu(targetMenu);
+		rMenu.addMenu(modifierMenu);
+		
 	}
 
 	@Override
@@ -59,12 +92,26 @@ public class PauseScreen implements Screen {
 		
 		if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
 			game.setScreen(parent);
+		
+		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT))
+			wasDown = true;
+		if(wasDown && !Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+			wasDown = false;
+			System.out.println(rMenu.getValue());
+		}
+		rMenu.update(new Vector2(Gdx.input.getX(), Gdx.input.getY()), Gdx.input.isButtonPressed(Input.Buttons.LEFT));
+		
+		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		camera.update(true);
+		sr.setProjectionMatrix(camera.combined);
+		sr.begin(ShapeType.Filled);
+		rMenu.render(sr);
+		sr.end();
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	}
 
 	@Override
@@ -72,6 +119,7 @@ public class PauseScreen implements Screen {
 		batchRenderDevice = new BatchRenderDevice(GdxBatchRenderBackendFactory.create());
 	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
 	    nifty.fromXml("UI/gui_final.xml", "pause", new PauseScreenController());
+	    sr = new ShapeRenderer();
 	}
 
 	@Override
