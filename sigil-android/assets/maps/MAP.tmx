@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="200" height="28" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="tilea1" tilewidth="16" tileheight="16">
+  <image source="../../../../tilea1.png" width="512" height="384"/>
+ </tileset>
+ <tileset firstgid="769" name="tilee" tilewidth="16" tileheight="16">
+  <image source="../../../../tilee.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="1793" name="tilea4" tilewidth="16" tileheight="16">
+  <image source="../../../../tilea4.png" width="512" height="480"/>
+ </tileset>
+ <layer name="Background" width="200" height="28">
+  <data encoding="base64" compression="zlib">
+   eJztlE1Ow0AMhaPuyBHKKTkK1202iAUiSusZ/4zth3gLK3Tw+Psa+fXxtm0PFosl1nF6nmt0Zulfxcp0RPIiU55R7flqd6XP0q5r+1fczXZE8CITy/N8JpU009K/4m62I4IXmboZFZ6vMqPNq7V/xd1sRxQvMuWerj259ljzZMm49262Y7cXmeN8dHlmPmcefD7vAJn4nlYnqV8zK/LOkPqjHDJ1d6s9D8NMT3+EVeWI4EWmzOzeE2uPtv8I3K1yRPEiUz5D2hPm4+/szX9hdnpqZ3r7I6wqRwQvMmVmp2dk362VvYcfN0wvjw+Z+fmIel7Pz89zSWcrWJZ7nze/Y6aX5t2RKf8fxVP6e+ZtyaSVVeXY7UWmzOzeE89MqUY7WL2HFkckLzJr8zHbEWlmRnlZ2Y7dXmTKvd17osncNVuj34eRl4VV6YjgReY8H1WelsyN+ldlcTY727Hbi0z5vGtPRvm89ml+C1azKhxRvcic5yPT0zpz1jfKRoSV7YjiRaY9H9l7EtmNWXXvodYRyYvM+nxEdkPr7fk+XtZqRzQvMjE8IzO1zM58rHgvHV5kYnhqZv58rsiHxMp2RPMiE8NTe1aRjxEr2xHZi8w+T+YD34vMPs/7vm3v++/ZfZfveb7797xzeVgVjmheZD4zOzy/ANeFEFE=
+  </data>
+ </layer>
+ <layer name="Walls" width="200" height="28">
+  <data encoding="base64" compression="zlib">
+   eJztmVtKw1AUReNn7wwEtU7DV+s0Wp2Ij4l0aD4mItjWI/cnlBxLrkm4+7AWHE7JR1YpN3tDupk1zbvNx4j702aDB4+NGl8TfOfvGR482aPGaRrfcZbw4MkeNaLlE566PWpEyyc8dXvUiJZPeOr2qBEtn6b0bO3zzmbf2vuOa8d2c/K3Z2zoD59o+TSl59zO9YXNvLXnHdeO7Uvn+Yj4u6kRLZ+m9NzZuV7aLP657+mPaomWT3h83pz/7ugPn2j5hMfHewboDx/FHMRThvcM0B8+ijmIpwz6oz+KOYinDPqjP4o5iKcM+qM/ijmIpwz6oz+KOYinDO9e9IePYg7iKePKzue1zU1r/w794aOYg3jKWNm91jYPB5v+8FHMQTxlPNn5fLZ5Odj0h49iDuLR9aihmIN4dD1qRMsnPHV71IiWT3jq9qgRLZ/w1O1Ro+ud+ND7NuHBkz1qeO/Eh9yPCQ+e7FHDeyc+5H5NePBkjxo/YIcQXw==
+  </data>
+ </layer>
+ <layer name="Enemies" width="200" height="28">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAAAAAAAAAAAAD8GVeAAAE=
+  </data>
+ </layer>
+ <layer name="Lava" width="200" height="28">
+  <data encoding="base64" compression="zlib">
+   eJzt1ckJA0EMRcFm8r94ScRLIl4S8XgCGCXwbwJDuwqEzg0t3hjAPzksYxxrTg37vPz6NdDrUn/6VnNt2Hf3wWQe9adfNc+G7T6YTWc/3u6DyegHZPoBmX5Aph+Q6Qdk+gGZfkCmH5DpB2T6AZl+QKYfkOkHZPoBmX5Aph+Q6Qdk+gFZZz/cB7P51J/+1qwNe3MfAADQZgc0hnCA
+  </data>
+ </layer>
+ <layer name="Bridges" width="200" height="28">
+  <data encoding="base64" compression="zlib">
+   eJzt2TEKgDAMBdDSW3sPB72no4NuLYVIwUXMe0uGzOFDfikAwKyzlrLUNoFmu29ir20CjfyAmPwAAAAAAPievtd4Ow+/X36m7zXeztV9gB4dHujRISY/ICY/yCz6T417yCj6T417yGi274CMZvsOyEheQExeAAAA8GUXZGVK/Q==
+  </data>
+ </layer>
+ <layer name="Macguffins" width="200" height="28">
+  <data encoding="base64" compression="zlib">
+   eJzt2bENgEAMA0BLmR02gU1gE5iDH4HiFSR010dO4VRJAIBuSyVrfb0FzDej29uY390HP6TbAAAAAADAG0clZ8NPoSsHZrpGZ++G3nblAAAAAAAAAAAAAADQ4wEO1guJ
+  </data>
+ </layer>
+ <layer name="Monsters" width="200" height="28">
+  <data encoding="base64" compression="zlib">
+   eJzt07EVABAUBMFLfnl0Qv8hXfCYqWCTTQAAAAAAAAAAAAAAAAAAAOA/rZJepyvgTmO/Mf0BAAAAADxgAZNSAYs=
+  </data>
+ </layer>
+</map>
