@@ -33,6 +33,15 @@ public class SpellEffect extends PhysicalEntity {
 		System.out.println(this.mat.image);
 		if(mat.image!=null){
 			mat.image.setPosition(s.position.x, s.position.y);
+			float scale = (float)Math.sqrt(sd.shape.getRadius() / 100 * 2);
+			for(ParticleEmitter pe : mat.image.getEmitters()) {
+				pe.getXOffsetValue().setLow(pe.getXOffsetValue().getLowMin() * scale * scale / 2);
+				pe.getYOffsetValue().setLow(pe.getYOffsetValue().getLowMin() * scale * scale / 2);
+				pe.getVelocity().setLowMin(pe.getVelocity().getLowMin() * scale);
+				pe.getVelocity().setLowMax(pe.getVelocity().getLowMax() * scale);
+				pe.getVelocity().setHighMin(pe.getVelocity().getHighMin() * scale);
+				pe.getVelocity().setHighMax(pe.getVelocity().getHighMax() * scale);
+			}
 			mat.image.start();
 		}
 		System.out.println("Initial duration is" + duration);

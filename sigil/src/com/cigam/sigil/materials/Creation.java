@@ -19,6 +19,7 @@ public class Creation extends MaterialDescriptor {
 		this.effectValue = effectValue;
 		this.init(null, 0, 0, 0);
 		ParticleEffect p = new ParticleEffect();
+		System.out.println("NEW");
 		p.load(Gdx.files.internal("art/particles/create.p"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);
 	}

@@ -39,6 +39,6 @@ public class Summon extends Spell {
 	public void cast() {
 	//System.out.println(target.bd.position + " is caster location");
 	//System.out.println(bd.position.add(castDir.mul(this.fd.shape.m_radius)) + " is created object location");
-		screen.createSpellEffect(evalEffect());
+	screen.createSpellEffect(evalEffect());
 	}
 }

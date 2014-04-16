@@ -75,7 +75,7 @@ public class Summoning extends MaterialDescriptor {
 			}
 			for(MaterialDescriptor m:entitiesToPush.keySet()){
 				if(entitiesToPush.get(m)!=null){
-					if(entitiesToPush.get(m).active()){
+					if(entitiesToPush.get(m).active() && entitiesToPush.get(m).body != null){
 						Vector2 dir = attractor.body.getWorldCenter().sub(entitiesToPush.get(m).body.getWorldCenter());
 						dir.nor();
 						entitiesToPush.get(m).body.applyForceToCenter(dir.scl(force), true);
@@ -96,6 +96,8 @@ public class Summoning extends MaterialDescriptor {
 	
 	private void getEntityToPush(MaterialDescriptor m){
 		for(PhysicalEntity p: objectsInRange){
+			if(p.body == null || entitiesToPush.get(m) == null || entitiesToPush.get(m).body == null)
+				continue;
 			if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
 				entitiesToPush.put(m, p);
 			}

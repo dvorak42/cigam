@@ -17,8 +17,10 @@ public class SigilContactListener implements ContactListener {
 				a.mat.OnCollide(b);
 				b.mat.OnCollide(a);
 			}
-			a.damage(50);
-			b.damage(50);
+			if(a instanceof SolidProjectile || b instanceof SolidProjectile) {
+				a.damage(50);
+				b.damage(50);
+			}
 		}
 	}
 

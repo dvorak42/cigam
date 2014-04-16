@@ -15,6 +15,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -103,7 +104,7 @@ public class AdventureScreen implements Screen {
 		//testSpell = new Summon()
 
 		for(Spell s: testSpells){
-			s.evalEffect();
+			//s.evalEffect();
 		}
 		
 		Utils.createBounds(world, 500, 500);
@@ -311,10 +312,15 @@ public class AdventureScreen implements Screen {
 			world.clearForces();
 		}
 		
+		Array<Body> bodies = new Array<Body>();
+		world.getBodies(bodies);
+		
 		for(PhysicalEntity p : toDestroy) {
-			world.destroyBody(p.body);
-			p.body.setActive(false);
-			entities.remove(p);
+			if(bodies.contains(p.body, true)) {
+				world.destroyBody(p.body);
+				p.body.setActive(false);
+				entities.remove(p);
+			}
 		}
 		toDestroy.clear();
 	}
