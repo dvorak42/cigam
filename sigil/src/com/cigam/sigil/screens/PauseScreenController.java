@@ -13,7 +13,7 @@ public class PauseScreenController implements ScreenController {
 
 	@Override
 	public void onStartScreen() {
-		// TODO Auto-generated method stub
+		System.out.println("started");
 
 	}
 
@@ -22,9 +22,11 @@ public class PauseScreenController implements ScreenController {
 		// TODO Auto-generated method stub
 
 	}
-
 	
 	public void setSpell(){
 		System.out.println("test");
+	}
+	public void test(){
+		System.out.println();
 	}
 }

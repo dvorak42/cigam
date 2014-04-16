@@ -4,7 +4,39 @@
   <useControls filename="nifty-default-controls.xml"/>
   
 <screen id="pause" controller="com.cigam.sigil.screens.PauseScreenController">
-    <layer childLayout="absolute" id="layer0">
+<layer childLayout="absolute" id="layer1">
+		<panel childLayout="vertical" height="100%" id="Modifiers" padding="1px" style="nifty-panel-simple" width="25%" x="0" y="0">
+			<panel childLayout="center" height="7%" id="Mod_TopText" style="nifty-panel-simple" width="100%" x="82" y="177">
+				<control font="aurulent-sans-16.fnt" height="50px" id="Mod_Title" name="label" text="Modifiers" width="100px" x="25%" y="0"/>
+			</panel>
+    		<panel childLayout="horizontal" height="93%" id="Mod_Runes" style="nifty-panel-simple" width="100%">
+          		<panel childLayout="Vertical" height="100%" id="panel58" style="nifty-panel-simple" width="100%" x="83" y="185">
+	            	<panel align="center" childLayout="center" height="17%" id="panel59" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button41" label="button15" name="button" width="75%" x="47" y="43"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="17%" id="panel60" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button42" label="button16" name="button" width="75%"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="17%" id="panel61" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button43" label="button17" name="button" width="75%"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="17%" id="panel62" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button44" label="button18" name="button" width="75%"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="17%" id="panel63" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button45" label="button19" name="button" width="75%"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="17%" id="panel64" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button46" label="button20" name="button" width="75%"/>
+	            	</panel>
+          		</panel>
+			</panel>
+		</panel>
+		</layer>
+		
+    
+    
+    <!--<layer childLayout="absolute" id="layer0">
       
       
     <control backgroundImage="button/button.png" childLayout="center" height="100px" id="button0" imageMode="sprite-resize:100,23,0,2,96,2,2,2,96,2,19,2,96,2,2" label="New Spell" name="button" width="177px" x="347" y="421">
@@ -14,6 +46,6 @@
       <control id="textfield2" name="textfield" width="50%" x="121" y="291">
       <interact onClick="setSpell()"/>
       </control>
-      </layer>
+      </layer>-->
   </screen>
 </nifty>

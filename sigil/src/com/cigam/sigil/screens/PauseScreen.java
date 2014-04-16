@@ -71,7 +71,7 @@ public class PauseScreen implements Screen {
 	public void show() {
 		batchRenderDevice = new BatchRenderDevice(GdxBatchRenderBackendFactory.create());
 	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
-	    nifty.fromXml("data/sample.xml", "pause", new PauseScreenController());
+	    nifty.fromXml("UI/gui_final.xml", "pause", new PauseScreenController());
 	}
 
 	@Override

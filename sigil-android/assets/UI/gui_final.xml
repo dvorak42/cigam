@@ -1,97 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <nifty>
-  <useStyles filename="nifty-default-styles.xml"/>
-  <useControls filename="nifty-default-controls.xml"/>
-  
+	<useStyles filename="nifty-default-styles.xml"/>
+	<useControls filename="nifty-default-controls.xml"/>
 
-
-
-
-
-<screen id="0">
-    <layer childLayout="absolute" id="layer1">
-      <panel childLayout="vertical" height="100%" id="Modifiers" padding="1px" style="nifty-panel-simple" width="25%" x="0" y="0">
-        <panel childLayout="center" height="7%" id="Mod_TopText" style="nifty-panel-simple" width="100%" x="82" y="177">
-		<control font="rainy_wind.fnt" height="50px" id="Mod_Title" name="label" text="Modifiers" width="100px" x="25%" y="0"/>
+<screen id="pause" controller="com.cigam.sigil.screens.PauseScreenController">
+	<layer childLayout="absolute" id="layer1">
+		<panel childLayout="vertical" height="100%" id="Modifiers" padding="1px" style="nifty-panel-simple" width="25%" x="0" y="0">
+			<panel childLayout="center" height="7%" id="Mod_TopText" style="nifty-panel-simple" width="100%" x="82" y="177">
+				<control font="aurulent-sans-16.fnt" height="50px" id="Mod_Title" name="label" text="Modifiers" width="100px" x="25%" y="0"/>
+			</panel>
+    		<panel childLayout="horizontal" height="93%" id="Mod_Runes" style="nifty-panel-simple" width="100%">
+          		<panel childLayout="Vertical" height="100%" id="panel58" style="nifty-panel-simple" width="100%" x="83" y="185">
+	            	<panel align="center" childLayout="center" height="17%" id="panel59" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button41" label="button15" name="button" width="75%" x="47" y="43">
+	              		</control>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="17%" id="panel60" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button42" label="button16" name="button" width="75%"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="16%" id="panel61" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button43" label="button17" name="button" width="75%"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="17%" id="panel62" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button44" label="button18" name="button" width="75%"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="17%" id="panel63" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button45" label="button19" name="button" width="75%"/>
+	            	</panel>
+	            	<panel align="center" childLayout="center" height="16%" id="panel64" style="nifty-panel-simple" width="50%">
+	              		<control childLayout="center" height="75%" id="button46" label="button20" name="button" width="75%"/>
+	            	</panel>
+          		</panel>
+			</panel>
 		</panel>
-      <panel childLayout="horizontal" height="93%" id="Mod_Runes" style="nifty-panel-simple" width="100%">
-          <panel childLayout="Vertical" height="100%" id="panel58" style="nifty-panel-simple" width="100%" x="83" y="185">
-            <panel align="center" childLayout="center" height="16.6666%" id="panel59" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button41" label="button15" name="button" width="75%" x="47" y="43"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.6666%" id="panel60" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button42" label="button16" name="button" width="75%"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.6666%" id="panel61" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button43" label="button17" name="button" width="75%"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.6666%" id="panel62" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button44" label="button18" name="button" width="75%"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.666%" id="panel63" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button45" label="button19" name="button" width="75%"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.666%" id="panel64" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button46" label="button20" name="button" width="75%"/>
-            </panel>
-          </panel>
-        </panel>
-      </panel>
-      <panel childLayout="vertical" height="30%" id="Verbs" padding="1px" style="nifty-panel-simple" width="50%" x="25%" y="70%">
-		<panel childLayout="center" height="23.333%" id="Verbs_TopText" style="nifty-panel-simple" width="100%" x="201" y="88">
-		    <control font="aurulent-sans-16.fnt" height="50px" id="Verb_Title" name="label" text="Verbs" width="100px" x="40%" y="0"/>
+		<panel childLayout="vertical" height="30%" id="Verbs" padding="1px" style="nifty-panel-simple" width="50%" x="25%" y="70%">
+			<panel childLayout="center" height="23%" id="Verbs_TopText" style="nifty-panel-simple" width="100%" x="201" y="88">
+			    <control font="aurulent-sans-16.fnt" height="50px" id="Verb_Title" name="label" text="Verbs" width="100px" x="40%" y="0"/>
+			</panel>
+	        <panel childLayout="horizontal" height="77%" id="Verbs_Runes" padding="0" style="nifty-panel-simple" width="100%">
+	        	<panel childLayout="center" height="50%" id="Create_panel" style="nifty-panel-simple" valign="center" width="20%">
+	            	<control childLayout="center" height="100%" id="Create_Button" label="Create" name="button" width="80%" controller = "com.cigam.sigil.screens.ButtonController">
+	            		<interact onClick="clicked()" />
+	            	</control>    
+	          	</panel>
+	          	<panel childLayout="center" height="50%" id="Summon_panel" style="nifty-panel-simple" valign="center" width="20%">
+	            	<control childLayout="center" height="100%" id="Summon_Button" label="Summon" name="button" width="80%" controller = "com.cigam.sigil.screens.ButtonController">
+	            		<interact onClick="clicked()" />
+	            	</control>
+	          	</panel>
+	          	<panel childLayout="center" height="50%" id="Banish_Panel" padding="5px" style="nifty-panel-simple" valign="center" width="20%">
+	            	<control childLayout="center" height="100%" id="Banish_Rune" label="Banish" name="button" width="80%" controller = "com.cigam.sigil.screens.ButtonController">
+	            		<interact onClick="clicked()" />
+	            	</control>
+	          	</panel>
+	          	<panel childLayout="center" height="50%" id="Bind_Panel" style="nifty-panel-simple" valign="center" width="20%">
+	            	<control childLayout="center" height="100%" id="Bind_Button" label="Bind" name="button" width="80%" x="41" y="27" controller = "com.cigam.sigil.screens.ButtonController">
+	            		<interact onClick="clicked()" />
+	            	</control>
+	          	</panel>
+	          	<panel childLayout="center" height="50%" id="Modify_panel" style="nifty-panel-simple" valign="center" width="20%">
+	            	<control childLayout="center" height="100%" id="Modify_button" label="Modify" name="button" width="80%" x="39" y="34" controller = "com.cigam.sigil.screens.ButtonController">
+	            		<interact onClick="clicked()" />	
+	            	</control>
+	          	</panel>
+	        </panel>
 		</panel>
-        <panel childLayout="horizontal" height="76.66667%" id="Verbs_Runes" padding="0" style="nifty-panel-simple" width="100%">
-		
-		
-        <panel childLayout="center" height="50%" id="Create_panel" style="nifty-panel-simple" valign="center" width="20%">
-            <control childLayout="center" height="100%" id="Create_Button" label="Create" name="button" width="80%"/>
-          </panel>
-          <panel childLayout="center" height="50%" id="Summon_panel" style="nifty-panel-simple" valign="center" width="20%">
-            <control childLayout="center" height="100%" id="Summon_Button" label="Summon" name="button" width="80%"/>
-          </panel>
-          <panel childLayout="center" height="50%" id="Banish_Panel" padding="5px" style="nifty-panel-simple" valign="center" width="20%">
-            <control childLayout="center" height="100%" id="Banish_Rune" label="Banish" name="button" width="80%"/>
-          </panel>
-          <panel childLayout="center" height="50%" id="Bind_Panel" style="nifty-panel-simple" valign="center" width="20%">
-            <control childLayout="center" height="100%" id="Bind_Button" label="Bind" name="button" width="80%" x="41" y="27"/>
-          </panel>
-          <panel childLayout="center" height="50%" id="Modify_panel" style="nifty-panel-simple" valign="center" width="20%">
-            <control childLayout="center" height="100%" id="Modify_button" label="Modify" name="button" width="80%" x="39" y="34"/>
-          </panel>
-        </panel>
-      </panel>
-      <panel childLayout="vertical" height="100%" id="Targets" style="nifty-panel-simple" width="25%" x="75%" y="0">
-		<panel childLayout="center" height="7%" id="Tar_TopText" style="nifty-panel-simple" width="100%" x="114" y="137">
-		    <control font="aurulent-sans-16.fnt" height="50px" id="Tar_Title" name="label" text="Targets" width="100px" x="25%" y="0"/>
+		<panel childLayout="vertical" height="100%" id="Targets" style="nifty-panel-simple" width="25%" x="75%" y="0">
+			<panel childLayout="center" height="7%" id="Tar_TopText" style="nifty-panel-simple" width="100%" x="114" y="137">
+				<control font="aurulent-sans-16.fnt" height="50px" id="Tar_Title" name="label" text="Targets" width="100px" x="25%" y="0"/>
+			</panel>
+	        <panel childLayout="horizontal" height="93%" id="Tar_Runes" style="nifty-panel-simple" width="100%">
+				<panel childLayout="vertical" height="100%" id="panel65" style="nifty-panel-simple" width="100%" x="54" y="150">
+		            <panel align="center" childLayout="center" height="17%" id="panel66" style="nifty-panel-simple" width="50%">
+		              	<control childLayout="center" height="75%" id="button47" label="button36" name="button" width="75%"/>
+		            </panel>
+		            <panel align="center" childLayout="center" height="17%" id="panel67" style="nifty-panel-simple" width="50%">
+		              	<control childLayout="center" height="75%" id="button48" label="button37" name="button" width="75%"/>
+		            </panel>
+		            <panel align="center" childLayout="center" height="16%" id="panel68" style="nifty-panel-simple" width="50%">
+		              	<control childLayout="center" height="75%" id="button49" label="button38" name="button" width="75%"/>
+		            </panel>
+		            <panel align="center" childLayout="center" height="17%" id="panel69" style="nifty-panel-simple" width="50%">
+		            	<control childLayout="center" height="75%" id="button50" label="button39" name="button" width="75%"/>
+		            </panel>
+		            <panel align="center" childLayout="center" height="17%" id="panel70" style="nifty-panel-simple" width="50%"/>
+		            <panel align="center" childLayout="center" height="16%" id="panel71" style="nifty-panel-simple" width="50%"/>
+				</panel>
+			</panel>
 		</panel>
-        <panel childLayout="horizontal" height="93%" id="Tar_Runes" style="nifty-panel-simple" width="100%">
-		<panel childLayout="vertical" height="100%" id="panel65" style="nifty-panel-simple" width="100%" x="54" y="150">
-            <panel align="center" childLayout="center" height="16.6666%" id="panel66" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button47" label="button36" name="button" width="75%"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.6666%" id="panel67" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button48" label="button37" name="button" width="75%"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.6666%" id="panel68" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button49" label="button38" name="button" width="75%"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.6666%" id="panel69" style="nifty-panel-simple" width="50%">
-              <control childLayout="center" height="75%" id="button50" label="button39" name="button" width="75%"/>
-            </panel>
-            <panel align="center" childLayout="center" height="16.6666%" id="panel70" style="nifty-panel-simple" width="50%"/>
-            <panel align="center" childLayout="center" height="16.6666%" id="panel71" style="nifty-panel-simple" width="50%"/>
-          </panel>
-        </panel>
-      </panel>
-    <panel childLayout="vertical" height="70%" id="CreateSpellHere" style="nifty-panel-simple" width="50%" x="25%" y="0">
-		<panel childLayout="center" height="10%" id="CSH_TopText" style="nifty-panel-simple" width="100%" x="272" y="126">
-		    <control font="aurulent-sans-16.fnt" height="50px" id="CSH_Title" name="label" text="Create Spell Here" width="180" x="26%" y="0"/>
+	    <panel childLayout="vertical" height="70%" id="CreateSpellHere" style="nifty-panel-simple" width="50%" x="25%" y="0">
+			<panel childLayout="center" height="10%" id="CSH_TopText" style="nifty-panel-simple" width="100%" x="272" y="126">
+			    <control font="aurulent-sans-16.fnt" height="50px" id="CSH_Title" name="label" text="Create Spell Here" width="180" x="26%" y="0"/>
+			</panel>
+	        <panel backgroundImage="panel/nifty-panel-simple.png" childLayout="center" height="90%" id="Spell_creation" style="nifty-panel-simple" width="100%">
+	        	<control childLayout="center" height="100%" id="button52" label="button52" name="button" width="100%"/>
+	        </panel>
 		</panel>
-        <panel backgroundImage="panel/nifty-panel-simple.png" childLayout="center" height="90%" id="Spell_creation" style="nifty-panel-simple" width="100%">
-          <control childLayout="center" height="100%" id="button52" label="button52" name="button" width="100%"/>
-        </panel>
-      </panel>
-    </layer>
-  </screen>
+	</layer>
+</screen>
 </nifty>
