@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<nifty>
+  <useStyles filename="nifty-default-styles.xml"/>
+  <useControls filename="nifty-default-controls.xml"/>
+  <screen height="550px" id="screen4" width="550px" x="0" y="0">
+    <layer childLayout="absolute" id="layer1">
+      <panel childLayout="vertical" height="100%" id="panel91" style="nifty-panel-simple" width="100%" x="0" y="0">
+        <panel childLayout="horizontal" height="33.33333%" id="panel92" style="nifty-panel-simple" width="100%" x="431" y="241">
+          <panel childLayout="center" height="100%" id="panel95" style="nifty-panel-simple" width="24%">
+            <control childLayout="center" height="90%" id="button64" label="button64" name="button" width="90%" x="94" y="93"/>
+          </panel>
+          <panel childLayout="absolute" height="100%" id="panel96" style="nifty-panel-simple" width="52%"/>
+          <panel childLayout="center" height="100%" id="panel97" style="nifty-panel-simple" width="24%">
+            <control childLayout="center" height="90%" id="button65" label="button65" name="button" width="90%" x="102" y="78"/>
+          </panel>
+        </panel>
+        <panel childLayout="center" height="33.333333%" id="panel93" style="nifty-panel-simple" width="100%">
+          <control childLayout="center" height="90%" id="button66" label="button66" name="button" width="21.6%"/>
+        </panel>
+        <panel childLayout="horizontal" height="33.333334%" id="panel94" style="nifty-panel-simple" width="100%">
+          <panel childLayout="center" height="100%" id="panel100" style="nifty-panel-simple" width="24%">
+            <control childLayout="center" height="90%" id="button67" label="button67" name="button" width="90%" x="113" y="85"/>
+          </panel>
+          <panel childLayout="absolute" height="100%" id="panel101" style="nifty-panel-simple" width="52%"/>
+          <panel childLayout="center" height="100%" id="panel102" style="nifty-panel-simple" width="24%">
+            <control childLayout="center" height="90%" id="button68" label="button68" name="button" width="90%"/>
+          </panel>
+        </panel>
+      </panel>
+    </layer>
+  </screen>
+</nifty>
