@@ -1,11 +1,17 @@
 package com.cigam.sigil.screens;
 
+import com.cigam.sigil.magic.Spell;
+
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
+import de.lessvoid.nifty.elements.Element;
+
 
 public class PauseScreenController implements ScreenController {
-
+	public Element recentlyClicked;
+	public Spell spell;
+	
 	@Override
 	public void bind(Nifty nifty, Screen screen) {
 		// TODO Auto-generated method stub
@@ -23,10 +29,7 @@ public class PauseScreenController implements ScreenController {
 
 	}
 	
-	public void setSpell(){
-		System.out.println("test");
-	}
-	public void test(){
-		System.out.println();
+	public void clicked(){
+		System.out.println(recentlyClicked);
 	}
 }

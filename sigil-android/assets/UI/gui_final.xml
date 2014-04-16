@@ -93,7 +93,9 @@
 			    <control font="aurulent-sans-16.fnt" height="50px" id="CSH_Title" name="label" text="Create Spell Here" width="180" x="26%" y="0"/>
 			</panel>
 	        <panel backgroundImage="panel/nifty-panel-simple.png" childLayout="center" height="90%" id="Spell_creation" style="nifty-panel-simple" width="100%">
-	        	<control childLayout="center" height="100%" id="button52" label="button52" name="button" width="100%"/>
+	        	<control childLayout="center" height="100%" id="button52" label="button52" name="button" width="100%" controller = "com.cigam.sigil.screens.CenterController">
+	            		<interact onRelease="released()" />	
+	            	</control>
 	        </panel>
 		</panel>
 	</layer>
