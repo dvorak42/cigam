@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="200" height="28" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="tilea1" tilewidth="16" tileheight="16">
-  <image source="../../../../tilea1.png" width="512" height="384"/>
+  <image source="tilea1.png" width="512" height="384"/>
  </tileset>
  <tileset firstgid="769" name="tilee" tilewidth="16" tileheight="16">
-  <image source="../../../../tilee.png" width="512" height="512"/>
+  <image source="tilee.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="1793" name="tilea4" tilewidth="16" tileheight="16">
-  <image source="../../../../tilea4.png" width="512" height="480"/>
+  <image source="tilea4.png" width="512" height="480"/>
  </tileset>
  <layer name="Background" width="200" height="28">
   <data encoding="base64" compression="zlib">
