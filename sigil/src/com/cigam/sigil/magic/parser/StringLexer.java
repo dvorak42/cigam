@@ -1,7 +1,9 @@
-package com.cigam.sigil.magic;
+package com.cigam.sigil.magic.parser;
 
 import java.util.*;
 import java.util.regex.*;
+
+import com.cigam.sigil.magic.parser.Token.Type;
 
 public class StringLexer {
 	private ArrayList<Token> output = new ArrayList<Token>();

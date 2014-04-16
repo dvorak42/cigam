@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.cigam.sigil.magic.Material;
 import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
@@ -22,73 +23,31 @@ public abstract class PhysicalEntity extends Entity {
 	public AdventureScreen screen;
 	public Body body;
 	public World world;
-	public MaterialDescriptor mat;
 	public Vector2 modelOrigin = Vector2.Zero;
-	public ArrayList<PhysicalEntity> boundEntities;
-	public ArrayList<PhysicalEntity> imbuedEntities;
-	public float totalManaCapacity;
-	public float totalManaWeight;
-	public float initManaCapacity;
-	public float totalManaBound;
+	public MaterialDescriptor mDesc;
+	public Material material;
 	
 	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen screen) {
 		super(g, s);
 		this.screen = screen;
 		this.world = screen.world;
-		boundEntities = new ArrayList<PhysicalEntity>();
-		imbuedEntities  = new ArrayList<PhysicalEntity>();
 	}
 	
 	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, MaterialDescriptor material) {
 		this(g, s, a);
-		mat = material;
+		mDesc = material;
 	}
 	
 	public abstract void initBody();
 	
 	public void initEntity() {
 		initBody();
-		initManaCapacity = mat.manaCapacityFactor*this.body.getMass();
-		totalManaCapacity = initManaCapacity;
-		totalManaBound = 0;
-		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
+		material = mDesc.createMaterial(body);
 	}
-	
-	public void bind(PhysicalEntity p, float bindingValue){
-		totalManaCapacity += bindingValue;
-		if(totalManaCapacity > totalManaBound+p.totalManaWeight&&initManaCapacity*2 > (totalManaBound+p.totalManaWeight)){
-			totalManaBound+=p.totalManaWeight;
-			boundEntities.add(p);
-			p.setActive(false);
-			p.setVisible(false);
-		} else {
-			System.out.println(p.totalManaWeight + " was totalManaWeight and " + totalManaCapacity + " was totalManaCapacity");
-			this.kill();
-		}
-		System.out.println("Binding " + p + " into " + this);
-		System.out.println("totalManaCapacity is now " + totalManaCapacity);
-	}
-	
-	public void unbind(PhysicalEntity p, float bindingValue){
-		if(boundEntities.contains(p)){
-			boundEntities.remove(p);
-			p.body.setTransform(this.body.getWorldCenter(), p.body.getAngle());
-			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
-			p.setActive(true);
-			p.setVisible(true);
-			totalManaCapacity -= bindingValue;
-			totalManaBound-= p.totalManaWeight;
-		}
-	}
+
 	public void kill(){
 		this.setActive(false);
-		this.mat.onDestroy(screen);
-		for(int i = 0; i < boundEntities.size(); i++){
-			unbind(boundEntities.get(i),0);
-		}
-		//System.out.println(screen.world);
-		if(!screen.toDestroy.contains(this, true))
-			screen.toDestroy.add(this);
+		screen.destroy(this);
 	}
 	public boolean active() {
 		active = body.isActive();

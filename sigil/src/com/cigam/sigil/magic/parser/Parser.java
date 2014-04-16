@@ -1,10 +1,12 @@
-package com.cigam.sigil.magic;
+package com.cigam.sigil.magic.parser;
 
 import java.util.ArrayList;
 
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
+import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.modifiers.*;
+import com.cigam.sigil.magic.parser.Token.Type;
 import com.cigam.sigil.magic.targets.*;
 import com.cigam.sigil.magic.verbs.*;
 import com.cigam.sigil.materials.*;
@@ -21,8 +23,8 @@ public class Parser {
 		stack = new ArrayList<Spell>();
 	}
 	
-	public Spell parse(PhysicalEntity caster, AdventureScreen s, String input){
-		output = new TopLevelSpell(caster, s);
+	public Spell parse(String input){
+		output = new Spell();
 		stack.add(output);
 		lex.lex(input);
 		while(lex.hasNext()){

@@ -15,7 +15,7 @@ public class Player extends PhysicalEntity {
 	
 	//World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds
 	//TODO: Don't need to pass material descriptor, should always be selfMat
-	public Player(SigilGame g, Sprite s,AdventureScreen a) {
+	public Player(SigilGame g, Sprite s, AdventureScreen a) {
 		super(g, s, a, new SelfMat());
 		initEntity();
 		health = Constants.DEFAULT_HEALTH;
@@ -34,7 +34,6 @@ public class Player extends PhysicalEntity {
 		fd.density = 0.1f; 
 	    Utils.mainBodies.attachFixture(body, "player", fd, sprite.getWidth());
 	    modelOrigin = Utils.mainBodies.getOrigin("player", sprite.getWidth());
-		//TODO: filter
 
 		body.setUserData(this);
 	}

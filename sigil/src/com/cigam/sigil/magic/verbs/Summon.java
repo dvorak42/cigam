@@ -19,7 +19,7 @@ public class Summon extends Spell {
 	public Summon(){
 		super();
 		summonCriteria = new ArrayList<SpellDescriptor>();
-		area = new CircleShape();
+		area = new CircleShape();	
 		area.setRadius(defaultRadius);
 		effectValue = Constants.FORCE_MEDIUM;
 		argsNum = 4;

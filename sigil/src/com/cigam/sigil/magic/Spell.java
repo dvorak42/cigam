@@ -1,64 +1,41 @@
 package com.cigam.sigil.magic;
-import java.util.ArrayList;
 
-import com.badlogic.gdx.physics.box2d.Shape;
-import com.cigam.sigil.PhysicalEntity;
-import com.cigam.sigil.Utils;
+import com.badlogic.gdx.utils.Array;
 import com.cigam.sigil.screens.AdventureScreen;
 
-public abstract class Spell {
-	public Spell target; // Only array or target allowed
-	public ArrayList<Spell> arguments; //Only array or target allowed
-	public float duration;
-	public Shape area;
-	public float castDelay;
-	public AdventureScreen screen;
-	public PhysicalEntity caster;
-	public float effectValue;
-	public Spell parent;
-	public int argsNum;
+public class Spell {
+	public Array<Spell> arguments;
+	
+	private int cost;
+	private float duration;
+	public float radius;
 
-	public Spell(){
-		arguments = new ArrayList<Spell>();
-		target = null;
-	};
-	/*
-	public Spell(Spell target, ArrayList<Spell> args){
-		this.caster = target.caster;
-		this.screen = target.screen;
-		this.target = target;
-		target.parent = this;
-		this.arguments = args;
-		this.castDelay = 0.3f+target.castDelay;
+	public Spell() {
+		arguments = new Array<Spell>();
 	}
-	public Spell(PhysicalEntity caster, AdventureScreen b, Target target,  ArrayList<Spell> args){
-		this.caster = caster;
-		this.screen = b;
-		this.target = target;
-		this.arguments = args;
-		this.castDelay = 0.3f;
-	}*/
-	
-	public void addChild(Spell child){
-		if (argsNum>arguments.size()){
-			arguments.add(child);
-		} else if(target==null){
-			target = child;
-		} else {
-			Utils.printError("Expected " + (argsNum+1) + " total inputs to " + this + " but got an extra");
-			Utils.printError(arguments.size()+"");
-			Utils.printError(child.toString());
-			return;
-		}
-		child.caster = this.caster;
-		child.screen = this.screen;
-		child.parent = this;
-		child.castDelay += this.castDelay;
+
+	public SpellDescriptor effect() {
+		if(arguments.size > 0)
+			return arguments.get(0).effect();
+		return null;
 	}
 	
-	public boolean isDone(){
-		return (target!=null&&argsNum==arguments.size());
+	public void cast(AdventureScreen s) {
+		
 	}
-	public abstract SpellDescriptor evalEffect();
-	public abstract void cast();
+	
+	public int cost() {
+		int total = cost;
+		for(Spell s : arguments)
+			total += s.cost();
+		return total;
+	}
+	
+	public float duration() {
+		return duration;
+	}
+	
+	public float radius() {
+		return radius;
+	}
 }

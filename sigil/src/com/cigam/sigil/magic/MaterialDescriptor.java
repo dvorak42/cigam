@@ -19,7 +19,6 @@ public abstract class MaterialDescriptor {
 	//TODO: material cohesion
 	public float hardness;
 	public float density;
-	public Die effectValue;
 	
 	public MaterialDescriptor(){
 	}
@@ -28,7 +27,6 @@ public abstract class MaterialDescriptor {
 			this.manaDensityFactor = md;
 			this.manaCapacityFactor = mc;
 			this.hardness = h;	
-			this.effectValue = new Die(1, 1);
 	}
 	public static final HashMap<String, MaterialDescriptor> strToMats = new HashMap<String, MaterialDescriptor>();
 	static {

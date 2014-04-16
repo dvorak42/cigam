@@ -31,11 +31,11 @@ import com.cigam.sigil.SigilGame;
 import com.cigam.sigil.SolidProjectile;
 import com.cigam.sigil.Player;
 import com.cigam.sigil.Utils;
-import com.cigam.sigil.magic.Parser;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
-import com.cigam.sigil.magic.StringLexer;
+import com.cigam.sigil.magic.parser.Parser;
+import com.cigam.sigil.magic.parser.StringLexer;
 import com.cigam.sigil.materials.Fire;
 import com.cigam.sigil.materials.SelfMat;
 
@@ -43,33 +43,33 @@ public class AdventureScreen implements Screen {
 	public World world;
 	public SigilGame game;
 	Player player;
-	Stage stage;
-	Skin skin;
 	
 	OrthographicCamera camera;
 	Box2DDebugRenderer debugRenderer;
 	OrthogonalTiledMapRenderer mapRenderer;
 
+	private TiledMap map;
+	private Sprite background;
+
+	public ArrayList<Spell> spells;
+	
 	public ArrayList<Entity> entities;
-	public Parser parser;
     public ArrayList<Enemy> enemies;
-    public ArrayList<SpellEffect> spells;
+    public ArrayList<SpellEffect> effects;
+    
 	public int fireDelay = 0;
 	public int startDelay = 1000;
 	public static int INIT_ENEMIES = 1;
-	public ArrayList<Spell> testSpells;
 	private int dt;
-	private TiledMap map;
-	private Sprite background;
 	public boolean paused = false;
-	public Array<PhysicalEntity> toDestroy;
+	private Array<PhysicalEntity> toDestroy;
 	
 	public AdventureScreen(SigilGame g)
 	{
 		game = g;
 		entities = new ArrayList<Entity>();
 		enemies = new ArrayList<Enemy>();
-		spells = new ArrayList<SpellEffect>();
+		effects = new ArrayList<SpellEffect>();
 		toDestroy = new Array<PhysicalEntity>();
 		debugRenderer = new Box2DDebugRenderer();
 		
@@ -87,26 +87,18 @@ public class AdventureScreen implements Screen {
 		
 		player = new Player(game, new Sprite(playerTexture), this);
 		
-		testSpells = new ArrayList<Spell>();
-		
-		parser = new Parser(new StringLexer());
+		spells = new ArrayList<Spell>();
 		
 		ArrayList<String> spellsToTest = new ArrayList<String>();
-		/**/spellsToTest.add("Create(fire)");
+		spellsToTest.add("Create(fire)");
 		spellsToTest.add("Create(Summon(fire - - - self))");
 		spellsToTest.add("Bind(fire - - - self))");/**/
 		spellsToTest.add("Summon(fire expand slow slow self)");
 
 		for(String s: spellsToTest){
-			testSpells.add(parser.parse(player, this, s));
+			spells.add(Parser.parse(s));
 		}
-		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
-		//testSpell = new Summon()
 
-		for(Spell s: testSpells){
-			//s.evalEffect();
-		}
-		
 		Utils.createBounds(world, 500, 500);
 		
 		map = new TmxMapLoader().load("maps/level1.tmx");
@@ -164,28 +156,29 @@ public class AdventureScreen implements Screen {
     	fTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
     	SolidProjectile f = new SolidProjectile(game, new Sprite(fTexture), this, new Fire(), angle, e, 1, Utils.angleToVector(angle).scl(Constants.PLAYER_PROJECTILE_SPEED));
 
-    	//this.player.setRotation(angle);
-
-        entities.add(f);
+    	entities.add(f);
     }
     
-    public SpellEffect createSpellEffect(SpellDescriptor s) {
+    public void createSpellEffect(SpellDescriptor s) {
     	Texture texture = new Texture(Gdx.files.internal("art/fireball.png"));
     	texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
     	SpellEffect e = new SpellEffect(game, this, new Sprite(texture), s);
 		entities.add(e);
-    	spells.add(e);
+		effects.add(e);
     	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
         world.clearForces();
     	s.mat.OnCreate(e, this);
-		System.out.println("spell with effect value " + e.effectValue);
-    	return e;
 	}
     
-    public void destroySpellEffect(SpellEffect s){
-    	entities.remove(s);
-    	spells.remove(s);
-    	s.kill();
+    public void destroy(Entity p) {
+    	if(entities.contains(p))
+    		entities.remove(p);
+    	if(p instanceof PhysicalEntity) {
+    		toDestroy.add((PhysicalEntity)p);
+    	}
+    	if(p instanceof Enemy) {
+    		enemies.remove((Enemy)p);
+    	}
     }
 
 	@Override
@@ -219,13 +212,9 @@ public class AdventureScreen implements Screen {
 
         player.body.applyForceToCenter(playerMoveVec.scl((int)(player.body.getMass()*Constants.PLAYER_ACCELERATION_FACTOR)), true);
         
-        for(int i = 0; i < spells.size(); i++){
-        	if(spells.get(i).duration > 0){
-        		spells.get(i).mat.Update();
-        		spells.get(i).timeStep(delta);
-        	} else {
-        		destroySpellEffect(spells.get(i));
-        	}
+        for(int i = 0; i < effects.size(); i++) {
+        	SpellEffect effect = effects.get(i);
+        	effect.update(delta);
         }
         
         //System.out.println(player.body.m_mass + "is player mass");
@@ -257,25 +246,25 @@ public class AdventureScreen implements Screen {
 	        else if(in.isKeyPressed(Input.Keys.UP))
 	            createFireball(player, 2*baseAngle, true);
 	        else if(in.isKeyPressed(Input.Keys.NUM_0))
-	        	testSpells.get(0).cast();
+	        	spells.get(0).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_1))
-	        	testSpells.get(1).cast();
+	        	spells.get(1).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_2))
-	        	testSpells.get(2).cast();
+	        	spells.get(2).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_3))
-	        	testSpells.get(3).cast();
+	        	spells.get(3).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_4))
-	        	testSpells.get(4).cast();
+	        	spells.get(4).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_5))
-	        	testSpells.get(5).cast();
+	        	spells.get(5).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_6))
-	        	testSpells.get(6).cast();
+	        	spells.get(6).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_7))
-	        	testSpells.get(7).cast();
+	        	spells.get(7).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_8))
-	        	testSpells.get(8).cast();
+	        	spells.get(8).cast(this);
 	        else if(in.isKeyPressed(Input.Keys.NUM_9))
-	        	testSpells.get(9).cast();
+	        	spells.get(9).cast(this);
 	        else
 	        	fireDelay = 0;
         }
