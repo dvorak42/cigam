@@ -9,6 +9,12 @@
  <tileset firstgid="1793" name="tilea4" tilewidth="16" tileheight="16">
   <image source="tilea4.png" width="512" height="480"/>
  </tileset>
+ <tileset firstgid="2753" name="framerat_a" tilewidth="16" tileheight="16">
+  <image source="framerat_a.png" width="96" height="128"/>
+ </tileset>
+ <tileset firstgid="2801" name="gallery_72313_146_12172" tilewidth="16" tileheight="16">
+  <image source="gallery_72313_146_12172.png" width="384" height="256"/>
+ </tileset>
  <layer name="Background" width="200" height="28">
   <data encoding="base64" compression="zlib">
    eJztlE1Ow0AMhaPuyBHKKTkK1202iAUiSusZ/4zth3gLK3Tw+Psa+fXxtm0PFosl1nF6nmt0Zulfxcp0RPIiU55R7flqd6XP0q5r+1fczXZE8CITy/N8JpU009K/4m62I4IXmboZFZ6vMqPNq7V/xd1sRxQvMuWerj259ljzZMm49262Y7cXmeN8dHlmPmcefD7vAJn4nlYnqV8zK/LOkPqjHDJ1d6s9D8NMT3+EVeWI4EWmzOzeE2uPtv8I3K1yRPEiUz5D2hPm4+/szX9hdnpqZ3r7I6wqRwQvMmVmp2dk362VvYcfN0wvjw+Z+fmIel7Pz89zSWcrWJZ7nze/Y6aX5t2RKf8fxVP6e+ZtyaSVVeXY7UWmzOzeE89MqUY7WL2HFkckLzJr8zHbEWlmRnlZ2Y7dXmTKvd17osncNVuj34eRl4VV6YjgReY8H1WelsyN+ldlcTY727Hbi0z5vGtPRvm89ml+C1azKhxRvcic5yPT0zpz1jfKRoSV7YjiRaY9H9l7EtmNWXXvodYRyYvM+nxEdkPr7fk+XtZqRzQvMjE8IzO1zM58rHgvHV5kYnhqZv58rsiHxMp2RPMiE8NTe1aRjxEr2xHZi8w+T+YD34vMPs/7vm3v++/ZfZfveb7797xzeVgVjmheZD4zOzy/ANeFEFE=
@@ -36,12 +42,17 @@
  </layer>
  <layer name="Macguffins" width="200" height="28">
   <data encoding="base64" compression="zlib">
-   eJzt2bENgEAMA0BLmR02gU1gE5iDH4HiFSR010dO4VRJAIBuSyVrfb0FzDej29uY390HP6TbAAAAAADAG0clZ8NPoSsHZrpGZ++G3nblAAAAAAAAAAAAAADQ4wEO1guJ
+   eJzt2sENgDAIBVASZtdNdBO7ic5hFzDx0NCkee9O4PA5QQQAUG3LiD1nTwHjjcj20etP+8GCZBsAAAAAAPjjyohWcFOo6gMj3T2zT0Fuq/qsyl8MfPM7AAAAAAAAAAAAADDHC/OsDes=
   </data>
  </layer>
  <layer name="Monsters" width="200" height="28">
   <data encoding="base64" compression="zlib">
-   eJzt07EVABAUBMFLfnl0Qv8hXfCYqWCTTQAAAAAAAAAAAAAAAAAAAOA/rZJepyvgTmO/Mf0BAAAAADxgAZNSAYs=
+   eJzt27EVglAMQNE00DAbbqLb6CbQ6Baim2htBqDgH7+Cx3vrFCnyykQAfN6xjTi1a28B2zRkG6M+YNYt27jrg8rOXcSlqz/7bY9s46kPKrvmvU8Lb75kFgAAAAAAAAAAAAAAtqpvInbN2lvAcqU/T+/8SO2zjYM++CGlP09+pAAAAAD+xwvXnBUP
+  </data>
+ </layer>
+ <layer name="Tile Layer 8" width="200" height="28">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAAAAAAAAAAAAD8GVeAAAE=
   </data>
  </layer>
 </map>
