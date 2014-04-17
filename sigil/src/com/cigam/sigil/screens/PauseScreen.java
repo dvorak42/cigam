@@ -28,6 +28,7 @@ import com.cigam.sigil.magic.modifiers.DurationToArea;
 import com.cigam.sigil.magic.modifiers.DurationToEffect;
 import com.cigam.sigil.magic.modifiers.EffectToArea;
 import com.cigam.sigil.magic.modifiers.EffectToDuration;
+import com.cigam.sigil.magic.targets.FireRune;
 import com.cigam.sigil.magic.targets.Self;
 import com.cigam.sigil.magic.verbs.Banish;
 import com.cigam.sigil.magic.verbs.Bind;
@@ -55,6 +56,7 @@ public class PauseScreen implements Screen {
 	
 	ShapeRenderer sr;
 	OrthographicCamera camera;
+	int index = 0;
 	
 	public RadialMenu rMenu;
 	public Spell createdSpell;
@@ -76,7 +78,7 @@ public class PauseScreen implements Screen {
 		rMenu.color = Color.BLACK;
 		RadialMenu verbMenu = new RadialMenu(Banish.class, Bind.class, Create.class, Summon.class);
 		verbMenu.color = Color.BLUE;
-		RadialMenu targetMenu = new RadialMenu(Fire.class, Self.class);
+		RadialMenu targetMenu = new RadialMenu(FireRune.class, Self.class);
 		targetMenu.color = Color.RED;
 		RadialMenu modifierMenu = new RadialMenu(AreaToDuration.class, AreaToEffect.class, DurationToArea.class, DurationToEffect.class, EffectToArea.class, EffectToDuration.class);
 		modifierMenu.color = Color.GREEN;
@@ -123,7 +125,7 @@ public class PauseScreen implements Screen {
 	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
 	    nifty.loadStyleFile("nifty-default-styles.xml");
 	    nifty.loadControlFile("nifty-default-controls.xml");
-		createdSpell = new TopLevelSpell(null, parent);
+		createdSpell = new TopLevelSpell(parent.player, parent);
 		
 	    // <screen>
 	    final PauseScreen p = this;
@@ -132,7 +134,8 @@ public class PauseScreen implements Screen {
 	    	layer(new LayerBuilder("Layer_0"){{
 	    		childLayoutCenter();
 	    		panel(new PanelBuilder(){{
-	    			style("nifty-panel-simple");
+	    			//style("nifty-panel-simple");
+	    			this.backgroundColor("#099f");
 	    			childLayoutCenter();
 	                height("100%");
 	                width("100%");
@@ -150,7 +153,15 @@ public class PauseScreen implements Screen {
 
 	@Override
 	public void hide() {
-		parent.testSpells.add(createdSpell);
+		//try{
+		createdSpell.evalEffect();
+		parent.SpellsArray[index] = createdSpell;
+		System.out.println(parent.SpellsArray);
+		index++;
+		index = index%10;
+		//} catch (Exception e){
+			
+		//}
 		
 	}
 
@@ -169,10 +180,6 @@ public class PauseScreen implements Screen {
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
-	}
-	
-	public void setSpell(){
-		System.out.println("test");
 	}
 
 }

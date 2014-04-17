@@ -6,6 +6,7 @@ import de.lessvoid.nifty.controls.Controller;
 public class RunePanel extends PanelBuilder {
 	public RunePanel(Controller cont){
 		style("nifty-panel-simple");
+		//this.backgroundColor("fff8");
 		childLayoutVertical();
         alignCenter();
         height("100%");

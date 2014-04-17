@@ -42,7 +42,7 @@ public class Parser {
 					Utils.printError("wrong number of inputs for " + getCurrent());
 				}
 			} else if(tok.getType() == Token.Type.FIRE){
-				addRuneChild(new MaterialRune(new Fire()));
+				addRuneChild(new FireRune());
 			} else if(tok.getType() == Token.Type.SELF){
 				addRuneChild(new Self());
 			} else if(tok.getType() == Token.Type.AREA_TO_DURATION){

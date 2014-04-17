@@ -23,6 +23,7 @@ public class Create extends Spell {
 		area.setRadius(defaultRadius);
 		effectValue = Constants.CREATE_EFFECT_VALUE;
 		argsNum = 0;
+		gui = Utils.makeCreateGui("UI/create512.png");
 	}
 	/*
 	public Create(Spell target, ArrayList<Spell> args) {
@@ -48,6 +49,7 @@ public class Create extends Spell {
 	public void cast() {
 		Vector2 castDir = new Vector2(1, 0).rotate(caster.body.getAngle());
 		castDir.nor();
+		System.out.println(toCreate);
 		toCreate.position = caster.body.getWorldCenter();
 		screen.createSpellEffect(evalEffect());
 	}

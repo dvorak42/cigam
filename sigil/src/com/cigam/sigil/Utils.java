@@ -6,17 +6,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
-import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.external.BodyEditorLoader;
-import com.cigam.sigil.magic.Spell;
+import com.cigam.sigil.magic.targets.FireRune;
+import com.cigam.sigil.magic.targets.Self;
 import com.cigam.sigil.magic.verbs.*;
+import com.cigam.sigil.materials.*;
 import com.cigam.sigil.screens.ArgumentController;
 import com.cigam.sigil.screens.RunePanel;
 import com.cigam.sigil.screens.TargetController;
@@ -61,20 +59,56 @@ public class Utils {
 		System.err.println(toPrint);
 	}
 	
-	public static PanelBuilder makeVerbGui(){
+	public static PanelBuilder makeCreateGui(final String path){
 		PanelBuilder gui = new PanelBuilder(){{
-			style("nifty-panel-simple");
+			//style("nifty-panel-simple");
 			childLayoutVertical();
             height("100%");
             width("100%");
+            backgroundImage(path);
             panel(new PanelBuilder(){{
-            	style("nifty-panel-simple");
+    			childLayoutHorizontal();
+                height("33%");
+                width("100%");
+            }});
+            panel(new PanelBuilder(){{
+            	childLayoutCenter();
+                height("34%");
+                width("100%");
+                panel(new RunePanel(new TargetController()));
+            }});
+            panel(new PanelBuilder(){{
+            	childLayoutHorizontal();
+                height("33%");
+                width("100%");
+            }});
+		}};
+		return gui;
+	}
+	
+	public static PanelBuilder makeRuneGui(final String path){
+		PanelBuilder gui = new PanelBuilder(){{
+			childLayoutVertical();
+            height("100%");
+            width("100%");
+            backgroundImage(path);
+		}};
+		return gui;
+	}
+	
+	public static PanelBuilder makeVerbGui(final String path){
+		PanelBuilder gui = new PanelBuilder(){{
+			//style("nifty-panel-simple");
+			childLayoutVertical();
+            height("100%");
+            width("100%");
+            backgroundImage(path);
+            panel(new PanelBuilder(){{
     			childLayoutHorizontal();
                 height("33%");
                 width("100%");
                 panel(new RunePanel(new ArgumentController()));
                 panel(new PanelBuilder(){{
-                	style("nifty-panel-simple");
         			childLayoutCenter();
                     height("100%");
                     width("52%");
@@ -82,21 +116,18 @@ public class Utils {
                 panel(new RunePanel(new ArgumentController()));
             }});
             panel(new PanelBuilder(){{
-            	style("nifty-panel-simple");
-    			childLayoutCenter();
+            	childLayoutCenter();
                 height("34%");
                 width("100%");
                 panel(new RunePanel(new TargetController()));
             }});
             panel(new PanelBuilder(){{
-            	style("nifty-panel-simple");
-    			childLayoutHorizontal();
+            	childLayoutHorizontal();
                 height("33%");
                 width("100%");
                 panel(new RunePanel(new ArgumentController()));
                 panel(new PanelBuilder(){{
-                	style("nifty-panel-simple");
-        			childLayoutCenter();
+                	childLayoutCenter();
                     height("100%");
                     width("52%");
                 }});
@@ -113,6 +144,9 @@ public class Utils {
 		classesToIconPaths.put(Bind.class, "UI/bind512.png");
 		classesToIconPaths.put(Create.class, "UI/create512.png");
 		classesToIconPaths.put(Summon.class, "UI/summon512.png");
+		classesToIconPaths.put(FireRune.class, "UI/Element1 512.png");
+		classesToIconPaths.put(Self.class, "UI/Element2 512.png");
+
 		
 	}
 }

@@ -42,7 +42,7 @@ import com.cigam.sigil.materials.SelfMat;
 public class AdventureScreen implements Screen {
 	public World world;
 	public SigilGame game;
-	Player player;
+	public Player player;
 	Stage stage;
 	Skin skin;
 	
@@ -57,7 +57,7 @@ public class AdventureScreen implements Screen {
 	public int fireDelay = 0;
 	public int startDelay = 1000;
 	public static int INIT_ENEMIES = 1;
-	public ArrayList<Spell> testSpells;
+	public Spell[] SpellsArray;
 	private int dt;
 	private TiledMap map;
 	private Sprite background;
@@ -87,7 +87,7 @@ public class AdventureScreen implements Screen {
 		
 		player = new Player(game, new Sprite(playerTexture), this);
 		
-		testSpells = new ArrayList<Spell>();
+		SpellsArray = new Spell[10];
 		
 		parser = new Parser(new StringLexer());
 		
@@ -98,12 +98,12 @@ public class AdventureScreen implements Screen {
 		spellsToTest.add("Summon(fire expand slow slow self)");
 
 		for(String s: spellsToTest){
-			testSpells.add(parser.parse(player, this, s));
+			//testSpells.add(parser.parse(player, this, s));
 		}
 		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
 		//testSpell = new Summon()
 
-		for(Spell s: testSpells){
+		for(Spell s: SpellsArray){
 			//s.evalEffect();
 		}
 		
@@ -257,25 +257,25 @@ public class AdventureScreen implements Screen {
 	        else if(in.isKeyPressed(Input.Keys.UP))
 	            createFireball(player, 2*baseAngle, true);
 	        else if(in.isKeyPressed(Input.Keys.NUM_0))
-	        	testSpells.get(0).cast();
+	        	SpellsArray[0].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_1))
-	        	testSpells.get(1).cast();
+	        	SpellsArray[1].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_2))
-	        	testSpells.get(2).cast();
+	        	SpellsArray[2].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_3))
-	        	testSpells.get(3).cast();
+	        	SpellsArray[3].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_4))
-	        	testSpells.get(4).cast();
+	        	SpellsArray[4].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_5))
-	        	testSpells.get(5).cast();
+	        	SpellsArray[5].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_6))
-	        	testSpells.get(6).cast();
+	        	SpellsArray[6].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_7))
-	        	testSpells.get(7).cast();
+	        	SpellsArray[7].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_8))
-	        	testSpells.get(8).cast();
+	        	SpellsArray[8].cast();
 	        else if(in.isKeyPressed(Input.Keys.NUM_9))
-	        	testSpells.get(9).cast();
+	        	SpellsArray[9].cast();
 	        else
 	        	fireDelay = 0;
         }

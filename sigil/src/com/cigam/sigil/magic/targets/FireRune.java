@@ -1,14 +1,16 @@
 package com.cigam.sigil.magic.targets;
 
-import com.cigam.sigil.magic.MaterialDescriptor;
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
+import com.cigam.sigil.materials.Fire;
 
-public class MaterialRune extends Spell {
+public class FireRune extends Spell {
 	public SpellDescriptor material;
 	
-	public MaterialRune(MaterialDescriptor mat){
-		this.material = new SpellDescriptor(mat);
+	public FireRune(){
+		this.material = new SpellDescriptor(new Fire());
+		this.gui = Utils.makeRuneGui(Utils.classesToIconPaths.get(this.getClass()));
 	}
 
 	@Override
