@@ -107,9 +107,9 @@ public class AdventureScreen implements Screen {
 			//s.evalEffect();
 		}
 		
-		Utils.createBounds(world, 500, 500);
+		Utils.createBounds(world, 4500, 900);
 		
-		map = new TmxMapLoader().load("maps/level1.tmx");
+		map = new TmxMapLoader().load("maps/MAP.tmx");
 		mapRenderer = new OrthogonalTiledMapRenderer(map, 2, game.batch);
 		
 		Texture bTexture = new Texture(Gdx.files.internal("art/background.png"));
