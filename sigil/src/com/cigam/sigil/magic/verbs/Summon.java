@@ -24,7 +24,7 @@ public class Summon extends Spell {
 		area.setRadius(defaultRadius);
 		effectValue = Constants.FORCE_MEDIUM;
 		argsNum = 4;
-		gui = Utils.makeVerbGui("UI/cigam/summon512.png");
+		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));
 	}
 
 	@Override

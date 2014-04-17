@@ -1,6 +1,7 @@
 package com.cigam.sigil.magic.modifiers;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 
@@ -17,6 +18,7 @@ public class AreaToDuration extends Spell{
 				e.getSpawnHeight().setHigh((float) (e.getSpawnHeight().getHighMin()/Math.sqrt(2)), (float) (e.getSpawnHeight().getHighMax()/Math.sqrt(2)));
 			}
 		}*/
+		this.gui = Utils.makeRuneGui(Utils.classesToIconPaths.get(this.getClass()));
 		return toModify;
 	}
 

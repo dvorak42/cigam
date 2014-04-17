@@ -1,5 +1,6 @@
 package com.cigam.sigil.magic.modifiers;
 
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 
@@ -11,6 +12,7 @@ public class AreaToEffect extends Spell{
 		toModify = target.evalEffect();
 		toModify.effectValue*=2;
 		toModify.shape.setRadius((float) (toModify.shape.getRadius()/(Math.sqrt(2))));
+		this.gui = Utils.makeRuneGui(Utils.classesToIconPaths.get(this.getClass()));
 		return toModify;
 	}
 

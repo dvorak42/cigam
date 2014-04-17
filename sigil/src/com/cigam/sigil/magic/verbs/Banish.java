@@ -26,8 +26,8 @@ public class Banish extends Spell {
 		area.setRadius(defaultRadius);
 		effectValue = -Constants.FORCE_MEDIUM;
 		argsNum = 4;
-		gui = Utils.makeVerbGui("UI/cigam/banish512.png");
-		
+		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));
+
 	}
 	/*
 	public Banish(Spell target,  ArrayList<Spell> args) {

@@ -24,7 +24,8 @@ public class Bind extends Spell {
 		area.setRadius(defaultRadius);
 		effectValue = Constants.BIND_EFFECT_VALUE;
 		argsNum = 4;
-		gui = Utils.makeVerbGui("UI/cigam/bind512.png");
+		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));
+
 	}
 
 	@Override

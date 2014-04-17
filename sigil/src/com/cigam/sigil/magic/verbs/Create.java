@@ -23,7 +23,8 @@ public class Create extends Spell {
 		area.setRadius(defaultRadius);
 		effectValue = Constants.CREATE_EFFECT_VALUE;
 		argsNum = 0;
-		gui = Utils.makeCreateGui("UI/cigam/create512.png");
+		this.gui = Utils.makeCreateGui(Utils.classesToIconPaths.get(this.getClass()));
+
 	}
 	/*
 	public Create(Spell target, ArrayList<Spell> args) {
