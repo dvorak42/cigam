@@ -69,6 +69,11 @@ public abstract class Spell {
 		child.parent = this;
 		child.castDelay += this.castDelay;
 	}
+
+	public void removeTarget() {
+		target = null;
+	}
+
 	public void addArgument(Spell child) {
 		arguments.add(child);
 		child.caster = this.caster;
@@ -77,6 +82,9 @@ public abstract class Spell {
 		child.castDelay += this.castDelay;
 	}
 	
+	public void removeArgument(Spell child) {
+		arguments.remove(child);
+	}
 	public boolean isDone(){
 		return (target!=null&&argsNum==arguments.size());
 	}

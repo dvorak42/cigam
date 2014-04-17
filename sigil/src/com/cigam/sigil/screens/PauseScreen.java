@@ -10,6 +10,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Pixmap.Format;
@@ -82,14 +83,18 @@ public class PauseScreen implements Screen {
 		targetMenu.color = Color.RED;
 		RadialMenu modifierMenu = new RadialMenu(AreaToDuration.class, AreaToEffect.class, DurationToArea.class, DurationToEffect.class, EffectToArea.class, EffectToDuration.class);
 		modifierMenu.color = Color.GREEN;
+		RadialEnd deleteSelected = new RadialEnd(new Integer(-1));
 		rMenu.addMenu(verbMenu);
 		rMenu.addMenu(targetMenu);
 		rMenu.addMenu(modifierMenu);
+		rMenu.addMenu(deleteSelected);
 		
 	}
 
 	@Override
 	public void render(float delta) {
+        Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		nifty.update();
 		nifty.render(true);
 		
@@ -106,11 +111,9 @@ public class PauseScreen implements Screen {
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update(true);
 		game.batch.setProjectionMatrix(camera.combined);
-		game.batch.begin();
 		sr.setProjectionMatrix(camera.combined);
 		sr.begin(ShapeType.Filled);
 		rMenu.render(sr, game.batch);
-		game.batch.end();
 		sr.end();
 	}
 
@@ -153,16 +156,15 @@ public class PauseScreen implements Screen {
 
 	@Override
 	public void hide() {
-		//try{
-		createdSpell.evalEffect();
-		parent.SpellsArray[index] = createdSpell;
-		System.out.println(parent.SpellsArray);
-		index++;
-		index = index%10;
-		//} catch (Exception e){
+		try{
+			createdSpell.evalEffect();
+			parent.SpellsArray[index] = createdSpell;
+			System.out.println(parent.SpellsArray);
+			index++;
+			index = index%10;
+		} catch (Exception e){
 			
-		//}
-		
+		}
 	}
 
 	@Override

@@ -25,7 +25,7 @@ public class RadialMenu {
 		visible = false;
 		firstClick = true;
 		position = new Vector2();
-		radius = 128/2;
+		radius = 128;
 		color = Color.WHITE;
 	}
 	
@@ -76,7 +76,7 @@ public class RadialMenu {
 			
 			if(selected == -1) {
 				float d = mouse.dst(position);
-				if(d > 1.3 * radius) {
+				if(d > 1.6 * radius) {
 					hide();
 				} else if(subMenus.size() > 0) {
 					float ax = 360 / subMenus.size();
@@ -106,15 +106,19 @@ public class RadialMenu {
 				subMenus.get(selected).update(mouse, clicked, mouse);
 		}
 	}
+
+	public void renderPreview(ShapeRenderer sr, SpriteBatch b, Vector2 position, float radius) {
+		sr.setColor(Color.GRAY);
+		sr.circle(position.x, position.y, radius);		
+	}
 	
 	public void render(ShapeRenderer sr, SpriteBatch b) {
 		if(visible) {
 			sr.setColor(color);
 			sr.circle(position.x, position.y, radius);
 			for(int i = 0; i < subMenus.size(); i++) {
-				sr.setColor(Color.GRAY);
 				Vector2 sp = position.cpy().add(new Vector2(radius, 0).rotate(i * 360 / subMenus.size()));
-				sr.circle(sp.x, sp.y, 5);
+				subMenus.get(i).renderPreview(sr, b, sp, 5);
 			}
 			if(selected >= 0)
 				subMenus.get(selected).render(sr, b);

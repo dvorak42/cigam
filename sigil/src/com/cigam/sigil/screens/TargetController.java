@@ -17,6 +17,7 @@ public class TargetController implements Controller {
 	private Nifty n;
 	public Spell containingSpell;
 	private boolean full;
+	Element pElement;
 	@Override
 	public void bind(Nifty nifty, Screen screen, Element element,
 			Parameters parameter) {
@@ -65,28 +66,43 @@ public class TargetController implements Controller {
 	}
 	
 	public void released(){
-		if(!full){
-			System.out.println("UserData is " + e.getUserData("containingSpell"));
-			if(containingSpell == null){
-				containingSpell = e.getUserData("containingSpell");
+		Object sV = p.pauseScreen.rMenu.getValue();
+		Spell newSpell = null;
+		boolean delete = false;
+
+		try {
+			if(sV != null && sV instanceof Class){
+				Object o = ((Class)sV).newInstance();
+				if(o instanceof Spell)
+					newSpell = (Spell)o;
+				else
+					delete = true;
+			} else if(sV instanceof Integer)
+				delete = true;
+		} catch (Exception e) {e.printStackTrace();}
+		
+		System.out.println("UserData is " + e.getUserData("containingSpell"));
+		if(containingSpell == null){
+			containingSpell = e.getUserData("containingSpell");
+		}
+
+		if(full && delete) {
+			if(containingSpell != null) {
+				containingSpell.removeTarget();
+				full = false;
+				pElement.markForRemoval();
+				pElement.hide();
+				e.layoutElements();
 			}
-			Object inp = null;
-			try {
-				if(p.pauseScreen.rMenu.getValue()!=null){
-					System.out.println(p.pauseScreen.rMenu.getValue().getClass());
-					inp = ((Class)(p.pauseScreen.rMenu.getValue())).newInstance();
-				}
-			} catch (Exception e) {e.printStackTrace();}
-			
-			System.out.println("inp = " + inp);
+		} else if(!full) {
+			System.out.println("inp = " + newSpell);
 			System.out.println("containtingSpell = " + containingSpell);
-			if(inp!=null && inp instanceof Spell && containingSpell!=null){
-				containingSpell.addTarget((Spell) inp);
+			if(newSpell != null && containingSpell != null){
+				containingSpell.addTarget(newSpell);
 				full = true;
-				((Spell) inp).gui.build(n, s, e);
+				pElement = newSpell.gui.build(n, s, e);
 				System.out.println(e.getChildrenCount());
-				recursiveSetUserData("containingSpell", ((Spell) inp), e);
-				//e.disable();
+				recursiveSetUserData("containingSpell", newSpell, e);
 			}
 		}
 	}

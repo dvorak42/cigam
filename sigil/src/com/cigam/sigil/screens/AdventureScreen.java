@@ -256,25 +256,25 @@ public class AdventureScreen implements Screen {
 	            createFireball(player, 6*baseAngle, true);
 	        else if(in.isKeyPressed(Input.Keys.UP))
 	            createFireball(player, 2*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.NUM_0))
+	        else if(in.isKeyPressed(Input.Keys.NUM_1) && SpellsArray[0] != null)
 	        	SpellsArray[0].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_1))
+	        else if(in.isKeyPressed(Input.Keys.NUM_2) && SpellsArray[1] != null)
 	        	SpellsArray[1].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_2))
+	        else if(in.isKeyPressed(Input.Keys.NUM_3) && SpellsArray[2] != null)
 	        	SpellsArray[2].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_3))
+	        else if(in.isKeyPressed(Input.Keys.NUM_4) && SpellsArray[3] != null)
 	        	SpellsArray[3].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_4))
+	        else if(in.isKeyPressed(Input.Keys.NUM_5) && SpellsArray[4] != null)
 	        	SpellsArray[4].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_5))
+	        else if(in.isKeyPressed(Input.Keys.NUM_6) && SpellsArray[5] != null)
 	        	SpellsArray[5].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_6))
+	        else if(in.isKeyPressed(Input.Keys.NUM_7) && SpellsArray[6] != null)
 	        	SpellsArray[6].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_7))
+	        else if(in.isKeyPressed(Input.Keys.NUM_8) && SpellsArray[7] != null)
 	        	SpellsArray[7].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_8))
+	        else if(in.isKeyPressed(Input.Keys.NUM_9) && SpellsArray[8] != null)
 	        	SpellsArray[8].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_9))
+	        else if(in.isKeyPressed(Input.Keys.NUM_0) && SpellsArray[9] != null)
 	        	SpellsArray[9].cast();
 	        else
 	        	fireDelay = 0;
