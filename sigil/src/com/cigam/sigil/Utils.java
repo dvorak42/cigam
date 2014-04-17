@@ -162,14 +162,12 @@ public class Utils {
 	public static HashMap<Class, String> classesToIconPaths;
 	static{
 		classesToIconPaths = new HashMap<Class, String>();
-		classesToIconPaths.put(Banish.class, "UI/banish512.png");
-		classesToIconPaths.put(Bind.class, "UI/bind512.png");
-		classesToIconPaths.put(Create.class, "UI/create512.png");
-		classesToIconPaths.put(Summon.class, "UI/summon512.png");
-		classesToIconPaths.put(FireRune.class, "UI/Element1 512.png");
-		classesToIconPaths.put(Self.class, "UI/Element2 512.png");
-
-		
+		classesToIconPaths.put(Banish.class, "UI/cigam/banish512.png");
+		classesToIconPaths.put(Bind.class, "UI/cigam/bind512.png");
+		classesToIconPaths.put(Create.class, "UI/cigam/create512.png");
+		classesToIconPaths.put(Summon.class, "UI/cigam/summon512.png");
+		classesToIconPaths.put(FireRune.class, "UI/cigam/Element1 512.png");
+		classesToIconPaths.put(Self.class, "UI/cigam/Element2 512.png");
 	}
 }
 
