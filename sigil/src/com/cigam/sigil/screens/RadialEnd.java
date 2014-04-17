@@ -15,9 +15,11 @@ import com.cigam.sigil.Utils;
 public class RadialEnd extends RadialMenu {
 	public Object value;
 	public Sprite icon;
+	private float iconScale;
 	
 	public RadialEnd(Object value) {
 		super();
+		iconScale = .7f;
 		this.value = value;
 		this.icon = null;
 		String path = Utils.classesToIconPaths.get(this.value);
@@ -26,7 +28,7 @@ public class RadialEnd extends RadialMenu {
 			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 			icon = new Sprite(t);
 			icon.flip(false, true);
-			icon.setSize(radius, radius);
+			icon.setSize(radius*iconScale, radius*iconScale);
 		}
 	}
 
@@ -38,7 +40,7 @@ public class RadialEnd extends RadialMenu {
 		if(icon != null) {
 			sr.end();
 			b.begin();
-			icon.setPosition(position.x-this.radius*2, position.y-this.radius*2);
+			icon.setPosition(position.x-this.radius*2*iconScale, position.y-this.radius*2*iconScale);
 			icon.draw(b, 0.5f);
 			b.end();
 			sr.begin(ShapeType.Filled);
@@ -53,7 +55,7 @@ public class RadialEnd extends RadialMenu {
 			if(this.icon!=null){
 				sr.end();
 				b.begin();
-				icon.setPosition(position.x-radius*2, position.y-radius*2);
+				icon.setPosition(position.x-radius*2*iconScale, position.y-radius*2*iconScale);
 				this.icon.draw(b);
 				b.end();
 				sr.begin(ShapeType.Filled);

@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.external.BodyEditorLoader;
+import com.cigam.sigil.magic.modifiers.*;
 import com.cigam.sigil.magic.targets.FireRune;
 import com.cigam.sigil.magic.targets.Self;
 import com.cigam.sigil.magic.verbs.*;
@@ -168,6 +169,17 @@ public class Utils {
 		classesToIconPaths.put(Summon.class, "UI/cigam/summon512.png");
 		classesToIconPaths.put(FireRune.class, "UI/cigam/Element1 512.png");
 		classesToIconPaths.put(Self.class, "UI/cigam/Element2 512.png");
+		classesToIconPaths.put(EffectToArea.class, "UI/Expand_placeholder.png");
+		classesToIconPaths.put(EffectToDuration.class, "UI/Slow_placeholder.png");
+		classesToIconPaths.put(DurationToEffect.class, "UI/Quicken_placeholder.png");
+		classesToIconPaths.put(DurationToArea.class, "UI/Lengthen_placeholder.png");
+		classesToIconPaths.put(AreaToEffect.class, "UI/Concentrate_placeholder.png");
+		classesToIconPaths.put(AreaToDuration.class, "UI/Condense_placeholder.png");
+
+
+
+
+		
 	}
 }
 
