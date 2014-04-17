@@ -31,7 +31,7 @@ public class StringLexer {
 		patternsToTokens.put(Pattern.compile("^\\)$"), Token.Type.CLOSE_PAREN);
 		
 		String[] inpArray = input.split("\\s|\\(|\\)|\\,");
-		System.out.println(inpArray);
+		//System.out.println(inpArray);
 		for(int i = 0; i < inpArray.length; i++){
 			for(Pattern pattern: patternsToTokens.keySet()){
 				Matcher matcher = pattern.matcher(inpArray[i].trim());
@@ -40,7 +40,7 @@ public class StringLexer {
 				}
 			}
 		}
-		System.out.println(output);
+		//System.out.println(output);
 	}
 
     public boolean hasNext(){

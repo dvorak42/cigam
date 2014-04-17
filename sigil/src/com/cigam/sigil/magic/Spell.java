@@ -6,6 +6,11 @@ import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.screens.AdventureScreen;
 
+import de.lessvoid.nifty.builder.LayerBuilder;
+import de.lessvoid.nifty.builder.PanelBuilder;
+import de.lessvoid.nifty.elements.Element;
+
+
 public abstract class Spell {
 	public Spell target; // Only array or target allowed
 	public ArrayList<Spell> arguments; //Only array or target allowed
@@ -17,10 +22,12 @@ public abstract class Spell {
 	public float effectValue;
 	public Spell parent;
 	public int argsNum;
+	public PanelBuilder gui;
 
 	public Spell(){
 		arguments = new ArrayList<Spell>();
 		target = null;
+		gui = new PanelBuilder(); 
 	};
 	/*
 	public Spell(Spell target, ArrayList<Spell> args){
@@ -56,9 +63,28 @@ public abstract class Spell {
 		child.castDelay += this.castDelay;
 	}
 	
+	public void addTarget(Spell child) {
+		if(target==null){
+			target = child;
+		}
+		child.caster = this.caster;
+		child.screen = this.screen;
+		child.parent = this;
+		child.castDelay += this.castDelay;
+	}
+	public void addArgument(Spell child) {
+		arguments.add(child);
+		child.caster = this.caster;
+		child.screen = this.screen;
+		child.parent = this;
+		child.castDelay += this.castDelay;
+	}
+	
 	public boolean isDone(){
 		return (target!=null&&argsNum==arguments.size());
 	}
 	public abstract SpellDescriptor evalEffect();
 	public abstract void cast();
+	
+	
 }

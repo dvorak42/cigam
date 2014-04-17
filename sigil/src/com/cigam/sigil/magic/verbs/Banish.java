@@ -5,10 +5,14 @@ import java.util.ArrayList;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.*;
 import com.cigam.sigil.materials.Banishment;
 import com.cigam.sigil.materials.Summoning;
 import com.cigam.sigil.screens.*;
+
+import de.lessvoid.nifty.builder.LayerBuilder;
+import de.lessvoid.nifty.builder.PanelBuilder;
 
 
 public class Banish extends Spell {
@@ -23,6 +27,8 @@ public class Banish extends Spell {
 		area.setRadius(defaultRadius);
 		effectValue = -Constants.FORCE_MEDIUM;
 		argsNum = 4;
+		gui = Utils.makeVerbGui();
+		
 	}
 	/*
 	public Banish(Spell target,  ArrayList<Spell> args) {

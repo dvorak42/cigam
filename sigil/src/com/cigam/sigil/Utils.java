@@ -13,6 +13,12 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.external.BodyEditorLoader;
+import com.cigam.sigil.magic.Spell;
+import com.cigam.sigil.screens.ArgumentController;
+import com.cigam.sigil.screens.RunePanel;
+import com.cigam.sigil.screens.TargetController;
+
+import de.lessvoid.nifty.builder.PanelBuilder;
 
 public class Utils {
     public static BodyEditorLoader mainBodies = new BodyEditorLoader(Gdx.files.internal("data/main_bodies.json"));
@@ -51,4 +57,50 @@ public class Utils {
 	public static void printError(String toPrint){
 		System.err.println(toPrint);
 	}
+	
+	public static PanelBuilder makeVerbGui(){
+		PanelBuilder gui = new PanelBuilder(){{
+			style("nifty-panel-simple");
+			childLayoutVertical();
+            height("100%");
+            width("100%");
+            panel(new PanelBuilder(){{
+            	style("nifty-panel-simple");
+    			childLayoutHorizontal();
+                height("33%");
+                width("100%");
+                panel(new RunePanel(new ArgumentController()));
+                panel(new PanelBuilder(){{
+                	style("nifty-panel-simple");
+        			childLayoutCenter();
+                    height("100%");
+                    width("52%");
+                }});
+                panel(new RunePanel(new ArgumentController()));
+            }});
+            panel(new PanelBuilder(){{
+            	style("nifty-panel-simple");
+    			childLayoutCenter();
+                height("34%");
+                width("100%");
+                panel(new RunePanel(new TargetController()));
+            }});
+            panel(new PanelBuilder(){{
+            	style("nifty-panel-simple");
+    			childLayoutHorizontal();
+                height("33%");
+                width("100%");
+                panel(new RunePanel(new ArgumentController()));
+                panel(new PanelBuilder(){{
+                	style("nifty-panel-simple");
+        			childLayoutCenter();
+                    height("100%");
+                    width("52%");
+                }});
+                panel(new RunePanel(new ArgumentController()));
+            }});
+		}};
+		return gui;
+	}
 }
+

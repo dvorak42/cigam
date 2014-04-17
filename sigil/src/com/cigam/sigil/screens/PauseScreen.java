@@ -1,15 +1,15 @@
 package com.cigam.sigil.screens;
 
-import java.util.Properties;
+import de.lessvoid.nifty.builder.LayerBuilder;
+import de.lessvoid.nifty.builder.PanelBuilder;
+import de.lessvoid.nifty.builder.ScreenBuilder;
+import de.lessvoid.nifty.elements.Element;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Pixmap.Format;
@@ -23,6 +23,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.cigam.sigil.SigilGame;
+import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.modifiers.AreaToDuration;
 import com.cigam.sigil.magic.modifiers.AreaToEffect;
 import com.cigam.sigil.magic.modifiers.DurationToArea;
@@ -34,19 +35,19 @@ import com.cigam.sigil.magic.verbs.Banish;
 import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
+import com.cigam.sigil.magic.verbs.TopLevelSpell;
 import com.cigam.sigil.materials.Fire;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.gdx.input.GdxInputSystem;
 import de.lessvoid.nifty.gdx.render.GdxBatchRenderBackendFactory;
 import de.lessvoid.nifty.gdx.sound.GdxSoundDevice;
-import de.lessvoid.nifty.render.batch.BatchRenderConfiguration;
 import de.lessvoid.nifty.render.batch.BatchRenderDevice;
 import de.lessvoid.nifty.spi.time.impl.AccurateTimeProvider;
 
 public class PauseScreen implements Screen {
 	SigilGame game;
-	Screen parent;
+	AdventureScreen parent;
 	Sprite pauseImage;
 	
 	AssetManager assetManager;
@@ -57,10 +58,11 @@ public class PauseScreen implements Screen {
 	ShapeRenderer sr;
 	OrthographicCamera camera;
 	
-	RadialMenu rMenu;
+	public RadialMenu rMenu;
+	public Spell createdSpell;
 	boolean wasDown = false;
 	
-	public PauseScreen(final SigilGame game, final Screen parent) {
+	public PauseScreen(final SigilGame game, final AdventureScreen parent) {
 		this.game = game;
 		this.parent = parent;
 		Texture texture = new Texture(Gdx.files.internal("art/screens/pause.png"));
@@ -73,15 +75,16 @@ public class PauseScreen implements Screen {
 		
 		rMenu = new RadialMenu();
 		rMenu.color = Color.BLACK;
-		RadialMenu verbMenu = new RadialMenu(new Banish(), new Bind(), new Create(), new Summon());
+		RadialMenu verbMenu = new RadialMenu(Banish.class, Bind.class, Create.class, Summon.class);
 		verbMenu.color = Color.BLUE;
-		RadialMenu targetMenu = new RadialMenu(new Fire(), new Self());
+		RadialMenu targetMenu = new RadialMenu(Fire.class, Self.class);
 		targetMenu.color = Color.RED;
-		RadialMenu modifierMenu = new RadialMenu(new AreaToDuration(), new AreaToEffect(), new DurationToArea(), new DurationToEffect(), new EffectToArea(), new EffectToDuration());
+		RadialMenu modifierMenu = new RadialMenu(AreaToDuration.class, AreaToEffect.class, DurationToArea.class, DurationToEffect.class, EffectToArea.class, EffectToDuration.class);
 		modifierMenu.color = Color.GREEN;
 		rMenu.addMenu(verbMenu);
 		rMenu.addMenu(targetMenu);
 		rMenu.addMenu(modifierMenu);
+		createdSpell = new TopLevelSpell(null, parent);
 		
 	}
 
@@ -92,13 +95,13 @@ public class PauseScreen implements Screen {
 		
 		if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
 			game.setScreen(parent);
-		
+		/*
 		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT))
 			wasDown = true;
 		if(wasDown && !Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
 			wasDown = false;
 			System.out.println(rMenu.getValue());
-		}
+		}*/
 		rMenu.update(new Vector2(Gdx.input.getX(), Gdx.input.getY()), Gdx.input.isButtonPressed(Input.Buttons.LEFT));
 		
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -118,7 +121,29 @@ public class PauseScreen implements Screen {
 	public void show() {
 		batchRenderDevice = new BatchRenderDevice(GdxBatchRenderBackendFactory.create());
 	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
-	    nifty.fromXml("UI/gui_final.xml", "pause", new PauseScreenController());
+	    nifty.loadStyleFile("nifty-default-styles.xml");
+	    nifty.loadControlFile("nifty-default-controls.xml");
+	 
+	    // <screen>
+	    final PauseScreen p = this;
+	    nifty.addScreen("Pause", new ScreenBuilder("Hello Nifty Screen"){{
+	    	controller(new PauseScreenController(p));
+	    	layer(new LayerBuilder("Layer_0"){{
+	    		childLayoutCenter();
+	    		panel(new PanelBuilder(){{
+	    			style("nifty-panel-simple");
+	    			childLayoutCenter();
+	                height("100%");
+	                width("100%");
+	                controller(new TargetController());
+	                interactOnRelease("released()");
+	    		}});
+	    	}});
+	    }}.build(nifty));
+	    nifty.gotoScreen("Pause");
+	    //nifty.fromXml("UI/gui_simple.xml", "pause", new PauseScreenController(this));
+	    Element panel = nifty.getCurrentScreen().getLayerElements().get(0).getChildren().get(0);
+	    panel.setUserData("containingSpell", createdSpell);
 	    sr = new ShapeRenderer();
 	}
 

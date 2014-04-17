@@ -11,7 +11,11 @@ import de.lessvoid.nifty.elements.Element;
 public class PauseScreenController implements ScreenController {
 	public Element recentlyClicked;
 	public Spell spell;
+	public PauseScreen pauseScreen;
 	
+	public PauseScreenController(PauseScreen p){
+		pauseScreen = p;
+	}
 	@Override
 	public void bind(Nifty nifty, Screen screen) {
 		// TODO Auto-generated method stub

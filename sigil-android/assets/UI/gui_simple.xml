@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<nifty>
+  <useStyles filename="nifty-default-styles.xml"/>
+  <useControls filename="nifty-default-controls.xml"/>
+  <screen id="pause" controller="com.cigam.sigil.screens.PauseScreenController">
+    <layer childLayout="center" id="layer1">
+      <panel childLayout="center" height="100%" id="panel5" style="nifty-panel-simple" width="100%" x="649" y="173" controller="com.cigam.sigil.screens.TargetController">
+      	<interact onRelease="released()" />	
+      </panel>
+    </layer>
+  </screen>
+</nifty>

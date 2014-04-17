@@ -23,7 +23,7 @@ public class RadialMenu {
 		visible = false;
 		firstClick = true;
 		position = new Vector2();
-		radius = 128;
+		radius = 128/2;
 		color = Color.WHITE;
 	}
 	
@@ -74,7 +74,7 @@ public class RadialMenu {
 			
 			if(selected == -1) {
 				float d = mouse.dst(position);
-				if(d > 10 * radius) {
+				if(d > 1.3 * radius) {
 					hide();
 				} else if(subMenus.size() > 0) {
 					float ax = 360 / subMenus.size();

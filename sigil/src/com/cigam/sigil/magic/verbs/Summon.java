@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.*;
 import com.cigam.sigil.materials.Summoning;
 import com.cigam.sigil.screens.*;
@@ -23,6 +24,7 @@ public class Summon extends Spell {
 		area.setRadius(defaultRadius);
 		effectValue = Constants.FORCE_MEDIUM;
 		argsNum = 4;
+		gui = Utils.makeVerbGui();
 	}
 
 	@Override

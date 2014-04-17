@@ -68,12 +68,12 @@ public class Parser {
 		//System.out.println("adding " + s + " to " + getCurrent());
 		getCurrent().addChild(s);
 		stack.add(s);
-		System.out.println(stack);
+		//System.out.println(stack);
 	}
 	private void addRuneChild(Spell t){
-		System.out.println("adding " + t + " to " + getCurrent());
+		//System.out.println("adding " + t + " to " + getCurrent());
 		getCurrent().addChild(t);
-		System.out.println(stack);
+		//System.out.println(stack);
 	}
 	private void addModifier(Spell m){
 		Spell parent = stack.get(stack.size()-2);
@@ -91,7 +91,7 @@ public class Parser {
 		m.target = getCurrent();
 		m.target.addChild(new Empty());
 		stack.add(stack.size()-1, m);
-		System.out.println(stack);
+		//System.out.println(stack);
 		
 	}
 	private Spell getCurrent(){

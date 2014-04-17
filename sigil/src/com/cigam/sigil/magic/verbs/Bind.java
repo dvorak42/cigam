@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.Binding;
@@ -23,6 +24,7 @@ public class Bind extends Spell {
 		area.setRadius(defaultRadius);
 		effectValue = Constants.BIND_EFFECT_VALUE;
 		argsNum = 4;
+		gui = Utils.makeVerbGui();
 	}
 
 	@Override
