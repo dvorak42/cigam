@@ -1,4 +1,5 @@
 top left: (119,115)
 top right: (391,115)
 bottom left: (119,393)
-bottom right: (391,393) 
+bottom right: (391,393)
+center: (256,256)
