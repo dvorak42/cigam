@@ -5,12 +5,12 @@ import de.lessvoid.nifty.controls.Controller;
 
 public class RunePanel extends PanelBuilder {
 	public RunePanel(Controller cont){
-		style("nifty-panel-simple");
-		//this.backgroundColor("fff8");
+		//style("nifty-panel-simple");
+		backgroundColor("#5950");
 		childLayoutVertical();
         alignCenter();
         height("100%");
-        width("24%");
+        width("23%");
         controller(cont);
        	interactOnRelease("released()");
 	}

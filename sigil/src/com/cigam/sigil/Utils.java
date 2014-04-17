@@ -104,32 +104,53 @@ public class Utils {
             width("100%");
             backgroundImage(path);
             panel(new PanelBuilder(){{
-    			childLayoutHorizontal();
-                height("33%");
-                width("100%");
+            	childLayoutHorizontal();
+    			alignCenter();
+                height("14%");
+                width("70%");
+            }});
+            panel(new PanelBuilder(){{
+            	childLayoutHorizontal();
+    			alignCenter();
+                height("16%");
+                width("70%");
                 panel(new RunePanel(new ArgumentController()));
                 panel(new PanelBuilder(){{
         			childLayoutCenter();
                     height("100%");
-                    width("52%");
+                    width("53%");
                 }});
                 panel(new RunePanel(new ArgumentController()));
             }});
             panel(new PanelBuilder(){{
+            	childLayoutHorizontal();
+    			alignCenter();
+                height("12%");
+                width("70%");
+            }});
+            panel(new PanelBuilder(){{
             	childLayoutCenter();
-                height("34%");
-                width("100%");
+            	alignCenter();
+                height("16%");
+                width("70%");
                 panel(new RunePanel(new TargetController()));
             }});
             panel(new PanelBuilder(){{
             	childLayoutHorizontal();
-                height("33%");
-                width("100%");
+    			alignCenter();
+                height("10%");
+                width("70%");
+            }});
+            panel(new PanelBuilder(){{
+            	childLayoutHorizontal();
+            	alignCenter();
+                height("16%");
+                width("70%");
                 panel(new RunePanel(new ArgumentController()));
                 panel(new PanelBuilder(){{
                 	childLayoutCenter();
                     height("100%");
-                    width("52%");
+                    width("53%");
                 }});
                 panel(new RunePanel(new ArgumentController()));
             }});
