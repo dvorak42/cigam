@@ -2,17 +2,16 @@ package com.cigam.sigil.magic.verbs;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.Constants;
-import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.*;
 import com.cigam.sigil.materials.Banishment;
-import com.cigam.sigil.materials.Summoning;
-import com.cigam.sigil.screens.*;
 
-import de.lessvoid.nifty.builder.LayerBuilder;
-import de.lessvoid.nifty.builder.PanelBuilder;
 
 
 public class Banish extends Spell {

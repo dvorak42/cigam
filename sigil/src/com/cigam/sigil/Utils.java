@@ -1,5 +1,7 @@
 package com.cigam.sigil;
 
+import java.util.HashMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -14,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.external.BodyEditorLoader;
 import com.cigam.sigil.magic.Spell;
+import com.cigam.sigil.magic.verbs.*;
 import com.cigam.sigil.screens.ArgumentController;
 import com.cigam.sigil.screens.RunePanel;
 import com.cigam.sigil.screens.TargetController;
@@ -101,6 +104,16 @@ public class Utils {
             }});
 		}};
 		return gui;
+	}
+	
+	public static HashMap<Class, String> classesToIconPaths;
+	static{
+		classesToIconPaths = new HashMap<Class, String>();
+		classesToIconPaths.put(Banish.class, "UI/banish512.png");
+		classesToIconPaths.put(Bind.class, "UI/bind512.png");
+		classesToIconPaths.put(Create.class, "UI/create512.png");
+		classesToIconPaths.put(Summon.class, "UI/summon512.png");
+		
 	}
 }
 

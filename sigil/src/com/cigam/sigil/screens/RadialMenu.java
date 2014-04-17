@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.cigam.sigil.SigilGame;
 
 public class RadialMenu {
 	ArrayList<RadialMenu> subMenus;
@@ -105,7 +107,7 @@ public class RadialMenu {
 		}
 	}
 	
-	public void render(ShapeRenderer sr) {
+	public void render(ShapeRenderer sr, SpriteBatch b) {
 		if(visible) {
 			sr.setColor(color);
 			sr.circle(position.x, position.y, radius);
@@ -115,7 +117,7 @@ public class RadialMenu {
 				sr.circle(sp.x, sp.y, 5);
 			}
 			if(selected >= 0)
-				subMenus.get(selected).render(sr);
+				subMenus.get(selected).render(sr, b);
 		}
 	}
 }

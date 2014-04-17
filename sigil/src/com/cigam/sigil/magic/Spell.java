@@ -5,10 +5,7 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.screens.AdventureScreen;
-
-import de.lessvoid.nifty.builder.LayerBuilder;
 import de.lessvoid.nifty.builder.PanelBuilder;
-import de.lessvoid.nifty.elements.Element;
 
 
 public abstract class Spell {

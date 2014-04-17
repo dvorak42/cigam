@@ -73,6 +73,7 @@ public class TargetController implements Controller {
 			Object inp = null;
 			try {
 				if(p.pauseScreen.rMenu.getValue()!=null){
+					System.out.println(p.pauseScreen.rMenu.getValue().getClass());
 					inp = ((Class)(p.pauseScreen.rMenu.getValue())).newInstance();
 				}
 			} catch (Exception e) {e.printStackTrace();}

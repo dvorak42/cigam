@@ -19,8 +19,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader.Inputs;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Vector2;
 import com.cigam.sigil.SigilGame;
 import com.cigam.sigil.magic.Spell;
@@ -73,6 +71,7 @@ public class PauseScreen implements Screen {
 		assetManager = new AssetManager();
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
+		
 		rMenu = new RadialMenu();
 		rMenu.color = Color.BLACK;
 		RadialMenu verbMenu = new RadialMenu(Banish.class, Bind.class, Create.class, Summon.class);
@@ -84,7 +83,6 @@ public class PauseScreen implements Screen {
 		rMenu.addMenu(verbMenu);
 		rMenu.addMenu(targetMenu);
 		rMenu.addMenu(modifierMenu);
-		createdSpell = new TopLevelSpell(null, parent);
 		
 	}
 
@@ -103,12 +101,14 @@ public class PauseScreen implements Screen {
 			System.out.println(rMenu.getValue());
 		}*/
 		rMenu.update(new Vector2(Gdx.input.getX(), Gdx.input.getY()), Gdx.input.isButtonPressed(Input.Buttons.LEFT));
-		
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update(true);
+		game.batch.setProjectionMatrix(camera.combined);
+		game.batch.begin();
 		sr.setProjectionMatrix(camera.combined);
 		sr.begin(ShapeType.Filled);
-		rMenu.render(sr);
+		rMenu.render(sr, game.batch);
+		game.batch.end();
 		sr.end();
 	}
 
@@ -123,7 +123,8 @@ public class PauseScreen implements Screen {
 	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
 	    nifty.loadStyleFile("nifty-default-styles.xml");
 	    nifty.loadControlFile("nifty-default-controls.xml");
-	 
+		createdSpell = new TopLevelSpell(null, parent);
+		
 	    // <screen>
 	    final PauseScreen p = this;
 	    nifty.addScreen("Pause", new ScreenBuilder("Hello Nifty Screen"){{
@@ -149,7 +150,7 @@ public class PauseScreen implements Screen {
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
+		parent.testSpells.add(createdSpell);
 		
 	}
 
