@@ -68,19 +68,20 @@ public class Utils {
             backgroundImage(path);
             panel(new PanelBuilder(){{
     			childLayoutHorizontal();
-                height("33%");
+                height("59%");
                 width("100%");
             }});
             panel(new PanelBuilder(){{
-            	childLayoutCenter();
-                height("34%");
-                width("100%");
+            	alignCenter();
+                height("16%");
+                width("72%");
+                childLayoutHorizontal();
+                panel(new PanelBuilder(){{
+                	childLayoutCenter();
+                    height("100%");
+                    width("42%");
+                }});
                 panel(new RunePanel(new TargetController()));
-            }});
-            panel(new PanelBuilder(){{
-            	childLayoutHorizontal();
-                height("33%");
-                width("100%");
             }});
 		}};
 		return gui;
