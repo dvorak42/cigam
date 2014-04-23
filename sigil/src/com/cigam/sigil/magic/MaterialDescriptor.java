@@ -3,7 +3,6 @@ package com.cigam.sigil.magic;
 import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.materials.*;
 import com.cigam.sigil.screens.AdventureScreen;

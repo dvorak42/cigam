@@ -2,14 +2,12 @@ package com.cigam.sigil.magic;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
-import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.SigilGame;
 import com.cigam.sigil.screens.AdventureScreen;

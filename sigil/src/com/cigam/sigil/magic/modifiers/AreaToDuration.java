@@ -1,6 +1,5 @@
 package com.cigam.sigil.magic.modifiers;
 
-import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;

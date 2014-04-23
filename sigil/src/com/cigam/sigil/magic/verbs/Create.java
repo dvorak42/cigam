@@ -1,15 +1,11 @@
 package com.cigam.sigil.magic.verbs;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.Constants;
-import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.*;
 import com.cigam.sigil.materials.Creation;
-import com.cigam.sigil.screens.*;
 
 
 public class Create extends Spell {

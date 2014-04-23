@@ -15,7 +15,6 @@ import com.cigam.sigil.magic.modifiers.*;
 import com.cigam.sigil.magic.targets.FireRune;
 import com.cigam.sigil.magic.targets.Self;
 import com.cigam.sigil.magic.verbs.*;
-import com.cigam.sigil.materials.*;
 import com.cigam.sigil.screens.ArgumentController;
 import com.cigam.sigil.screens.RunePanel;
 import com.cigam.sigil.screens.TargetController;

@@ -2,11 +2,8 @@ package com.cigam.sigil.materials;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;

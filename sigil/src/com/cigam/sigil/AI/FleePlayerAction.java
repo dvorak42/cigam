@@ -26,7 +26,7 @@ public class FleePlayerAction extends LeafTask {
         if (blackboard.player.getPosition().dst(blackboard.actor.getPosition()) > AIConstants.FLEE_TO_RANGE){
             taskController.finishWithSuccess();
         } else {
-            blackboard.actor.body.applyForceToCenter(blackboard.actor.getPosition().sub(blackboard.player.getPosition()).nor().mul(blackboard.actorSpeed), false);
+            blackboard.actor.body.applyForceToCenter(blackboard.actor.getPosition().cpy().sub(blackboard.player.getPosition()).nor().scl(blackboard.actorSpeed), false);
         }
     }
 

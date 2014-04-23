@@ -1,6 +1,5 @@
 package com.cigam.sigil.AI;
 
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.cigam.sigil.PhysicalEntity;
 

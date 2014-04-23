@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -97,15 +96,15 @@ public class AdventureScreen implements Screen {
 		spellsToTest.add("Bind(fire - - - self))");/**/
 		spellsToTest.add("Summon(fire expand slow slow self)");
 
-		for(String s: spellsToTest){
+		//for(String s: spellsToTest){
 			//testSpells.add(parser.parse(player, this, s));
-		}
+		//}
 		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
 		//testSpell = new Summon()
 
-		for(Spell s: SpellsArray){
+		//for(Spell s: SpellsArray){
 			//s.evalEffect();
-		}
+		//}
 		
 		Utils.createBounds(world, 4500, 900);
 		

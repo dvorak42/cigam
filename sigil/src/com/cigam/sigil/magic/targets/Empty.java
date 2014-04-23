@@ -5,7 +5,6 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.EmptyMat;
-import com.cigam.sigil.materials.SelfMat;
 
 public class Empty extends Spell {
 	private SpellDescriptor mat;

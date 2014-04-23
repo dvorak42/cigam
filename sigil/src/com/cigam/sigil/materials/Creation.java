@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.cigam.sigil.FindSpecificFixture;
-import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.magic.SpellEffect;

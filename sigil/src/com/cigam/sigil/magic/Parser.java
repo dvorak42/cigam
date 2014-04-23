@@ -7,7 +7,6 @@ import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.modifiers.*;
 import com.cigam.sigil.magic.targets.*;
 import com.cigam.sigil.magic.verbs.*;
-import com.cigam.sigil.materials.*;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class Parser {
