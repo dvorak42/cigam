@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<nifty>
+  <useStyles filename="nifty-default-styles.xml"/>
+  <useControls filename="nifty-default-controls.xml"/>
+  
+<screen id="screen8">
+    <layer childLayout="absolute" id="layer3">
+      <panel childLayout="horizontal" height="15%" id="panel119" style="nifty-panel-simple" width="100%" x="0" y="85%">
+        <panel childLayout="vertical" height="100%" id="panel120" style="nifty-panel-simple" width="15%">
+          <panel align="center" childLayout="absolute" height="30%" id="panel1" style="nifty-panel-simple" width="50%" x="76" y="22"/>
+          <panel align="center" childLayout="absolute" height="70%" id="panel2" style="nifty-panel-simple" width="50%"/>
+        </panel>
+        <control childLayout="center" height="69%" id="button86" label="button86" name="button" valign="center" width="7%"/>
+        <control childLayout="center" height="69%" id="button87" label="button87" name="button" valign="center" width="7%"/>
+        <control childLayout="center" height="69%" id="button88" label="button88" name="button" valign="center" width="7%"/>
+        <control childLayout="center" height="69%" id="button89" label="button89" name="button" valign="center" width="7%"/>
+        <control childLayout="center" height="69%" id="button90" label="button90" name="button" valign="center" width="7%"/>
+        <control childLayout="center" height="69%" id="button91" label="button91" name="button" valign="center" width="7%"/>
+        <control childLayout="center" height="69%" id="button92" label="button92" name="button" valign="center" width="7%"/>
+		<control childLayout="center" height="69%" id="button93" label="button90" name="button" valign="center" width="7%"/>
+        <control childLayout="center" height="69%" id="button94" label="button91" name="button" valign="center" width="7%"/>
+        <control childLayout="center" height="69%" id="button95" label="button92" name="button" valign="center" width="7%"/>
+      <panel childLayout="vertical" height="100%" id="panel0" style="nifty-panel-simple" width="15%">
+          <panel align="center" childLayout="absolute" height="30%" id="panel3" style="nifty-panel-simple" width="50%" x="75" y="33"/>
+          <panel align="center" childLayout="absolute" height="70%" id="panel4" style="nifty-panel-simple" width="50%"/>
+        </panel>
+      </panel>
+    </layer>
+  </screen>
+</nifty>
