@@ -28,6 +28,7 @@ public class Summon extends Spell {
 	@Override
 	public SpellDescriptor evalEffect() {
 		toSummonTo = target.evalEffect();
+		summonCriteria.clear();
 		for(Spell s: arguments){
 			summonCriteria.add(s.evalEffect());
 		}

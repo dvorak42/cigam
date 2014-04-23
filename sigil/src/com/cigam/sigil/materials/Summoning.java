@@ -73,7 +73,7 @@ public class Summoning extends MaterialDescriptor {
 				attractor = null;
 			}
 			for(MaterialDescriptor m:entitiesToPush.keySet()){
-				if(entitiesToPush.get(m)!=null){
+				if(entitiesToPush.get(m) != null && attractor.active() && attractor.body != null){
 					if(entitiesToPush.get(m).active() && entitiesToPush.get(m).body != null){
 						Vector2 dir = attractor.body.getWorldCenter().sub(entitiesToPush.get(m).body.getWorldCenter());
 						dir.nor();
@@ -110,6 +110,8 @@ public class Summoning extends MaterialDescriptor {
 		System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){
+			if(p == null || !p.active() || p.body == null)
+				continue;
 			float distance = Utils.dist(manifestation, p);
 			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
 				min = distance;

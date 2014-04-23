@@ -16,7 +16,6 @@ public class Creation extends MaterialDescriptor {
 	public Creation(float effectValue) {
 		super();
 		this.effectValue = effectValue;
-		this.init(null, 0, 0, 0);
 		ParticleEffect p = new ParticleEffect();
 		System.out.println("NEW");
 		p.load(Gdx.files.internal("art/particles/create.p"), Gdx.files.internal("art/particles"));
@@ -29,11 +28,14 @@ public class Creation extends MaterialDescriptor {
 		Vector2 castDir = Utils.angleToVector(manifestation.angle);
 		castDir.nor();	
 		//TODO: Use correct offset.
+		if(manifestation.body == null || manifestation.target == null)
+			return;
 		Fixture manifestFixture = manifestation.body.getFixtureList().get(0);
 		FindSpecificFixture f = new FindSpecificFixture(manifestFixture);
 		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)),manifestation.body.getPosition());
 		manifestation.target.position = f.intersectionPoint;
-		manifestation.target.duration = manifestation.target.duration*manifestation.duration;
+		System.out.println(manifestation.target);
+		manifestation.target.duration = manifestation.duration;
 		manifestation.target.effectValue*=effectValue;
 		created = b.createSpellEffect(manifestation.target);
 	}

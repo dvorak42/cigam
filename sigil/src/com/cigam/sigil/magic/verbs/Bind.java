@@ -34,6 +34,7 @@ public class Bind extends Spell {
 	@Override
 	public SpellDescriptor evalEffect() {
 		toBindInto = target.evalEffect();
+		toBeBound.clear();
 		for(Spell s: arguments){
 			toBeBound.add(s.evalEffect());
 		}

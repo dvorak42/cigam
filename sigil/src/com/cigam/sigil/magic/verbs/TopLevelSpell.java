@@ -22,6 +22,7 @@ public class TopLevelSpell extends Spell {
 	}
 	@Override
 	public void cast() {
-		target.cast();
+		if(target != null)
+			target.cast();
 	}
 }

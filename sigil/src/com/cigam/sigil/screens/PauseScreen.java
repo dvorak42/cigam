@@ -19,6 +19,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.cigam.sigil.SigilGame;
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.modifiers.AreaToDuration;
 import com.cigam.sigil.magic.modifiers.AreaToEffect;
@@ -33,6 +34,7 @@ import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.magic.verbs.TopLevelSpell;
+
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.gdx.input.GdxInputSystem;
 import de.lessvoid.nifty.gdx.render.GdxBatchRenderBackendFactory;
@@ -52,7 +54,7 @@ public class PauseScreen implements Screen {
 	
 	ShapeRenderer sr;
 	OrthographicCamera camera;
-	int index = 0;
+	public int index = 0;
 	
 	public RadialMenu rMenu;
 	public Spell createdSpell;
@@ -123,8 +125,7 @@ public class PauseScreen implements Screen {
 	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
 	    nifty.loadStyleFile("nifty-default-styles.xml");
 	    nifty.loadControlFile("nifty-default-controls.xml");
-		createdSpell = new TopLevelSpell(parent.player, parent);
-		
+	    	    
 	    // <screen>
 	    final PauseScreen p = this;
 	    nifty.addScreen("Pause", new ScreenBuilder("Hello Nifty Screen"){{
@@ -142,9 +143,16 @@ public class PauseScreen implements Screen {
 	    		}});
 	    	}});
 	    }}.build(nifty));
+	    
 	    nifty.gotoScreen("Pause");
 	    //nifty.fromXml("UI/gui_simple.xml", "pause", new PauseScreenController(this));
 	    Element panel = nifty.getCurrentScreen().getLayerElements().get(0).getChildren().get(0);
+	    if(createdSpell != null) {
+	    	Utils.initElement(nifty, nifty.getCurrentScreen(), panel, createdSpell.target);
+	    } else {
+	    	createdSpell = new TopLevelSpell(parent.player, parent);
+	    }
+
 	    panel.setUserData("containingSpell", createdSpell);
 	    sr = new ShapeRenderer();
 	}
@@ -152,7 +160,6 @@ public class PauseScreen implements Screen {
 	@Override
 	public void hide() {
 		try{
-			createdSpell.evalEffect();
 			parent.SpellsArray[index] = createdSpell;
 			System.out.println(parent.SpellsArray);
 			index++;

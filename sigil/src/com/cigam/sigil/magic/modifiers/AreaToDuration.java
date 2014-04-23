@@ -23,6 +23,8 @@ public class AreaToDuration extends Spell{
 
 	@Override
 	public void cast() {
+		if(toModify == null)
+			evalEffect();
 		screen.createSpellEffect(toModify);
 	}
 

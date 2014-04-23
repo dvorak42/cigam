@@ -1,6 +1,8 @@
 package com.cigam.sigil.screens;
 
+import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
+import com.cigam.sigil.magic.targets.Empty;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.controls.Controller;
@@ -16,8 +18,7 @@ public class TargetController implements Controller {
 	private Screen s;
 	private Nifty n;
 	public Spell containingSpell;
-	private boolean full;
-	Element pElement;
+
 	@Override
 	public void bind(Nifty nifty, Screen screen, Element element,
 			Parameters parameter) {
@@ -26,7 +27,6 @@ public class TargetController implements Controller {
 			p = (PauseScreenController) screen.getScreenController();
 			s = screen;
 			n = nifty;
-			full = false;
 	}
 	
 	@Override
@@ -86,10 +86,15 @@ public class TargetController implements Controller {
 			containingSpell = e.getUserData("containingSpell");
 		}
 
+		boolean full = false;
+		
+		if(containingSpell != null)
+			full = containingSpell.target != null && !(containingSpell.target instanceof Empty);
+		
 		if(full && delete) {
 			if(containingSpell != null) {
 				containingSpell.removeTarget();
-				full = false;
+				Element pElement = e.getChildren().get(0);
 				pElement.markForRemoval();
 				pElement.hide();
 				e.layoutElements();
@@ -99,8 +104,7 @@ public class TargetController implements Controller {
 			System.out.println("containtingSpell = " + containingSpell);
 			if(newSpell != null && containingSpell != null){
 				containingSpell.addTarget(newSpell);
-				full = true;
-				pElement = newSpell.gui.build(n, s, e);
+				newSpell.gui.build(n, s, e);
 				System.out.println(e.getChildrenCount());
 				recursiveSetUserData("containingSpell", newSpell, e);
 			}

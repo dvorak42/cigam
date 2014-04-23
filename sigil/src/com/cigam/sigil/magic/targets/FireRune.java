@@ -15,7 +15,7 @@ public class FireRune extends Spell {
 
 	@Override
 	public SpellDescriptor evalEffect() {
-		return material;
+		return new SpellDescriptor(new Fire());
 	}
 
 	@Override

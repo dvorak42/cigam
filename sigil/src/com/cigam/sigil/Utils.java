@@ -11,7 +11,9 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.external.BodyEditorLoader;
+import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.modifiers.*;
+import com.cigam.sigil.magic.targets.Empty;
 import com.cigam.sigil.magic.targets.FireRune;
 import com.cigam.sigil.magic.targets.Self;
 import com.cigam.sigil.magic.verbs.*;
@@ -19,7 +21,9 @@ import com.cigam.sigil.screens.ArgumentController;
 import com.cigam.sigil.screens.RunePanel;
 import com.cigam.sigil.screens.TargetController;
 
+import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.builder.PanelBuilder;
+import de.lessvoid.nifty.elements.Element;
 
 public class Utils {
     public static BodyEditorLoader mainBodies = new BodyEditorLoader(Gdx.files.internal("data/main_bodies.json"));
@@ -179,6 +183,34 @@ public class Utils {
 
 
 		
+	}
+	
+	public static void recursiveSet(Element e, String k, Object v) {
+		e.setUserData(k, v);
+		for(Element e2 : e.getChildren())
+			recursiveSet(e2, k, v);
+	}
+	
+	public static void initElement(Nifty n, de.lessvoid.nifty.screen.Screen s, Element e, Spell spell) {
+		if(spell == null || spell instanceof Empty)
+			return;
+		System.out.println(spell);
+		Element f = spell.gui.build(n, s, e);
+		e.setUserData("currentSpell", spell);
+		recursiveSet(f, "containingSpell", spell);
+		if(spell instanceof Create) {
+			initElement(n, s, f.getChildren().get(1).getChildren().get(1), spell.target);
+		} else if(spell instanceof Banish || spell instanceof Bind || spell instanceof Summon) {
+			initElement(n, s, f.getChildren().get(3).getChildren().get(0), spell.target);
+			if(spell.arguments.size() > 0)
+				initElement(n, s, f.getChildren().get(1).getChildren().get(0), spell.arguments.get(0));
+			if(spell.arguments.size() > 1)
+				initElement(n, s, f.getChildren().get(1).getChildren().get(2), spell.arguments.get(1));
+			if(spell.arguments.size() > 2)
+				initElement(n, s, f.getChildren().get(5).getChildren().get(0), spell.arguments.get(2));
+			if(spell.arguments.size() > 3)
+				initElement(n, s, f.getChildren().get(5).getChildren().get(2), spell.arguments.get(3));
+		}
 	}
 }
 

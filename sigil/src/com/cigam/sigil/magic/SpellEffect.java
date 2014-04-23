@@ -42,7 +42,7 @@ public class SpellEffect extends PhysicalEntity {
 			}
 			mat.image.start();
 		}
-		System.out.println("Initial duration is" + duration);
+		System.out.println("Initial duration is " + duration);
 		initEntity();
 	}
 	
@@ -51,7 +51,7 @@ public class SpellEffect extends PhysicalEntity {
 		BodyDef bd = new BodyDef();
 		if(sd != null)
 			bd.position.set(sd.position);
-		
+		System.out.println(bd.position);
 		bd.type = BodyType.DynamicBody;
 		body = world.createBody(bd);
 		

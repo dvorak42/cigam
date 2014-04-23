@@ -62,7 +62,7 @@ public class Binding extends MaterialDescriptor {
 		if(toBindInto != null){
 			ArrayList<MaterialDescriptor> keysToDelete = new ArrayList<MaterialDescriptor>();
 			for(MaterialDescriptor m:entitiesToBind.keySet()){
-				if(entitiesToBind.get(m)!=null){
+				if(entitiesToBind.get(m)!=null ){
 					toBindInto.bind(entitiesToBind.get(m), bindingStrength);
 					keysToDelete.add(m);
 				}
@@ -115,6 +115,9 @@ public class Binding extends MaterialDescriptor {
 		this.Update();
 		//System.out.println(objectsInRange);
 		for(PhysicalEntity p: objectsInRange){
+			if(p == null || !p.active() || p.body == null)
+				continue;
+
 			float distance = Utils.dist(manifestation, p);
 			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
 				min = distance;

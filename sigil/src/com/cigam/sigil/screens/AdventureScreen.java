@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -37,6 +40,7 @@ import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.magic.StringLexer;
 import com.cigam.sigil.materials.Fire;
 import com.cigam.sigil.materials.SelfMat;
+import com.sun.java.swing.plaf.gtk.GTKConstants.ShadowType;
 
 public class AdventureScreen implements Screen {
 	public World world;
@@ -44,8 +48,11 @@ public class AdventureScreen implements Screen {
 	public Player player;
 	Stage stage;
 	Skin skin;
-	
+
+	ShapeRenderer sr;
+
 	OrthographicCamera camera;
+	OrthographicCamera hudCamera;
 	Box2DDebugRenderer debugRenderer;
 	OrthogonalTiledMapRenderer mapRenderer;
 
@@ -62,6 +69,7 @@ public class AdventureScreen implements Screen {
 	private Sprite background;
 	public boolean paused = false;
 	public Array<PhysicalEntity> toDestroy;
+	private int selectedSpell;
 	
 	public AdventureScreen(SigilGame g)
 	{
@@ -77,6 +85,7 @@ public class AdventureScreen implements Screen {
 		
 		camera = new OrthographicCamera(w, h);
 		camera.zoom = 1.0f;
+		hudCamera = new OrthographicCamera(w, h);
 
 		world = new World(new Vector2(), true);
 		world.setContactListener(new SigilContactListener());
@@ -90,12 +99,11 @@ public class AdventureScreen implements Screen {
 		
 		parser = new Parser(new StringLexer());
 		
-		ArrayList<String> spellsToTest = new ArrayList<String>();
-		/**/spellsToTest.add("Create(fire)");
-		spellsToTest.add("Create(Summon(fire - - - self))");
-		spellsToTest.add("Bind(fire - - - self))");/**/
-		spellsToTest.add("Summon(fire expand slow slow self)");
-
+		SpellsArray[0] = parser.parse(player, this, "Create(fire)");
+		SpellsArray[1] = parser.parse(player, this, "Create(Summon(fire - - - self))");
+		SpellsArray[2] = parser.parse(player, this, "Bind(fire - - - self))");
+		SpellsArray[3] = parser.parse(player, this, "Summon(fire expand slow slow self)");
+		System.out.println(SpellsArray[3].target);
 		//for(String s: spellsToTest){
 			//testSpells.add(parser.parse(player, this, s));
 		//}
@@ -174,8 +182,7 @@ public class AdventureScreen implements Screen {
     	SpellEffect e = new SpellEffect(game, this, new Sprite(texture), s);
 		entities.add(e);
     	spells.add(e);
-    	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
-        world.clearForces();
+    	world.step(dt/1000.0f, 0, Constants.POSITION_ITERS);
     	s.mat.OnCreate(e, this);
 		System.out.println("spell with effect value " + e.effectValue);
     	return e;
@@ -194,9 +201,17 @@ public class AdventureScreen implements Screen {
 		if(!paused) {
 			
 		if(in.isKeyPressed(Input.Keys.P)) {
+			game.pauseScreen.createdSpell = null;
+			game.pauseScreen.index = selectedSpell;
 			game.setScreen(game.pauseScreen);
 			return;
         }
+		if(in.isKeyPressed(Input.Keys.O)) {
+			game.pauseScreen.createdSpell = SpellsArray[selectedSpell];
+			game.pauseScreen.index = selectedSpell;
+			game.setScreen(game.pauseScreen);
+			return;
+		}
 
         //Moving the player
         Vector2 playerMoveVec = new Vector2();
@@ -255,30 +270,23 @@ public class AdventureScreen implements Screen {
 	            createFireball(player, 6*baseAngle, true);
 	        else if(in.isKeyPressed(Input.Keys.UP))
 	            createFireball(player, 2*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.NUM_1) && SpellsArray[0] != null)
-	        	SpellsArray[0].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_2) && SpellsArray[1] != null)
-	        	SpellsArray[1].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_3) && SpellsArray[2] != null)
-	        	SpellsArray[2].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_4) && SpellsArray[3] != null)
-	        	SpellsArray[3].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_5) && SpellsArray[4] != null)
-	        	SpellsArray[4].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_6) && SpellsArray[5] != null)
-	        	SpellsArray[5].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_7) && SpellsArray[6] != null)
-	        	SpellsArray[6].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_8) && SpellsArray[7] != null)
-	        	SpellsArray[7].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_9) && SpellsArray[8] != null)
-	        	SpellsArray[8].cast();
-	        else if(in.isKeyPressed(Input.Keys.NUM_0) && SpellsArray[9] != null)
-	        	SpellsArray[9].cast();
-	        else
-	        	fireDelay = 0;
+	        else if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
+	        	SpellsArray[selectedSpell].cast();
+	        else {
+	        	boolean cast = false;
+	        	for(int i = 0; i < 10; i++) {
+	        		int j = i != 9 ? i : -1;
+	        		if(SpellsArray[i] != null && in.isKeyPressed(Input.Keys.NUM_1 + j)) {
+	        			selectedSpell = i;
+	    	        	SpellsArray[selectedSpell].cast();
+	    	        	cast = true;
+	        		}
+	        	}
+	        	if(!cast)
+	        		fireDelay = 0;
+	        }
         }
-        
+
         fireDelay -= delta;
 		}        
 
@@ -300,6 +308,51 @@ public class AdventureScreen implements Screen {
 			r.render(delta);
 		game.batch.end();
 		
+		hudCamera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		hudCamera.update(true);
+		sr.setProjectionMatrix(hudCamera.combined);
+
+		int spellSlotWidth = (Gdx.graphics.getWidth() - 2 * 60 - 10) / 10 - 10;
+		
+		sr.begin(ShapeType.Filled);
+		sr.setColor(Color.GRAY);
+		sr.rect(0, 0, Gdx.graphics.getWidth(), 128);
+		sr.end();
+		sr.begin(ShapeType.Line);
+		sr.setColor(Color.BLACK);
+		sr.rect(10, 10, 50, 100);
+		for(int i = 0; i < 10; i++) {
+			sr.rect(70 + i * (spellSlotWidth + 10), 10, spellSlotWidth, 100);
+		}
+		sr.rect(Gdx.graphics.getWidth() - 60, 10, 50, 100);
+		sr.end();
+
+		sr.begin(ShapeType.Filled);
+		sr.setColor(Color.RED);
+		float percentHealth = 1.0f * player.health / Constants.DEFAULT_HEALTH;
+		if(percentHealth < 0) {
+			percentHealth = 0;
+		}
+		sr.rect(10, 11, 49, 1 + (int)(98.0f * percentHealth));
+		sr.setColor(Color.BLUE);
+		float percentMana = 1.0f * player.totalManaBound / player.totalManaCapacity;
+		if(percentMana < 0) {
+			percentMana = 0;
+		}
+		sr.rect(Gdx.graphics.getWidth() - 60, 11, 49, 1 + (int)(98.0f * percentMana));
+		sr.end();
+		
+		for(int i = 0; i < 10; i++) {
+			if(SpellsArray[i] != null) {
+				sr.begin(ShapeType.Filled);
+				if(i == selectedSpell)
+					sr.setColor(Color.GREEN);
+				else
+					sr.setColor(Color.BLUE);
+				sr.rect(70 + i * (spellSlotWidth + 10), 11, spellSlotWidth - 1, 99);
+				sr.end();
+			}
+		}
 		
 		runPhysics(delta);
 	}
@@ -334,8 +387,8 @@ public class AdventureScreen implements Screen {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
+		sr = new ShapeRenderer();
+		fireDelay = Constants.FIRE_DELAY;
 	}
 
 

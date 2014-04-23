@@ -108,6 +108,9 @@ public class Banishment extends MaterialDescriptor {
 		System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){
+			if(p == null || !p.active() || p.body == null)
+				continue;
+
 			float distance = Utils.dist(manifestation, p);
 			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
 				min = distance;
