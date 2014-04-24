@@ -101,7 +101,7 @@ public class PauseScreen implements Screen {
 			wasDown = true;
 		if(wasDown && !Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
 			wasDown = false;
-			System.out.println(rMenu.getValue());
+			//System.out.println(rMenu.getValue());
 		}*/
 		rMenu.update(new Vector2(Gdx.input.getX(), Gdx.input.getY()), Gdx.input.isButtonPressed(Input.Buttons.LEFT));
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -160,7 +160,7 @@ public class PauseScreen implements Screen {
 	public void hide() {
 		try{
 			parent.SpellsArray[index] = createdSpell;
-			System.out.println(parent.SpellsArray);
+			//System.out.println(parent.SpellsArray);
 			index++;
 			index = index%10;
 		} catch (Exception e){

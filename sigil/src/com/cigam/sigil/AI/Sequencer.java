@@ -16,6 +16,7 @@ public class Sequencer extends ParentTask{
         //if we reach the end of the subtask list, we have succeeded with the sequencer, so the task returns with success
         if (currentTaskIndex >= taskController.subtaskList.size() - 1){
             taskController.finishWithSuccess();
+            return;
         }
         
         //otherwise we go to the next task

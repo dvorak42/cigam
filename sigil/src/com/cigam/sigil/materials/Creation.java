@@ -17,7 +17,6 @@ public class Creation extends MaterialDescriptor {
 		super();
 		this.effectValue = effectValue;
 		ParticleEffect p = new ParticleEffect();
-		System.out.println("NEW");
 		p.load(Gdx.files.internal("art/particles/create.p"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);
 	}
@@ -34,7 +33,7 @@ public class Creation extends MaterialDescriptor {
 		FindSpecificFixture f = new FindSpecificFixture(manifestFixture);
 		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)),manifestation.body.getPosition());
 		manifestation.target.position = f.intersectionPoint;
-		System.out.println(manifestation.target);
+		//System.out.println(manifestation.target);
 		manifestation.target.duration = manifestation.duration;
 		manifestation.target.effectValue*=effectValue;
 		created = b.createSpellEffect(manifestation.target);
@@ -42,7 +41,7 @@ public class Creation extends MaterialDescriptor {
 
 	@Override
 	public void onDestroy(AdventureScreen b){
-		System.out.println("Created = " + created);
+		//System.out.println("Created = " + created);
 		b.destroySpellEffect(created);
 	}
 

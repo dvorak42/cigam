@@ -205,7 +205,7 @@ public class Utils {
 	public static void initElement(Nifty n, de.lessvoid.nifty.screen.Screen s, Element e, Spell spell) {
 		if(spell == null || spell instanceof Empty)
 			return;
-		System.out.println(spell);
+		//System.out.println(spell);
 		Element f = spell.gui.build(n, s, e);
 		e.setUserData("currentSpell", spell);
 		recursiveSet(f, "containingSpell", spell);

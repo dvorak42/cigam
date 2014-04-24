@@ -59,11 +59,11 @@ public abstract class PhysicalEntity extends Entity {
 			p.setActive(false);
 			p.setVisible(false);
 		} else {
-			System.out.println(p.totalManaWeight + " was totalManaWeight and " + totalManaCapacity + " was totalManaCapacity");
+			//System.out.println(p.totalManaWeight + " was totalManaWeight and " + totalManaCapacity + " was totalManaCapacity");
 			this.kill();
 		}
-		System.out.println("Binding " + p + " into " + this);
-		System.out.println("totalManaCapacity is now " + totalManaCapacity);
+		//System.out.println("Binding " + p + " into " + this);
+		//System.out.println("totalManaCapacity is now " + totalManaCapacity);
 	}
 	
 	public void unbind(PhysicalEntity p, float bindingValue){
@@ -144,7 +144,9 @@ public abstract class PhysicalEntity extends Entity {
 		}
 	}
 
-	public void setAutoDamage(int d) {
-		autoDamage = d;
+	public void addAutoDamage(int d) {
+		autoDamage += d;
+		if(autoDamage <= 0)
+			autoDamage = 0;
 	}
 }

@@ -179,7 +179,7 @@ public class AdventureScreen implements Screen {
         	}
     		center.scl(tileScale);
     		String eType = (String)enemy.getProperties().get("enemyType");
-    		System.out.println(eType);
+    		//System.out.println(eType);
     		Texture enemyTexture = new Texture(Gdx.files.internal("art/enemy.png"));
     		enemyTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
         	Enemy enm = new Enemy(game, new Sprite(enemyTexture), this, new SelfMat(), player, center);
@@ -212,7 +212,7 @@ public class AdventureScreen implements Screen {
     	spells.add(e);
     	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
     	s.mat.OnCreate(e, this);
-		System.out.println("spell with effect value " + e.effectValue);
+		//System.out.println("spell with effect value " + e.effectValue);
     	return e;
 	}
     
@@ -385,6 +385,7 @@ public class AdventureScreen implements Screen {
 	}
 
 	public void runPhysics(float delta) {
+		debugRenderer.setDrawInactiveBodies(false);
 		debugRenderer.render(world, camera.combined);
 		if(!paused) {
 			world.step(1/30f, 6, 2);
@@ -408,12 +409,12 @@ public class AdventureScreen implements Screen {
 						if(a instanceof SpellEffect) {
 							SpellEffect e = (SpellEffect)a;
 							if(e.sd != null && e.sd.mat instanceof Fire)
-								b.setAutoDamage(0);
+								b.addAutoDamage(-4);
 						}
 						if(b instanceof SpellEffect) {
 							SpellEffect e = (SpellEffect)b;
 							if(e.sd != null && e.sd.mat instanceof Fire)
-								a.setAutoDamage(0);
+								a.addAutoDamage(-4);
 						}
 					}
 				}
@@ -422,7 +423,8 @@ public class AdventureScreen implements Screen {
 
 		for(PhysicalEntity p : toDestroy) {
 			if(bodies.contains(p.body, true)) {
-				world.destroyBody(p.body);
+				// TODO Fixing the broken thing.
+				//world.destroyBody(p.body);
 				p.body.setActive(false);
 				entities.remove(p);
 			}

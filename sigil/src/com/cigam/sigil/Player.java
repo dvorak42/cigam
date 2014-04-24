@@ -50,7 +50,6 @@ public class Player extends PhysicalEntity {
 	}
 	
 	public void gainShard(CrystalShard a) {
-		System.out.println("WIN!!!");
 		nextTeleport = a.destination;
 	}
 }

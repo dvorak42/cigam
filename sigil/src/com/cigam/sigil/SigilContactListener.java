@@ -32,12 +32,12 @@ public class SigilContactListener implements ContactListener {
 			if(a instanceof SpellEffect) {
 				SpellEffect e = (SpellEffect)a;
 				if(e.sd != null && e.sd.mat instanceof Fire)
-					b.setAutoDamage(4);
+					b.addAutoDamage(4);
 			}
 			if(b instanceof SpellEffect) {
 				SpellEffect e = (SpellEffect)b;
 				if(e.sd != null && e.sd.mat instanceof Fire)
-					a.setAutoDamage(4);
+					a.addAutoDamage(4);
 			}
 		}
 	}
@@ -56,12 +56,12 @@ public class SigilContactListener implements ContactListener {
 				if(a instanceof SpellEffect) {
 					SpellEffect e = (SpellEffect)a;
 					if(e.sd != null && e.sd.mat instanceof Fire)
-						b.setAutoDamage(0);
+						b.addAutoDamage(-4);
 				}
 				if(b instanceof SpellEffect) {
 					SpellEffect e = (SpellEffect)b;
 					if(e.sd != null && e.sd.mat instanceof Fire)
-						a.setAutoDamage(0);
+						a.addAutoDamage(-4);
 				}
 			}
 			
