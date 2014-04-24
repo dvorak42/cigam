@@ -26,7 +26,7 @@ public abstract class Spell {
 		arguments = new ArrayList<Spell>();
 		target = null;
 		this.gui = Utils.makeRuneGui(Utils.classesToIconPaths.get(this.getClass()));
-		System.out.println(this.getClass());
+		//System.out.println(this.getClass());
 	};
 	/*
 	public Spell(Spell target, ArrayList<Spell> args){

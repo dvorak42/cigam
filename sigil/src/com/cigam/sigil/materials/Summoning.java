@@ -107,7 +107,7 @@ public class Summoning extends MaterialDescriptor {
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
 		attractor = null;
 		this.manifestation = manifestation;
-		System.out.println("objectsInRange are " + objectsInRange);
+		//System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){
 			if(p == null || !p.active() || p.body == null)
@@ -118,7 +118,7 @@ public class Summoning extends MaterialDescriptor {
 				attractor = p;
 			}
 		}
-		System.out.println("Attractor is " + attractor);
+		//System.out.println("Attractor is " + attractor);
 	}
 	@Override
 	public void onDestroy(AdventureScreen destroyedIn){

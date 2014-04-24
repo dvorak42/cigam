@@ -37,9 +37,9 @@ public class Create extends Spell {
 	@Override
 	public SpellDescriptor evalEffect(){
 		toCreate = target.evalEffect();
-		System.out.println("Casting Create with " + toCreate);
+		//System.out.println("Casting Create with " + toCreate);
 		toCreate.position = caster.body.getWorldCenter();
-		System.out.println(toCreate.duration);
+		//System.out.println(toCreate.duration);
 		Vector2 pos = caster.body.getWorldCenter().cpy().rotate(caster.body.getAngle());
 		SpellDescriptor effect = new SpellDescriptor(new Creation(effectValue), defaultDuration, effectValue, toCreate, null, caster.body.getAngle(), area, pos);
 		return effect;

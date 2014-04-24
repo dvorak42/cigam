@@ -80,7 +80,7 @@ public class TargetController implements Controller {
 				delete = true;
 		} catch (Exception e) {e.printStackTrace();}
 		
-		System.out.println("UserData is " + e.getUserData("containingSpell"));
+		//System.out.println("UserData is " + e.getUserData("containingSpell"));
 		if(containingSpell == null){
 			containingSpell = e.getUserData("containingSpell");
 		}
@@ -99,12 +99,12 @@ public class TargetController implements Controller {
 				e.layoutElements();
 			}
 		} else if(!full) {
-			System.out.println("inp = " + newSpell);
-			System.out.println("containtingSpell = " + containingSpell);
+			//System.out.println("inp = " + newSpell);
+			//System.out.println("containtingSpell = " + containingSpell);
 			if(newSpell != null && containingSpell != null){
 				containingSpell.addTarget(newSpell);
 				newSpell.gui.build(n, s, e);
-				System.out.println(e.getChildrenCount());
+				//System.out.println(e.getChildrenCount());
 				recursiveSetUserData("containingSpell", newSpell, e);
 			}
 		}

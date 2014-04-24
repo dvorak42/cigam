@@ -37,7 +37,8 @@ public class SolidProjectile extends PhysicalEntity {
 
 		FixtureDef fd = new FixtureDef();
 		fd.density = density; 
-
+		fd.isSensor = true;
+		
 	    Utils.mainBodies.attachFixture(body, "fireball", fd, sprite.getWidth());
 	    modelOrigin = Utils.mainBodies.getOrigin("fireball", sprite.getWidth());
 

@@ -23,7 +23,7 @@ public class PauseScreenController implements ScreenController {
 
 	@Override
 	public void onStartScreen() {
-		System.out.println("started");
+		//System.out.println("started");
 
 	}
 
@@ -34,6 +34,6 @@ public class PauseScreenController implements ScreenController {
 	}
 	
 	public void clicked(){
-		System.out.println(recentlyClicked);
+		//System.out.println(recentlyClicked);
 	}
 }

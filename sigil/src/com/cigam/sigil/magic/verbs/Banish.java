@@ -48,7 +48,7 @@ public class Banish extends Spell {
 		for(Spell s: arguments){
 			summonCriteria.add(s.evalEffect());
 		}
-		System.out.println(caster);
+		//System.out.println(caster);
 		SpellDescriptor effect = new SpellDescriptor(new Banishment(toSummonTo, summonCriteria, effectValue), defaultDuration, effectValue, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getWorldCenter());
 		return effect;
 	}

@@ -28,7 +28,7 @@ public class SpellEffect extends PhysicalEntity {
 		this.angle = s.angle;
 		this.arguments = s.arguments;
 		this.sd = s;
-		System.out.println(this.mat.image);
+		//System.out.println(this.mat.image);
 		if(mat.image!=null){
 			mat.image.setPosition(s.position.x, s.position.y);
 			float scale = (float)Math.sqrt(sd.shape.getRadius() / 100 * 2);
@@ -42,7 +42,7 @@ public class SpellEffect extends PhysicalEntity {
 			}
 			mat.image.start();
 		}
-		System.out.println("Initial duration is " + duration);
+		//System.out.println("Initial duration is " + duration);
 		initEntity();
 	}
 	
@@ -51,8 +51,8 @@ public class SpellEffect extends PhysicalEntity {
 		BodyDef bd = new BodyDef();
 		if(sd != null)
 			bd.position.set(sd.position);
-		System.out.println(bd.position);
-		bd.type = BodyType.DynamicBody;
+		//System.out.println(bd.position);
+		bd.type = BodyType.KinematicBody;
 		body = world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();

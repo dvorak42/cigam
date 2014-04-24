@@ -15,14 +15,21 @@ import com.cigam.sigil.screens.AdventureScreen;
 public class Enemy extends PhysicalEntity {
 	private AIBlackboard bb = new AIBlackboard();
 	private BasicEnemyBT bt = new BasicEnemyBT();
+
+	Vector2 position;
 	
 	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat, Player player) {
+		this(eg, sprite, a, mat, player, new Vector2(300, 300));
+	}
+
+	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat, Player player, Vector2 pos) {
 		super(eg, sprite, a, mat);
+		position = pos;
 		initEntity();
 		initBehaviorTree(player);
 		health = Constants.DEFAULT_HEALTH;
 	}
-	
+
 	//Initializes the blackboard and behavior tree
 	public void initBehaviorTree(Player player){
 	    bt.createBehaviourTree(bb);
@@ -32,13 +39,13 @@ public class Enemy extends PhysicalEntity {
 	
 	@Override
 	public void initBody() {
-		Vector2 pos = new Vector2(300,300);
+		//Vector2 pos = new Vector2(300,300);
 
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;
 		bd.angle = 0;
 		bd.fixedRotation = true;
-		bd.position.set(pos);
+		bd.position.set(position.cpy().sub(sprite.getWidth() / 2, sprite.getHeight() / 2));
 		
 		body = screen.world.createBody(bd);
 		

@@ -80,7 +80,7 @@ public class ArgumentController implements Controller {
 				delete = true;
 		} catch (Exception e) {e.printStackTrace();}
 		
-		System.out.println("UserData is " + e.getUserData("containingSpell"));
+		//System.out.println("UserData is " + e.getUserData("containingSpell"));
 		if(containingSpell == null){
 			containingSpell = e.getUserData("containingSpell");
 		}
@@ -93,7 +93,7 @@ public class ArgumentController implements Controller {
 		}
 
 		if(full && delete) {
-			System.out.println("Deleting");
+			//System.out.println("Deleting");
 			if(containingSpell != null) {
 				containingSpell.removeArgument((Spell)e.getUserData("currentSpell"));
 				Element pElement = e.getChildren().get(0);
@@ -102,12 +102,12 @@ public class ArgumentController implements Controller {
 				e.layoutElements();
 			}
 		} else if(!full) {
-			System.out.println("inp = " + newSpell);
-			System.out.println("containtingSpell = " + containingSpell);
+			//System.out.println("inp = " + newSpell);
+			//System.out.println("containtingSpell = " + containingSpell);
 			if(newSpell != null && containingSpell != null){
 				containingSpell.addArgument(newSpell);
 				newSpell.gui.build(n, s, e);
-				System.out.println(e.getChildrenCount());
+				//System.out.println(e.getChildrenCount());
 				e.setUserData("currentSpell", newSpell);
 				recursiveSetUserData("containingSpell", newSpell, e);
 			}

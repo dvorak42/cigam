@@ -30,8 +30,8 @@ public class CrystalShard extends PhysicalEntity {
 		FixtureDef fd = new FixtureDef();
 		fd.density = 10; 
 
-	    Utils.mainBodies.attachFixture(body, "fireball", fd, sprite.getWidth());
-	    modelOrigin = Utils.mainBodies.getOrigin("fireball", sprite.getWidth());
+	    Utils.mainBodies.attachFixture(body, "crystal", fd, sprite.getWidth());
+	    modelOrigin = Utils.mainBodies.getOrigin("crystal", sprite.getWidth());
 
 		body.setUserData(this);
 	}
