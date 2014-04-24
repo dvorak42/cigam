@@ -57,9 +57,10 @@ public class Enemy extends PhysicalEntity {
 		if(!active)
 			return;
 		
-		if (Gdx.input.isKeyPressed(Input.Keys.M)){
-		    health -= 50.0f;
-		}
+		/* for degbugging BT
+		 * if (Gdx.input.isKey(Input.Keys.M)){
+		    health -= 10.0f;
+		}*/
 		
 		bt.updateBehaviorTree();
 		bb.distanceToPlayer = bb.player.getPosition().dst(getPosition());
