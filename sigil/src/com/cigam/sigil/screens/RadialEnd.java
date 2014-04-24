@@ -54,7 +54,7 @@ public class RadialEnd extends RadialMenu {
 			if(this.icon!=null){
 				sr.end();
 				b.begin();
-				icon.setPosition(position.x-radius*2*iconScale, position.y-radius*2*iconScale);
+				icon.setPosition((float) (position.x-radius*2*iconScale), (float) (position.y-radius*2*iconScale));
 				this.icon.draw(b);
 				b.end();
 				sr.begin(ShapeType.Filled);

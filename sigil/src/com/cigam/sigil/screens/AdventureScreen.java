@@ -13,9 +13,7 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -27,18 +25,18 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
-import com.cigam.sigil.CrystalShard;
-import com.cigam.sigil.PhysicalEntity;
-import com.cigam.sigil.SigilContactFilter;
-import com.cigam.sigil.SigilContactListener;
 import com.cigam.sigil.Constants;
+import com.cigam.sigil.CrystalShard;
 import com.cigam.sigil.Enemy;
 import com.cigam.sigil.Entity;
+import com.cigam.sigil.PhysicalEntity;
+import com.cigam.sigil.Player;
+import com.cigam.sigil.SigilContactFilter;
+import com.cigam.sigil.SigilContactListener;
 import com.cigam.sigil.SigilGame;
 import com.cigam.sigil.SolidProjectile;
-import com.cigam.sigil.Player;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Parser;
 import com.cigam.sigil.magic.Spell;
@@ -48,7 +46,6 @@ import com.cigam.sigil.magic.StringLexer;
 import com.cigam.sigil.materials.Backgroundium;
 import com.cigam.sigil.materials.Fire;
 import com.cigam.sigil.materials.SelfMat;
-import com.sun.java.swing.plaf.gtk.GTKConstants.ShadowType;
 
 public class AdventureScreen implements Screen {
 	public World world;
@@ -120,7 +117,7 @@ public class AdventureScreen implements Screen {
 			//s.evalEffect();
 		//}
 		
-		Utils.createBounds(world, 4500, 900);
+		Utils.createBounds(world, 4500, 900); //Controls boundary of the map.
 		
 		map = new TmxMapLoader().load("maps/MAP.tmx");
 		float tileScale = 2;
@@ -140,6 +137,7 @@ public class AdventureScreen implements Screen {
             enemies.add(enemy);
         }
 
+        //parses tiled map and acts on wall layer
         for(MapObject wall : map.getLayers().get("WallObjects").getObjects()) {
         	if(wall instanceof PolygonMapObject) {
         		PolygonMapObject pwall = (PolygonMapObject)wall;
@@ -148,6 +146,7 @@ public class AdventureScreen implements Screen {
         	}
         }
 
+        //parses tiled map and acts on Goal layer
         for(MapObject goal : map.getLayers().get("Goal").getObjects()) {
         	if(goal instanceof PolygonMapObject) {
         		PolygonMapObject pgoal = (PolygonMapObject)goal;
@@ -189,6 +188,7 @@ public class AdventureScreen implements Screen {
         }*/
 	}
 	
+	//This presumably shouldn't still exist? -Jayson
     public void createFireball(Entity e, float angle, boolean player)
     {
     	Texture fTexture = new Texture(Gdx.files.internal("art/fireball.png"));

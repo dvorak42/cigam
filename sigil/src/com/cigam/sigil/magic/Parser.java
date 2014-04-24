@@ -4,9 +4,20 @@ import java.util.ArrayList;
 
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
-import com.cigam.sigil.magic.modifiers.*;
-import com.cigam.sigil.magic.targets.*;
-import com.cigam.sigil.magic.verbs.*;
+import com.cigam.sigil.magic.modifiers.AreaToDuration;
+import com.cigam.sigil.magic.modifiers.AreaToEffect;
+import com.cigam.sigil.magic.modifiers.DurationToArea;
+import com.cigam.sigil.magic.modifiers.DurationToEffect;
+import com.cigam.sigil.magic.modifiers.EffectToArea;
+import com.cigam.sigil.magic.modifiers.EffectToDuration;
+import com.cigam.sigil.magic.targets.Empty;
+import com.cigam.sigil.magic.targets.FireRune;
+import com.cigam.sigil.magic.targets.Self;
+import com.cigam.sigil.magic.verbs.Banish;
+import com.cigam.sigil.magic.verbs.Bind;
+import com.cigam.sigil.magic.verbs.Create;
+import com.cigam.sigil.magic.verbs.Summon;
+import com.cigam.sigil.magic.verbs.TopLevelSpell;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class Parser {

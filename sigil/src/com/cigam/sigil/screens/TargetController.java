@@ -1,6 +1,5 @@
 package com.cigam.sigil.screens;
 
-import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.targets.Empty;
 

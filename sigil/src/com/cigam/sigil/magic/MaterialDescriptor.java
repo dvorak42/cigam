@@ -4,7 +4,8 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.cigam.sigil.PhysicalEntity;
-import com.cigam.sigil.materials.*;
+import com.cigam.sigil.materials.Backgroundium;
+import com.cigam.sigil.materials.Fire;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public abstract class MaterialDescriptor {

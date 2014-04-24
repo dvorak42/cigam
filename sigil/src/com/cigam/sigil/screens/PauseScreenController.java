@@ -3,9 +3,9 @@ package com.cigam.sigil.screens;
 import com.cigam.sigil.magic.Spell;
 
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.screen.Screen;
 import de.lessvoid.nifty.screen.ScreenController;
-import de.lessvoid.nifty.elements.Element;
 
 
 public class PauseScreenController implements ScreenController {

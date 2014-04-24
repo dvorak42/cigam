@@ -1,10 +1,5 @@
 package com.cigam.sigil.screens;
 
-import de.lessvoid.nifty.builder.LayerBuilder;
-import de.lessvoid.nifty.builder.PanelBuilder;
-import de.lessvoid.nifty.builder.ScreenBuilder;
-import de.lessvoid.nifty.elements.Element;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -36,6 +31,10 @@ import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.magic.verbs.TopLevelSpell;
 
 import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.builder.LayerBuilder;
+import de.lessvoid.nifty.builder.PanelBuilder;
+import de.lessvoid.nifty.builder.ScreenBuilder;
+import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.gdx.input.GdxInputSystem;
 import de.lessvoid.nifty.gdx.render.GdxBatchRenderBackendFactory;
 import de.lessvoid.nifty.gdx.sound.GdxSoundDevice;

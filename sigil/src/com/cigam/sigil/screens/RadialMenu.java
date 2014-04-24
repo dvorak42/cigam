@@ -36,12 +36,12 @@ public class RadialMenu {
 	public void setRadius(float r) {
 		radius = r;
 		for(RadialMenu rm : subMenus)
-			rm.setRadius(r / 2);
+			rm.setRadius((float) (r / 2));  //menue item sizes
 	}
 	
 	public void addMenu(RadialMenu rm) {
 		subMenus.add(rm);
-		rm.setRadius(radius / 2);
+		rm.setRadius((float) (radius / 2)); //recurive size of submenues
 	}
 	
 	public Object getValue() {
@@ -73,7 +73,7 @@ public class RadialMenu {
 			
 			if(selected == -1) {
 				float d = mouse.dst(position);
-				if(d > 1.4 * radius) {
+				if(d > 1.4 * radius) {          //dictates how far the cursor goes before hiding the current menu.
 					hide();
 				} else if(subMenus.size() > 0) {
 					float ax = 360 / subMenus.size();
@@ -115,7 +115,7 @@ public class RadialMenu {
 			sr.circle(position.x, position.y, radius);
 			for(int i = 0; i < subMenus.size(); i++) {
 				Vector2 sp = position.cpy().add(new Vector2(radius, 0).rotate(i * 360 / subMenus.size()));
-				subMenus.get(i).renderPreview(sr, b, sp, 5);
+				subMenus.get(i).renderPreview(sr, b, sp, 10); //this controls the menu indicator dots
 			}
 			if(selected >= 0)
 				subMenus.get(selected).render(sr, b);
