@@ -11,7 +11,7 @@ public class Sequencer extends ParentTask{
     
     //On a sequencer child success, we move to the next child. If there are no children left, the task returns with success
     @Override
-    protected void ChildSucceeded(){
+    protected void ChildSucceeded() {
         int currentTaskIndex = taskController.subtaskList.indexOf(taskController.currentTask);
         //if we reach the end of the subtask list, we have succeeded with the sequencer, so the task returns with success
         if (currentTaskIndex >= taskController.subtaskList.size() - 1){
