@@ -19,6 +19,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
@@ -181,7 +182,7 @@ public class AdventureScreen implements Screen {
     	SpellEffect e = new SpellEffect(game, this, new Sprite(texture), s);
 		entities.add(e);
     	spells.add(e);
-    	world.step(dt/1000.0f, 0, Constants.POSITION_ITERS);
+    	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
     	s.mat.OnCreate(e, this);
 		System.out.println("spell with effect value " + e.effectValue);
     	return e;
@@ -369,6 +370,32 @@ public class AdventureScreen implements Screen {
 		Array<Body> bodies = new Array<Body>();
 		world.getBodies(bodies);
 		
+		for(Contact c : world.getContactList()) {
+			if(c.getFixtureA() != null && c.getFixtureB() != null){
+				if(c.getFixtureA().getBody().getUserData() instanceof PhysicalEntity && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
+					PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
+					PhysicalEntity b = ((PhysicalEntity) c.getFixtureB().getBody().getUserData());
+					if(toDestroy.contains(a, true) || toDestroy.contains(b, true)) {
+						if(a.mat != null && b.mat != null) {
+							//System.out.println("collision ended");
+							a.mat.NoCollide(b);
+							b.mat.NoCollide(a);
+						}
+						if(a instanceof SpellEffect) {
+							SpellEffect e = (SpellEffect)a;
+							if(e.sd != null && e.sd.mat instanceof Fire)
+								b.setAutoDamage(0);
+						}
+						if(b instanceof SpellEffect) {
+							SpellEffect e = (SpellEffect)b;
+							if(e.sd != null && e.sd.mat instanceof Fire)
+								a.setAutoDamage(0);
+						}
+					}
+				}
+			}
+		}
+
 		for(PhysicalEntity p : toDestroy) {
 			if(bodies.contains(p.body, true)) {
 				world.destroyBody(p.body);

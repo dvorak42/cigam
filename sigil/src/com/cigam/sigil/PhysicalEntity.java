@@ -23,12 +23,17 @@ public abstract class PhysicalEntity extends Entity {
 	public float initManaCapacity;
 	public float totalManaBound;
 	
+	int autoDamage;
+	float autoDelay;
+	
 	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen screen) {
 		super(g, s);
 		this.screen = screen;
 		this.world = screen.world;
 		boundEntities = new ArrayList<PhysicalEntity>();
 		imbuedEntities  = new ArrayList<PhysicalEntity>();
+		autoDamage = 0;
+		autoDelay = 0.0f;
 	}
 	
 	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, MaterialDescriptor material) {
@@ -123,14 +128,23 @@ public abstract class PhysicalEntity extends Entity {
 
 	@Override
 	public void render(float delta) {
+		autoDelay -= delta;
+		if(autoDelay <= 0) {
+			damage(autoDamage);
+			autoDelay = 1;
+		}
 		if(this.visible){
 			Vector2 spritePos = body.getPosition().sub(modelOrigin);
 			
 			sprite.setPosition(spritePos.x, spritePos.y);
 			sprite.setOrigin(modelOrigin.x, modelOrigin.y);
 			sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
-
+			
 			super.render(delta);
 		}
+	}
+
+	public void setAutoDamage(int d) {
+		autoDamage = d;
 	}
 }

@@ -18,7 +18,7 @@ public class SpellEffect extends PhysicalEntity {
 	public ArrayList<SpellDescriptor> arguments;
 	public float effectValue;
 	public float angle;
-	private SpellDescriptor sd;
+	public SpellDescriptor sd;
 
 	public SpellEffect(SigilGame game, AdventureScreen a, Sprite sprite, SpellDescriptor s){
 		super(game, sprite, a, s.mat);

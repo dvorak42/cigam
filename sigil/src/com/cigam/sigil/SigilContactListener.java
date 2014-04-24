@@ -4,6 +4,8 @@ import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.cigam.sigil.magic.SpellEffect;
+import com.cigam.sigil.materials.Fire;
 
 public class SigilContactListener implements ContactListener {
 
@@ -21,6 +23,16 @@ public class SigilContactListener implements ContactListener {
 				a.damage(50);
 				b.damage(50);
 			}
+			if(a instanceof SpellEffect) {
+				SpellEffect e = (SpellEffect)a;
+				if(e.sd != null && e.sd.mat instanceof Fire)
+					b.setAutoDamage(4);
+			}
+			if(b instanceof SpellEffect) {
+				SpellEffect e = (SpellEffect)b;
+				if(e.sd != null && e.sd.mat instanceof Fire)
+					a.setAutoDamage(4);
+			}
 		}
 	}
 
@@ -35,7 +47,18 @@ public class SigilContactListener implements ContactListener {
 					a.mat.NoCollide(b);
 					b.mat.NoCollide(a);
 				}
+				if(a instanceof SpellEffect) {
+					SpellEffect e = (SpellEffect)a;
+					if(e.sd != null && e.sd.mat instanceof Fire)
+						b.setAutoDamage(0);
+				}
+				if(b instanceof SpellEffect) {
+					SpellEffect e = (SpellEffect)b;
+					if(e.sd != null && e.sd.mat instanceof Fire)
+						a.setAutoDamage(0);
+				}
 			}
+			
 		}
 	}
 
