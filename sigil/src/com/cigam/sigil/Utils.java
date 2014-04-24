@@ -190,6 +190,24 @@ public class Utils {
 		classesToIconPaths.put(AreaToDuration.class, "UI/Condense_placeholder.png");
 
 
+		
+	}
+	
+	public static HashMap<Class, String> classesToMenuPaths;
+	static{
+		classesToMenuPaths = new HashMap<Class, String>();
+		classesToMenuPaths.put(Banish.class, "UI/cigam/banish512.png");
+		classesToMenuPaths.put(Bind.class, "UI/cigam/bind512.png");
+		classesToMenuPaths.put(Create.class, "UI/cigam/create512.png");
+		classesToMenuPaths.put(Summon.class, "UI/cigam/summon512.png");
+		classesToMenuPaths.put(FireRune.class, "UI/cigam/Element1 512.png");
+		classesToMenuPaths.put(Self.class, "UI/cigam/Element2 512.png");
+		classesToMenuPaths.put(EffectToArea.class, "UI/Expand_placeholder.png");
+		classesToMenuPaths.put(EffectToDuration.class, "UI/Slow_placeholder.png");
+		classesToMenuPaths.put(DurationToEffect.class, "UI/Quicken_placeholder.png");
+		classesToMenuPaths.put(DurationToArea.class, "UI/Lengthen_placeholder.png");
+		classesToMenuPaths.put(AreaToEffect.class, "UI/Concentrate_placeholder.png");
+		classesToMenuPaths.put(AreaToDuration.class, "UI/Condense_placeholder.png");
 
 
 		

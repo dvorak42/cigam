@@ -21,7 +21,7 @@ public class RadialEnd extends RadialMenu {
 		iconScale = .7f;
 		this.value = value;
 		this.icon = null;
-		String path = Utils.classesToIconPaths.get(this.value);
+		String path = Utils.classesToMenuPaths.get(this.value);
 		if(path!=null){
 			Texture t = new Texture(Gdx.files.internal(path));
 			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
