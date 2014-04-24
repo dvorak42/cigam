@@ -36,4 +36,8 @@ public class Player extends PhysicalEntity {
 
 		body.setUserData(this);
 	}
+
+	public void gainShard(CrystalShard a) {
+		System.out.println("WIN!!!");
+	}
 }

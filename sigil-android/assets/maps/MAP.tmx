@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map SYSTEM "http://mapeditor.org/dtd/1.0/map.dtd">
 <map version="1.0" orientation="orthogonal" width="200" height="28" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="tilea1" tilewidth="16" tileheight="16">
   <image source="tilea1.png" width="512" height="384"/>
@@ -17,17 +18,12 @@
  </tileset>
  <layer name="Background" width="200" height="28">
   <data encoding="base64" compression="zlib">
-   eJztlE1Ow0AMhaPuyBHKKTkK1202iAUiSusZ/4zth3gLK3Tw+Psa+fXxtm0PFosl1nF6nmt0Zulfxcp0RPIiU55R7flqd6XP0q5r+1fczXZE8CITy/N8JpU009K/4m62I4IXmboZFZ6vMqPNq7V/xd1sRxQvMuWerj259ljzZMm49262Y7cXmeN8dHlmPmcefD7vAJn4nlYnqV8zK/LOkPqjHDJ1d6s9D8NMT3+EVeWI4EWmzOzeE2uPtv8I3K1yRPEiUz5D2hPm4+/szX9hdnpqZ3r7I6wqRwQvMmVmp2dk362VvYcfN0wvjw+Z+fmIel7Pz89zSWcrWJZ7nze/Y6aX5t2RKf8fxVP6e+ZtyaSVVeXY7UWmzOzeE89MqUY7WL2HFkckLzJr8zHbEWlmRnlZ2Y7dXmTKvd17osncNVuj34eRl4VV6YjgReY8H1WelsyN+ldlcTY727Hbi0z5vGtPRvm89ml+C1azKhxRvcic5yPT0zpz1jfKRoSV7YjiRaY9H9l7EtmNWXXvodYRyYvM+nxEdkPr7fk+XtZqRzQvMjE8IzO1zM58rHgvHV5kYnhqZv58rsiHxMp2RPMiE8NTe1aRjxEr2xHZi8w+T+YD34vMPs/7vm3v++/ZfZfveb7797xzeVgVjmheZD4zOzy/ANeFEFE=
+   eJztlMFuAjEMRPdaPoH+/0+yF9RD1WhhEjuJ7UGdg7UQHL8H8vD4Oo6HSqWCdTbPtnpnnv5drEhHJi8x8Yxsz3e7i96jXbf277gb7cjgJSaXZ3uGCs309O+4G+3I4CWmbUaG57vMWPPq7d9xN9qRxUtM3FO1J9ceb548GZ+9G+1Y7SVmPx9VnpHPkYeerzsgJr+n1wn1W2at/GZM/ascMW13sz1Px8yZ/hVWliODl5iYWb0n3h5r/7lwN8uRxUtMfMa0J8rH5+zNf2FWelpnzvavsLIcGbzExMxKz5V991bWHn66l5g5+Vj1vJ63z7bQ2Q5WlmO1l5j4cxZP9Hrk7cmkl5XlWO0lJmZW78nMTFS9HczeQ48jk5eYufkY7QiaGVGzrGjHai8xcW/1nlgyd81W7/+h5+VhZToyeIk5zkeWpydzvf5dWRzNjnas9hITn1ftSS+f1z7Lf8FuVoYjq5eY43xEenpnjvp62VhhRTuyeInpz0f0nqzsxqiq99DqyOQlZn4+VnbD6j3zfWZZux3ZvMTk8FyZaWVW5mPH71LhJSaHp2Xm7/uMfCBWtCObl5gcntazjHz0WNGOzF5i1nkqH/xeYtZ53m/H8X37O7vf8L2Z7/4zr60ZVoYjm5eYr8wKzyeoRxFR
   </data>
  </layer>
  <layer name="Walls" width="200" height="28">
   <data encoding="base64" compression="zlib">
    eJztmVtKw1AUReNn7wwEtU7DV+s0Wp2Ij4l0aD4mItjWI/cnlBxLrkm4+7AWHE7JR1YpN3tDupk1zbvNx4j702aDB4+NGl8TfOfvGR482aPGaRrfcZbw4MkeNaLlE566PWpEyyc8dXvUiJZPeOr2qBEtn6b0bO3zzmbf2vuOa8d2c/K3Z2zoD59o+TSl59zO9YXNvLXnHdeO7Uvn+Yj4u6kRLZ+m9NzZuV7aLP657+mPaomWT3h83pz/7ugPn2j5hMfHewboDx/FHMRThvcM0B8+ijmIpwz6oz+KOYinDPqjP4o5iKcM+qM/ijmIpwz6oz+KOYinDO9e9IePYg7iKePKzue1zU1r/w794aOYg3jKWNm91jYPB5v+8FHMQTxlPNn5fLZ5Odj0h49iDuLR9aihmIN4dD1qRMsnPHV71IiWT3jq9qgRLZ/w1O1Ro+ud+ND7NuHBkz1qeO/Eh9yPCQ+e7FHDeyc+5H5NePBkjxo/YIcQXw==
-  </data>
- </layer>
- <layer name="Enemies" width="200" height="28">
-  <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAAAAAAAAAAAAD8GVeAAAE=
   </data>
  </layer>
  <layer name="Lava" width="200" height="28">
@@ -50,9 +46,23 @@
    eJzt27EVglAMQNE00DAbbqLb6CbQ6Baim2htBqDgH7+Cx3vrFCnyykQAfN6xjTi1a28B2zRkG6M+YNYt27jrg8rOXcSlqz/7bY9s46kPKrvmvU8Lb75kFgAAAAAAAAAAAAAAtqpvInbN2lvAcqU/T+/8SO2zjYM++CGlP09+pAAAAAD+xwvXnBUP
   </data>
  </layer>
- <layer name="Tile Layer 8" width="200" height="28">
-  <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAAAAAAAAAAAAD8GVeAAAE=
-  </data>
- </layer>
+ <objectgroup name="WallObjects" width="200" height="28">
+  <object x="1" y="1">
+   <polygon points="0,0 415,0 415,7 0,7"/>
+  </object>
+  <object x="1" y="2">
+   <polygon points="0,0 8,0 8,409 0,410"/>
+  </object>
+  <object x="2" y="411">
+   <polygon points="0,0 0,-10 413,-9 413,-1"/>
+  </object>
+  <object x="415" y="409">
+   <polygon points="0,0 -7,1 -6,-406 1,-407"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Goal" width="200" height="28">
+  <object x="340" y="197">
+   <polygon points="0,0 -14,-1 -16,25 6,30 12,6"/>
+  </object>
+ </objectgroup>
 </map>

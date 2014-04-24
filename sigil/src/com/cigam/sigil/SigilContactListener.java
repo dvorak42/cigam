@@ -23,6 +23,12 @@ public class SigilContactListener implements ContactListener {
 				a.damage(50);
 				b.damage(50);
 			}
+			if((a instanceof CrystalShard && b instanceof Player)) {
+				((Player)b).gainShard((CrystalShard)a);
+			}
+			if((b instanceof CrystalShard && a instanceof Player)) {
+				((Player)a).gainShard((CrystalShard)b);
+			}
 			if(a instanceof SpellEffect) {
 				SpellEffect e = (SpellEffect)a;
 				if(e.sd != null && e.sd.mat instanceof Fire)

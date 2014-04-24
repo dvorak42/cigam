@@ -3,11 +3,13 @@ package com.cigam.sigil;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.cigam.sigil.external.BodyEditorLoader;
@@ -211,6 +213,26 @@ public class Utils {
 			if(spell.arguments.size() > 3)
 				initElement(n, s, f.getChildren().get(5).getChildren().get(2), spell.arguments.get(3));
 		}
+	}
+
+	public static Body createWall(World w, Vector2 start, Polygon p, float scale) {
+		BodyDef bd = new BodyDef();
+		bd.position.set(start);
+		bd.type = BodyType.StaticBody;
+
+		Body body = w.createBody(bd);
+		PolygonShape ps = new PolygonShape();
+		float[] v = p.getVertices();
+		for(int i = 0; i < v.length; i++)
+			v[i] *= scale;
+		ps.set(v);
+
+		FixtureDef fd = new FixtureDef();
+		fd.shape = ps;
+
+		body.createFixture(fd);
+		
+		return body;
 	}
 }
 

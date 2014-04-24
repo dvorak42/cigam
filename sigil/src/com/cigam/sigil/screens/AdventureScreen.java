@@ -13,9 +13,14 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -24,6 +29,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Array;
+import com.cigam.sigil.CrystalShard;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.SigilContactFilter;
 import com.cigam.sigil.SigilContactListener;
@@ -39,6 +45,7 @@ import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.magic.StringLexer;
+import com.cigam.sigil.materials.Backgroundium;
 import com.cigam.sigil.materials.Fire;
 import com.cigam.sigil.materials.SelfMat;
 import com.sun.java.swing.plaf.gtk.GTKConstants.ShadowType;
@@ -67,7 +74,6 @@ public class AdventureScreen implements Screen {
 	public Spell[] SpellsArray;
 	private int dt;
 	private TiledMap map;
-	private Sprite background;
 	public boolean paused = false;
 	public Array<PhysicalEntity> toDestroy;
 	private int selectedSpell;
@@ -117,11 +123,8 @@ public class AdventureScreen implements Screen {
 		Utils.createBounds(world, 4500, 900);
 		
 		map = new TmxMapLoader().load("maps/MAP.tmx");
-		mapRenderer = new OrthogonalTiledMapRenderer(map, 2, game.batch);
-		
-		Texture bTexture = new Texture(Gdx.files.internal("art/background.png"));
-		bTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		background = new Sprite(bTexture);
+		float tileScale = 2;
+		mapRenderer = new OrthogonalTiledMapRenderer(map, tileScale, game.batch);
 		
         player.setPosition(new Vector2(128, 128));
         entities.add(player);
@@ -137,6 +140,27 @@ public class AdventureScreen implements Screen {
             enemies.add(enemy);
         }
 
+        for(MapObject wall : map.getLayers().get("WallObjects").getObjects()) {
+        	if(wall instanceof PolygonMapObject) {
+        		PolygonMapObject pwall = (PolygonMapObject)wall;
+        		Polygon p = pwall.getPolygon();
+        		Utils.createWall(world, new Vector2(p.getX() * tileScale, p.getY() * tileScale), p, tileScale);
+        	}
+        }
+
+        for(MapObject goal : map.getLayers().get("Goal").getObjects()) {
+        	if(goal instanceof PolygonMapObject) {
+        		PolygonMapObject pgoal = (PolygonMapObject)goal;
+        		Vector2 center = new Vector2();
+        		center = pgoal.getPolygon().getBoundingRectangle().getCenter(center);
+        		center.scl(tileScale);
+        		CrystalShard c = new CrystalShard(game, new Sprite(new Texture(Gdx.files.internal("art/fireball.png"))), this, new Backgroundium(), center);
+        		c.destination = c.getPosition().cpy().add(new Vector2(100, 0));
+        		entities.add(c);
+        	}
+        }
+        
+        
         /*
         int groups = map.getObjectGroupCount();
         for(int i = 0; i < groups; i++){
@@ -299,10 +323,6 @@ public class AdventureScreen implements Screen {
 		camera.update();
 
 		game.batch.setProjectionMatrix(camera.combined);
-		
-		game.batch.begin();
-		background.draw(game.batch);
-		game.batch.end();
 		
 		mapRenderer.setView(camera);
 		mapRenderer.render();
