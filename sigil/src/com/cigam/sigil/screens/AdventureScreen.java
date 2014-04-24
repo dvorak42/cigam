@@ -102,8 +102,7 @@ public class AdventureScreen implements Screen {
 		SpellsArray[0] = parser.parse(player, this, "Create(fire)");
 		SpellsArray[1] = parser.parse(player, this, "Create(Summon(fire - - - self))");
 		SpellsArray[2] = parser.parse(player, this, "Bind(fire - - - self))");
-		SpellsArray[3] = parser.parse(player, this, "Summon(fire expand slow slow self)");
-		System.out.println(SpellsArray[3].target);
+		//SpellsArray[3] = parser.parse(player, this, "Summon(fire expand slow slow self)");
 		//for(String s: spellsToTest){
 			//testSpells.add(parser.parse(player, this, s));
 		//}
@@ -272,13 +271,16 @@ public class AdventureScreen implements Screen {
 	            createFireball(player, 2*baseAngle, true);
 	        else if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
 	        	SpellsArray[selectedSpell].cast();
+	        else if(in.isKeyPressed(Input.Keys.I) && SpellsArray[selectedSpell] != null)
+	        	SpellsArray[selectedSpell] = null;
 	        else {
 	        	boolean cast = false;
 	        	for(int i = 0; i < 10; i++) {
 	        		int j = i != 9 ? i : -1;
 	        		if(SpellsArray[i] != null && in.isKeyPressed(Input.Keys.NUM_1 + j)) {
+	        			if(selectedSpell == i)
+	        				SpellsArray[selectedSpell].cast();
 	        			selectedSpell = i;
-	    	        	SpellsArray[selectedSpell].cast();
 	    	        	cast = true;
 	        		}
 	        	}
