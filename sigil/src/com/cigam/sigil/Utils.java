@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -234,6 +235,23 @@ public class Utils {
 		for(int i = 0; i < v.length; i++)
 			v[i] *= scale;
 		ps.set(v);
+
+		FixtureDef fd = new FixtureDef();
+		fd.shape = ps;
+
+		body.createFixture(fd);
+		
+		return body;
+	}
+	
+	public static Body createWall(World w, Vector2 start, Rectangle r, float scale) {
+		BodyDef bd = new BodyDef();
+		bd.position.set(start.cpy().add(r.getWidth() * scale / 2, r.getHeight() * scale / 2));
+		bd.type = BodyType.StaticBody;
+
+		Body body = w.createBody(bd);
+		PolygonShape ps = new PolygonShape();
+		ps.setAsBox(r.getWidth() * scale / 2, r.getHeight() * scale / 2);
 
 		FixtureDef fd = new FixtureDef();
 		fd.shape = ps;

@@ -98,7 +98,7 @@ public abstract class PhysicalEntity extends Entity {
 
 	@Override
 	public void setPosition(Vector2 pos) {
-		body.setTransform(pos.cpy().sub(body.getWorldCenter()), body.getAngle());
+		body.setTransform(pos.cpy().sub(body.getWorldCenter()).add(body.getPosition()), body.getAngle());
 	}
 
 	@Override

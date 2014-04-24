@@ -15,10 +15,12 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.PolygonMapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -67,7 +69,7 @@ public class AdventureScreen implements Screen {
     public ArrayList<SpellEffect> spells;
 	public int fireDelay = 0;
 	public int startDelay = 1000;
-	public static int INIT_ENEMIES = 1;
+	public static int INIT_ENEMIES = 0;
 	public Spell[] SpellsArray;
 	private int dt;
 	private TiledMap map;
@@ -88,7 +90,7 @@ public class AdventureScreen implements Screen {
 		float h = Gdx.graphics.getHeight();
 		
 		camera = new OrthographicCamera(w, h);
-		camera.zoom = 1.0f;
+		camera.zoom = 1.0f;// / 0.2f;
 		hudCamera = new OrthographicCamera(w, h);
 
 		world = new World(new Vector2(), true);
@@ -117,8 +119,6 @@ public class AdventureScreen implements Screen {
 			//s.evalEffect();
 		//}
 		
-		Utils.createBounds(world, 4500, 900); //Controls boundary of the map.
-		
 		map = new TmxMapLoader().load("maps/MAP.tmx");
 		float tileScale = 2;
 		mapRenderer = new OrthogonalTiledMapRenderer(map, tileScale, game.batch);
@@ -143,49 +143,53 @@ public class AdventureScreen implements Screen {
         		PolygonMapObject pwall = (PolygonMapObject)wall;
         		Polygon p = pwall.getPolygon();
         		Utils.createWall(world, new Vector2(p.getX() * tileScale, p.getY() * tileScale), p, tileScale);
+        	} else if(wall instanceof RectangleMapObject) {
+        		RectangleMapObject rwall = (RectangleMapObject)wall;
+        		Rectangle r = rwall.getRectangle();
+        		Utils.createWall(world, new Vector2(r.getX() * tileScale, r.getY() * tileScale), r, tileScale); 
         	}
         }
 
         //parses tiled map and acts on Goal layer
         for(MapObject goal : map.getLayers().get("Goal").getObjects()) {
+        	Vector2 center = new Vector2();
         	if(goal instanceof PolygonMapObject) {
         		PolygonMapObject pgoal = (PolygonMapObject)goal;
-        		Vector2 center = new Vector2();
         		center = pgoal.getPolygon().getBoundingRectangle().getCenter(center);
-        		center.scl(tileScale);
-        		CrystalShard c = new CrystalShard(game, new Sprite(new Texture(Gdx.files.internal("art/fireball.png"))), this, new Backgroundium(), center);
-        		c.destination = c.getPosition().cpy().add(new Vector2(100, 0));
-        		entities.add(c);
+        	} else if(goal instanceof RectangleMapObject) {
+        		RectangleMapObject rgoal = (RectangleMapObject)goal;
+        		center = rgoal.getRectangle().getCenter(center);
         	}
+    		center.scl(tileScale);
+
+    		float s = tileScale * 16;
+    		CrystalShard c = new CrystalShard(game, new Sprite(new Texture(Gdx.files.internal("art/crystal.png"))), this, new Backgroundium(), center);
+    		c.destination = new Vector2(Float.parseFloat((String)goal.getProperties().get("destX")), Float.parseFloat((String)goal.getProperties().get("destY"))).scl(s);
+    		entities.add(c);
         }
         
-        
-        /*
-        int groups = map.getObjectGroupCount();
-        for(int i = 0; i < groups; i++){
-        	int objs = map.getObjectCount(i);
-        	for(int j = 0; j < objs; j++){
-        		int x = map.getObjectX(i, j);
-        		int y = map.getObjectY(i, j);
-        		int height = map.getObjectHeight(i, j);
-        		int width  = map.getObjectWidth(i, j);
-        		String material = map.getObjectProperty(i, j, "material", "backgroundium");
-        		MaterialDescriptor m = MaterialDescriptor.strToMats.get(material);
-        		BodyDef b = new BodyDef();
-        		b.active = true;
-        		b.awake = true;
-        		b.type = BodyType.STATIC;
-        		b.position = new Vec2(x,y);
-        		FixtureDef f = new FixtureDef();
-        		PolygonShape psd = new PolygonShape();
-        		psd.setAsBox(height, width);
-        		f.shape = psd;
-        		f.density = 1.0f;
-        		PhysicalEntity p = new PhysicalEntity(world, m, b, new FixtureDef[]{f});
-        		p.setImage(new DirectedImage(Assets.loadImage("art/fireball.png")));
-        		entities.add(p);
+        for(MapObject enemy : map.getLayers().get("Enemy").getObjects()) {
+        	Vector2 center = new Vector2();
+        	if(enemy instanceof PolygonMapObject) {
+        		PolygonMapObject penemy = (PolygonMapObject)enemy;
+        		center = penemy.getPolygon().getBoundingRectangle().getCenter(center);
+        	} else if(enemy instanceof RectangleMapObject) {
+        		RectangleMapObject renemy = (RectangleMapObject)enemy;
+        		center = renemy.getRectangle().getCenter(center);
         	}
-        }*/
+    		center.scl(tileScale);
+    		String eType = (String)enemy.getProperties().get("enemyType");
+    		System.out.println(eType);
+    		Texture enemyTexture = new Texture(Gdx.files.internal("art/enemy.png"));
+    		enemyTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+        	Enemy enm = new Enemy(game, new Sprite(enemyTexture), this, new SelfMat(), player, center);
+            entities.add(enm);
+            enemies.add(enm);
+        }
+        
+        for(MapObject lava : map.getLayers().get("FireTile").getObjects()) {
+        	//TODO Create Fire Stuff
+        }        
 	}
 	
 	//This presumably shouldn't still exist? -Jayson

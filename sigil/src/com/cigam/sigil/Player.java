@@ -2,6 +2,7 @@ package com.cigam.sigil;
 
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
@@ -10,6 +11,8 @@ import com.cigam.sigil.screens.AdventureScreen;
 
 public class Player extends PhysicalEntity {
 	public String name = "John Smith";
+	
+	Vector2 nextTeleport;
 	
 	//World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds
 	//TODO: Don't need to pass material descriptor, should always be selfMat
@@ -37,7 +40,17 @@ public class Player extends PhysicalEntity {
 		body.setUserData(this);
 	}
 
+	@Override
+	public void render(float dt) {
+		if(nextTeleport != null) {
+			setPosition(nextTeleport);
+			nextTeleport = null;
+		}
+		super.render(dt);
+	}
+	
 	public void gainShard(CrystalShard a) {
 		System.out.println("WIN!!!");
+		nextTeleport = a.destination;
 	}
 }

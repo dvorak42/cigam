@@ -36,33 +36,101 @@
    eJzt2TEKgDAMBdDSW3sPB72no4NuLYVIwUXMe0uGzOFDfikAwKyzlrLUNoFmu29ir20CjfyAmPwAAAAAAPievtd4Ow+/X36m7zXeztV9gB4dHujRISY/ICY/yCz6T417yCj6T417yGi274CMZvsOyEheQExeAAAA8GUXZGVK/Q==
   </data>
  </layer>
- <layer name="Macguffins" width="200" height="28">
+ <layer name="Macguffins" width="200" height="28" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt2sENgDAIBVASZtdNdBO7ic5hFzDx0NCkee9O4PA5QQQAUG3LiD1nTwHjjcj20etP+8GCZBsAAAAAAPjjyohWcFOo6gMj3T2zT0Fuq/qsyl8MfPM7AAAAAAAAAAAAADDHC/OsDes=
   </data>
  </layer>
- <layer name="Monsters" width="200" height="28">
+ <layer name="Monsters" width="200" height="28" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt27EVglAMQNE00DAbbqLb6CbQ6Baim2htBqDgH7+Cx3vrFCnyykQAfN6xjTi1a28B2zRkG6M+YNYt27jrg8rOXcSlqz/7bY9s46kPKrvmvU8Lb75kFgAAAAAAAAAAAAAAtqpvInbN2lvAcqU/T+/8SO2zjYM++CGlP09+pAAAAAD+xwvXnBUP
   </data>
  </layer>
- <objectgroup name="WallObjects" width="200" height="28">
-  <object x="1" y="1">
-   <polygon points="0,0 415,0 415,7 0,7"/>
-  </object>
-  <object x="1" y="2">
-   <polygon points="0,0 8,0 8,409 0,410"/>
-  </object>
-  <object x="2" y="411">
-   <polygon points="0,0 0,-10 413,-9 413,-1"/>
-  </object>
-  <object x="415" y="409">
-   <polygon points="0,0 -7,1 -6,-406 1,-407"/>
-  </object>
+ <objectgroup name="WallObjects" width="200" height="28" visible="0">
+  <object x="2" y="2" width="5" height="407"/>
+  <object x="1" y="402" width="2495" height="9"/>
+  <object x="2487" y="2" width="7" height="407"/>
+  <object x="3" y="2" width="2491" height="8"/>
+  <object x="408" y="3" width="16" height="406"/>
+  <object x="823" y="3" width="16" height="407"/>
+  <object x="1241" y="2" width="14" height="408"/>
+  <object x="1241" y="98" width="326" height="45"/>
+  <object x="1655" y="3" width="18" height="407"/>
+  <object x="2071" y="2" width="17" height="408"/>
+  <object x="1967" y="144" width="119" height="10"/>
+  <object x="1968" y="145" width="11" height="174"/>
+  <object x="1968" y="273" width="119" height="48"/>
  </objectgroup>
  <objectgroup name="Goal" width="200" height="28">
-  <object x="340" y="197">
-   <polygon points="0,0 -14,-1 -16,25 6,30 12,6"/>
+  <object x="739" y="191" width="29" height="33">
+   <properties>
+    <property name="destX" value="75.0"/>
+    <property name="destY" value="12.0"/>
+   </properties>
+  </object>
+  <object x="1280" y="32" width="30" height="33">
+   <properties>
+    <property name="destX" value="108.0"/>
+    <property name="destY" value="14.0"/>
+   </properties>
+  </object>
+  <object x="2015" y="209" width="35" height="34">
+   <properties>
+    <property name="destX" value="134.0"/>
+    <property name="destY" value="13.0"/>
+   </properties>
+  </object>
+  <object x="324" y="197" width="23" height="25">
+   <properties>
+    <property name="destX" value="30.0"/>
+    <property name="destY" value="12.0"/>
+   </properties>
+  </object>
+  <object x="1010" y="48" width="30" height="32">
+   <properties>
+    <property name="destX" value="89.0"/>
+    <property name="destY" value="17.0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="FireTile" width="200" height="28" visible="0">
+  <object x="865" y="28">
+   <polygon points="0,0 -3,7 -5,156 293,162 290,-1 127,-2 127,4 194,3 194,72 126,71 125,6 140,0 50,-2"/>
+  </object>
+  <object x="1026" y="319">
+   <polygon points="0,0 29,0 29,-94 -167,-94 -167,64 -156,74 119,74 132,60 129,-87 123,-93 68,-94 66,34 60,38 3,37 2,61 -8,70 -94,69 -102,60 -102,-30 -97,-34 2,-36"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Enemy" width="200" height="28" visible="0">
+  <object x="528" y="62" width="29" height="28">
+   <properties>
+    <property name="enemyType" value="BAT"/>
+   </properties>
+  </object>
+  <object x="706" y="63" width="30" height="27">
+   <properties>
+    <property name="enemyType" value="BAT"/>
+   </properties>
+  </object>
+  <object x="529" y="335" width="31" height="28">
+   <properties>
+    <property name="enemyType" value="BAT"/>
+   </properties>
+  </object>
+  <object x="721" y="336" width="33" height="26">
+   <properties>
+    <property name="enemyType" value="BAT"/>
+   </properties>
+  </object>
+  <object x="962" y="320" width="29" height="31">
+   <properties>
+    <property name="enemyType" value="LAVA"/>
+   </properties>
+  </object>
+  <object x="1324" y="22" width="37" height="53">
+   <properties>
+    <property name="enemyType" value="KNIGHT"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
