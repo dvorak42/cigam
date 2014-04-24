@@ -3,8 +3,8 @@ package com.cigam.sigil;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.cigam.sigil.materials.SelfMat;
 import com.cigam.sigil.screens.AdventureScreen;
 
