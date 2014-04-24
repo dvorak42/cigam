@@ -47,6 +47,7 @@ public class TaskController {
     //  to ensure that task.Start() is run correctly
     public void reset(){
         isCompleted = false;
+        safeStart();
     }
     
     //===== ACCESSOR METHODS =====

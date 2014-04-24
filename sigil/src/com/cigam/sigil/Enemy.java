@@ -1,5 +1,7 @@
 package com.cigam.sigil;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -54,6 +56,11 @@ public class Enemy extends PhysicalEntity {
 		super.render(delta);
 		if(!active)
 			return;
+		
+		/* for degbugging BT
+		 * if (Gdx.input.isKey(Input.Keys.M)){
+		    health -= 10.0f;
+		}*/
 		
 		bt.updateBehaviorTree();
 		bb.distanceToPlayer = bb.player.getPosition().dst(getPosition());

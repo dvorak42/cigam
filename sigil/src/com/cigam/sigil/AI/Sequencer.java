@@ -13,7 +13,6 @@ public class Sequencer extends ParentTask{
     @Override
     protected void ChildSucceeded(){
         int currentTaskIndex = taskController.subtaskList.indexOf(taskController.currentTask);
-
         //if we reach the end of the subtask list, we have succeeded with the sequencer, so the task returns with success
         if (currentTaskIndex >= taskController.subtaskList.size() - 1){
             taskController.finishWithSuccess();
@@ -21,7 +20,7 @@ public class Sequencer extends ParentTask{
         
         //otherwise we go to the next task
         currentTaskIndex ++;
-        //TODO FIGURE OUT WHERE THERE IS AN INDEX OUT OF BOUNDS ERROR HERE
+        //if there is an out of bounds error, it could be due to this area. Somehow the subtask list is getting cleared at some point?
         Task newTask = taskController.subtaskList.get(currentTaskIndex);
         
         //fail early if the new task would fail on conditions
