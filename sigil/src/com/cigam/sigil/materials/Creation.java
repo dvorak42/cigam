@@ -19,7 +19,7 @@ public class Creation extends MaterialDescriptor {
 		super();
 		this.effectValue = effectValue;
 		ParticleEffect p = new ParticleEffect();
-		p.load(Gdx.files.internal("art/particles/create.p"), Gdx.files.internal("art/particles"));
+		p.load(Gdx.files.internal("particleFiles/create/createSpell"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);
 		this.scaleManifestation(1*(Constants.SPELL_SCALE_FACTOR), 1/(Constants.SPELL_SCALE_FACTOR));
 	}

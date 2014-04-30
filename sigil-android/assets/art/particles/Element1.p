@@ -20,13 +20,13 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 500.0
-highMax: 1000.0
+highMin: 200.0
+highMax: 400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
 scaling1: 1.0
-scaling2: 0.3
+scaling2: 1.0
 timelineCount: 3
 timeline0: 0.0
 timeline1: 0.66
@@ -38,12 +38,14 @@ active: false
 - Y Offset - 
 active: false
 - Spawn Shape - 
-shape: point
+shape: ellipse
+edges: false
+side: both
 - Spawn Width - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
+highMin: 30.0
+highMax: 30.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -52,8 +54,8 @@ timeline0: 0.0
 - Spawn Height - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 0.0
-highMax: 0.0
+highMin: 30.0
+highMax: 30.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -73,8 +75,8 @@ timeline0: 0.0
 active: true
 lowMin: 0.0
 lowMax: 0.0
-highMin: 30.0
-highMax: 300.0
+highMin: 10.0
+highMax: 100.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -125,10 +127,10 @@ timeline1: 0.2
 timeline2: 0.8
 timeline3: 1.0
 - Options - 
-attached: false
-continuous: false
+attached: true
+continuous: true
 aligned: false
 additive: true
 behind: false
 - Image Path -
-particle.png
+Particle Element1.png

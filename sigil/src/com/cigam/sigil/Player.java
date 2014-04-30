@@ -15,7 +15,6 @@ public class Player extends PhysicalEntity {
 	Vector2 nextTeleport;
 	
 	//World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds
-	//TODO: Don't need to pass material descriptor, should always be selfMat
 	public Player(SigilGame g, Sprite s,AdventureScreen a) {
 		super(g, s, a, new SelfMat());
 		initEntity();

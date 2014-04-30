@@ -36,7 +36,7 @@ public class Binding extends MaterialDescriptor {
 			entitiesToBind.put(s.mat, null);
 		}
 		ParticleEffect p = new ParticleEffect();
-		p.load(Gdx.files.internal("art/particles/bind.p"), Gdx.files.internal("art/particles"));
+		p.load(Gdx.files.internal("particleFiles/banish/banishSpell"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);
 	}
 

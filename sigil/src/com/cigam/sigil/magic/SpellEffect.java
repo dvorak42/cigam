@@ -52,7 +52,8 @@ public class SpellEffect extends PhysicalEntity {
 		if(sd != null)
 			bd.position.set(sd.position);
 		//System.out.println(bd.position);
-		bd.type = BodyType.KinematicBody;
+		//bd.type = BodyType.KinematicBody;
+		bd.type = BodyType.DynamicBody;
 		body = world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
