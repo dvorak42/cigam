@@ -205,9 +205,9 @@ public class AdventureScreen implements Screen {
     }
     
     public SpellEffect createSpellEffect(SpellDescriptor s) {
-    	Texture texture = new Texture(Gdx.files.internal("art/fireball.png"));
-    	texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-    	SpellEffect e = new SpellEffect(game, this, new Sprite(texture), s);
+    	//Texture texture = new Texture(Gdx.files.internal("art/fireball.png"));
+    	//texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+    	SpellEffect e = new SpellEffect(game, this, s);
 		entities.add(e);
     	spells.add(e);
     	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);

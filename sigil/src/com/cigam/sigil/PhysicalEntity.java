@@ -23,8 +23,8 @@ public abstract class PhysicalEntity extends Entity {
 	public float initManaCapacity;
 	public float totalManaBound;
 	
-	int autoDamage;
-	float autoDelay;
+	public int autoDamage;
+	public float autoDelay;
 	
 	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen screen) {
 		super(g, s);
@@ -135,11 +135,9 @@ public abstract class PhysicalEntity extends Entity {
 		}
 		if(this.visible){
 			Vector2 spritePos = body.getPosition().sub(modelOrigin);
-			
 			sprite.setPosition(spritePos.x, spritePos.y);
 			sprite.setOrigin(modelOrigin.x, modelOrigin.y);
 			sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
-			
 			super.render(delta);
 		}
 	}

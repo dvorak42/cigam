@@ -19,8 +19,8 @@ public class Banish extends Spell {
 	public Banish(){
 		super();
 		summonCriteria = new ArrayList<SpellDescriptor>();
-		area = new CircleShape();
-		area.setRadius(defaultRadius);
+		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
+		area.setRadius(defaultRadius*Constants.SPELL_SCALE_FACTOR);
 		effectValue = -Constants.FORCE_MEDIUM;
 		argsNum = 4;
 		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));

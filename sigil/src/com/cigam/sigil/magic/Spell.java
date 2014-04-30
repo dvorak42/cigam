@@ -1,7 +1,9 @@
 package com.cigam.sigil.magic;
 import java.util.ArrayList;
 
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
+import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.screens.AdventureScreen;
@@ -13,7 +15,7 @@ public abstract class Spell {
 	public Spell target; // Only array or target allowed
 	public ArrayList<Spell> arguments; //Only array or target allowed
 	public float duration;
-	public Shape area;
+	public PolygonShape area;
 	public float castDelay;
 	public AdventureScreen screen;
 	public PhysicalEntity caster;
@@ -25,6 +27,9 @@ public abstract class Spell {
 	public Spell(){
 		arguments = new ArrayList<Spell>();
 		target = null;
+		area = new PolygonShape();
+		area.set(Utils.initSpellHitBox(10,Constants.SPELL_SCALE_FACTOR));
+		//area.setRadius(radius);
 		this.gui = Utils.makeRuneGui(Utils.classesToIconPaths.get(this.getClass()));
 		//System.out.println(this.getClass());
 	};

@@ -5,8 +5,11 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter.RangedNumericValue;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter.ScaledNumericValue;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.MaterialDescriptor;
@@ -37,6 +40,7 @@ public class Summoning extends MaterialDescriptor {
 		ParticleEffect p = new ParticleEffect();
 		p.load(Gdx.files.internal("art/particles/summon.p"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);
+		this.scaleManifestation(1*(Constants.SPELL_SCALE_FACTOR), 1/(Constants.SPELL_SCALE_FACTOR));
 	}
 
 	@Override
@@ -125,5 +129,34 @@ public class Summoning extends MaterialDescriptor {
 		attractor = null;
 		entitiesToPush.clear();
 		objectsInRange.clear();
+	}
+	
+	@Override
+	public void scaleManifestation(float x, float y){
+		for(int i = 0; i < image.getEmitters().size; i++){
+			RangedNumericValue height = image.getEmitters().get(i).getYOffsetValue();
+			RangedNumericValue width = image.getEmitters().get(i).getXOffsetValue();
+			float avgDistanceBefore = (float) Math.sqrt(Math.pow(((height.getLowMax()+height.getLowMax())/2),2)+Math.pow(((width.getLowMax()+width.getLowMax())/2),2));
+			ScaledNumericValue angle = image.getEmitters().get(i).getAngle();
+			ScaledNumericValue velocity = image.getEmitters().get(i).getVelocity();
+			height.setLow(height.getLowMin()*y/x, height.getLowMax()*y/x);
+			//width.setLow(width.getLowMin()*x/x, width.getLowMax()*x/x);
+			if(width.getLowMin()>0||(width.getLowMin()==0&&height.getLowMin()>0)){
+				angle.setLow((float) Math.toDegrees(Math.atan(height.getLowMin()/width.getLowMin())),(float) Math.toDegrees(Math.atan(height.getLowMax()/width.getLowMax())));
+				angle.setHigh((float) Math.toDegrees(Math.atan(height.getLowMin()/width.getLowMin())),(float) Math.toDegrees(Math.atan(height.getLowMax()/width.getLowMax())));
+			} else {
+				angle.setLow(180-(float) Math.toDegrees(Math.atan(-height.getLowMin()/width.getLowMin())),180-(float) Math.toDegrees(Math.atan(-height.getLowMax()/width.getLowMax())));
+				angle.setHigh(180-(float) Math.toDegrees(Math.atan(-height.getLowMin()/width.getLowMin())),180-(float) Math.toDegrees(Math.atan(-height.getLowMax()/width.getLowMax())));
+			}			
+			float avgDistanceAfter = (float) Math.sqrt(Math.pow(((height.getLowMax()+height.getLowMax())/2),2)+Math.pow(((width.getLowMax()+width.getLowMax())/2),2));
+			System.out.println(avgDistanceAfter + " is avgAfter");
+			System.out.println(avgDistanceBefore + " is avgBefore");
+			System.out.println(velocity.getHighMin()*avgDistanceBefore/avgDistanceAfter);
+			velocity.setLow(velocity.getHighMin()*avgDistanceAfter/avgDistanceBefore, velocity.getHighMax()*avgDistanceBefore/avgDistanceAfter);
+			velocity.setHigh(velocity.getHighMin()*avgDistanceAfter/avgDistanceBefore, velocity.getHighMax()*avgDistanceAfter/avgDistanceBefore);
+			
+
+
+		}
 	}
 }

@@ -2,6 +2,7 @@ package com.cigam.sigil.magic.verbs;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
@@ -16,8 +17,9 @@ public class Create extends Spell {
 	
 	public Create(){
 		super();
-		area = new CircleShape();
-		area.setRadius(defaultRadius);
+		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
+		area.setRadius(defaultRadius*Constants.SPELL_SCALE_FACTOR);
+		//area.setAsBox(10, 10);
 		effectValue = Constants.CREATE_EFFECT_VALUE;
 		argsNum = 0;
 		this.gui = Utils.makeCreateGui(Utils.classesToIconPaths.get(this.getClass()));

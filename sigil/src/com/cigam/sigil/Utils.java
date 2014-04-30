@@ -188,12 +188,7 @@ public class Utils {
 		classesToIconPaths.put(DurationToEffect.class, "UI/Quicken_placeholder.png");
 		classesToIconPaths.put(DurationToArea.class, "UI/Lengthen_placeholder.png");
 		classesToIconPaths.put(AreaToEffect.class, "UI/Concentrate_placeholder.png");
-		classesToIconPaths.put(AreaToDuration.class, "UI/Condense_placeholder.png");
-
-
-
-
-		
+		classesToIconPaths.put(AreaToDuration.class, "UI/Condense_placeholder.png");	
 	}
 	
 	public static void recursiveSet(Element e, String k, Object v) {
@@ -260,5 +255,16 @@ public class Utils {
 		
 		return body;
 	}
+	
+	public static Vector2[] initSpellHitBox(float radius, float scaleFactor){
+		int granularity = 8;
+		Vector2[] hitBox = new Vector2[granularity];
+		for(int i = 0; i < granularity; i ++){
+			hitBox[i] = new Vector2();
+			hitBox[i].set((float) (Math.cos(Math.PI*2*i/granularity)*radius*scaleFactor), (float) (Math.sin(Math.PI*2*i/granularity)*radius/scaleFactor));
+		}
+		return hitBox;
+	}
+		
 }
 
