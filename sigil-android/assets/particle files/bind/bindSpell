@@ -46,8 +46,8 @@ side: both
 - Spawn Width - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 150.0
-highMax: 150.0
+highMin: 253.5
+highMax: 253.5
 relative: false
 scalingCount: 2
 scaling0: 1.0
@@ -190,8 +190,8 @@ side: both
 - Spawn Width - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 125.0
-highMax: 125.0
+highMin: 211.25
+highMax: 211.25
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -328,8 +328,8 @@ side: both
 - Spawn Width - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 200.0
-highMax: 200.0
+highMin: 338.0
+highMax: 338.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
