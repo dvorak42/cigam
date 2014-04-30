@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="libs/jglfont-core-1.0.jar"/>
 	<classpathentry kind="lib" path="libs/eventbus-1.4.jar"/>
 	<classpathentry kind="lib" path="libs/xpp3-1.1.4c.jar"/>
+	<classpathentry kind="lib" path="libs/gdx-tools.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
