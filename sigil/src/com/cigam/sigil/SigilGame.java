@@ -4,13 +4,13 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.cigam.sigil.screens.AdventureScreen;
 import com.cigam.sigil.screens.PauseScreen;
 
 public class SigilGame extends Game {
     public PauseScreen pauseScreen;
     public AdventureScreen gameScreen;
-
     public SpriteBatch batch;
     public SpriteBatch hudBatch;
     public BitmapFont font;
