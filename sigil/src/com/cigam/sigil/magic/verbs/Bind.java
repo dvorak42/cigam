@@ -18,8 +18,8 @@ public class Bind extends Spell {
 	public Bind(){
 		super();
 		toBeBound = new ArrayList<SpellDescriptor>();
-		area = new CircleShape();
-		area.setRadius(defaultRadius);
+		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
+		area.setRadius(defaultRadius*Constants.SPELL_SCALE_FACTOR);
 		effectValue = Constants.BIND_EFFECT_VALUE;
 		argsNum = 4;
 		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));

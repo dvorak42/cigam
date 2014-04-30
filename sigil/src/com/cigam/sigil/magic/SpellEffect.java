@@ -20,8 +20,8 @@ public class SpellEffect extends PhysicalEntity {
 	public float angle;
 	public SpellDescriptor sd;
 
-	public SpellEffect(SigilGame game, AdventureScreen a, Sprite sprite, SpellDescriptor s){
-		super(game, sprite, a, s.mat);
+	public SpellEffect(SigilGame game, AdventureScreen a, SpellDescriptor s){
+		super(game, null, a, s.mat);
 		this.effectValue = s.effectValue;
 		this.duration = s.duration;
 		this.target = s.target;
@@ -72,10 +72,17 @@ public class SpellEffect extends PhysicalEntity {
 	}
 	
 	public void render(float delta) {
-		modelOrigin = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
+		//modelOrigin = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
 		if(this.mat.image!=null&&this.active()&&this.visible){
 			mat.image.draw(screen.game.batch, delta);
 		}
-		super.render(delta);
+		autoDelay -= delta;
+		if(autoDelay <= 0) {
+			damage(autoDamage);
+			autoDelay = 1;
+		}
+		if(active) {
+			elapsedTime += delta;
+		}
 	}
 }

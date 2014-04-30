@@ -43,5 +43,5 @@ public abstract class MaterialDescriptor {
 	public boolean isSameMat(MaterialDescriptor m){
 		return m.getClass().equals(this.getClass());
 	};
-
+	public void scaleManifestation(float x, float y){};
 }

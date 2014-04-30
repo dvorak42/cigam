@@ -1,7 +1,6 @@
 package com.cigam.sigil.magic.verbs;
 
 import java.util.ArrayList;
-
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.Utils;
@@ -19,8 +18,8 @@ public class Summon extends Spell {
 	public Summon(){
 		super();
 		summonCriteria = new ArrayList<SpellDescriptor>();
-		area = new CircleShape();
-		area.setRadius(defaultRadius);
+		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
+		area.setRadius(defaultRadius*Constants.SPELL_SCALE_FACTOR);
 		effectValue = Constants.FORCE_MEDIUM;
 		argsNum = 4;
 		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));

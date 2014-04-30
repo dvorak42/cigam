@@ -7,7 +7,7 @@ public abstract class Entity {
 	SigilGame game;
 	
 	public Sprite sprite;
-	boolean active = true;
+	public boolean active = true;
 	public boolean visible = true;
 	public float elapsedTime;
 	public int plane;
