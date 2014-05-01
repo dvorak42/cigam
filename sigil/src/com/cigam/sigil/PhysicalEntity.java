@@ -60,6 +60,8 @@ public abstract class PhysicalEntity extends Entity {
 			p.setVisible(false);
 		} else {
 			//System.out.println(p.totalManaWeight + " was totalManaWeight and " + totalManaCapacity + " was totalManaCapacity");
+			p.body.setTransform(this.body.getWorldCenter(), p.body.getAngle());
+			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
 			this.kill();
 		}
 		//System.out.println("Binding " + p + " into " + this);

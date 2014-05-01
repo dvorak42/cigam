@@ -11,7 +11,7 @@ public class Fire extends MaterialDescriptor {
 
 	public Fire() {
 		super();
-		this.init(null,3,20000/*0.2f*/,0);
+		this.init(null,3,0.2f,0);
 		ParticleEffect p = new ParticleEffect();
 		p.load(Gdx.files.internal("art/particles/Element1.p"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);

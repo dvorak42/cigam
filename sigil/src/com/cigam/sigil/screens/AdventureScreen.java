@@ -97,7 +97,7 @@ public class AdventureScreen implements Screen {
 		restartGame();
 		SpellsArray[0] = parser.parse("Create(fire)");
 		SpellsArray[1] = parser.parse("Summon(fire - - - self)");
-		SpellsArray[2] = parser.parse("Bind(fire - - - self))");
+		SpellsArray[2] = parser.parse("Bind(self - - - fire))");
 		SpellsArray[3] = parser.parse("Create(Banish(fire - - - self))");
 	}
 	
@@ -118,14 +118,9 @@ public class AdventureScreen implements Screen {
 		enemies.clear();
 		spells.clear();
 		toDestroy.clear();
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
 		
-		camera = new OrthographicCamera(w, h);
-		camera.zoom = 0.5f;
-		camera.update();
-		hudCamera = new OrthographicCamera(w, h);
-
+		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
 		world = new World(new Vector2(), true);
 		world.setContactListener(new SigilContactListener());
 		world.setContactFilter(new SigilContactFilter());
@@ -445,7 +440,7 @@ public class AdventureScreen implements Screen {
 	@Override
 	public void resize(int width, int height) {
 		camera = new OrthographicCamera(width, height);
-		camera.zoom = 0.5f;
+		camera.zoom = 1.0f;
 		camera.update();
 		hudCamera = new OrthographicCamera(width, height);
 	}
