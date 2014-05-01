@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.cigam.sigil.Player.Direction;
 import com.cigam.sigil.external.BodyEditorLoader;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.modifiers.AreaToDuration;
@@ -264,6 +265,24 @@ public class Utils {
 			hitBox[i].set((float) (Math.cos(Math.PI*2*i/granularity)*radius*scaleFactor), (float) (Math.sin(Math.PI*2*i/granularity)*radius/scaleFactor));
 		}
 		return hitBox;
+	}
+
+	public static Direction vecToDir(Vector2 v) {
+		if(v.epsilonEquals(0, 0, .001f)){
+			return Player.Direction.IDLE;
+		} else if(Math.abs(v.y)>Math.abs(v.x)){
+			if(v.y>0){
+				return Player.Direction.BACKWARD;
+			} else {
+				return Player.Direction.FORWARD;
+			}
+		} else {
+			if(v.x>0){
+				return Player.Direction.RIGHT;
+			} else {
+				return Player.Direction.LEFT;
+			}
+		}
 	}
 		
 }

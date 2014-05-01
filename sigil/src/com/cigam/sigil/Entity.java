@@ -40,11 +40,13 @@ public abstract class Entity {
 	public void render(float delta) {
 		if(active) {
 			elapsedTime += delta;
+			if(sprite!=null){
+				if(plane == Constants.ETHEREAL_PLANE)
+					sprite.draw(game.batch, 0.5f);
+				else
+					sprite.draw(game.batch);
+			}
 		}
-		if(plane == Constants.ETHEREAL_PLANE)
-			sprite.draw(game.batch, 0.5f);
-		else
-			sprite.draw(game.batch);
 	}
 	
 	public void setPosition(Vector2 pos) {

@@ -96,10 +96,8 @@ public class AdventureScreen implements Screen {
 		world = new World(new Vector2(), true);
 		world.setContactListener(new SigilContactListener());
 		world.setContactFilter(new SigilContactFilter());
-		Texture playerTexture = new Texture(Gdx.files.internal("art/player.png"));
-		playerTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
-		player = new Player(game, new Sprite(playerTexture), this);
+		player = new Player(game, null, this);
 		
 		SpellsArray = new Spell[10];
 		

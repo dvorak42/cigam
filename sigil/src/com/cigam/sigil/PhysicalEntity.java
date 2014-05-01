@@ -135,9 +135,11 @@ public abstract class PhysicalEntity extends Entity {
 		}
 		if(this.visible){
 			Vector2 spritePos = body.getPosition().sub(modelOrigin);
-			sprite.setPosition(spritePos.x, spritePos.y);
-			sprite.setOrigin(modelOrigin.x, modelOrigin.y);
-			sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+			if(sprite!=null){
+				sprite.setPosition(spritePos.x, spritePos.y);
+				sprite.setOrigin(modelOrigin.x, modelOrigin.y);
+				sprite.setRotation(body.getAngle() * MathUtils.radiansToDegrees);
+			}
 			super.render(delta);
 		}
 	}
