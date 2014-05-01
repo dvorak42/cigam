@@ -9,9 +9,9 @@ import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.SelfMat;
 import com.cigam.sigil.screens.AdventureScreen;
 
-public class Self extends Spell {
+public class SelfRune extends Spell {
 	private SpellDescriptor self;
-	public Self(){
+	public SelfRune(){
 		CircleShape c = new CircleShape();
 		c.setRadius(10);
 		self = new SpellDescriptor(new SelfMat(), 10, 1,0, null, null, 0, c, Vector2.Zero);

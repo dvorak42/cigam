@@ -11,7 +11,7 @@ import com.cigam.sigil.magic.modifiers.EffectToArea;
 import com.cigam.sigil.magic.modifiers.EffectToDuration;
 import com.cigam.sigil.magic.targets.Empty;
 import com.cigam.sigil.magic.targets.FireRune;
-import com.cigam.sigil.magic.targets.Self;
+import com.cigam.sigil.magic.targets.SelfRune;
 import com.cigam.sigil.magic.verbs.Banish;
 import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
@@ -52,7 +52,7 @@ public class Parser {
 			} else if(tok.getType() == Token.Type.FIRE){
 				addRuneChild(new FireRune());
 			} else if(tok.getType() == Token.Type.SELF){
-				addRuneChild(new Self());
+				addRuneChild(new SelfRune());
 			} else if(tok.getType() == Token.Type.AREA_TO_DURATION){
 				addRuneChild(new AreaToDuration());
 			} else if(tok.getType() == Token.Type.DURATION_TO_AREA){

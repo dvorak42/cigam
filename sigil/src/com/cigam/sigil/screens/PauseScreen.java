@@ -23,16 +23,16 @@ import com.cigam.sigil.magic.modifiers.DurationToEffect;
 import com.cigam.sigil.magic.modifiers.EffectToArea;
 import com.cigam.sigil.magic.modifiers.EffectToDuration;
 import com.cigam.sigil.magic.targets.Element3Rune;
-import com.cigam.sigil.magic.targets.Element4Rune;
+import com.cigam.sigil.magic.targets.Element2Rune;
 import com.cigam.sigil.magic.targets.FireRune;
-import com.cigam.sigil.magic.targets.Self;
+import com.cigam.sigil.magic.targets.SelfRune;
 import com.cigam.sigil.magic.verbs.Banish;
 import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.magic.verbs.TopLevelSpell;
 import com.cigam.sigil.materials.Element3;
-import com.cigam.sigil.materials.Element4;
+import com.cigam.sigil.materials.Element2;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.builder.LayerBuilder;
@@ -79,14 +79,14 @@ public class PauseScreen implements Screen {
 		rMenu.color = Color.BLACK;
 		RadialMenu verbMenu = new RadialMenu(Banish.class, Bind.class, Create.class, Summon.class);
 		verbMenu.color = Color.BLUE;
-		RadialMenu targetMenu = new RadialMenu(FireRune.class, Self.class, Element3Rune.class, Element4Rune.class);
+		RadialMenu targetMenu = new RadialMenu(FireRune.class, SelfRune.class, Element3Rune.class, Element2Rune.class);
 		targetMenu.color = Color.RED;
-		RadialMenu modifierMenu = new RadialMenu(AreaToDuration.class, AreaToEffect.class, DurationToArea.class, DurationToEffect.class, EffectToArea.class, EffectToDuration.class);
-		modifierMenu.color = Color.GREEN;
+		//RadialMenu modifierMenu = new RadialMenu(AreaToDuration.class, AreaToEffect.class, DurationToArea.class, DurationToEffect.class, EffectToArea.class, EffectToDuration.class);
+		//modifierMenu.color = Color.GREEN;
 		RadialEnd deleteSelected = new RadialEnd(new Integer(-1));
 		rMenu.addMenu(verbMenu);
 		rMenu.addMenu(targetMenu);
-		rMenu.addMenu(modifierMenu);
+		//rMenu.addMenu(modifierMenu);
 		rMenu.addMenu(deleteSelected);
 		
 	}
