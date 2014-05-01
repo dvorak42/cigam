@@ -12,14 +12,15 @@ import com.cigam.sigil.materials.Summoning;
 public class Summon extends Spell {
 	private SpellDescriptor toSummonTo;
 	private ArrayList<SpellDescriptor> summonCriteria;
-	private float defaultDuration = Constants.SPELL_DEFAULT_DURATION;;
-	private float defaultRadius = Constants.SPELL_LONG_RANGE;
+
 	
 	public Summon(){
 		super();
+		defaultDuration = Constants.SPELL_DEFAULT_DURATION;
+		defaultRadius = Constants.SPELL_LONG_RANGE;
 		summonCriteria = new ArrayList<SpellDescriptor>();
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
-		area.setRadius(defaultRadius*Constants.SPELL_SCALE_FACTOR);
+		//area.setRadius(defaultRadius/Constants.SPELL_SCALE_FACTOR);
 		effectValue = Constants.FORCE_MEDIUM;
 		argsNum = 4;
 		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));
@@ -33,7 +34,7 @@ public class Summon extends Spell {
 			summonCriteria.add(s.evalEffect());
 		}
 		//System.out.println(caster);
-		SpellDescriptor effect = new SpellDescriptor(new Summoning(toSummonTo, summonCriteria, effectValue), defaultDuration, effectValue, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getWorldCenter());
+		SpellDescriptor effect = new SpellDescriptor(new Summoning(toSummonTo, summonCriteria, effectValue), defaultDuration, defaultRadius, effectValue, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getWorldCenter());
 		return effect;
 	}
 	@Override

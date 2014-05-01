@@ -104,7 +104,7 @@ public class AdventureScreen implements Screen {
 		parser = new Parser(new StringLexer());
 		
 		SpellsArray[0] = parser.parse(player, this, "Create(fire)");
-		SpellsArray[1] = parser.parse(player, this, "Create(Summon(fire - - - self))");
+		SpellsArray[1] = parser.parse(player, this, "Summon(fire - - - self)");
 		SpellsArray[2] = parser.parse(player, this, "Bind(fire - - - self))");
 		SpellsArray[3] = parser.parse(player, this, "Create(Banish(fire - - - self))");
 

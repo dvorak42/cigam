@@ -47,8 +47,8 @@ public class Summoning extends MaterialDescriptor {
 	public void OnCollide(PhysicalEntity p) {
 		if(!objectsInRange.contains(p)){
 			objectsInRange.add(p);
+			System.out.println("collided with " + p);
 		}
-		//System.out.println("collided with " + p);
 		for(MaterialDescriptor m:entitiesToPush.keySet()){
 			if(p.mat.isSameMat(m)&&entitiesToPush.get(m)==null&&(!entitiesToPush.containsKey(p))){
 				entitiesToPush.put(m, p);
@@ -58,7 +58,7 @@ public class Summoning extends MaterialDescriptor {
 
 	@Override
 	public void NoCollide(PhysicalEntity p) {
-		//System.out.println("not colliding with " + p);
+		System.out.println("not colliding with " + p);
 		objectsInRange.remove(p);
 		for(MaterialDescriptor m:entitiesToPush.keySet()){
 			if(entitiesToPush.get(m)==p){
@@ -99,9 +99,9 @@ public class Summoning extends MaterialDescriptor {
 	
 	private void getEntityToPush(MaterialDescriptor m){
 		for(PhysicalEntity p: objectsInRange){
-			if(p.body == null || entitiesToPush.get(m) == null || entitiesToPush.get(m).body == null)
+			if(p == null || !p.active() || p.body == null){
 				continue;
-			if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
+			} if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
 				entitiesToPush.put(m, p);
 			}
 		}

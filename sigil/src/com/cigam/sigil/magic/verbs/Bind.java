@@ -12,14 +12,14 @@ import com.cigam.sigil.materials.Binding;
 public class Bind extends Spell {
 	private ArrayList<SpellDescriptor> toBeBound;
 	private SpellDescriptor toBindInto;
-	private float defaultDuration = Constants.SPELL_DEFAULT_DURATION;
-	private float defaultRadius = Constants.SPELL_SHORT_RANGE;
+	
 	
 	public Bind(){
 		super();
+		defaultDuration = Constants.SPELL_DEFAULT_DURATION;
+		defaultRadius = Constants.SPELL_SHORT_RANGE;
 		toBeBound = new ArrayList<SpellDescriptor>();
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
-		area.setRadius(defaultRadius*Constants.SPELL_SCALE_FACTOR);
 		effectValue = Constants.BIND_EFFECT_VALUE;
 		argsNum = 4;
 		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));
@@ -38,7 +38,7 @@ public class Bind extends Spell {
 		for(Spell s: arguments){
 			toBeBound.add(s.evalEffect());
 		}
-		SpellDescriptor effect = new SpellDescriptor(new Binding(toBindInto, toBeBound, effectValue), defaultDuration, effectValue, toBindInto, toBeBound, caster.body.getAngle(), area, caster.body.getWorldCenter());
+		SpellDescriptor effect = new SpellDescriptor(new Binding(toBindInto, toBeBound, effectValue), defaultDuration, defaultRadius, effectValue, toBindInto, toBeBound, caster.body.getAngle(), area, caster.body.getWorldCenter());
 		return effect;
 	}
 

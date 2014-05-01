@@ -12,13 +12,13 @@ import com.cigam.sigil.materials.Creation;
 
 public class Create extends Spell {
 	private SpellDescriptor toCreate;
-	private float defaultDuration = Constants.SPELL_DEFAULT_DURATION;
-	private float defaultRadius = Constants.SPELL_SHORT_RANGE;
+
 	
 	public Create(){
 		super();
+		defaultDuration = Constants.SPELL_DEFAULT_DURATION/10;
+		defaultRadius = Constants.SPELL_SHORT_RANGE;
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
-		area.setRadius(defaultRadius*Constants.SPELL_SCALE_FACTOR);
 		//area.setAsBox(10, 10);
 		effectValue = Constants.CREATE_EFFECT_VALUE;
 		argsNum = 0;
@@ -44,7 +44,7 @@ public class Create extends Spell {
 		//System.out.println(toCreate.duration);
 		Vector2 pos = caster.body.getWorldCenter().cpy().rotate(caster.body.getAngle());
 		float angle = Utils.dirToAngle(caster.direction);
-		SpellDescriptor effect = new SpellDescriptor(new Creation(effectValue), defaultDuration, effectValue, toCreate, null, angle, area, pos);
+		SpellDescriptor effect = new SpellDescriptor(new Creation(effectValue), defaultDuration, defaultRadius, effectValue, toCreate, null, angle, area, pos);
 		return effect;
 	}
 	@Override

@@ -24,6 +24,8 @@ public abstract class Spell {
 	public Spell parent;
 	public int argsNum;
 	public PanelBuilder gui;
+	public float defaultDuration;
+	public float defaultRadius;
 
 	public Spell(){
 		arguments = new ArrayList<Spell>();

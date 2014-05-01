@@ -99,7 +99,9 @@ public class Banishment extends MaterialDescriptor {
 	
 	private void getEntityToPush(MaterialDescriptor m){
 		for(PhysicalEntity p: objectsInRange){
-			if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
+			if(p == null || !p.active() || p.body == null){
+				continue;
+			} else if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
 				entitiesToPush.put(m, p);
 			}
 		}

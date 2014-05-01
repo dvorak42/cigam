@@ -11,7 +11,7 @@ public class Empty extends Spell {
 	public Empty(){
 		CircleShape c = new CircleShape();
 		c.setRadius(10);
-		mat = new SpellDescriptor(new EmptyMat(), 10, 1, null, null, 0, c, Vector2.Zero);
+		mat = new SpellDescriptor(new EmptyMat(), 10, 1, 0, null, null, 0, c, Vector2.Zero);
 	}
 	
 	@Override

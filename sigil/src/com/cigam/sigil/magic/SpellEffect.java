@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.SigilGame;
 import com.cigam.sigil.screens.AdventureScreen;
@@ -31,7 +32,7 @@ public class SpellEffect extends PhysicalEntity {
 		//System.out.println(this.mat.image);
 		if(mat.image!=null){
 			mat.image.setPosition(s.position.x, s.position.y);
-			float scale = (float)Math.sqrt(sd.shape.getRadius() / 100 * 2);
+			float scale = (float)Math.sqrt(s.scale*Constants.SPELL_SCALE_FACTOR/ 100 * 2);
 			for(ParticleEmitter pe : mat.image.getEmitters()) {
 				pe.getXOffsetValue().setLow(pe.getXOffsetValue().getLowMin() * scale * scale / 2);
 				pe.getYOffsetValue().setLow(pe.getYOffsetValue().getLowMin() * scale * scale / 2);

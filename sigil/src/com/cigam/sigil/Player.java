@@ -70,7 +70,6 @@ public class Player extends PhysicalEntity {
 		}
 		direction = Utils.vecToDir(body.getLinearVelocity());
 		if(direction == Direction.BACKWARD||direction == Direction.LEFT||direction == Direction.RIGHT){
-			System.out.println(animations[direction.ordinal()].getKeyFrame(elapsedTime));
 			float width = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;
 			float height = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
 			game.batch.draw(animations[direction.ordinal()].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height );

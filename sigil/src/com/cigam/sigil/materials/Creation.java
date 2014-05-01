@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter.ScaledNumericValue;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.FindSpecificFixture;
 import com.cigam.sigil.Utils;
@@ -33,9 +34,17 @@ public class Creation extends MaterialDescriptor {
 			return;
 		Fixture manifestFixture = manifestation.body.getFixtureList().get(0);
 		FindSpecificFixture f = new FindSpecificFixture(manifestFixture);
-		System.out.println(manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)));
-		System.out.println(manifestation.body.getPosition());
-		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)),manifestation.body.getPosition());
+		PolygonShape s = ((PolygonShape)(manifestFixture.getShape()));
+		float radius = 0;
+		for(int i = 0; i < s.getVertexCount(); i++){
+			Vector2 v = new Vector2();
+			s.getVertex(i, v);
+			radius = Math.max(v.len(), radius);
+		}
+		System.out.println(radius);
+		//System.out.println(manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)));
+		//System.out.println(manifestation.body.getPosition());
+		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(radius*1.5f)),manifestation.body.getPosition());
 		manifestation.target.position = f.intersectionPoint;
 		//System.out.println(manifestation.target);
 		manifestation.target.duration = manifestation.duration;
