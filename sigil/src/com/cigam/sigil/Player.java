@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.cigam.sigil.Constants.Direction;
 import com.cigam.sigil.materials.SelfMat;
 import com.cigam.sigil.screens.AdventureScreen;
 
@@ -20,10 +21,6 @@ public class Player extends PhysicalEntity {
     private TextureAtlas textureAtlas;
     private Animation[] animations;
     private TextureRegion[][] textures;
-    public enum Direction {
-    	FORWARD, BACKWARD, RIGHT, LEFT, IDLE;
-    }
-    public Direction direction;
 	
 	//World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds
 	public Player(SigilGame g, Sprite s,AdventureScreen a) {

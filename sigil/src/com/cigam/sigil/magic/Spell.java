@@ -18,8 +18,6 @@ public abstract class Spell {
 	public float duration;
 	public PolygonShape area;
 	public float castDelay;
-	public AdventureScreen screen;
-	public Player caster;
 	public float effectValue;
 	public Spell parent;
 	public int argsNum;
@@ -60,8 +58,6 @@ public abstract class Spell {
 			Utils.printError(child.toString());
 			return;
 		}
-		child.caster = this.caster;
-		child.screen = this.screen;
 		child.parent = this;
 		child.castDelay += this.castDelay;
 	}
@@ -76,8 +72,6 @@ public abstract class Spell {
 			if(target==null){
 				target = child;
 			}
-			child.caster = this.caster;
-			child.screen = this.screen;
 			child.parent = this;
 			child.castDelay += this.castDelay;
 			return true;
@@ -99,8 +93,6 @@ public abstract class Spell {
 		}
 		if(valid){
 			arguments.add(child);
-			child.caster = this.caster;
-			child.screen = this.screen;
 			child.parent = this;
 			child.castDelay += this.castDelay;
 			return true;
@@ -115,8 +107,8 @@ public abstract class Spell {
 	public boolean isDone(){
 		return (target!=null&&argsNum==arguments.size());
 	}
-	public abstract SpellDescriptor evalEffect();
-	public abstract void cast();
+	public abstract SpellDescriptor evalEffect(PhysicalEntity caster);
+	public abstract void cast(AdventureScreen screen, PhysicalEntity caster);
 	
 	
 }
