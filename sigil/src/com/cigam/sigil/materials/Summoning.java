@@ -99,7 +99,7 @@ public class Summoning extends MaterialDescriptor {
 	
 	private void getEntityToPush(MaterialDescriptor m){
 		for(PhysicalEntity p: objectsInRange){
-			if(p == null || !p.active() || p.body == null){
+			if(p == null || !p.active() || p.body == null || attractor == null || p.mat == null){
 				continue;
 			} if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
 				entitiesToPush.put(m, p);
