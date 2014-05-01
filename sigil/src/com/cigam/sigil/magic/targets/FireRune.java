@@ -1,9 +1,11 @@
 package com.cigam.sigil.magic.targets;
 
+import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.Fire;
+import com.cigam.sigil.screens.AdventureScreen;
 
 public class FireRune extends Spell {
 	public SpellDescriptor material;
@@ -15,11 +17,11 @@ public class FireRune extends Spell {
 	}
 
 	@Override
-	public SpellDescriptor evalEffect() {
+	public SpellDescriptor evalEffect(PhysicalEntity caster) {
 		return new SpellDescriptor(new Fire());
 	}
 
 	@Override
-	public void cast() {}
+	public void cast(AdventureScreen screen, PhysicalEntity caster) {}
 
 }

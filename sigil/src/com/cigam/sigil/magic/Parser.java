@@ -32,8 +32,8 @@ public class Parser {
 		stack = new ArrayList<Spell>();
 	}
 	
-	public Spell parse(Player caster, AdventureScreen s, String input){
-		output = new TopLevelSpell(caster, s);
+	public Spell parse(String input){
+		output = new TopLevelSpell();
 		stack.add(output);
 		lex.lex(input);
 		while(lex.hasNext()){

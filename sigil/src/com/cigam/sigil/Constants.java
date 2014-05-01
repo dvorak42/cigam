@@ -3,6 +3,10 @@ package com.cigam.sigil;
 import com.badlogic.gdx.math.Vector2;
 
 public class Constants {
+    public enum Direction {
+    	FORWARD, BACKWARD, RIGHT, LEFT, IDLE;
+    }
+
     // TODO: define specific subclasses of enemy, which should have their own definitions for aggro range, fire right, projectile speed, move speed, etc.
 
 	public static final int MAX_HEALTH = 80;

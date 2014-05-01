@@ -2,6 +2,7 @@ package com.cigam.sigil;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.cigam.sigil.Constants.Direction;
 
 public abstract class Entity {
 	SigilGame game;
@@ -12,6 +13,7 @@ public abstract class Entity {
 	public float elapsedTime;
 	public int plane;
 	public float health;
+    public Direction direction;
 	
 	public Entity(SigilGame g, Sprite s) {
 		game = g;

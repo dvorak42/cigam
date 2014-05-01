@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.cigam.sigil.Constants;
+import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.Binding;
+import com.cigam.sigil.screens.AdventureScreen;
 
 public class Bind extends Spell {
 	private ArrayList<SpellDescriptor> toBeBound;
@@ -28,16 +30,16 @@ public class Bind extends Spell {
 	}
 
 	@Override
-	public void cast() {
-		screen.createSpellEffect(evalEffect());
+	public void cast(AdventureScreen screen, PhysicalEntity caster) {
+		screen.createSpellEffect(evalEffect(caster));
 	}
 
 	@Override
-	public SpellDescriptor evalEffect() {
-		toBindInto = target.evalEffect();
+	public SpellDescriptor evalEffect(PhysicalEntity caster) {
+		toBindInto = target.evalEffect(caster);
 		toBeBound.clear();
 		for(Spell s: arguments){
-			toBeBound.add(s.evalEffect());
+			toBeBound.add(s.evalEffect(caster));
 		}
 		SpellDescriptor effect = new SpellDescriptor(new Binding(toBindInto, toBeBound, effectValue), defaultDuration, defaultRadius, effectValue, toBindInto, toBeBound, caster.body.getAngle(), area, caster.body.getWorldCenter());
 		return effect;

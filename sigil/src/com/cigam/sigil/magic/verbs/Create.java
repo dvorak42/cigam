@@ -4,10 +4,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.cigam.sigil.Constants;
+import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.Creation;
+import com.cigam.sigil.screens.AdventureScreen;
 
 
 public class Create extends Spell {
@@ -38,8 +40,8 @@ public class Create extends Spell {
 	*/
 
 	@Override
-	public SpellDescriptor evalEffect(){
-		toCreate = target.evalEffect();
+	public SpellDescriptor evalEffect(PhysicalEntity caster){
+		toCreate = target.evalEffect(caster);
 		//System.out.println("Casting Create with " + toCreate);
 		toCreate.position = caster.body.getWorldCenter();
 		//System.out.println(toCreate.duration);
@@ -49,9 +51,9 @@ public class Create extends Spell {
 		return effect;
 	}
 	@Override
-	public void cast() {
+	public void cast(AdventureScreen screen, PhysicalEntity caster) {
 		Vector2 castDir = new Vector2(1, 0).rotate(caster.body.getAngle());
 		castDir.nor();
-		screen.createSpellEffect(evalEffect());
+		screen.createSpellEffect(evalEffect(caster));
 	}
 }

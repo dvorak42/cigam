@@ -2,9 +2,11 @@ package com.cigam.sigil.magic.targets;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.EmptyMat;
+import com.cigam.sigil.screens.AdventureScreen;
 
 public class Empty extends Spell {
 	private SpellDescriptor mat;
@@ -16,11 +18,11 @@ public class Empty extends Spell {
 	}
 	
 	@Override
-	public SpellDescriptor evalEffect() {
+	public SpellDescriptor evalEffect(PhysicalEntity caster) {
 		return mat;
 	}
 
 	@Override
-	public void cast() {}
+	public void cast(AdventureScreen screen, PhysicalEntity caster) {}
 
 }

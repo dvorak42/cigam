@@ -13,7 +13,7 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.cigam.sigil.Player.Direction;
+import com.cigam.sigil.Constants.Direction;
 import com.cigam.sigil.external.BodyEditorLoader;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.modifiers.AreaToDuration;
@@ -269,23 +269,23 @@ public class Utils {
 
 	public static Direction vecToDir(Vector2 v) {
 		if(v.epsilonEquals(0, 0, .001f)){
-			return Player.Direction.IDLE;
+			return Direction.IDLE;
 		} else if(Math.abs(v.y)>Math.abs(v.x)){
 			if(v.y>0){
-				return Player.Direction.BACKWARD;
+				return Direction.BACKWARD;
 			} else {
-				return Player.Direction.FORWARD;
+				return Direction.FORWARD;
 			}
 		} else {
 			if(v.x>0){
-				return Player.Direction.RIGHT;
+				return Direction.RIGHT;
 			} else {
-				return Player.Direction.LEFT;
+				return Direction.LEFT;
 			}
 		}
 	}
 	
-	public static float dirToAngle(Player.Direction d){
+	public static float dirToAngle(Direction d){
 		switch (d) {
 			case BACKWARD:
 				return 90;

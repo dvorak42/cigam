@@ -10,23 +10,21 @@ import com.cigam.sigil.screens.AdventureScreen;
 public class TopLevelSpell extends Spell {
 	private SpellDescriptor effect;
 	
-	public TopLevelSpell(Player c,  AdventureScreen b) {
+	public TopLevelSpell() {
 		super();
-		this.screen = b;
-		this.caster = c;
 		argsNum = 0;
 		this.validArguments.remove(Type.TARGET);
 		this.validTargets.remove(Type.TARGET);
 	}
 
 	@Override
-	public SpellDescriptor evalEffect() {
-		effect = target.evalEffect();
+	public SpellDescriptor evalEffect(PhysicalEntity caster) {
+		effect = target.evalEffect(caster);
 		return effect;
 	}
 	@Override
-	public void cast() {
+	public void cast(AdventureScreen screen, PhysicalEntity caster) {
 		if(target != null)
-			target.cast();
+			target.cast(screen, caster);
 	}
 }

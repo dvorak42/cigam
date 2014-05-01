@@ -95,10 +95,10 @@ public class AdventureScreen implements Screen {
 		mapRenderer = new OrthogonalTiledMapRenderer(map, tileScale, game.batch);
 		
 		restartGame();
-		SpellsArray[0] = parser.parse(player, this, "Create(fire)");
-		SpellsArray[1] = parser.parse(player, this, "Summon(fire - - - self)");
-		SpellsArray[2] = parser.parse(player, this, "Bind(fire - - - self))");
-		SpellsArray[3] = parser.parse(player, this, "Create(Banish(fire - - - self))");
+		SpellsArray[0] = parser.parse("Create(fire)");
+		SpellsArray[1] = parser.parse("Summon(fire - - - self)");
+		SpellsArray[2] = parser.parse("Bind(fire - - - self))");
+		SpellsArray[3] = parser.parse("Create(Banish(fire - - - self))");
 	}
 	
 	//This presumably shouldn't still exist? -Jayson
@@ -234,7 +234,7 @@ public class AdventureScreen implements Screen {
 			game.setScreen(game.pauseScreen);
 			return;
         }
-		if(in.isKeyPressed(Input.Keys.R))
+		if(player == null || !player.active())
 			restartGame();
 		if(in.isKeyPressed(Input.Keys.O)) {
 			game.pauseScreen.createdSpell = SpellsArray[selectedSpell];
@@ -301,7 +301,7 @@ public class AdventureScreen implements Screen {
 	        else if(in.isKeyPressed(Input.Keys.UP))
 	            createFireball(player, 2*baseAngle, true);
 	        else if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
-	        	SpellsArray[selectedSpell].cast();
+	        	SpellsArray[selectedSpell].cast(this, player);
 	        else if(in.isKeyPressed(Input.Keys.I) && SpellsArray[selectedSpell] != null)
 	        	SpellsArray[selectedSpell] = null;
 	        else {
@@ -310,7 +310,7 @@ public class AdventureScreen implements Screen {
 	        		int j = i != 9 ? i : -1;
 	        		if(in.isKeyPressed(Input.Keys.NUM_1 + j)) {
 	        			if(SpellsArray[i] != null && selectedSpell == i)
-	        				SpellsArray[selectedSpell].cast();
+	        				SpellsArray[selectedSpell].cast(this, player);
 	        			selectedSpell = i;
 	    	        	cast = true;
 	        		}
