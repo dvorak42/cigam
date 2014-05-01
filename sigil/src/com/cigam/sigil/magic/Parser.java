@@ -2,7 +2,6 @@ package com.cigam.sigil.magic;
 
 import java.util.ArrayList;
 
-import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.modifiers.AreaToDuration;
 import com.cigam.sigil.magic.modifiers.AreaToEffect;
@@ -18,7 +17,6 @@ import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.magic.verbs.TopLevelSpell;
-import com.cigam.sigil.screens.AdventureScreen;
 
 public class Parser {
 	private Spell output;
@@ -31,8 +29,8 @@ public class Parser {
 		stack = new ArrayList<Spell>();
 	}
 	
-	public Spell parse(PhysicalEntity caster, AdventureScreen s, String input){
-		output = new TopLevelSpell(caster, s);
+	public Spell parse(String input){
+		output = new TopLevelSpell();
 		stack.add(output);
 		lex.lex(input);
 		while(lex.hasNext()){

@@ -149,7 +149,7 @@ public class PauseScreen implements Screen {
 	    if(createdSpell != null) {
 	    	Utils.initElement(nifty, nifty.getCurrentScreen(), panel, createdSpell.target);
 	    } else {
-	    	createdSpell = new TopLevelSpell(parent.player, parent);
+	    	createdSpell = new TopLevelSpell();
 	    }
 
 	    panel.setUserData("containingSpell", createdSpell);
@@ -164,7 +164,6 @@ public class PauseScreen implements Screen {
 			index++;
 			index = index%10;
 		} catch (Exception e){
-			
 		}
 	}
 

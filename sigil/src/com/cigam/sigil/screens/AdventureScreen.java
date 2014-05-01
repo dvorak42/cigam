@@ -80,48 +80,52 @@ public class AdventureScreen implements Screen {
 	public AdventureScreen(SigilGame g)
 	{
 		game = g;
+		debugRenderer = new Box2DDebugRenderer();
 		entities = new ArrayList<Entity>();
 		enemies = new ArrayList<Enemy>();
 		spells = new ArrayList<SpellEffect>();
 		toDestroy = new Array<PhysicalEntity>();
-		debugRenderer = new Box2DDebugRenderer();
-		
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
-		
-		camera = new OrthographicCamera(w, h);
-		camera.zoom = 1.0f;// / 0.2f;
-		hudCamera = new OrthographicCamera(w, h);
 
-		world = new World(new Vector2(), true);
-		world.setContactListener(new SigilContactListener());
-		world.setContactFilter(new SigilContactFilter());
-		Texture playerTexture = new Texture(Gdx.files.internal("art/player.png"));
-		playerTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		
-		player = new Player(game, new Sprite(playerTexture), this);
-		
 		SpellsArray = new Spell[10];
 		
 		parser = new Parser(new StringLexer());
 		
-		SpellsArray[0] = parser.parse(player, this, "Create(fire)");
-		SpellsArray[1] = parser.parse(player, this, "Create(Summon(fire - - - self))");
-		SpellsArray[2] = parser.parse(player, this, "Bind(fire - - - self))");
-		//SpellsArray[3] = parser.parse(player, this, "Summon(fire expand slow slow self)");
-		//for(String s: spellsToTest){
-			//testSpells.add(parser.parse(player, this, s));
-		//}
-		//testSpell = new Create(player, game, new Create(player, game, new Create(player, game, new MaterialRune(new Fire()), null), null), null);
-		//testSpell = new Summon()
-
-		//for(Spell s: SpellsArray){
-			//s.evalEffect();
-		//}
-		
 		map = new TmxMapLoader().load("maps/MAP.tmx");
 		float tileScale = 2;
 		mapRenderer = new OrthogonalTiledMapRenderer(map, tileScale, game.batch);
+		
+		restartGame();
+		SpellsArray[0] = parser.parse("Create(fire)");
+		SpellsArray[1] = parser.parse("Summon(fire - - - self)");
+		SpellsArray[2] = parser.parse("Bind(self - - - fire))");
+		SpellsArray[3] = parser.parse("Create(Banish(fire - - - self))");
+	}
+	
+	//This presumably shouldn't still exist? -Jayson
+    public void createFireball(Entity e, float angle, boolean player)
+    {
+    	Texture fTexture = new Texture(Gdx.files.internal("art/fireball.png"));
+    	fTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+    	SolidProjectile f = new SolidProjectile(game, new Sprite(fTexture), this, new Fire(), angle, e, 1, Utils.angleToVector(angle).scl(Constants.PLAYER_PROJECTILE_SPEED));
+
+    	//this.player.setRotation(angle);
+
+        entities.add(f);
+    }
+    
+    public void restartGame() {
+		entities.clear();
+		enemies.clear();
+		spells.clear();
+		toDestroy.clear();
+		
+		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		
+		world = new World(new Vector2(), true);
+		world.setContactListener(new SigilContactListener());
+		world.setContactFilter(new SigilContactFilter());
+		
+		player = new Player(game, null, this);
 		
         player.setPosition(new Vector2(128, 128));
         entities.add(player);
@@ -136,6 +140,8 @@ public class AdventureScreen implements Screen {
             entities.add(enemy);
             enemies.add(enemy);
         }
+
+		float tileScale = 2;
 
         //parses tiled map and acts on wall layer
         for(MapObject wall : map.getLayers().get("WallObjects").getObjects()) {
@@ -190,24 +196,13 @@ public class AdventureScreen implements Screen {
         for(MapObject lava : map.getLayers().get("FireTile").getObjects()) {
         	//TODO Create Fire Stuff
         }        
-	}
-	
-	//This presumably shouldn't still exist? -Jayson
-    public void createFireball(Entity e, float angle, boolean player)
-    {
-    	Texture fTexture = new Texture(Gdx.files.internal("art/fireball.png"));
-    	fTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-    	SolidProjectile f = new SolidProjectile(game, new Sprite(fTexture), this, new Fire(), angle, e, 1, Utils.angleToVector(angle).scl(Constants.PLAYER_PROJECTILE_SPEED));
-
-    	//this.player.setRotation(angle);
-
-        entities.add(f);
+    	
     }
     
     public SpellEffect createSpellEffect(SpellDescriptor s) {
-    	Texture texture = new Texture(Gdx.files.internal("art/fireball.png"));
-    	texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-    	SpellEffect e = new SpellEffect(game, this, new Sprite(texture), s);
+    	//Texture texture = new Texture(Gdx.files.internal("art/fireball.png"));
+    	//texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+    	SpellEffect e = new SpellEffect(game, this, s);
 		entities.add(e);
     	spells.add(e);
     	world.step(dt/1000.0f, Constants.VELOCITY_ITERS, Constants.POSITION_ITERS);
@@ -234,6 +229,8 @@ public class AdventureScreen implements Screen {
 			game.setScreen(game.pauseScreen);
 			return;
         }
+		if(player == null || !player.active())
+			restartGame();
 		if(in.isKeyPressed(Input.Keys.O)) {
 			game.pauseScreen.createdSpell = SpellsArray[selectedSpell];
 			game.pauseScreen.index = selectedSpell;
@@ -299,16 +296,16 @@ public class AdventureScreen implements Screen {
 	        else if(in.isKeyPressed(Input.Keys.UP))
 	            createFireball(player, 2*baseAngle, true);
 	        else if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
-	        	SpellsArray[selectedSpell].cast();
+	        	SpellsArray[selectedSpell].cast(this, player);
 	        else if(in.isKeyPressed(Input.Keys.I) && SpellsArray[selectedSpell] != null)
 	        	SpellsArray[selectedSpell] = null;
 	        else {
 	        	boolean cast = false;
 	        	for(int i = 0; i < 10; i++) {
 	        		int j = i != 9 ? i : -1;
-	        		if(SpellsArray[i] != null && in.isKeyPressed(Input.Keys.NUM_1 + j)) {
-	        			if(selectedSpell == i)
-	        				SpellsArray[selectedSpell].cast();
+	        		if(in.isKeyPressed(Input.Keys.NUM_1 + j)) {
+	        			if(SpellsArray[i] != null && selectedSpell == i)
+	        				SpellsArray[selectedSpell].cast(this, player);
 	        			selectedSpell = i;
 	    	        	cast = true;
 	        		}
@@ -379,6 +376,13 @@ public class AdventureScreen implements Screen {
 				sr.rect(70 + i * (spellSlotWidth + 10), 11, spellSlotWidth - 1, 99);
 				sr.end();
 			}
+			if(i == selectedSpell) {
+				sr.begin(ShapeType.Line);
+				sr.setColor(Color.GREEN);
+				sr.rect(70 + i * (spellSlotWidth + 10), 10, spellSlotWidth, 100);
+				sr.end();
+				
+			}
 		}
 		
 		runPhysics(delta);
@@ -435,8 +439,10 @@ public class AdventureScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
-		
+		camera = new OrthographicCamera(width, height);
+		camera.zoom = 1.0f;
+		camera.update();
+		hudCamera = new OrthographicCamera(width, height);
 	}
 
 

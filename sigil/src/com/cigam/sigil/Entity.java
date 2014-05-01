@@ -2,16 +2,18 @@ package com.cigam.sigil;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.cigam.sigil.Constants.Direction;
 
 public abstract class Entity {
 	SigilGame game;
 	
 	public Sprite sprite;
-	boolean active = true;
+	public boolean active = true;
 	public boolean visible = true;
 	public float elapsedTime;
 	public int plane;
 	public float health;
+    public Direction direction;
 	
 	public Entity(SigilGame g, Sprite s) {
 		game = g;
@@ -40,11 +42,13 @@ public abstract class Entity {
 	public void render(float delta) {
 		if(active) {
 			elapsedTime += delta;
+			if(sprite!=null){
+				if(plane == Constants.ETHEREAL_PLANE)
+					sprite.draw(game.batch, 0.5f);
+				else
+					sprite.draw(game.batch);
+			}
 		}
-		if(plane == Constants.ETHEREAL_PLANE)
-			sprite.draw(game.batch, 0.5f);
-		else
-			sprite.draw(game.batch);
 	}
 	
 	public void setPosition(Vector2 pos) {

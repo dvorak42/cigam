@@ -5,8 +5,10 @@ import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter.RangedNumericValue;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.MaterialDescriptor;
@@ -37,6 +39,7 @@ public class Banishment extends MaterialDescriptor {
 		ParticleEffect p = new ParticleEffect();
 		p.load(Gdx.files.internal("art/particles/banish.p"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);
+		this.scaleManifestation(1*(Constants.SPELL_SCALE_FACTOR), 1/(Constants.SPELL_SCALE_FACTOR));
 	}
 
 	@Override
@@ -95,7 +98,9 @@ public class Banishment extends MaterialDescriptor {
 	
 	private void getEntityToPush(MaterialDescriptor m){
 		for(PhysicalEntity p: objectsInRange){
-			if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
+			if(p == null || !p.active() || p.body == null || attractor == null){
+				continue;
+			} else if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
 				entitiesToPush.put(m, p);
 			}
 		}
@@ -124,5 +129,22 @@ public class Banishment extends MaterialDescriptor {
 		attractor = null;
 		entitiesToPush.clear();
 		objectsInRange.clear();
+	}
+	
+	@Override
+	public void scaleManifestation(float x, float y){
+		for(int i = 0; i < image.getEmitters().size; i++){
+			RangedNumericValue height = image.getEmitters().get(i).getYOffsetValue();
+			RangedNumericValue width = image.getEmitters().get(i).getXOffsetValue();
+			float angle = (float) Math.toRadians(image.getEmitters().get(i).getAngle().getHighMax());
+			float lifeBefore = image.getEmitters().get(i).getLife().getHighMax();
+			float hNew = (float) (lifeBefore*Math.sin(angle)*y);
+			float wNew = (float) (lifeBefore*Math.cos(angle)*x);
+			float lifeAfter = (float) Math.sqrt((Math.pow(hNew, 2)+Math.pow(wNew, 2)));
+			image.getEmitters().get(i).getLife().setHigh(lifeAfter);
+			image.getEmitters().get(i).getLife().setLow(lifeAfter);
+					//(float) Math.sqrt(Math.pow(((height.getLowMax()+height.getLowMax())/2),2)+Math.pow(((width.getLowMax()+width.getLowMax())/2),2));
+			//ScaledNumericValue velocity = image.getEmitters().get(i).getVelocity();
+		}
 	}
 }

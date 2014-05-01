@@ -1,9 +1,11 @@
 package com.cigam.sigil.materials;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.ParticleEmitter.ScaledNumericValue;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.cigam.sigil.Constants;
 import com.cigam.sigil.FindSpecificFixture;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.MaterialDescriptor;
@@ -17,8 +19,9 @@ public class Creation extends MaterialDescriptor {
 		super();
 		this.effectValue = effectValue;
 		ParticleEffect p = new ParticleEffect();
-		p.load(Gdx.files.internal("art/particles/create.p"), Gdx.files.internal("art/particles"));
+		//p.load(Gdx.files.internal("particleFiles/create/createSpell"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);
+		this.scaleManifestation(1*(Constants.SPELL_SCALE_FACTOR), 1/(Constants.SPELL_SCALE_FACTOR));
 	}
 
 
@@ -26,16 +29,26 @@ public class Creation extends MaterialDescriptor {
 	public void OnCreate(SpellEffect manifestation, AdventureScreen b) {
 		Vector2 castDir = Utils.angleToVector(manifestation.angle);
 		castDir.nor();	
-		//TODO: Use correct offset.
 		if(manifestation.body == null || manifestation.target == null)
 			return;
 		Fixture manifestFixture = manifestation.body.getFixtureList().get(0);
 		FindSpecificFixture f = new FindSpecificFixture(manifestFixture);
-		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)),manifestation.body.getPosition());
+		PolygonShape s = ((PolygonShape)(manifestFixture.getShape()));
+		float radius = 0;
+		for(int i = 0; i < s.getVertexCount(); i++){
+			Vector2 v = new Vector2();
+			s.getVertex(i, v);
+			radius = Math.max(v.len(), radius);
+		}
+		System.out.println(radius);
+		//System.out.println(manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)));
+		//System.out.println(manifestation.body.getPosition());
+		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(radius*1.5f)),manifestation.body.getPosition());
 		manifestation.target.position = f.intersectionPoint;
 		//System.out.println(manifestation.target);
 		manifestation.target.duration = manifestation.duration;
 		manifestation.target.effectValue*=effectValue;
+		System.out.println(manifestation.target.mat);
 		created = b.createSpellEffect(manifestation.target);
 	}
 
@@ -45,6 +58,17 @@ public class Creation extends MaterialDescriptor {
 		b.destroySpellEffect(created);
 	}
 
+	@Override
+	public void scaleManifestation(float x, float y){
+		for(int i = 0; i < image.getEmitters().size; i++){
+			ScaledNumericValue height = image.getEmitters().get(i).getSpawnHeight();
+			ScaledNumericValue width = image.getEmitters().get(i).getSpawnWidth();
+			image.getEmitters().get(i).getSpawnHeight().setHigh(height.getHighMax()*y, height.getHighMin()*y);
+			image.getEmitters().get(i).getSpawnHeight().setLow(height.getLowMax()*y, height.getLowMin()*y);
+			image.getEmitters().get(i).getSpawnWidth().setHigh(width.getHighMax()*x, width.getHighMin()*x);
+			image.getEmitters().get(i).getSpawnWidth().setLow(width.getLowMax()*x, width.getLowMin()*x);
+		}
+	}
 
 
 }

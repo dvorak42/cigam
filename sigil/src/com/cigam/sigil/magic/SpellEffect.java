@@ -3,11 +3,10 @@ package com.cigam.sigil.magic;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEmitter;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.SigilGame;
 import com.cigam.sigil.screens.AdventureScreen;
@@ -20,8 +19,8 @@ public class SpellEffect extends PhysicalEntity {
 	public float angle;
 	public SpellDescriptor sd;
 
-	public SpellEffect(SigilGame game, AdventureScreen a, Sprite sprite, SpellDescriptor s){
-		super(game, sprite, a, s.mat);
+	public SpellEffect(SigilGame game, AdventureScreen a, SpellDescriptor s){
+		super(game, null, a, s.mat);
 		this.effectValue = s.effectValue;
 		this.duration = s.duration;
 		this.target = s.target;
@@ -31,7 +30,7 @@ public class SpellEffect extends PhysicalEntity {
 		//System.out.println(this.mat.image);
 		if(mat.image!=null){
 			mat.image.setPosition(s.position.x, s.position.y);
-			float scale = (float)Math.sqrt(sd.shape.getRadius() / 100 * 2);
+			float scale = (float)Math.sqrt(s.scale*Constants.SPELL_SCALE_FACTOR/ 100 * 2);
 			for(ParticleEmitter pe : mat.image.getEmitters()) {
 				pe.getXOffsetValue().setLow(pe.getXOffsetValue().getLowMin() * scale * scale / 2);
 				pe.getYOffsetValue().setLow(pe.getYOffsetValue().getLowMin() * scale * scale / 2);
@@ -52,7 +51,8 @@ public class SpellEffect extends PhysicalEntity {
 		if(sd != null)
 			bd.position.set(sd.position);
 		//System.out.println(bd.position);
-		bd.type = BodyType.KinematicBody;
+		//bd.type = BodyType.KinematicBody;
+		bd.type = BodyType.DynamicBody;
 		body = world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
@@ -72,10 +72,18 @@ public class SpellEffect extends PhysicalEntity {
 	}
 	
 	public void render(float delta) {
-		modelOrigin = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
+		//modelOrigin = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
 		if(this.mat.image!=null&&this.active()&&this.visible){
+			mat.image.setPosition(this.body.getWorldCenter().x, this.body.getWorldCenter().y);
 			mat.image.draw(screen.game.batch, delta);
 		}
-		super.render(delta);
+		autoDelay -= delta;
+		if(autoDelay <= 0) {
+			damage(autoDamage);
+			autoDelay = 1;
+		}
+		if(active) {
+			elapsedTime += delta;
+		}
 	}
 }

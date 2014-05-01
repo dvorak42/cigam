@@ -1,7 +1,8 @@
 package com.cigam.sigil.magic;
 import java.util.ArrayList;
 
-import com.badlogic.gdx.physics.box2d.Shape;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.screens.AdventureScreen;
@@ -13,37 +14,36 @@ public abstract class Spell {
 	public Spell target; // Only array or target allowed
 	public ArrayList<Spell> arguments; //Only array or target allowed
 	public float duration;
-	public Shape area;
+	public PolygonShape area;
 	public float castDelay;
-	public AdventureScreen screen;
-	public PhysicalEntity caster;
 	public float effectValue;
 	public Spell parent;
 	public int argsNum;
 	public PanelBuilder gui;
-
+	public float defaultDuration;
+	public float defaultRadius;
+	public enum Type {
+		VERB, TARGET, MODIFIER;
+	};
+	public ArrayList<Type> validTargets;
+	public ArrayList<Type> validArguments;
+	public Type type;
+	
 	public Spell(){
 		arguments = new ArrayList<Spell>();
 		target = null;
+		area = new PolygonShape();
+		validTargets = new ArrayList<Type>();
+		validTargets.add(Spell.Type.VERB);
+		validTargets.add(Spell.Type.TARGET);
+		validArguments = new ArrayList<Type>();
+		validArguments.add(Spell.Type.VERB);
+		validArguments.add(Spell.Type.TARGET);
+		area.set(Utils.initSpellHitBox(10,Constants.SPELL_SCALE_FACTOR));
+		//area.setRadius(radius);
 		this.gui = Utils.makeRuneGui(Utils.classesToIconPaths.get(this.getClass()));
 		//System.out.println(this.getClass());
 	};
-	/*
-	public Spell(Spell target, ArrayList<Spell> args){
-		this.caster = target.caster;
-		this.screen = target.screen;
-		this.target = target;
-		target.parent = this;
-		this.arguments = args;
-		this.castDelay = 0.3f+target.castDelay;
-	}
-	public Spell(PhysicalEntity caster, AdventureScreen b, Target target,  ArrayList<Spell> args){
-		this.caster = caster;
-		this.screen = b;
-		this.target = target;
-		this.arguments = args;
-		this.castDelay = 0.3f;
-	}*/
 	
 	public void addChild(Spell child){
 		if (argsNum>arguments.size()){
@@ -56,32 +56,47 @@ public abstract class Spell {
 			Utils.printError(child.toString());
 			return;
 		}
-		child.caster = this.caster;
-		child.screen = this.screen;
 		child.parent = this;
 		child.castDelay += this.castDelay;
 	}
 	
-	public void addTarget(Spell child) {
-		if(target==null){
-			target = child;
+	public boolean addTarget(Spell child) {
+		boolean valid = false;
+		for(Type t:validTargets){
+			if(t==child.type)
+				valid = true;
 		}
-		child.caster = this.caster;
-		child.screen = this.screen;
-		child.parent = this;
-		child.castDelay += this.castDelay;
+		if(valid){
+			if(target==null){
+				target = child;
+			}
+			child.parent = this;
+			child.castDelay += this.castDelay;
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 	public void removeTarget() {
 		target = null;
 	}
 
-	public void addArgument(Spell child) {
-		arguments.add(child);
-		child.caster = this.caster;
-		child.screen = this.screen;
-		child.parent = this;
-		child.castDelay += this.castDelay;
+	public boolean addArgument(Spell child) {
+		boolean valid = false;
+		for(Type t:validTargets){
+			if(t==child.type)
+				valid = true;
+		}
+		if(valid){
+			arguments.add(child);
+			child.parent = this;
+			child.castDelay += this.castDelay;
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public void removeArgument(Spell child) {
@@ -90,8 +105,8 @@ public abstract class Spell {
 	public boolean isDone(){
 		return (target!=null&&argsNum==arguments.size());
 	}
-	public abstract SpellDescriptor evalEffect();
-	public abstract void cast();
+	public abstract SpellDescriptor evalEffect(PhysicalEntity caster);
+	public abstract void cast(AdventureScreen screen, PhysicalEntity caster);
 	
 	
 }

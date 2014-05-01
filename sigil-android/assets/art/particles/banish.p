@@ -20,8 +20,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -71,10 +71,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -167,8 +167,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -218,10 +218,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -314,8 +314,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -365,10 +365,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -461,8 +461,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -512,10 +512,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -608,8 +608,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -659,10 +659,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -755,8 +755,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -806,10 +806,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -902,8 +902,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -953,10 +953,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -1049,8 +1049,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1100,10 +1100,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -1196,8 +1196,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1247,10 +1247,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -1343,8 +1343,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1394,10 +1394,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -1490,8 +1490,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1541,10 +1541,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -1637,8 +1637,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1688,10 +1688,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -1784,8 +1784,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1835,10 +1835,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -1931,8 +1931,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -1982,10 +1982,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -2078,8 +2078,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2129,10 +2129,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -2225,8 +2225,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2276,10 +2276,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -2372,8 +2372,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2423,10 +2423,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -2519,8 +2519,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2570,10 +2570,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -2666,8 +2666,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2717,10 +2717,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -2813,8 +2813,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -2864,10 +2864,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -2960,8 +2960,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -3011,10 +3011,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -3107,8 +3107,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -3158,10 +3158,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -3254,8 +3254,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -3305,10 +3305,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -3401,8 +3401,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -3452,10 +3452,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -3548,8 +3548,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -3599,10 +3599,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -3610,10 +3610,10 @@ timelineCount: 1
 timeline0: 0.0
 - Angle - 
 active: true
-lowMin: 270.0000
-lowMax: 270.0000
-highMin: 270.0000
-highMax: 270.0000
+lowMin: 265.0000
+lowMax: 265.0000
+highMin: 265.0000
+highMax: 265.0000
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -3695,8 +3695,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -3746,10 +3746,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -3842,8 +3842,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -3893,10 +3893,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -3989,8 +3989,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -4040,10 +4040,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -4136,8 +4136,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -4187,10 +4187,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -4283,8 +4283,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -4334,10 +4334,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -4430,8 +4430,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -4481,10 +4481,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -4577,8 +4577,8 @@ timeline0: 0.0
 - Life - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 3000.0
-highMax: 4500.0
+highMin: 1400.0
+highMax: 1400.0
 relative: false
 scalingCount: 3
 scaling0: 1.0
@@ -4628,10 +4628,10 @@ timelineCount: 1
 timeline0: 0.0
 - Velocity - 
 active: true
-lowMin: 40.0
-lowMax: 40.0
-highMin: 80.0
-highMax: 100.0
+lowMin: 65.0
+lowMax: 65.0
+highMin: 75.0
+highMax: 75.0
 relative: false
 scalingCount: 1
 scaling0: 1.0

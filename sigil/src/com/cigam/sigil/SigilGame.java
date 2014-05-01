@@ -10,7 +10,6 @@ import com.cigam.sigil.screens.PauseScreen;
 public class SigilGame extends Game {
     public PauseScreen pauseScreen;
     public AdventureScreen gameScreen;
-
     public SpriteBatch batch;
     public SpriteBatch hudBatch;
     public BitmapFont font;

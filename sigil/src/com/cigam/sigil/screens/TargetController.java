@@ -102,10 +102,13 @@ public class TargetController implements Controller {
 			//System.out.println("inp = " + newSpell);
 			//System.out.println("containtingSpell = " + containingSpell);
 			if(newSpell != null && containingSpell != null){
-				containingSpell.addTarget(newSpell);
-				newSpell.gui.build(n, s, e);
-				//System.out.println(e.getChildrenCount());
-				recursiveSetUserData("containingSpell", newSpell, e);
+				if(containingSpell.addTarget(newSpell)){
+					newSpell.gui.build(n, s, e);
+					//System.out.println(e.getChildrenCount());
+					recursiveSetUserData("containingSpell", newSpell, e);
+				} else {
+					System.out.println("Invalid");
+				}
 			}
 		}
 	}

@@ -2,24 +2,27 @@ package com.cigam.sigil.magic.targets;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.EmptyMat;
+import com.cigam.sigil.screens.AdventureScreen;
 
 public class Empty extends Spell {
 	private SpellDescriptor mat;
 	public Empty(){
 		CircleShape c = new CircleShape();
 		c.setRadius(10);
-		mat = new SpellDescriptor(new EmptyMat(), 10, 1, null, null, 0, c, Vector2.Zero);
+		mat = new SpellDescriptor(new EmptyMat(), 10, 1, 0, null, null, 0, c, Vector2.Zero);
+		type = Spell.Type.TARGET;
 	}
 	
 	@Override
-	public SpellDescriptor evalEffect() {
+	public SpellDescriptor evalEffect(PhysicalEntity caster) {
 		return mat;
 	}
 
 	@Override
-	public void cast() {}
+	public void cast(AdventureScreen screen, PhysicalEntity caster) {}
 
 }

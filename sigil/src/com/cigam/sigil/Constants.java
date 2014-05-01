@@ -1,6 +1,11 @@
 package com.cigam.sigil;
 
+
 public class Constants {
+    public enum Direction {
+    	FORWARD, BACKWARD, RIGHT, LEFT, IDLE;
+    }
+
     // TODO: define specific subclasses of enemy, which should have their own definitions for aggro range, fire right, projectile speed, move speed, etc.
 
 	public static final int MAX_HEALTH = 80;
@@ -17,10 +22,11 @@ public class Constants {
 	public static final int VELOCITY_ITERS = 8;
 	public static final int POSITION_ITERS = 3;
 	public static final float DEFAULT_HEALTH = 100;
+	public static final float PLAYER_SCALE = 0.5f;
 	public static int MAGIC = 17 * 22;
 	public static int TILE_SIZE = 128;
 	
-	public static float SPELL_DEFAULT_DURATION = 10;
+	public static float SPELL_DEFAULT_DURATION = 100;
 	public static float SPELL_LONG_RANGE = 300;
 	public static float SPELL_MEDIUM_RANGE = 150;
 	public static float SPELL_SHORT_RANGE = 50;
@@ -36,8 +42,10 @@ public class Constants {
 	public static float FORCE_VERY_HIGH;
 	public static float BIND_EFFECT_VALUE = 50;
 	public static float CREATE_EFFECT_VALUE = 2;
+	public static float SPELL_SCALE_FACTOR = 1.3f;
 	
 	public static int MATERIAL_PLANE = 0x01;
 	public static int ETHEREAL_PLANE = 0x02;
 	public static int ALL_PLANES = 0xFF;
+	
 }

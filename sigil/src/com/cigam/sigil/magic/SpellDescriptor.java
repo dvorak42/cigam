@@ -14,8 +14,9 @@ public class SpellDescriptor {
 	public Shape shape;
 	public Vector2 position;
 	public float effectValue;
+	public float scale;
 	
-	public SpellDescriptor(MaterialDescriptor mat, float duration, float effectValue,
+	public SpellDescriptor(MaterialDescriptor mat, float duration, float scale, float effectValue,
 			SpellDescriptor target, ArrayList<SpellDescriptor> arguments,
 			float angle, Shape shape, Vector2 pos) {
 		this.effectValue = effectValue;
@@ -26,6 +27,7 @@ public class SpellDescriptor {
 		this.angle = angle;
 		this.shape = shape;
 		this.position = pos;
+		this.scale = scale;
 	}
 	
 	public SpellDescriptor(MaterialDescriptor m){

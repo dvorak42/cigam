@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.cigam.sigil.Constants.Direction;
 import com.cigam.sigil.external.BodyEditorLoader;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.modifiers.AreaToDuration;
@@ -197,10 +198,10 @@ public class Utils {
 	public static HashMap<Class, String> classesToMenuPaths;
 	static{
 		classesToMenuPaths = new HashMap<Class, String>();
-		classesToMenuPaths.put(Banish.class, "UI/cigam/banish512.png");
-		classesToMenuPaths.put(Bind.class, "UI/cigam/bind512.png");
-		classesToMenuPaths.put(Create.class, "UI/cigam/create512.png");
-		classesToMenuPaths.put(Summon.class, "UI/cigam/summon512.png");
+		classesToMenuPaths.put(Banish.class, "UI/cigam/banish512 symbol with name.png");
+		classesToMenuPaths.put(Bind.class, "UI/cigam/bind512 symbol with name.png");
+		classesToMenuPaths.put(Create.class, "UI/cigam/create512 symbol with name.png");
+		classesToMenuPaths.put(Summon.class, "UI/cigam/summon512 symbol with name.png");
 		classesToMenuPaths.put(FireRune.class, "UI/cigam/Element1 512.png");
 		classesToMenuPaths.put(Self.class, "UI/cigam/Element2 512.png");
 		classesToMenuPaths.put(EffectToArea.class, "UI/Expand_placeholder.png");
@@ -209,9 +210,6 @@ public class Utils {
 		classesToMenuPaths.put(DurationToArea.class, "UI/Lengthen_placeholder.png");
 		classesToMenuPaths.put(AreaToEffect.class, "UI/Concentrate_placeholder.png");
 		classesToMenuPaths.put(AreaToDuration.class, "UI/Condense_placeholder.png");
-
-
-		
 	}
 	
 	public static void recursiveSet(Element e, String k, Object v) {
@@ -278,5 +276,50 @@ public class Utils {
 		
 		return body;
 	}
+	
+	public static Vector2[] initSpellHitBox(float radius, float scaleFactor){
+		int granularity = 8;
+		Vector2[] hitBox = new Vector2[granularity];
+		for(int i = 0; i < granularity; i ++){
+			hitBox[i] = new Vector2();
+			hitBox[i].set((float) (Math.cos(Math.PI*2*i/granularity)*radius*scaleFactor), (float) (Math.sin(Math.PI*2*i/granularity)*radius/scaleFactor));
+		}
+		return hitBox;
+	}
+
+	public static Direction vecToDir(Vector2 v) {
+		if(v.epsilonEquals(0, 0, .001f)){
+			return Direction.IDLE;
+		} else if(Math.abs(v.y)>Math.abs(v.x)){
+			if(v.y>0){
+				return Direction.BACKWARD;
+			} else {
+				return Direction.FORWARD;
+			}
+		} else {
+			if(v.x>0){
+				return Direction.RIGHT;
+			} else {
+				return Direction.LEFT;
+			}
+		}
+	}
+	
+	public static float dirToAngle(Direction d){
+		switch (d) {
+			case BACKWARD:
+				return 90;
+			case FORWARD:
+				return 270;
+			case LEFT:
+				return 180;
+			case RIGHT:
+				return 0;
+			default:
+				return 270;
+				
+		}
+	}
+		
 }
 
