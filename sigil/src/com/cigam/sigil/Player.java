@@ -2,6 +2,7 @@ package com.cigam.sigil;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -60,19 +61,19 @@ public class Player extends PhysicalEntity {
 
 	@Override
 	public void render(float dt) {
+		super.render(dt);
 		direction = Utils.vecToDir(body.getLinearVelocity());
 		if(direction == Direction.BACKWARD||direction == Direction.LEFT||direction == Direction.RIGHT){
 			float width = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;
 			float height = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
 			if(visible)
-				game.batch.draw(animations[direction.ordinal()].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height );
+				game.batch.draw(animations[direction.ordinal()].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height);
 		} else {
 			float width = animations[1].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;;
 			float height = animations[1].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
 			if(visible)
 				game.batch.draw(animations[1].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height);
 		}
-		super.render(dt);
 	}
 	
 	@Override

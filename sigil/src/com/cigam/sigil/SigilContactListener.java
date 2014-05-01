@@ -19,6 +19,12 @@ public class SigilContactListener implements ContactListener {
 				a.mat.OnCollide(b);
 				b.mat.OnCollide(a);
 			}
+			if(a instanceof Enemy && b instanceof Player) {
+				((Player)b).addAutoDamage(5);
+			}
+			if(b instanceof Enemy && a instanceof Player) {
+				((Player)a).addAutoDamage(5);
+			}
 			if(a instanceof SolidProjectile || b instanceof SolidProjectile) {
 				a.damage(50);
 				b.damage(50);
@@ -52,6 +58,12 @@ public class SigilContactListener implements ContactListener {
 					//System.out.println("collision ended");
 					a.mat.NoCollide(b);
 					b.mat.NoCollide(a);
+				}
+				if(a instanceof Enemy && b instanceof Player) {
+					((Player)b).addAutoDamage(-5);
+				}
+				if(b instanceof Enemy && a instanceof Player) {
+					((Player)a).addAutoDamage(-5);
 				}
 				if(a instanceof SpellEffect) {
 					SpellEffect e = (SpellEffect)a;
