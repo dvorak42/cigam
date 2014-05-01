@@ -306,8 +306,8 @@ public class AdventureScreen implements Screen {
 	        	boolean cast = false;
 	        	for(int i = 0; i < 10; i++) {
 	        		int j = i != 9 ? i : -1;
-	        		if(SpellsArray[i] != null && in.isKeyPressed(Input.Keys.NUM_1 + j)) {
-	        			if(selectedSpell == i)
+	        		if(in.isKeyPressed(Input.Keys.NUM_1 + j)) {
+	        			if(SpellsArray[i] != null && selectedSpell == i)
 	        				SpellsArray[selectedSpell].cast();
 	        			selectedSpell = i;
 	    	        	cast = true;
@@ -378,6 +378,13 @@ public class AdventureScreen implements Screen {
 					sr.setColor(Color.BLUE);
 				sr.rect(70 + i * (spellSlotWidth + 10), 11, spellSlotWidth - 1, 99);
 				sr.end();
+			}
+			if(i == selectedSpell) {
+				sr.begin(ShapeType.Line);
+				sr.setColor(Color.GREEN);
+				sr.rect(70 + i * (spellSlotWidth + 10), 10, spellSlotWidth, 100);
+				sr.end();
+				
 			}
 		}
 		
