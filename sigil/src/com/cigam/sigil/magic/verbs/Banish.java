@@ -22,7 +22,9 @@ public class Banish extends Spell {
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
 		effectValue = -Constants.FORCE_MEDIUM;
 		argsNum = 4;
+		type = Spell.Type.VERB;
 		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));
+
 
 	}
 	/*

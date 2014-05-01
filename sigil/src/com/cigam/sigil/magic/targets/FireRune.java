@@ -11,6 +11,7 @@ public class FireRune extends Spell {
 	public FireRune(){
 		this.material = new SpellDescriptor(new Fire());
 		this.gui = Utils.makeRuneGui(Utils.classesToIconPaths.get(this.getClass()));
+		type = Spell.Type.TARGET;
 	}
 
 	@Override

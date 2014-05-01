@@ -26,32 +26,28 @@ public abstract class Spell {
 	public PanelBuilder gui;
 	public float defaultDuration;
 	public float defaultRadius;
-
+	public enum Type {
+		VERB, TARGET, MODIFIER;
+	};
+	public ArrayList<Type> validTargets;
+	public ArrayList<Type> validArguments;
+	public Type type;
+	
 	public Spell(){
 		arguments = new ArrayList<Spell>();
 		target = null;
 		area = new PolygonShape();
+		validTargets = new ArrayList<Type>();
+		validTargets.add(Spell.Type.VERB);
+		validTargets.add(Spell.Type.TARGET);
+		validArguments = new ArrayList<Type>();
+		validArguments.add(Spell.Type.VERB);
+		validArguments.add(Spell.Type.TARGET);
 		area.set(Utils.initSpellHitBox(10,Constants.SPELL_SCALE_FACTOR));
 		//area.setRadius(radius);
 		this.gui = Utils.makeRuneGui(Utils.classesToIconPaths.get(this.getClass()));
 		//System.out.println(this.getClass());
 	};
-	/*
-	public Spell(Spell target, ArrayList<Spell> args){
-		this.caster = target.caster;
-		this.screen = target.screen;
-		this.target = target;
-		target.parent = this;
-		this.arguments = args;
-		this.castDelay = 0.3f+target.castDelay;
-	}
-	public Spell(PhysicalEntity caster, AdventureScreen b, Target target,  ArrayList<Spell> args){
-		this.caster = caster;
-		this.screen = b;
-		this.target = target;
-		this.arguments = args;
-		this.castDelay = 0.3f;
-	}*/
 	
 	public void addChild(Spell child){
 		if (argsNum>arguments.size()){
@@ -70,26 +66,47 @@ public abstract class Spell {
 		child.castDelay += this.castDelay;
 	}
 	
-	public void addTarget(Spell child) {
-		if(target==null){
-			target = child;
+	public boolean addTarget(Spell child) {
+		boolean valid = false;
+		for(Type t:validTargets){
+			if(t==child.type)
+				valid = true;
 		}
-		child.caster = this.caster;
-		child.screen = this.screen;
-		child.parent = this;
-		child.castDelay += this.castDelay;
+		if(valid){
+			if(target==null){
+				target = child;
+			}
+			child.caster = this.caster;
+			child.screen = this.screen;
+			child.parent = this;
+			child.castDelay += this.castDelay;
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 	public void removeTarget() {
 		target = null;
 	}
 
-	public void addArgument(Spell child) {
-		arguments.add(child);
-		child.caster = this.caster;
-		child.screen = this.screen;
-		child.parent = this;
-		child.castDelay += this.castDelay;
+	public boolean addArgument(Spell child) {
+		boolean valid = false;
+		for(Type t:validTargets){
+			if(t==child.type)
+				valid = true;
+		}
+		if(valid){
+			arguments.add(child);
+			child.caster = this.caster;
+			child.screen = this.screen;
+			child.parent = this;
+			child.castDelay += this.castDelay;
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public void removeArgument(Spell child) {

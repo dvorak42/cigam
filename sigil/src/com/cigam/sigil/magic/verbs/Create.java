@@ -22,6 +22,7 @@ public class Create extends Spell {
 		//area.setAsBox(10, 10);
 		effectValue = Constants.CREATE_EFFECT_VALUE;
 		argsNum = 0;
+		type = Spell.Type.VERB;
 		this.gui = Utils.makeCreateGui(Utils.classesToIconPaths.get(this.getClass()));
 
 	}

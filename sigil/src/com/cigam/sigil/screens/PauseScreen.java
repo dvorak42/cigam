@@ -164,7 +164,6 @@ public class PauseScreen implements Screen {
 			index++;
 			index = index%10;
 		} catch (Exception e){
-			
 		}
 	}
 

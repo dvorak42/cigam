@@ -15,6 +15,8 @@ public class TopLevelSpell extends Spell {
 		this.screen = b;
 		this.caster = c;
 		argsNum = 0;
+		this.validArguments.remove(Type.TARGET);
+		this.validTargets.remove(Type.TARGET);
 	}
 
 	@Override
