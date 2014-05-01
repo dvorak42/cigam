@@ -91,7 +91,7 @@ public abstract class Entity {
 	
 	public void damage(float dmg) {
 		if(health != -1) {
-			if(damageFlash > 0) {
+			if(damageFlash < 0) {
 				health -= dmg;
 				if(health < 0) {
 					kill();
