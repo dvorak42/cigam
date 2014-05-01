@@ -54,7 +54,7 @@ public class Player extends PhysicalEntity {
 		FixtureDef fd = new FixtureDef();
 		fd.density = 0.1f; 
 		PolygonShape p = new PolygonShape();
-		p.set(Utils.initSpellHitBox(24, Constants.SPELL_SCALE_FACTOR));
+		p.set(Utils.initSpellHitBox(24*Constants.PLAYER_SCALE, Constants.SPELL_SCALE_FACTOR));
 		fd.shape = p;
 		body.createFixture(fd);
 		//Utils.mainBodies.attachFixture(body, "player", fd, sprite.getWidth());
@@ -72,13 +72,13 @@ public class Player extends PhysicalEntity {
 		System.out.println(direction);
 		if(direction == Direction.BACKWARD||direction == Direction.LEFT||direction == Direction.RIGHT){
 			System.out.println(animations[direction.ordinal()].getKeyFrame(elapsedTime));
-			int width = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionHeight();
-			int height = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionWidth();
-			game.batch.draw(animations[direction.ordinal()].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6);
+			float width = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;
+			float height = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
+			game.batch.draw(animations[direction.ordinal()].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height );
 		} else {
-			int width = animations[1].getKeyFrame(elapsedTime).getRegionHeight();
-			int height = animations[1].getKeyFrame(elapsedTime).getRegionWidth();
-			game.batch.draw(animations[1].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6);
+			float width = animations[1].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;;
+			float height = animations[1].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
+			game.batch.draw(animations[1].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height);
 		}
 		super.render(dt);
 	}

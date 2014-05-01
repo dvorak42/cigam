@@ -19,6 +19,7 @@ public class Constants {
 	public static final int VELOCITY_ITERS = 8;
 	public static final int POSITION_ITERS = 3;
 	public static final float DEFAULT_HEALTH = 100;
+	public static final float PLAYER_SCALE = 0.5f;
 	public static int MAGIC = 17 * 22;
 	public static int TILE_SIZE = 128;
 	
