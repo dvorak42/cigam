@@ -24,10 +24,10 @@ public class SigilContactListener implements ContactListener {
 				b.damage(50);
 			}
 			if((a instanceof CrystalShard && b instanceof Player)) {
-				((Player)b).gainShard((CrystalShard)a);
+				((CrystalShard)a).touchEntity((PhysicalEntity)b);
 			}
 			if((b instanceof CrystalShard && a instanceof Player)) {
-				((Player)a).gainShard((CrystalShard)b);
+				((CrystalShard)b).touchEntity((PhysicalEntity)a);
 			}
 			if(a instanceof SpellEffect) {
 				SpellEffect e = (SpellEffect)a;

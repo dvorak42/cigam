@@ -17,7 +17,7 @@ import com.cigam.sigil.screens.AdventureScreen;
 
 public class Player extends PhysicalEntity {
 	public String name = "John Smith";
-	Vector2 nextTeleport;
+
     private TextureAtlas textureAtlas;
     private Animation[] animations;
     private TextureRegion[][] textures;
@@ -61,26 +61,21 @@ public class Player extends PhysicalEntity {
 
 	@Override
 	public void render(float dt) {
-		if(nextTeleport != null) {
-			setPosition(nextTeleport);
-			nextTeleport = null;
-		}
 		direction = Utils.vecToDir(body.getLinearVelocity());
 		if(direction == Direction.BACKWARD||direction == Direction.LEFT||direction == Direction.RIGHT){
 			float width = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;
 			float height = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
-			game.batch.draw(animations[direction.ordinal()].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height );
+			if(visible)
+				game.batch.draw(animations[direction.ordinal()].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height );
 		} else {
 			float width = animations[1].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;;
 			float height = animations[1].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
-			game.batch.draw(animations[1].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height);
+			if(visible)
+				game.batch.draw(animations[1].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height);
 		}
 		super.render(dt);
 	}
 	
-	public void gainShard(CrystalShard a) {
-		nextTeleport = a.destination;
-	}
 	@Override
 	public void kill(){
 		textureAtlas.dispose();
