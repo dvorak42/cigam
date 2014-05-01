@@ -1,6 +1,11 @@
 package com.cigam.sigil.screens;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -327,11 +332,23 @@ public class AdventureScreen implements Screen {
 		
 		mapRenderer.setView(camera);
 		mapRenderer.render();
-		game.batch.begin();
-		for(Entity r : entities)
-			r.render(delta);
-		game.batch.end();
+
+		PriorityQueue<Entity> drawQueue = new PriorityQueue<Entity>(entities.size(), new Comparator<Entity>() {
+			@Override
+			public int compare(Entity a, Entity b) {
+				return (int)(b.getPosition().y - a.getPosition().y);
+			}
+		});
 		
+		for(Entity e : entities)
+			drawQueue.add(e);
+		
+		while (drawQueue.size() != 0) {
+			game.batch.begin();
+			drawQueue.remove().render(delta);
+			game.batch.end();
+		}
+
 		hudCamera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		hudCamera.update(true);
 		sr.setProjectionMatrix(hudCamera.combined);

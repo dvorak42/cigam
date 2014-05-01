@@ -48,7 +48,7 @@ public class Enemy extends PhysicalEntity {
 		body = screen.world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
-		fd.density = 0.0001f; 
+		fd.density = 0.5f; 
 
 	    Utils.mainBodies.attachFixture(body, "enemy", fd, sprite.getWidth());
 	    modelOrigin = Utils.mainBodies.getOrigin("enemy", sprite.getWidth());
@@ -72,7 +72,7 @@ public class Enemy extends PhysicalEntity {
 		
 		if (bb.movingToTarget){
 		    if (bb.moveTarget == bb.player){
-		        body.applyForceToCenter(bb.player.getPosition().sub(getPosition()).nor().scl((float)Constants.ENEMY_MOVE_SPEED/2), true);
+		        body.applyForceToCenter(bb.player.getPosition().sub(getPosition()).nor().scl(body.getMass()*(float)Constants.ENEMY_MOVE_SPEED/2), true);
 		    }
 		}
 	}
