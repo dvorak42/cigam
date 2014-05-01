@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
+import com.cigam.sigil.Player;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.screens.AdventureScreen;
 
@@ -18,7 +19,7 @@ public abstract class Spell {
 	public PolygonShape area;
 	public float castDelay;
 	public AdventureScreen screen;
-	public PhysicalEntity caster;
+	public Player caster;
 	public float effectValue;
 	public Spell parent;
 	public int argsNum;

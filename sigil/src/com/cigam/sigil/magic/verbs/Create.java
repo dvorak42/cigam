@@ -43,7 +43,8 @@ public class Create extends Spell {
 		toCreate.position = caster.body.getWorldCenter();
 		//System.out.println(toCreate.duration);
 		Vector2 pos = caster.body.getWorldCenter().cpy().rotate(caster.body.getAngle());
-		SpellDescriptor effect = new SpellDescriptor(new Creation(effectValue), defaultDuration, effectValue, toCreate, null, caster.body.getAngle(), area, pos);
+		float angle = Utils.dirToAngle(caster.direction);
+		SpellDescriptor effect = new SpellDescriptor(new Creation(effectValue), defaultDuration, effectValue, toCreate, null, angle, area, pos);
 		return effect;
 	}
 	@Override

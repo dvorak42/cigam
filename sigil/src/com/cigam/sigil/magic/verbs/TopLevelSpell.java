@@ -1,6 +1,7 @@
 package com.cigam.sigil.magic.verbs;
 
 import com.cigam.sigil.PhysicalEntity;
+import com.cigam.sigil.Player;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.screens.AdventureScreen;
@@ -9,7 +10,7 @@ import com.cigam.sigil.screens.AdventureScreen;
 public class TopLevelSpell extends Spell {
 	private SpellDescriptor effect;
 	
-	public TopLevelSpell(PhysicalEntity c,  AdventureScreen b) {
+	public TopLevelSpell(Player c,  AdventureScreen b) {
 		super();
 		this.screen = b;
 		this.caster = c;

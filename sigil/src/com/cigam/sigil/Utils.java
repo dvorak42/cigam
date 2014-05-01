@@ -284,6 +284,22 @@ public class Utils {
 			}
 		}
 	}
+	
+	public static float dirToAngle(Player.Direction d){
+		switch (d) {
+			case BACKWARD:
+				return 90;
+			case FORWARD:
+				return 270;
+			case LEFT:
+				return 180;
+			case RIGHT:
+				return 0;
+			default:
+				return 270;
+				
+		}
+	}
 		
 }
 

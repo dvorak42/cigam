@@ -69,7 +69,6 @@ public class Player extends PhysicalEntity {
 			nextTeleport = null;
 		}
 		direction = Utils.vecToDir(body.getLinearVelocity());
-		System.out.println(direction);
 		if(direction == Direction.BACKWARD||direction == Direction.LEFT||direction == Direction.RIGHT){
 			System.out.println(animations[direction.ordinal()].getKeyFrame(elapsedTime));
 			float width = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;

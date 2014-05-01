@@ -75,6 +75,7 @@ public class SpellEffect extends PhysicalEntity {
 	public void render(float delta) {
 		//modelOrigin = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
 		if(this.mat.image!=null&&this.active()&&this.visible){
+			mat.image.setPosition(this.body.getWorldCenter().x, this.body.getWorldCenter().y);
 			mat.image.draw(screen.game.batch, delta);
 		}
 		autoDelay -= delta;
