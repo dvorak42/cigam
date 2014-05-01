@@ -345,7 +345,9 @@ public class AdventureScreen implements Screen {
 		
 		while (drawQueue.size() != 0) {
 			game.batch.begin();
+			game.batch.setColor(Color.WHITE);
 			drawQueue.remove().render(delta);
+			game.batch.setColor(Color.WHITE);
 			game.batch.end();
 		}
 
@@ -426,6 +428,12 @@ public class AdventureScreen implements Screen {
 							//System.out.println("collision ended");
 							a.mat.NoCollide(b);
 							b.mat.NoCollide(a);
+						}
+						if(a instanceof Enemy && b instanceof Player) {
+							((Player)b).addAutoDamage(-5);
+						}
+						if(b instanceof Enemy && a instanceof Player) {
+							((Player)a).addAutoDamage(-5);
 						}
 						if(a instanceof SpellEffect) {
 							SpellEffect e = (SpellEffect)a;

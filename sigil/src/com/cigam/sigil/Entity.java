@@ -1,5 +1,6 @@
 package com.cigam.sigil;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.cigam.sigil.Constants.Direction;
@@ -15,6 +16,8 @@ public abstract class Entity {
 	public float health;
     public Direction direction;
 	
+    public float damageFlash;
+    
 	public Entity(SigilGame g, Sprite s) {
 		game = g;
 		sprite = s;
@@ -42,11 +45,22 @@ public abstract class Entity {
 	public void render(float delta) {
 		if(active) {
 			elapsedTime += delta;
-			if(sprite!=null){
-				if(plane == Constants.ETHEREAL_PLANE)
-					sprite.draw(game.batch, 0.5f);
-				else
-					sprite.draw(game.batch);
+			damageFlash -= delta;
+			if(damageFlash < 0 || damageFlash % 0.3 < 0.15)
+				game.batch.setColor(Color.WHITE);
+			else
+				game.batch.setColor(Color.RED);
+			if(plane == Constants.ETHEREAL_PLANE) {
+				float r = game.batch.getColor().r;
+				float g = game.batch.getColor().g;
+				float b = game.batch.getColor().b;
+				game.batch.setColor(r, g, b, 0.5f);
+			}
+
+			if(sprite!=null) {
+				sprite.setColor(game.batch.getColor());
+				sprite.draw(game.batch);
+				sprite.setColor(Color.WHITE);
 			}
 		}
 	}
@@ -77,6 +91,8 @@ public abstract class Entity {
 	
 	public void damage(float dmg) {
 		if(health != -1) {
+			if(dmg > 0)
+				damageFlash = 2.0f;
 			health -= dmg;
 			if(health < 0) {
 				kill();
