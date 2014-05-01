@@ -159,7 +159,9 @@ public class PauseScreen implements Screen {
 	@Override
 	public void hide() {
 		try{
-			parent.SpellsArray[index] = createdSpell;
+			if(createdSpell.target!=null){
+				parent.SpellsArray[index] = createdSpell;
+			}
 			//System.out.println(parent.SpellsArray);
 			index++;
 			index = index%10;

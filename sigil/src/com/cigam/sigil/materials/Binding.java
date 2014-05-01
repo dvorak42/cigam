@@ -38,7 +38,7 @@ public class Binding extends MaterialDescriptor {
 			entitiesToBind.put(s.mat, null);
 		}
 		ParticleEffect p = new ParticleEffect();
-		p.load(Gdx.files.internal("particleFiles/banish/banishSpell"), Gdx.files.internal("art/particles"));
+		p.load(Gdx.files.internal("particleFiles/bind/bindSpell"), Gdx.files.internal("art/particles"));
 		this.init(p,0,0,0);
 	}
 
@@ -118,12 +118,14 @@ public class Binding extends MaterialDescriptor {
 	private void findNewToBindInto(){
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){
-			if(p == null || !p.active() || p.body == null)
+			if(p == null || !p.active() || p.body == null || p.mat == null){
 				continue;
-			float distance = Utils.dist(manifestation, p);
-			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
-				min = distance;
-				toBindInto = p;
+			} else {
+				float distance = Utils.dist(manifestation, p);
+				if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
+					min = distance;
+					toBindInto = p;
+				}
 			}
 		}
 		System.out.println("toBindInto is " + toBindInto);
