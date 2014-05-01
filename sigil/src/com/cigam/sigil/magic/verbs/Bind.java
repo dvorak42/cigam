@@ -7,6 +7,7 @@ import com.cigam.sigil.Constants;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
+import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.materials.Binding;
 
 public class Bind extends Spell {
@@ -17,7 +18,7 @@ public class Bind extends Spell {
 	public Bind(){
 		super();
 		defaultDuration = Constants.SPELL_DEFAULT_DURATION;
-		defaultRadius = Constants.SPELL_SHORT_RANGE;
+		defaultRadius = Constants.SPELL_MEDIUM_RANGE;
 		toBeBound = new ArrayList<SpellDescriptor>();
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
 		effectValue = Constants.BIND_EFFECT_VALUE;

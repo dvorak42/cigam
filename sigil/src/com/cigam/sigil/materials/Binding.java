@@ -23,7 +23,9 @@ public class Binding extends MaterialDescriptor {
 	//private ArrayList<MaterialDescriptor> attracteeType;
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToBind;
 	private float bindingStrength;
+	private SpellEffect manifestation;
 
+	
 	public Binding(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float effectValue) {
 		super();
 		bindingStrength = effectValue;
@@ -54,12 +56,49 @@ public class Binding extends MaterialDescriptor {
 	@Override
 	public void Update(){
 		//Add new collisions to objectsInRange
+		doCollisions();
+		//Bind things to be bound
+		doBinding();
+		//Figure out objects to be bound
+		findThingsToBind();
+		//System.out.println(entitiesToBind);
+		//Deal with new no-collisions
+		doUncollide();
+	}
+	@Override
+	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
+		toBindInto = null;
+		//float min = Float.MAX_VALUE;
+		this.manifestation = manifestation;
+		this.Update();
+		//System.out.println(objectsInRange);
+		/*for(PhysicalEntity p: objectsInRange){
+			if(p == null || !p.active() || p.body == null)
+				continue;
+			float distance = Utils.dist(manifestation, p);
+			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
+				min = distance;
+				toBindInto = p;
+			}
+		}*/
+		System.out.println("toBindInto is " + toBindInto);
+	}
+
+	@Override
+	public void onDestroy(AdventureScreen destroyedIn){
+		toBindInto = null;
+		entitiesToBind.clear();
+		objectsInRange.clear();
+	}
+	private void doCollisions(){
 		for(PhysicalEntity p: objectsCollided){
 			if(!objectsInRange.contains(p)){
 				objectsInRange.add(p);
 			}
 		}
-		//Bind things to be bound
+		objectsCollided.clear();
+	}
+	private void doBinding(){
 		if(toBindInto != null){
 			ArrayList<MaterialDescriptor> keysToDelete = new ArrayList<MaterialDescriptor>();
 			for(MaterialDescriptor m:entitiesToBind.keySet()){
@@ -70,10 +109,27 @@ public class Binding extends MaterialDescriptor {
 			}
 			for(MaterialDescriptor m: keysToDelete){
 				entitiesToBind.remove(m);
+				entitiesToBind.put(m, null);
+			}
+		} else { //Look for new toBindInto if necessary
+			findNewToBindInto();
+		}
+	}
+	private void findNewToBindInto(){
+		float min = Float.MAX_VALUE;
+		for(PhysicalEntity p: objectsInRange){
+			if(p == null || !p.active() || p.body == null)
+				continue;
+			float distance = Utils.dist(manifestation, p);
+			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
+				min = distance;
+				toBindInto = p;
 			}
 		}
-		//Figure out objects to be bound
-		for(PhysicalEntity p:objectsCollided){
+		System.out.println("toBindInto is " + toBindInto);
+	}
+	private void findThingsToBind(){
+		for(PhysicalEntity p:objectsInRange){
 			Object[] keySet =  entitiesToBind.keySet().toArray();
 			for(Object m: keySet){
 				if(p.mat.isSameMat((MaterialDescriptor) m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p))){
@@ -81,8 +137,8 @@ public class Binding extends MaterialDescriptor {
 				}
 			}
 		}
-		objectsCollided.clear();
-		//Deal with new no-collisions
+	}
+	private void doUncollide(){
 		for(PhysicalEntity p:objectsNoCollided){
 			if(p.equals(toBindInto)){
 				Object[] boundEntities = (Object[]) toBindInto.boundEntities.toArray();
@@ -93,6 +149,7 @@ public class Binding extends MaterialDescriptor {
 				for(Object q: imbuedEntities){
 					toBindInto.unbind((PhysicalEntity) q, bindingStrength);
 				}
+				toBindInto = null;
 			}
 			objectsInRange.remove(p);
 			MaterialDescriptor toRemove = null;
@@ -106,32 +163,5 @@ public class Binding extends MaterialDescriptor {
 			}
 		}
 		objectsNoCollided.clear();
-	}
-	@Override
-	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
-		//System.out.println("spell centered on " + center);
-		toBindInto = null;
-		//System.out.println("objectsInRange are " + objectsInRange);
-		float min = Float.MAX_VALUE;
-		this.Update();
-		//System.out.println(objectsInRange);
-		for(PhysicalEntity p: objectsInRange){
-			if(p == null || !p.active() || p.body == null)
-				continue;
-
-			float distance = Utils.dist(manifestation, p);
-			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
-				min = distance;
-				toBindInto = p;
-			}
-		}
-		//System.out.println("toBindInto is " + toBindInto);
-	}
-
-	@Override
-	public void onDestroy(AdventureScreen destroyedIn){
-		toBindInto = null;
-		entitiesToBind.clear();
-		objectsInRange.clear();
 	}
 }
