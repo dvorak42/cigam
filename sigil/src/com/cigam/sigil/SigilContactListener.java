@@ -46,6 +46,12 @@ public class SigilContactListener implements ContactListener {
 					a.addAutoDamage(4);
 			}
 		}
+		if(c.getFixtureA().getBody().getUserData() == Constants.LAVA && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
+			((PhysicalEntity) c.getFixtureB().getBody().getUserData()).damage(1000);
+		}
+		if(c.getFixtureB().getBody().getUserData() == Constants.LAVA && c.getFixtureA().getBody().getUserData() instanceof PhysicalEntity) {
+			((PhysicalEntity) c.getFixtureA().getBody().getUserData()).damage(1000);
+		}
 	}
 
 	@Override

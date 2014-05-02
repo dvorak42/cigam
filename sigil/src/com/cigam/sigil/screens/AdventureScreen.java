@@ -104,6 +104,8 @@ public class AdventureScreen implements Screen {
 		SpellsArray[1] = parser.parse("Summon(fire - - - self)");
 		SpellsArray[2] = parser.parse("Bind(self - - - fire))");
 		SpellsArray[3] = parser.parse("Create(Banish(fire - - - self))");
+		SpellsArray[4] = parser.parse("Create(Create(Create(Create(Create(fire)))))");
+		SpellsArray[5] = parser.parse("Create(Create(Create(Create(Create(Bind(self - - - fire))))))");
 	}
 	
 	//This presumably shouldn't still exist? -Jayson
@@ -199,7 +201,15 @@ public class AdventureScreen implements Screen {
         }
         
         for(MapObject lava : map.getLayers().get("FireTile").getObjects()) {
-        	//TODO Create Fire Stuff
+        	if(lava instanceof PolygonMapObject) {
+        		PolygonMapObject plava = (PolygonMapObject)lava;
+        		Polygon p = plava.getPolygon();
+        		Utils.createLava(world, new Vector2(p.getX() * tileScale, p.getY() * tileScale), p, tileScale);
+        	} else if(lava instanceof RectangleMapObject) {
+        		RectangleMapObject rlava = (RectangleMapObject)lava;
+        		Rectangle r = rlava.getRectangle();
+        		Utils.createLava(world, new Vector2(r.getX() * tileScale, r.getY() * tileScale), r, tileScale); 
+        	}
         }        
     	
     }

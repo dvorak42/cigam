@@ -61,7 +61,7 @@
   <object x="1968" y="145" width="11" height="174"/>
   <object x="1968" y="273" width="119" height="48"/>
  </objectgroup>
- <objectgroup name="Goal" width="200" height="28">
+ <objectgroup name="Goal" width="200" height="28" visible="0">
   <object x="739" y="191" width="29" height="33">
    <properties>
     <property name="destX" value="75.0"/>
@@ -93,13 +93,17 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="FireTile" width="200" height="28" visible="0">
-  <object x="865" y="28">
-   <polygon points="0,0 -3,7 -5,156 293,162 290,-1 127,-2 127,4 194,3 194,72 126,71 125,6 140,0 50,-2"/>
-  </object>
-  <object x="1026" y="319">
-   <polygon points="0,0 29,0 29,-94 -167,-94 -167,64 -156,74 119,74 132,60 129,-87 123,-93 68,-94 66,34 60,38 3,37 2,61 -8,70 -94,69 -102,60 -102,-30 -97,-34 2,-36"/>
-  </object>
+ <objectgroup name="FireTile" width="200" height="28">
+  <object x="865" y="28" width="124" height="162"/>
+  <object x="864" y="26" width="291" height="6"/>
+  <object x="1057" y="27" width="100" height="163"/>
+  <object x="946" y="95" width="143" height="93"/>
+  <object x="859" y="225" width="195" height="61"/>
+  <object x="1024" y="227" width="30" height="91"/>
+  <object x="859" y="225" width="69" height="169"/>
+  <object x="861" y="385" width="295" height="10"/>
+  <object x="1025" y="353" width="131" height="43"/>
+  <object x="1087" y="225" width="70" height="169"/>
  </objectgroup>
  <objectgroup name="Enemy" width="200" height="28" visible="0">
   <object x="528" y="62" width="29" height="28">

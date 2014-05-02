@@ -8,6 +8,8 @@ public class Constants {
 
     // TODO: define specific subclasses of enemy, which should have their own definitions for aggro range, fire right, projectile speed, move speed, etc.
 
+    public static final Integer LAVA = new Integer(132423);
+    
 	public static final int MAX_HEALTH = 80;
 	public static final int ENEMY_MAX_HEALTH = 1;
 	public static final int FIRE_LIFE = 500;

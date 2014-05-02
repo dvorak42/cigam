@@ -284,7 +284,45 @@ public class Utils {
 		
 		return body;
 	}
+
+	public static Body createLava(World w, Vector2 start, Polygon p, float scale) {
+		BodyDef bd = new BodyDef();
+		bd.position.set(start);
+		bd.type = BodyType.StaticBody;
+
+		Body body = w.createBody(bd);
+		PolygonShape ps = new PolygonShape();
+		float[] v = p.getVertices();
+		for(int i = 0; i < v.length; i++)
+			v[i] *= scale;
+		ps.set(v);
+
+		FixtureDef fd = new FixtureDef();
+		fd.shape = ps;
+
+		body.createFixture(fd);
+		body.setUserData(Constants.LAVA);
+		
+		return body;
+	}
 	
+	public static Body createLava(World w, Vector2 start, Rectangle r, float scale) {
+		BodyDef bd = new BodyDef();
+		bd.position.set(start.cpy().add(r.getWidth() * scale / 2, r.getHeight() * scale / 2));
+		bd.type = BodyType.StaticBody;
+
+		Body body = w.createBody(bd);
+		PolygonShape ps = new PolygonShape();
+		ps.setAsBox(r.getWidth() * scale / 2, r.getHeight() * scale / 2);
+
+		FixtureDef fd = new FixtureDef();
+		fd.shape = ps;
+
+		body.createFixture(fd);
+		body.setUserData(Constants.LAVA);
+		return body;
+	}
+
 	public static Vector2[] initSpellHitBox(float radius, float scaleFactor){
 		int granularity = 8;
 		Vector2[] hitBox = new Vector2[granularity];
