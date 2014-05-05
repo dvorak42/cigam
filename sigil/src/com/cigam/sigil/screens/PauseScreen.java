@@ -22,9 +22,9 @@ import com.cigam.sigil.magic.modifiers.DurationToArea;
 import com.cigam.sigil.magic.modifiers.DurationToEffect;
 import com.cigam.sigil.magic.modifiers.EffectToArea;
 import com.cigam.sigil.magic.modifiers.EffectToDuration;
-import com.cigam.sigil.magic.targets.Element3Rune;
-import com.cigam.sigil.magic.targets.Element2Rune;
-import com.cigam.sigil.magic.targets.FireRune;
+import com.cigam.sigil.magic.targets.EnemyRune;
+import com.cigam.sigil.magic.targets.SpikeyRune;
+import com.cigam.sigil.magic.targets.StickyRune;
 import com.cigam.sigil.magic.targets.SelfRune;
 import com.cigam.sigil.magic.verbs.Banish;
 import com.cigam.sigil.magic.verbs.Bind;
@@ -77,9 +77,9 @@ public class PauseScreen implements Screen {
 		
 		rMenu = new RadialMenu();
 		rMenu.color = Color.BLACK;
-		RadialMenu verbMenu = new RadialMenu(Banish.class, Bind.class, Create.class, Summon.class);
+		RadialMenu verbMenu = new RadialMenu(Create.class, Banish.class, Bind.class, Summon.class);
 		verbMenu.color = Color.BLUE;
-		RadialMenu targetMenu = new RadialMenu(FireRune.class, SelfRune.class, Element3Rune.class, Element2Rune.class);
+		RadialMenu targetMenu = new RadialMenu(StickyRune.class, SelfRune.class, SpikeyRune.class, EnemyRune.class);
 		targetMenu.color = Color.RED;
 		//RadialMenu modifierMenu = new RadialMenu(AreaToDuration.class, AreaToEffect.class, DurationToArea.class, DurationToEffect.class, EffectToArea.class, EffectToDuration.class);
 		//modifierMenu.color = Color.GREEN;

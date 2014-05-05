@@ -10,7 +10,7 @@ import com.cigam.sigil.magic.modifiers.DurationToEffect;
 import com.cigam.sigil.magic.modifiers.EffectToArea;
 import com.cigam.sigil.magic.modifiers.EffectToDuration;
 import com.cigam.sigil.magic.targets.Empty;
-import com.cigam.sigil.magic.targets.FireRune;
+import com.cigam.sigil.magic.targets.StickyRune;
 import com.cigam.sigil.magic.targets.SelfRune;
 import com.cigam.sigil.magic.verbs.Banish;
 import com.cigam.sigil.magic.verbs.Bind;
@@ -50,7 +50,7 @@ public class Parser {
 					Utils.printError("wrong number of inputs for " + getCurrent());
 				}
 			} else if(tok.getType() == Token.Type.FIRE){
-				addRuneChild(new FireRune());
+				addRuneChild(new StickyRune());
 			} else if(tok.getType() == Token.Type.SELF){
 				addRuneChild(new SelfRune());
 			} else if(tok.getType() == Token.Type.AREA_TO_DURATION){
