@@ -51,7 +51,7 @@ import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.magic.StringLexer;
 import com.cigam.sigil.materials.Backgroundium;
-import com.cigam.sigil.materials.Fire;
+import com.cigam.sigil.materials.StickyMat;
 import com.cigam.sigil.materials.SelfMat;
 
 public class AdventureScreen implements Screen {
@@ -113,7 +113,7 @@ public class AdventureScreen implements Screen {
     {
     	Texture fTexture = new Texture(Gdx.files.internal("art/fireball.png"));
     	fTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-    	SolidProjectile f = new SolidProjectile(game, new Sprite(fTexture), this, new Fire(), angle, e, 1, Utils.angleToVector(angle).scl(Constants.PLAYER_PROJECTILE_SPEED));
+    	SolidProjectile f = new SolidProjectile(game, new Sprite(fTexture), this, new StickyMat(), angle, e, 1, Utils.angleToVector(angle).scl(Constants.PLAYER_PROJECTILE_SPEED));
 
     	//this.player.setRotation(angle);
 
@@ -447,12 +447,12 @@ public class AdventureScreen implements Screen {
 						}
 						if(a instanceof SpellEffect) {
 							SpellEffect e = (SpellEffect)a;
-							if(e.sd != null && e.sd.mat instanceof Fire)
+							if(e.sd != null && e.sd.mat instanceof StickyMat)
 								b.addAutoDamage(-4);
 						}
 						if(b instanceof SpellEffect) {
 							SpellEffect e = (SpellEffect)b;
-							if(e.sd != null && e.sd.mat instanceof Fire)
+							if(e.sd != null && e.sd.mat instanceof StickyMat)
 								a.addAutoDamage(-4);
 						}
 					}

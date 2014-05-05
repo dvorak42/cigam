@@ -7,9 +7,9 @@ import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.magic.MaterialDescriptor;
 
-public class Fire extends MaterialDescriptor {
+public class StickyMat extends MaterialDescriptor {
 
-	public Fire() {
+	public StickyMat() {
 		super();
 		this.init(null,3,0.2f,0);
 		ParticleEffect p = new ParticleEffect();

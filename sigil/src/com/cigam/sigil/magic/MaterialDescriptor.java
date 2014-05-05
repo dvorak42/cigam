@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.materials.Backgroundium;
-import com.cigam.sigil.materials.Fire;
+import com.cigam.sigil.materials.StickyMat;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public abstract class MaterialDescriptor {
@@ -31,7 +31,7 @@ public abstract class MaterialDescriptor {
 	}
 	public static final HashMap<String, MaterialDescriptor> strToMats = new HashMap<String, MaterialDescriptor>();
 	static {
-		strToMats.put("fire", new Fire());
+		strToMats.put("fire", new StickyMat());
 		strToMats.put("backgroundium", new Backgroundium());
 	}
 	public void OnCollide(PhysicalEntity p){};

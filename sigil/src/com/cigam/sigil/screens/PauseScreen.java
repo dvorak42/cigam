@@ -31,8 +31,8 @@ import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.magic.verbs.TopLevelSpell;
-import com.cigam.sigil.materials.Element3;
-import com.cigam.sigil.materials.Element2;
+import com.cigam.sigil.materials.EnemyMat;
+import com.cigam.sigil.materials.SpikeyMat;
 
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.builder.LayerBuilder;
