@@ -89,9 +89,9 @@ public class Parser {
 		if(parent.target == getCurrent()){
 			parent.target = null;
 		} else {
-			for(int i = 0; i < parent.arguments.size(); i++){
-				if(parent.arguments.get(i)==getCurrent()){
-					parent.arguments.remove(i);
+			for(int i = 0; i < parent.arguments.length; i++){
+				if(parent.arguments[i]==getCurrent()){
+					parent.arguments[i] = null;
 				}
 			}
 		}

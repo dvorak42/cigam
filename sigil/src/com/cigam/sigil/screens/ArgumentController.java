@@ -17,12 +17,18 @@ public class ArgumentController implements Controller {
 	private Screen s;
 	private Nifty n;
 	public Spell containingSpell;
+	public int index;
 
+	public ArgumentController() {
+		super();
+	}
+	
 	@Override
 	public void bind(Nifty nifty, Screen screen, Element element,
 			Parameters parameter) {
 			//System.out.println("targetControllerCreated");
 			e = element;
+			index = Integer.parseInt(parameter.get("argIndex"));
 			p = (PauseScreenController) screen.getScreenController();
 			s = screen;
 			n = nifty;
@@ -89,7 +95,12 @@ public class ArgumentController implements Controller {
 		
 		if(containingSpell != null) {
 			Spell a = e.getUserData("currentSpell");
-			full = a != null && !(a instanceof Empty) && containingSpell.arguments.contains(a);
+			boolean outerHas = false;
+			for(int i = 0; i < containingSpell.arguments.length; i++) {
+				if(containingSpell.arguments[i] == a)
+					outerHas = true;
+			}
+			full = a != null && !(a instanceof Empty) && outerHas;
 		}
 
 		if(full && delete) {
@@ -105,7 +116,8 @@ public class ArgumentController implements Controller {
 			//System.out.println("inp = " + newSpell);
 			//System.out.println("containtingSpell = " + containingSpell);
 			if(newSpell != null && containingSpell != null){
-				containingSpell.addArgument(newSpell);
+				System.out.println(index);
+				containingSpell.addArgument(newSpell, index);
 				newSpell.gui.build(n, s, e);
 				//System.out.println(e.getChildrenCount());
 				e.setUserData("currentSpell", newSpell);

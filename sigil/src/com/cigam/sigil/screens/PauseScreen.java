@@ -164,6 +164,7 @@ public class PauseScreen implements Screen {
 	public void hide() {
 		try{
 			if(createdSpell.target!=null){
+				createdSpell.resetDiagram();
 				parent.SpellsArray[index] = createdSpell;
 			}
 			//System.out.println(parent.SpellsArray);

@@ -22,7 +22,6 @@ public class Bind extends Spell {
 		toBeBound = new ArrayList<SpellDescriptor>();
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
 		effectValue = Constants.BIND_EFFECT_VALUE;
-		argsNum = 4;
 		type = Spell.Type.VERB;
 		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));
 
