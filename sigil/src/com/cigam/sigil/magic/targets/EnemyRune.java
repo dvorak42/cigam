@@ -19,7 +19,7 @@ public class EnemyRune extends Spell {
 
 	@Override
 	public SpellDescriptor evalEffect(PhysicalEntity caster) {
-		return new SpellDescriptor(new StickyMat());
+		return new SpellDescriptor(new EnemyMat());
 	}
 
 	@Override

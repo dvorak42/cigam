@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.cigam.sigil.AI.AIBlackboard;
 import com.cigam.sigil.AI.BasicEnemyBT;
 import com.cigam.sigil.magic.MaterialDescriptor;
+import com.cigam.sigil.materials.EnemyMat;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class Enemy extends PhysicalEntity {
@@ -16,12 +17,12 @@ public class Enemy extends PhysicalEntity {
 
 	Vector2 position;
 	
-	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat, Player player) {
-		this(eg, sprite, a, mat, player, new Vector2(300, 300));
+	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, Player player) {
+		this(eg, sprite, a, player, new Vector2(300, 300));
 	}
 
-	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, MaterialDescriptor mat, Player player, Vector2 pos) {
-		super(eg, sprite, a, mat);
+	public Enemy(SigilGame eg, Sprite sprite, AdventureScreen a, Player player, Vector2 pos) {
+		super(eg, sprite, a, new EnemyMat());
 		position = pos;
 		initEntity();
 		initBehaviorTree(player);

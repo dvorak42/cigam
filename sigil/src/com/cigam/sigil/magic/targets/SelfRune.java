@@ -23,7 +23,7 @@ public class SelfRune extends Spell {
 
 	@Override
 	public SpellDescriptor evalEffect(PhysicalEntity caster) {
-		return self;
+		return new SpellDescriptor(new SelfMat());
 	}
 
 	@Override

@@ -61,6 +61,7 @@ public abstract class Spell {
 	}
 	
 	public boolean addTarget(Spell child) {
+		System.out.println("Target added to " + this+". Argument is " + child);
 		boolean valid = false;
 		for(Type t:validTargets){
 			if(t==child.type)
@@ -84,6 +85,7 @@ public abstract class Spell {
 	}
 
 	public boolean addArgument(Spell child) {
+		System.out.println("argument added to " + this+". Argument is " + child);
 		boolean valid = false;
 		for(Type t:validTargets){
 			if(t==child.type)
