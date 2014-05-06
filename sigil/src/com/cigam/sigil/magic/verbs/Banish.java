@@ -7,6 +7,7 @@ import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
+import com.cigam.sigil.magic.targets.Empty;
 import com.cigam.sigil.materials.Banishment;
 import com.cigam.sigil.screens.AdventureScreen;
 
@@ -46,8 +47,10 @@ public class Banish extends Spell {
 	public SpellDescriptor evalEffect(PhysicalEntity caster) {
 		toSummonTo = target.evalEffect(caster);
 		summonCriteria.clear();
-		for(Spell s: arguments){
-			summonCriteria.add(s.evalEffect(caster));
+		for(int i = 0; i < arguments.length; i++) {
+			Spell s = arguments[i];
+			if(s != null && !(s instanceof Empty))
+				summonCriteria.add(s.evalEffect(caster));
 		}
 		//System.out.println(caster);
 		SpellDescriptor effect = new SpellDescriptor(new Banishment(toSummonTo, summonCriteria, effectValue), defaultDuration, defaultRadius, effectValue, toSummonTo, summonCriteria, caster.body.getAngle(), area, caster.body.getWorldCenter());
