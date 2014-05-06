@@ -98,6 +98,8 @@ public class PauseScreen implements Screen {
 		nifty.update();
 		nifty.render(true);
 		
+		
+		
 		if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
 			game.setScreen(parent);
 		/*
