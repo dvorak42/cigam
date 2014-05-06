@@ -135,13 +135,13 @@ public class Utils {
     			alignCenter();
                 height("16%");
                 width("70%");
-                panel(new RunePanel(new ArgumentController()));
+                panel(new RunePanel(new ArgumentController(), 0));
                 panel(new PanelBuilder(){{
         			childLayoutCenter();
                     height("100%");
                     width("53%");
                 }});
-                panel(new RunePanel(new ArgumentController()));
+                panel(new RunePanel(new ArgumentController(), 1));
             }});
             panel(new PanelBuilder(){{
             	childLayoutHorizontal();
@@ -167,13 +167,13 @@ public class Utils {
             	alignCenter();
                 height("16%");
                 width("70%");
-                panel(new RunePanel(new ArgumentController()));
+                panel(new RunePanel(new ArgumentController(), 2));
                 panel(new PanelBuilder(){{
                 	childLayoutCenter();
                     height("100%");
                     width("53%");
                 }});
-                panel(new RunePanel(new ArgumentController()));
+                panel(new RunePanel(new ArgumentController(), 3));
             }});
 		}};
 		return gui;
@@ -237,14 +237,14 @@ public class Utils {
 			initElement(n, s, f.getChildren().get(1).getChildren().get(1), spell.target);
 		} else if(spell instanceof Banish || spell instanceof Bind || spell instanceof Summon) {
 			initElement(n, s, f.getChildren().get(3).getChildren().get(0), spell.target);
-			if(spell.arguments.size() > 0)
-				initElement(n, s, f.getChildren().get(1).getChildren().get(0), spell.arguments.get(0));
-			if(spell.arguments.size() > 1)
-				initElement(n, s, f.getChildren().get(1).getChildren().get(2), spell.arguments.get(1));
-			if(spell.arguments.size() > 2)
-				initElement(n, s, f.getChildren().get(5).getChildren().get(0), spell.arguments.get(2));
-			if(spell.arguments.size() > 3)
-				initElement(n, s, f.getChildren().get(5).getChildren().get(2), spell.arguments.get(3));
+			if(spell.arguments[0] != null)
+				initElement(n, s, f.getChildren().get(1).getChildren().get(0), spell.arguments[0]);
+			if(spell.arguments[1] != null)
+				initElement(n, s, f.getChildren().get(1).getChildren().get(2), spell.arguments[1]);
+			if(spell.arguments[2] != null)
+				initElement(n, s, f.getChildren().get(5).getChildren().get(0), spell.arguments[2]);
+			if(spell.arguments[3] != null)
+				initElement(n, s, f.getChildren().get(5).getChildren().get(2), spell.arguments[3]);
 		}
 	}
 

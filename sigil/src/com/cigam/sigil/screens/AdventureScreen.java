@@ -143,7 +143,7 @@ public class AdventureScreen implements Screen {
         {
     		Texture enemyTexture = new Texture(Gdx.files.internal("art/enemy.png"));
     		enemyTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-        	Enemy enemy = new Enemy(game, new Sprite(enemyTexture), this, new SelfMat(), player);
+        	Enemy enemy = new Enemy(game, new Sprite(enemyTexture), this, player);
             entities.add(enemy);
             enemies.add(enemy);
         }
@@ -195,7 +195,7 @@ public class AdventureScreen implements Screen {
     		//System.out.println(eType);
     		Texture enemyTexture = new Texture(Gdx.files.internal("art/enemy.png"));
     		enemyTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-        	Enemy enm = new Enemy(game, new Sprite(enemyTexture), this, new SelfMat(), player, center);
+        	Enemy enm = new Enemy(game, new Sprite(enemyTexture), this, player, center);
             entities.add(enm);
             enemies.add(enm);
         }
@@ -404,6 +404,11 @@ public class AdventureScreen implements Screen {
 					sr.setColor(Color.BLUE);
 				sr.rect(70 + i * (spellSlotWidth + 10), 11, spellSlotWidth - 1, 99);
 				sr.end();
+				Texture t = SpellsArray[i].getDiagram();
+				game.hudBatch.setProjectionMatrix(hudCamera.combined);
+				game.hudBatch.begin();
+				game.hudBatch.draw(t, 70 + i * (spellSlotWidth + 10), 11, spellSlotWidth - 1, 99);
+				game.hudBatch.end();
 			}
 			if(i == selectedSpell) {
 				sr.begin(ShapeType.Line);

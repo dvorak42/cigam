@@ -122,7 +122,7 @@ public class Summoning extends MaterialDescriptor {
 				attractor = p;
 			}
 		}
-		System.out.println("Attractor is " + attractor);
+		System.out.println("Attractor is " + attractor + " and attractor type is " + attractorType);
 	}
 	@Override
 	public void onDestroy(AdventureScreen destroyedIn){

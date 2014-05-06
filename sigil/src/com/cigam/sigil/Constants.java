@@ -25,6 +25,10 @@ public class Constants {
 	public static final int POSITION_ITERS = 3;
 	public static final float DEFAULT_HEALTH = 100;
 	public static final float PLAYER_SCALE = 0.5f;
+
+	public static final int[][] SLOT_POSITION = new int[][]{{215, 215}, {74, 75}, {352, 75}, {74, 356}, {352, 356}};
+	public static final int[] CREATE_SLOT_POSITION = new int[]{226, 303};
+	public static final int SLOT_SIZE = 83;
 	public static int MAGIC = 17 * 22;
 	public static int TILE_SIZE = 128;
 	

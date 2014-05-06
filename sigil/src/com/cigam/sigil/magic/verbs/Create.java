@@ -1,5 +1,8 @@
 package com.cigam.sigil.magic.verbs;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.cigam.sigil.Constants;
 import com.cigam.sigil.PhysicalEntity;
@@ -16,15 +19,14 @@ public class Create extends Spell {
 	
 	public Create(){
 		super();
+		arguments = new Spell[0];
 		defaultDuration = Constants.SPELL_DEFAULT_DURATION/10;
 		defaultRadius = Constants.SPELL_SHORT_RANGE;
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
 		//area.setAsBox(10, 10);
 		effectValue = Constants.CREATE_EFFECT_VALUE;
-		argsNum = 0;
 		type = Spell.Type.VERB;
 		this.gui = Utils.makeCreateGui(Utils.classesToIconPaths.get(this.getClass()));
-
 	}
 	/*
 	public Create(Spell target, ArrayList<Spell> args) {
@@ -53,5 +55,20 @@ public class Create extends Spell {
 		Vector2 castDir = new Vector2(1, 0).rotate(caster.body.getAngle());
 		castDir.nor();
 		screen.createSpellEffect(evalEffect(caster));
+	}
+	
+	@Override
+	public Pixmap spellDiagram() {
+		Pixmap p = new Pixmap(Gdx.files.internal(Utils.classesToIconPaths.get(this.getClass())));
+		
+		if(target != null) {
+			Pixmap targetP = target.spellDiagram();
+			int dX = Constants.CREATE_SLOT_POSITION[0];
+			int dY = Constants.CREATE_SLOT_POSITION[1];
+			int dS = Constants.SLOT_SIZE;
+			p.drawPixmap(targetP, 0, 0, 512, 512, dX, dY, dS, dS);
+		}
+
+		return p;
 	}
 }

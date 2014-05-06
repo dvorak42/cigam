@@ -7,6 +7,7 @@ import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
+import com.cigam.sigil.magic.targets.Empty;
 import com.cigam.sigil.materials.Binding;
 import com.cigam.sigil.screens.AdventureScreen;
 
@@ -22,7 +23,6 @@ public class Bind extends Spell {
 		toBeBound = new ArrayList<SpellDescriptor>();
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
 		effectValue = Constants.BIND_EFFECT_VALUE;
-		argsNum = 4;
 		type = Spell.Type.VERB;
 		this.gui = Utils.makeVerbGui(Utils.classesToIconPaths.get(this.getClass()));
 
@@ -37,8 +37,10 @@ public class Bind extends Spell {
 	public SpellDescriptor evalEffect(PhysicalEntity caster) {
 		toBindInto = target.evalEffect(caster);
 		toBeBound.clear();
-		for(Spell s: arguments){
-			toBeBound.add(s.evalEffect(caster));
+		for(int i = 0; i < arguments.length; i++) {
+			Spell s = arguments[i];
+			if(s != null && !(s instanceof Empty))
+				toBeBound.add(s.evalEffect(caster));
 		}
 		SpellDescriptor effect = new SpellDescriptor(new Binding(toBindInto, toBeBound, effectValue), defaultDuration, defaultRadius, effectValue, toBindInto, toBeBound, caster.body.getAngle(), area, caster.body.getWorldCenter());
 		return effect;
