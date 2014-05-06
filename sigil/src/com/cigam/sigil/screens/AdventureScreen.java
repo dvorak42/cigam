@@ -404,7 +404,7 @@ public class AdventureScreen implements Screen {
 					sr.setColor(Color.BLUE);
 				sr.rect(70 + i * (spellSlotWidth + 10), 11, spellSlotWidth - 1, 99);
 				sr.end();
-				Texture t = new Texture(SpellsArray[i].getDiagram());
+				Texture t = SpellsArray[i].getDiagram();
 				game.hudBatch.setProjectionMatrix(hudCamera.combined);
 				game.hudBatch.begin();
 				game.hudBatch.draw(t, 70 + i * (spellSlotWidth + 10), 11, spellSlotWidth - 1, 99);

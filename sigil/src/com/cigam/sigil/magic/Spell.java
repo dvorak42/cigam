@@ -27,6 +27,7 @@ public abstract class Spell {
 	public float defaultDuration;
 	public float defaultRadius;
 	public Pixmap cachedDiagram;
+	public Texture cachedTexture;
 	
 	public enum Type {
 		VERB, TARGET, MODIFIER;
@@ -146,14 +147,17 @@ public abstract class Spell {
 	public abstract SpellDescriptor evalEffect(PhysicalEntity caster);
 	public abstract void cast(AdventureScreen screen, PhysicalEntity caster);
 	
-	public Pixmap getDiagram() {
+	public Texture getDiagram() {
 		if(cachedDiagram == null)
 			cachedDiagram = spellDiagram();
-		return cachedDiagram;
+		if(cachedTexture == null)
+			cachedTexture = new Texture(cachedDiagram);
+		return cachedTexture;
 	}
 	
 	public void resetDiagram() {
 		cachedDiagram = null;
+		cachedTexture = null;
 		if(target != null)
 			target.resetDiagram();
 		for(int i = 0; i < arguments.length; i++) {
