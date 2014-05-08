@@ -16,23 +16,14 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.cigam.sigil.Constants.Direction;
 import com.cigam.sigil.external.BodyEditorLoader;
 import com.cigam.sigil.magic.Spell;
-import com.cigam.sigil.magic.modifiers.AreaToDuration;
-import com.cigam.sigil.magic.modifiers.AreaToEffect;
-import com.cigam.sigil.magic.modifiers.DurationToArea;
-import com.cigam.sigil.magic.modifiers.DurationToEffect;
-import com.cigam.sigil.magic.modifiers.EffectToArea;
-import com.cigam.sigil.magic.modifiers.EffectToDuration;
 import com.cigam.sigil.magic.targets.EnemyRune;
 import com.cigam.sigil.magic.targets.SpikeyRune;
 import com.cigam.sigil.magic.targets.Empty;
-import com.cigam.sigil.magic.targets.StickyRune;
 import com.cigam.sigil.magic.targets.SelfRune;
 import com.cigam.sigil.magic.verbs.Banish;
 import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
-import com.cigam.sigil.materials.EnemyMat;
-import com.cigam.sigil.materials.SpikeyMat;
 import com.cigam.sigil.screens.ArgumentController;
 import com.cigam.sigil.screens.RunePanel;
 import com.cigam.sigil.screens.TargetController;
@@ -186,19 +177,9 @@ public class Utils {
 		classesToIconPaths.put(Bind.class, "UI/cigam/bind512.png");
 		classesToIconPaths.put(Create.class, "UI/cigam/create512.png");
 		classesToIconPaths.put(Summon.class, "UI/cigam/summon512.png");
-		classesToIconPaths.put(StickyRune.class, "UI/cigam/Element1 512.png");
 		classesToIconPaths.put(SelfRune.class, "UI/cigam/ElementSelf 512.png");
 		classesToIconPaths.put(EnemyRune.class, "UI/cigam/Element3 512.png");
 		classesToIconPaths.put(SpikeyRune.class, "UI/cigam/Element2 512.png");
-		classesToIconPaths.put(EffectToArea.class, "UI/Expand_placeholder.png");
-		classesToIconPaths.put(EffectToDuration.class, "UI/Slow_placeholder.png");
-		classesToIconPaths.put(DurationToEffect.class, "UI/Quicken_placeholder.png");
-		classesToIconPaths.put(DurationToArea.class, "UI/Lengthen_placeholder.png");
-		classesToIconPaths.put(AreaToEffect.class, "UI/Concentrate_placeholder.png");
-		classesToIconPaths.put(AreaToDuration.class, "UI/Condense_placeholder.png");
-
-
-		
 	}
 	
 	public static HashMap<Class, String> classesToMenuPaths;
@@ -208,16 +189,9 @@ public class Utils {
 		classesToMenuPaths.put(Bind.class, "UI/cigam/bind512 symbol with name.png");
 		classesToMenuPaths.put(Create.class, "UI/cigam/create512 symbol with name.png");
 		classesToMenuPaths.put(Summon.class, "UI/cigam/summon512 symbol with name.png");
-		classesToMenuPaths.put(StickyRune.class, "UI/cigam/Element1 512.png");
 		classesToMenuPaths.put(SelfRune.class, "UI/cigam/ElementSelf 512.png");
 		classesToMenuPaths.put(EnemyRune.class, "UI/cigam/Element3 512.png");
 		classesToMenuPaths.put(SpikeyRune.class, "UI/cigam/Element2 512.png");
-		classesToMenuPaths.put(EffectToArea.class, "UI/Expand_placeholder.png");
-		classesToMenuPaths.put(EffectToDuration.class, "UI/Slow_placeholder.png");
-		classesToMenuPaths.put(DurationToEffect.class, "UI/Quicken_placeholder.png");
-		classesToMenuPaths.put(DurationToArea.class, "UI/Lengthen_placeholder.png");
-		classesToMenuPaths.put(AreaToEffect.class, "UI/Concentrate_placeholder.png");
-		classesToMenuPaths.put(AreaToDuration.class, "UI/Condense_placeholder.png");
 	}
 	
 	public static void recursiveSet(Element e, String k, Object v) {

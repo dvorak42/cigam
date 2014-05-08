@@ -3,15 +3,9 @@ package com.cigam.sigil.magic;
 import java.util.ArrayList;
 
 import com.cigam.sigil.Utils;
-import com.cigam.sigil.magic.modifiers.AreaToDuration;
-import com.cigam.sigil.magic.modifiers.AreaToEffect;
-import com.cigam.sigil.magic.modifiers.DurationToArea;
-import com.cigam.sigil.magic.modifiers.DurationToEffect;
-import com.cigam.sigil.magic.modifiers.EffectToArea;
-import com.cigam.sigil.magic.modifiers.EffectToDuration;
 import com.cigam.sigil.magic.targets.Empty;
-import com.cigam.sigil.magic.targets.StickyRune;
 import com.cigam.sigil.magic.targets.SelfRune;
+import com.cigam.sigil.magic.targets.SpikeyRune;
 import com.cigam.sigil.magic.verbs.Banish;
 import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
@@ -50,22 +44,10 @@ public class Parser {
 					Utils.printError("wrong number of inputs for " + getCurrent());
 				}
 			} else if(tok.getType() == Token.Type.FIRE){
-				addRuneChild(new StickyRune());
+				addRuneChild(new SpikeyRune());
 			} else if(tok.getType() == Token.Type.SELF){
 				addRuneChild(new SelfRune());
-			} else if(tok.getType() == Token.Type.AREA_TO_DURATION){
-				addRuneChild(new AreaToDuration());
-			} else if(tok.getType() == Token.Type.DURATION_TO_AREA){
-				addModifier(new DurationToArea());
-			} else if(tok.getType() == Token.Type.AREA_TO_EFFECT){
-				addModifier(new AreaToEffect());
-			} else if(tok.getType() == Token.Type.EFFECT_TO_AREA){
-				addModifier(new EffectToArea());
-			} else if(tok.getType() == Token.Type.DURATION_TO_EFFECT){
-				addModifier(new DurationToEffect());
-			} else if(tok.getType() == Token.Type.EFFECT_TO_DURATION){
-				addModifier(new EffectToDuration());
-			} else if(tok.getType() == Token.Type.EMPTY){
+			} else {
 				addRuneChild(new Empty());
 			}
 		}
@@ -83,25 +65,7 @@ public class Parser {
 		getCurrent().addChild(t);
 		//System.out.println(stack);
 	}
-	private void addModifier(Spell m){
-		Spell parent = stack.get(stack.size()-2);
-		//System.out.println(parent);
-		if(parent.target == getCurrent()){
-			parent.target = null;
-		} else {
-			for(int i = 0; i < parent.arguments.length; i++){
-				if(parent.arguments[i]==getCurrent()){
-					parent.arguments[i] = null;
-				}
-			}
-		}
-		parent.addChild(m);
-		m.target = getCurrent();
-		m.target.addChild(new Empty());
-		stack.add(stack.size()-1, m);
-		//System.out.println(stack);
-		
-	}
+
 	private Spell getCurrent(){
 		return stack.get(stack.size()-1);
 	}

@@ -7,7 +7,6 @@ import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.cigam.sigil.AI.AIBlackboard;
 import com.cigam.sigil.AI.BasicEnemyBT;
-import com.cigam.sigil.magic.MaterialDescriptor;
 import com.cigam.sigil.materials.EnemyMat;
 import com.cigam.sigil.screens.AdventureScreen;
 

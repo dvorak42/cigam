@@ -5,7 +5,6 @@ import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Spell;
 import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.materials.EnemyMat;
-import com.cigam.sigil.materials.StickyMat;
 import com.cigam.sigil.screens.AdventureScreen;
 
 public class EnemyRune extends Spell {

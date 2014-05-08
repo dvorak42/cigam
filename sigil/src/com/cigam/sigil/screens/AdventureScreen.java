@@ -3,9 +3,6 @@ package com.cigam.sigil.screens;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -43,7 +40,6 @@ import com.cigam.sigil.Player;
 import com.cigam.sigil.SigilContactFilter;
 import com.cigam.sigil.SigilContactListener;
 import com.cigam.sigil.SigilGame;
-import com.cigam.sigil.SolidProjectile;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Parser;
 import com.cigam.sigil.magic.Spell;
@@ -51,8 +47,8 @@ import com.cigam.sigil.magic.SpellDescriptor;
 import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.magic.StringLexer;
 import com.cigam.sigil.materials.Backgroundium;
-import com.cigam.sigil.materials.StickyMat;
 import com.cigam.sigil.materials.SelfMat;
+import com.cigam.sigil.materials.SpikeyMat;
 
 public class AdventureScreen implements Screen {
 	public World world;
@@ -107,18 +103,6 @@ public class AdventureScreen implements Screen {
 		SpellsArray[4] = parser.parse("Create(Create(Create(Create(Create(fire)))))");
 		SpellsArray[5] = parser.parse("Create(Create(Create(Create(Create(Bind(self - - - fire))))))");
 	}
-	
-	//This presumably shouldn't still exist? -Jayson
-    public void createFireball(Entity e, float angle, boolean player)
-    {
-    	Texture fTexture = new Texture(Gdx.files.internal("art/fireball.png"));
-    	fTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-    	SolidProjectile f = new SolidProjectile(game, new Sprite(fTexture), this, new StickyMat(), angle, e, 1, Utils.angleToVector(angle).scl(Constants.PLAYER_PROJECTILE_SPEED));
-
-    	//this.player.setRotation(angle);
-
-        entities.add(f);
-    }
     
     public void restartGame() {
 		entities.clear();
@@ -238,12 +222,6 @@ public class AdventureScreen implements Screen {
 
 		if(!paused) {
 			
-		if(in.isKeyPressed(Input.Keys.P)) {
-			game.pauseScreen.createdSpell = null;
-			game.pauseScreen.index = selectedSpell;
-			game.setScreen(game.pauseScreen);
-			return;
-        }
 		if(player == null || !player.active())
 			restartGame();
 		if(in.isKeyPressed(Input.Keys.O)) {
@@ -263,10 +241,6 @@ public class AdventureScreen implements Screen {
             playerMoveVec.y--;
         if(in.isKeyPressed(Input.Keys.W))
             playerMoveVec.y++;
-        if(in.isKeyPressed(Input.Keys.Q))
-            player.plane = Constants.MATERIAL_PLANE;
-        if(in.isKeyPressed(Input.Keys.Z))
-            player.plane = Constants.ETHEREAL_PLANE;
         
         
         playerMoveVec.nor();
@@ -288,29 +262,7 @@ public class AdventureScreen implements Screen {
         if(fireDelay <= 0)
         {
         	fireDelay = Constants.FIRE_DELAY;
-        	Vector2 moff = new Vector2(in.getX(), Gdx.graphics.getHeight()-in.getY());
-        	Vector2 center = new Vector2(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() / 2f);
-        	float mFire = moff.sub(center).angle();
-        	float baseAngle = 45;
-        	if(in.isButtonPressed(Input.Buttons.LEFT) && in.isKeyPressed(Input.Keys.Z))
-        		createFireball(player, mFire, true);
-        	else if(in.isKeyPressed(Input.Keys.LEFT) && in.isKeyPressed(Input.Keys.UP))
-	            createFireball(player, 3*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.UP) && in.isKeyPressed(Input.Keys.RIGHT))
-	            createFireball(player, 1*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.RIGHT) && in.isKeyPressed(Input.Keys.DOWN))
-	            createFireball(player, 7*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.DOWN) && in.isKeyPressed(Input.Keys.LEFT))
-	            createFireball(player, 5*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.LEFT))
-	            createFireball(player, 4*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.RIGHT))
-	            createFireball(player, 0*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.DOWN))
-	            createFireball(player, 6*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.UP))
-	            createFireball(player, 2*baseAngle, true);
-	        else if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
+        	if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
 	        	SpellsArray[selectedSpell].cast(this, player);
 	        else if(in.isKeyPressed(Input.Keys.I) && SpellsArray[selectedSpell] != null)
 	        	SpellsArray[selectedSpell] = null;
@@ -452,12 +404,12 @@ public class AdventureScreen implements Screen {
 						}
 						if(a instanceof SpellEffect) {
 							SpellEffect e = (SpellEffect)a;
-							if(e.sd != null && e.sd.mat instanceof StickyMat)
+							if(e.sd != null && e.sd.mat instanceof SpikeyMat)
 								b.addAutoDamage(-4);
 						}
 						if(b instanceof SpellEffect) {
 							SpellEffect e = (SpellEffect)b;
-							if(e.sd != null && e.sd.mat instanceof StickyMat)
+							if(e.sd != null && e.sd.mat instanceof SpikeyMat)
 								a.addAutoDamage(-4);
 						}
 					}
