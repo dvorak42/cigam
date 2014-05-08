@@ -77,8 +77,4 @@ public class Enemy extends PhysicalEntity {
 		    }
 		}
 	}
-	@Override
-	public String toString() {
-		return "Enemy"+ID;
-	}
 }

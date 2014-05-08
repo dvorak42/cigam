@@ -86,8 +86,4 @@ public class SpellEffect extends PhysicalEntity {
 			elapsedTime += delta;
 		}
 	}
-	@Override
-	public String toString() {
-		return this.mat.toString()+ID;
-	}
 }

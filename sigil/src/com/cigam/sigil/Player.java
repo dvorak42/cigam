@@ -81,9 +81,4 @@ public class Player extends PhysicalEntity {
 		textureAtlas.dispose();
 		super.kill();
 	}
-	
-	@Override
-	public String toString() {
-		return "Player";
-	}
 }

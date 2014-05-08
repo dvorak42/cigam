@@ -25,7 +25,6 @@ public class Summoning extends MaterialDescriptor {
 	private float force;
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToPush;
 	private SpellEffect manifestation;
-	private AdventureScreen screen;
 	
 	public Summoning(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float force) {
 		super();
@@ -48,25 +47,22 @@ public class Summoning extends MaterialDescriptor {
 	public void OnCollide(PhysicalEntity p) {
 		if(!objectsInRange.contains(p)){
 			objectsInRange.add(p);
-			//System.out.println("collided with " + p);
+			System.out.println("collided with " + p);
 		}
 		for(MaterialDescriptor m:entitiesToPush.keySet()){
 			if(p.mat.isSameMat(m)&&entitiesToPush.get(m)==null&&(!entitiesToPush.containsKey(p))){
 				entitiesToPush.put(m, p);
-				System.out.println(screen);
-				p.screen.log(this.toString() + " is now summoning " + p);
 			}
 		}
 	}
 
 	@Override
 	public void NoCollide(PhysicalEntity p) {
-		//System.out.println("not colliding with " + p);
+		System.out.println("not colliding with " + p);
 		objectsInRange.remove(p);
 		for(MaterialDescriptor m:entitiesToPush.keySet()){
 			if(entitiesToPush.get(m)==p){
 				entitiesToPush.put(m, null);
-				screen.log(this.toString() + " is no longer summoning " + p.toString());
 				getEntityToPush(m);
 			}
 		}
@@ -97,7 +93,7 @@ public class Summoning extends MaterialDescriptor {
 				//this.image.setPosition(attractor.getPosition().x, attractor.getPosition().y);
 			}
 		} else {
-			getAttractor(manifestation);
+			OnCreate(manifestation, null);
 		}
 	}
 	
@@ -107,25 +103,15 @@ public class Summoning extends MaterialDescriptor {
 				continue;
 			} if(p.mat.isSameMat((m))&&(!entitiesToPush.containsValue(p))&&(entitiesToPush.get(m)==null||Utils.dist(entitiesToPush.get(m),attractor)<Utils.dist(p,attractor))){
 				entitiesToPush.put(m, p);
-				screen.log(this.toString() + " is now summoning " + p.toString());
 			}
 		}
 	}
 	
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
-		this.manifestation = manifestation;
-		if(screen == null){
-			screen = createdIn;
-		}
-		System.out.println(createdIn);
-		screen.log("created new instance of Summoning, " + this.toString() + ". Type being summoned to is " + attractorType + " and types being summoned are " + entitiesToPush.keySet());
-		getAttractor(manifestation);
-		//System.out.println("Attractor is " + attractor + " and attractor type is " + attractorType);
-	}
-	private void getAttractor(SpellEffect manifestation){
 		attractor = null;
-		//System.out.println("objectsInRange are " + objectsInRange);
+		this.manifestation = manifestation;
+		System.out.println("objectsInRange are " + objectsInRange);
 		float min = Float.MAX_VALUE;
 		for(PhysicalEntity p: objectsInRange){
 			if(p == null || !p.active() || p.body == null)
@@ -134,13 +120,12 @@ public class Summoning extends MaterialDescriptor {
 			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
 				min = distance;
 				attractor = p;
-				screen.log(this.toString() + " found an object to summon to: " + attractor);
 			}
 		}
+		System.out.println("Attractor is " + attractor + " and attractor type is " + attractorType);
 	}
 	@Override
 	public void onDestroy(AdventureScreen destroyedIn){
-		screen.log(this.toString() + " was destroyed");
 		attractor = null;
 		entitiesToPush.clear();
 		objectsInRange.clear();
@@ -164,15 +149,11 @@ public class Summoning extends MaterialDescriptor {
 				angle.setHigh(180-(float) Math.toDegrees(Math.atan(-height.getLowMin()/width.getLowMin())),180-(float) Math.toDegrees(Math.atan(-height.getLowMax()/width.getLowMax())));
 			}			
 			float avgDistanceAfter = (float) Math.sqrt(Math.pow(((height.getLowMax()+height.getLowMax())/2),2)+Math.pow(((width.getLowMax()+width.getLowMax())/2),2));
-			//System.out.println(avgDistanceAfter + " is avgAfter");
-			//System.out.println(avgDistanceBefore + " is avgBefore");
-			//System.out.println(velocity.getHighMin()*avgDistanceBefore/avgDistanceAfter);
+			System.out.println(avgDistanceAfter + " is avgAfter");
+			System.out.println(avgDistanceBefore + " is avgBefore");
+			System.out.println(velocity.getHighMin()*avgDistanceBefore/avgDistanceAfter);
 			velocity.setLow(velocity.getHighMin()*avgDistanceAfter/avgDistanceBefore, velocity.getHighMax()*avgDistanceBefore/avgDistanceAfter);
 			velocity.setHigh(velocity.getHighMin()*avgDistanceAfter/avgDistanceBefore, velocity.getHighMax()*avgDistanceAfter/avgDistanceBefore);
 		}
-	}
-	@Override
-	public String toString() {
-		return "Summoning"+ID;
 	}
 }
