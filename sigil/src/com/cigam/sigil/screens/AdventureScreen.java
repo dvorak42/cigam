@@ -10,6 +10,7 @@ import java.util.TreeSet;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -54,6 +55,9 @@ import com.cigam.sigil.materials.Backgroundium;
 import com.cigam.sigil.materials.StickyMat;
 import com.cigam.sigil.materials.SelfMat;
 
+import de.lessvoid.nifty.Nifty;
+import de.lessvoid.nifty.render.batch.BatchRenderDevice;
+
 public class AdventureScreen implements Screen {
 	public World world;
 	public SigilGame game;
@@ -67,6 +71,7 @@ public class AdventureScreen implements Screen {
 	OrthographicCamera hudCamera;
 	Box2DDebugRenderer debugRenderer;
 	OrthogonalTiledMapRenderer mapRenderer;
+
 
 	public ArrayList<Entity> entities;
 	public Parser parser;
@@ -493,6 +498,9 @@ public class AdventureScreen implements Screen {
 	}
 
 
+	public void log(String s){
+		System.out.println(s);
+	}
 	@Override
 	public void hide() {
 		// TODO Auto-generated method stub

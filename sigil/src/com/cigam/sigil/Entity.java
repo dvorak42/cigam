@@ -15,6 +15,8 @@ public abstract class Entity {
 	public int plane;
 	public float health;
     public Direction direction;
+    public static int ID_COUNTER = 0;
+    public int ID;
 	
     public float damageFlash;
     
@@ -24,8 +26,16 @@ public abstract class Entity {
 		elapsedTime = 0.0f;
 		plane = 1;
 		health = -1;
+		ID = ID_COUNTER;
+		ID_COUNTER++;
+		
 	}
 	
+	@Override
+	public String toString() {
+		return "Entity [ID=" + ID + "]";
+	}
+
 	public boolean active() {
 		return active;
 	}

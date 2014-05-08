@@ -24,6 +24,7 @@ public class Binding extends MaterialDescriptor {
 	private HashMap<MaterialDescriptor, PhysicalEntity> entitiesToBind;
 	private float bindingStrength;
 	private SpellEffect manifestation;
+	private AdventureScreen screen;
 
 	
 	public Binding(SpellDescriptor attractorType, ArrayList<SpellDescriptor> attracteeType, float effectValue) {
@@ -67,25 +68,16 @@ public class Binding extends MaterialDescriptor {
 	}
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
+		this.manifestation = manifestation;
+		createdIn.log("created new instance of binding, " + this.toString() + ". Type being bound into is " + attractorType + " and types being bound are " + entitiesToBind.keySet());
 		toBindInto = null;
 		//float min = Float.MAX_VALUE;
-		this.manifestation = manifestation;
 		this.Update();
-		//System.out.println(objectsInRange);
-		/*for(PhysicalEntity p: objectsInRange){
-			if(p == null || !p.active() || p.body == null)
-				continue;
-			float distance = Utils.dist(manifestation, p);
-			if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
-				min = distance;
-				toBindInto = p;
-			}
-		}*/
-		System.out.println("toBindInto is " + toBindInto);
 	}
 
 	@Override
 	public void onDestroy(AdventureScreen destroyedIn){
+		destroyedIn.log(this.toString() + " was destroyed");
 		toBindInto = null;
 		entitiesToBind.clear();
 		objectsInRange.clear();
@@ -125,10 +117,10 @@ public class Binding extends MaterialDescriptor {
 				if(distance < min&&p.body.getType()==BodyType.DynamicBody&&p.body!=manifestation.body&&p.mat.isSameMat(attractorType)){
 					min = distance;
 					toBindInto = p;
+					screen.log(this.toString() + " found an object to bind into: " + toBindInto);
 				}
 			}
 		}
-		System.out.println("toBindInto is " + toBindInto);
 	}
 	private void findThingsToBind(){
 		for(PhysicalEntity p:objectsInRange){
@@ -136,6 +128,7 @@ public class Binding extends MaterialDescriptor {
 			for(Object m: keySet){
 				if(p.mat.isSameMat((MaterialDescriptor) m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p))){
 					entitiesToBind.put((MaterialDescriptor) m, p);
+					screen.log(this.toString() + " is now binding " + p.toString());
 				}
 			}
 		}
@@ -143,6 +136,7 @@ public class Binding extends MaterialDescriptor {
 	private void doUncollide(){
 		for(PhysicalEntity p:objectsNoCollided){
 			if(p.equals(toBindInto)){
+				screen.log(this.toString() + " is no longer using " + p + " to bind into.");
 				Object[] boundEntities = (Object[]) toBindInto.boundEntities.toArray();
 				for(Object q: boundEntities){
 					toBindInto.unbind((PhysicalEntity) q, bindingStrength);
@@ -165,5 +159,9 @@ public class Binding extends MaterialDescriptor {
 			}
 		}
 		objectsNoCollided.clear();
+	}
+	@Override
+	public String toString() {
+		return "Binding"+ID;
 	}
 }

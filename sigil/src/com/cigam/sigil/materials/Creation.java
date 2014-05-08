@@ -15,6 +15,7 @@ import com.cigam.sigil.screens.AdventureScreen;
 public class Creation extends MaterialDescriptor {
 	private SpellEffect created;
 	private float effectValue;
+	private SpellEffect manifestation;
 	public Creation(float effectValue) {
 		super();
 		this.effectValue = effectValue;
@@ -27,6 +28,8 @@ public class Creation extends MaterialDescriptor {
 
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen b) {
+		this.manifestation = manifestation;
+		b.log("created new instance of Creation, " + this.toString() + ", which will create a instance of " + manifestation.target.mat);
 		Vector2 castDir = Utils.angleToVector(manifestation.angle);
 		castDir.nor();	
 		if(manifestation.body == null || manifestation.target == null)
@@ -40,21 +43,16 @@ public class Creation extends MaterialDescriptor {
 			s.getVertex(i, v);
 			radius = Math.max(v.len(), radius);
 		}
-		System.out.println(radius);
-		//System.out.println(manifestation.body.getPosition().cpy().add(castDir.cpy().scl(manifestFixture.getShape().getRadius()*2)));
-		//System.out.println(manifestation.body.getPosition());
 		b.world.rayCast(f,manifestation.body.getPosition().cpy().add(castDir.cpy().scl(radius*1.5f)),manifestation.body.getPosition());
 		manifestation.target.position = f.intersectionPoint;
-		//System.out.println(manifestation.target);
 		manifestation.target.duration = manifestation.duration;
 		manifestation.target.effectValue*=effectValue;
-		System.out.println(manifestation.target.mat);
 		created = b.createSpellEffect(manifestation.target);
 	}
 
 	@Override
 	public void onDestroy(AdventureScreen b){
-		//System.out.println("Created = " + created);
+		b.log(this.toString() + " was destroyed");
 		b.destroySpellEffect(created);
 	}
 
@@ -69,6 +67,9 @@ public class Creation extends MaterialDescriptor {
 			image.getEmitters().get(i).getSpawnWidth().setLow(width.getLowMax()*x, width.getLowMin()*x);
 		}
 	}
-
-
+	@Override
+	public String toString() {
+		return "Creation"+ID;
+	}
 }
+

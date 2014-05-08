@@ -53,6 +53,7 @@ public abstract class PhysicalEntity extends Entity {
 	
 	public void bind(PhysicalEntity p, float bindingValue){
 		totalManaCapacity += bindingValue;
+		screen.log(p.toString() + " is bound into " + this);
 		if(totalManaCapacity > totalManaBound+p.totalManaWeight&&initManaCapacity*2 > (totalManaBound+p.totalManaWeight)){
 			totalManaBound+=p.totalManaWeight;
 			boundEntities.add(p);
@@ -62,6 +63,7 @@ public abstract class PhysicalEntity extends Entity {
 			//System.out.println(p.totalManaWeight + " was totalManaWeight and " + totalManaCapacity + " was totalManaCapacity");
 			p.body.setTransform(this.body.getWorldCenter(), p.body.getAngle());
 			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
+			screen.log(this.toString() + "'s binding capacity is exceeded. All entities bound in will be released, and " + this.toString() + " will be destroyed.");
 			this.kill();
 		}
 		//System.out.println("Binding " + p + " into " + this);
@@ -75,11 +77,13 @@ public abstract class PhysicalEntity extends Entity {
 			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
 			p.setActive(true);
 			p.setVisible(true);
+			screen.log(p.toString() + " was unbound from " + this);
 			totalManaCapacity -= bindingValue;
 			totalManaBound-= p.totalManaWeight;
 		}
 	}
 	public void kill(){
+		screen.log(this + " was destroyed ");
 		this.setActive(false);
 		this.mat.onDestroy(screen);
 		for(int i = 0; i < boundEntities.size(); i++){
@@ -150,5 +154,9 @@ public abstract class PhysicalEntity extends Entity {
 		autoDamage += d;
 		if(autoDamage <= 0)
 			autoDamage = 0;
+	}
+	@Override
+	public String toString() {
+		return "PhysicalEntity"+ID;
 	}
 }

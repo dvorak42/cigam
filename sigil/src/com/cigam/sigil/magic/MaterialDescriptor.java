@@ -3,6 +3,7 @@ package com.cigam.sigil.magic;
 import java.util.HashMap;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.cigam.sigil.Entity;
 import com.cigam.sigil.PhysicalEntity;
 import com.cigam.sigil.materials.Backgroundium;
 import com.cigam.sigil.materials.StickyMat;
@@ -19,6 +20,7 @@ public abstract class MaterialDescriptor {
 	//TODO: material cohesion
 	public float hardness;
 	public float density;
+	public int ID;
 
 	
 	public MaterialDescriptor(){
@@ -27,7 +29,9 @@ public abstract class MaterialDescriptor {
 			this.image = img;
 			this.manaDensityFactor = md;
 			this.manaCapacityFactor = mc;
-			this.hardness = h;	
+			this.hardness = h;
+			this.ID = Entity.ID_COUNTER;
+			Entity.ID_COUNTER++;
 	}
 	public static final HashMap<String, MaterialDescriptor> strToMats = new HashMap<String, MaterialDescriptor>();
 	static {
