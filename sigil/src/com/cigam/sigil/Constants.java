@@ -13,8 +13,8 @@ public class Constants {
 	public static final int MAX_HEALTH = 100;
 	public static final int ENEMY_MAX_HEALTH = 20;
 	public static final int FIRE_LIFE = 500;
-	public static final double ENEMY_MOVE_SPEED = 500000;
-	public static final float AGGRO_RANGE = 10;
+	public static final double ENEMY_MOVE_SPEED = 100000;
+	public static final float AGGRO_RANGE = 23;
 	public static final double ENEMY_FIRE_RATE = 16;
 	public static final int PLAYER_PROJECTILE_SPEED = 200;
 	public static final int ENEMY_PROJECTILE_SPEED = 20;
@@ -42,7 +42,7 @@ public class Constants {
 	public static float DENSITY_VERY_HIGH;
 	public static float FORCE_VERY_LOW;
 	public static float FORCE_LOW;
-	public static float FORCE_MEDIUM = 10000;
+	public static float FORCE_MEDIUM = 100000;
 	public static float FORCE_HIGH;
 	public static float FORCE_VERY_HIGH;
 	public static float BIND_EFFECT_VALUE = 50;

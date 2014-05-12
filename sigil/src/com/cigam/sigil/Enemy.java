@@ -72,7 +72,7 @@ public class Enemy extends PhysicalEntity {
 		
 		if (bb.movingToTarget){
 		    if (bb.moveTarget == bb.player){
-		        body.applyForceToCenter(bb.player.getPosition().sub(getPosition()).nor().scl(body.getMass()*(float)Constants.ENEMY_MOVE_SPEED/2), true);
+		        body.applyForceToCenter(bb.player.getPosition().sub(getPosition()).nor().scl((float)Constants.ENEMY_MOVE_SPEED), true);
 		    }
 		}
 	}

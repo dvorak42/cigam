@@ -26,6 +26,7 @@ public class CrystalShard extends PhysicalEntity {
 	public void initBody() {
 		BodyDef bd = new BodyDef();
 		bd.type = BodyType.DynamicBody;
+		bd.fixedRotation = true;
 		bd.position.set(position.cpy().sub(new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2)));
 		
 		body = screen.world.createBody(bd);

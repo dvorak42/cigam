@@ -99,7 +99,7 @@ public class AdventureScreen implements Screen {
 		mapRenderer = new OrthogonalTiledMapRenderer(map, tileScale, game.batch);
 		
 		restartGame();
-		player.setPosition(new Vector2(400, 300));
+		//player.setPosition(new Vector2(400, 300));
 		SpellsArray[0] = parser.parse("Create(fire)");
 		SpellsArray[1] = parser.parse("Summon(fire - - - self)");
 		SpellsArray[2] = parser.parse("Bind(self - - - fire))");
@@ -135,7 +135,7 @@ public class AdventureScreen implements Screen {
 		
 		helpTexture = new Texture(Gdx.files.internal("help/stand here.png"));
 		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(2500,150));
+		helpTextEntity.setPosition(new Vector2(2400,150));
 		helpText.add(helpTextEntity);
 		entities.add(helpTextEntity);
 		
@@ -207,9 +207,13 @@ public class AdventureScreen implements Screen {
     		center.scl(tileScale);
     		String eType = (String)enemy.getProperties().get("enemyType");
     		//System.out.println(eType);
-    		Texture enemyTexture = new Texture(Gdx.files.internal("art/enemy.png"));
+    		Texture enemyTexture = new Texture(Gdx.files.internal("art/Enemy/EnemyOrb512.png"));
     		enemyTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-        	Enemy enm = new Enemy(game, new Sprite(enemyTexture), this, player, center);
+    		Sprite enemySprite = new Sprite(enemyTexture);
+    		enemySprite.scale(0.2f);
+    		enemySprite.setScale(Constants.SPELL_SCALE_FACTOR, 1/Constants.SPELL_SCALE_FACTOR);
+    		enemySprite.setSize(50*Constants.SPELL_SCALE_FACTOR, 50/Constants.SPELL_SCALE_FACTOR);
+        	Enemy enm = new Enemy(game, enemySprite, this, player, center);
             entities.add(enm);
             enemies.add(enm);
         }
