@@ -124,7 +124,7 @@ public class AdventureScreen implements Screen {
 		
 		player = new Player(game, null, this);
 		
-        player.setPosition(new Vector2(300, 400));
+        player.setPosition(new Vector2(2500, 200));
         entities.add(player);
         
         int num_enemies = INIT_ENEMIES;

@@ -19,10 +19,10 @@ public class SigilContactListener implements ContactListener {
 				a.mat.OnCollide(b);
 				b.mat.OnCollide(a);
 			}
-			if(a instanceof Enemy && b instanceof Player) {
+			if(a instanceof Enemy && b instanceof Player && a.active) {
 				((Player)b).addAutoDamage(5);
 			}
-			if(b instanceof Enemy && a instanceof Player) {
+			if(b instanceof Enemy && a instanceof Player && b.active) {
 				((Player)a).addAutoDamage(5);
 			}
 			if((a instanceof CrystalShard && b instanceof Player)) {

@@ -49,12 +49,13 @@ public abstract class PhysicalEntity extends Entity {
 		totalManaCapacity = initManaCapacity;
 		totalManaBound = 0;
 		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
-		System.out.println(this + " manaweight " + totalManaWeight);
-		System.out.println(this + " manacapacity " + initManaCapacity);
+		//System.out.println(this + " manaweight " + totalManaWeight);
+		//System.out.println(this + " manacapacity " + initManaCapacity);
 	}
 	
 	public void bind(PhysicalEntity p, float bindingValue){
 		totalManaCapacity += bindingValue;
+		System.out.println("binding");
 		if(totalManaCapacity > totalManaBound+p.totalManaWeight&&initManaCapacity*2 > (totalManaBound+p.totalManaWeight)){
 			totalManaBound+=p.totalManaWeight;
 			boundEntities.add(p);
@@ -71,6 +72,7 @@ public abstract class PhysicalEntity extends Entity {
 	}
 	
 	public void unbind(PhysicalEntity p, float bindingValue){
+		System.out.println("unbinding");
 		if(boundEntities.contains(p)){
 			boundEntities.remove(p);
 			p.body.setTransform(this.body.getWorldCenter(), p.body.getAngle());
@@ -98,6 +100,7 @@ public abstract class PhysicalEntity extends Entity {
 	
 	public void setActive(boolean a) {
 		active = a;
+		body.setActive(a);
 	}
 
 	@Override
