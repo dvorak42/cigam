@@ -23,7 +23,7 @@
  </tileset>
  <layer name="Background" width="280" height="28">
   <data encoding="base64" compression="zlib">
-   eJztndtugzAQRHkNyhekX5nL1zcvlVWhgLFJ8IUdO8fSUSi21oMEk8lGbYfhf1zPL27n5bnp573Dr3mNcMvYw3r8ngA+535e8ogc15izqBF75o9iy3cAoF3cs+376dH4ngcAfTA929Y+B2vff3dcYp1lfTT2n92nnoe1z0HY97eOS6yzrI/G/rO7uz43rH0OAN7TQgbz58gvAG3QQgbz5+ZeUwNr77X2bzSiMbVG67jrmXtNDay919q/0YjG1BqtM88vAKCFaq7aO2ftcwCwRjVXpfRfVL1PqQYa+9MYwkpbb8z7L4rep1YDjf1pDGGlrTfovwCsKZ1fts73/v2Re7X2OQAlSueXrfPf9P2Ryufn2vXRqN3nULomSMfvv6h8fq5dH43afQ6la4J06L8ArFHMVSU0WmRifv8IYIliriqh0SITf+qLSj6ORjTW7LUoam0Rv/9S2/t66ymgsS+NylpbxOnn778A5FMqk6hkuVJz9F8A8imVSVSyXKm5mPdYeJ1aDTSiMafGt+P3X6y9Tq0GGtGYU+Pbmfove3swOSPXE9WG+59Zz9PyNXTuGVkXWxtal7NXbY3KuhT3vAfubdUcllODkTfwF31dqnuG3u8Vc1hODUbeuIzD8DO+7p3LGL8nU+5XV29Oyl5HaFTT1cKe1v2RI/gDaoigXg==
+   eJztnVmOwjAQRPML4gTMKVlOP/yMrFFE4tgBvHXZvJaeEmKrXZFM0TQCpuk/Lqcn19P62vz40/BzXiJcM9awjt8DwPvcTmvukfMaYxY5Ys/5Vuz5DuhyTcRaN7TdI76ftsb3POiDeyLWuqHtHnFHa5+Dre+/Oi8xLzb2yj9y85fQ2CJ/a42jMfc8rH0Owr6/d15inmV+NI5fz7n7c2HtcwDwmh5qMH+M+gWgD3qowfyxpdfUwNp7rf0bjWhMzdE77n6WXlMDa++19m80ojE1R+8s6xcA0EK1rvp0zNrnAGCLal2V0n9R9T6lHGgcT2MIK22jsey/KHqfWg40jqcxhJW20aD/ArCldP2yd330z4/c0drnAJQoXb/sXf+mz49U3j/Xzo9G7T6H0j1BOn7/ReX9c+38aNTucyjdE6RD/wVgi2JdVUKjRU3M948A1ijWVSU0WtTE7/qiko+jEY01ey2KWnvE77/U9r7RegpoHEujstYecfr5/ReAfErVJCq1XKkx+i8A+ZSqSVRquVJjMe+x8Dq1HGhEY06Ob8fvv1h7nVoONKIxJ8e3M/dfPu3B5ESuJ6qF+8+sx2F9DF17RObF5obm5axVW6OyLsU1b4G9rVqH5eQg8gJ/0delumbo9V6xDsvJQeTF+ThNP8fn3jkf43syZb+6fEtS1mqhUU1XD2ta90da8AelE6CP
   </data>
  </layer>
  <layer name="Walls" width="280" height="28">
@@ -31,31 +31,31 @@
    eJztmmtKw2AQRePPZgeCWrdR39vwsRGtG3FpVTciqHXyQwghk5DY1LmTc2AYaaCnWJp74ctmURSvNm/ssPvd5gUPHhs1PgQ/89z4XOzne8IT36PGYfnfnwD6OCr38z3hie9Rg/4Sn4w5jGecRw36S3wy5jCecR416C/xyZjDeMZ51KC/xCdjDleeL/v722Zb29uW1/p2cdDtmRr6iw/9JT4Zc7jyHNt94cRmWdvLltf69qlzf8n4f1OD/hKfjDlceS7tvnBtc/XHfUN/CQv9JT4Zc1jRs3GefaO/+NBf4pMxhxU93j2E/uJDf4mPat5n83j3EPqLD/0lPqp5n81DfxkO/SU+qnmfzUN/GQ79JT6qeZ/NQ38ZDv0lPqp5n81DfxkO/SU+qnmfzeO9F/3Fh/4SH9W8z+ZZ2e/7zOa8tquhv/jQX+KjmvfZPLf2Xnc2941Nf/Ghv8RHNe+zeR7t9/1ks25s+osP/SU+qnmPZ/ceNegv8VHNezy796hBf4lPxhzGM86jBv0lPhlzGM84jxr0l/hkzGE84zxqrBrn+W276xp7+n1Rtj97gWd+HjWqM/3meX5zd11jT78fSv/ZCzzz8qhRnemvy/Zz/d/ddY09/X4u/Wcv8MzLo8YPdIu17w==
   </data>
  </layer>
- <layer name="Lava" width="280" height="28">
+ <layer name="Lava" width="280" height="28" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt1rkNAkEQRNHR5u/AkghHIgskwhEAbU4AXYDxntQae5zSHwMAvmO3jLGvWxvew/Lr3wD/5FibcK47NbwX+wJMttqEW9214bUvwKyzX+72BZjoFyBFvwAp+gVI0S9Ain4BUvQLkKJfgBT9AqToFyBFvwAp+gVI0S9Ain4BUvQLkKJfgBT9AqToFyBFvwApnf1iX4DZozbhVfdseN/2BQAAAMYHNX1wgA==
   </data>
  </layer>
- <layer name="Bridges" width="280" height="28">
+ <layer name="Bridges" width="280" height="28" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt2jEKgDAMBdDSW3sPB72no4NulkLBWgMi7y0ZsocP+SkBAMD/7TmlKV8T4C3LeVPWfE2At8gvQBT5BQAAAAAAAIBRZa9ldG5+10Ch7LWMztl9AQbp8QJR9HiBKPILEEV+AZ5q/YfqPUCv1n+o3gP0utt3Aeh1t+8C0EteAaLIKwAAAADwPQclx0r9
   </data>
  </layer>
- <layer name="Macguffins" width="280" height="28" visible="0">
+ <layer name="Macguffins" width="280" height="28">
   <data encoding="base64" compression="zlib">
-   eJzt27ENgEAIBVASZtdNdBPdROfw6qssFC/mvZ5Aw68gAgAAuGvKiDm/ngIYzRPZsLT6Vb4AHdkAAAAAAAAAAEBvy4i94Kakqg8wjqPt/Fmw91V9/spfA/AWt8sAAAAAAAAAAAAAAAAAAGO6AC7aDes=
+   eJzt27sNgDAMBUBLaVmWzwqwCWwCm8AcpKZCQoQI3Q1gu/Gr7AgAAOCuMUVM6espgNq0TUTXPKsx52xZ5Atw0edsGR7mCwAAAAAAAAAA/7KmiK3AvVmpPkA99rzzR4G9L9Xnr/w1AG/x1wAAAAAAAAAAAAAAAAAAUKcTDTANgw==
   </data>
  </layer>
- <layer name="Monsters" width="280" height="28" visible="0">
+ <layer name="Monsters" width="280" height="28">
   <data encoding="base64" compression="zlib">
-   eJzt3LERglAQRdFNIKE27US70U4wkS5EOsHYrYDxjwoMnBNvsNENXwQAbNuljrjWS38BbFGbbbnpC/AHz2zLoC+wKvcmomt+fzu3Mdvy0hdYlUf2ov+wGSW3AAAAAAAAAAAAAAAAAAAAAJQ7VBHHaukvgLmUbkZ9szF1yrac9QV2o3QzysYUAAAAAAAw5Q1i6BUP
+   eJzt3LkRwlAMQEFFTuxmOVqBTiCBLjB0AjEqgT8G7JF3YwWK3ihSBADUdugijt3cWwAVnbItZ30BfuCebXnoCyzKpY+49t+f/bdntuWlL7Aot+zF+GEzWmYBAAAAAAAAAAAAAAAAAAAq2wwR22HuLYCKdtmWvb7AarT+jJryY8r9AuvS+jNqyo8p9wsAAAAAANT3BsraF3k=
   </data>
  </layer>
  <objectgroup name="WallObjects" width="280" height="28">
   <object x="2" y="11" width="5" height="407"/>
-  <object x="2" y="402" width="2495" height="9"/>
+  <object x="2" y="402" width="3772" height="8"/>
   <object x="3767" y="2" width="7" height="407"/>
-  <object x="2" y="2" width="2491" height="8"/>
+  <object x="2" y="2" width="3770" height="8"/>
   <object x="1688" y="3" width="16" height="406"/>
   <object x="2103" y="3" width="16" height="407"/>
   <object x="2521" y="2" width="14" height="408"/>
@@ -69,8 +69,8 @@
  <objectgroup name="Goal" width="280" height="28">
   <object x="2019" y="191" width="29" height="33">
    <properties>
-    <property name="destX" value="133.0"/>
-    <property name="destY" value="12.0"/>
+    <property name="destX" value="161"/>
+    <property name="destY" value="22"/>
    </properties>
   </object>
   <object x="2560" y="32" width="30" height="33">
@@ -91,25 +91,8 @@
     <property name="destY" value="12.0"/>
    </properties>
   </object>
-  <object x="2290" y="48" width="30" height="32">
-   <properties>
-    <property name="destX" value="160.0"/>
-    <property name="destY" value="17.0"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup name="FireTile" width="280" height="28">
-  <object x="2145" y="28" width="124" height="162"/>
-  <object x="2144" y="26" width="291" height="6"/>
-  <object x="2337" y="27" width="100" height="163"/>
-  <object x="2226" y="95" width="143" height="93"/>
-  <object x="2139" y="225" width="195" height="61"/>
-  <object x="2304" y="227" width="30" height="91"/>
-  <object x="2139" y="225" width="69" height="169"/>
-  <object x="2141" y="385" width="295" height="10"/>
-  <object x="2305" y="353" width="131" height="43"/>
-  <object x="2367" y="225" width="70" height="169"/>
- </objectgroup>
+ <objectgroup name="FireTile" width="280" height="28"/>
  <objectgroup name="Enemy" width="280" height="28">
   <object x="1808" y="62" width="29" height="28">
    <properties>
@@ -129,11 +112,6 @@
   <object x="2001" y="336" width="33" height="26">
    <properties>
     <property name="enemyType" value="BAT"/>
-   </properties>
-  </object>
-  <object x="2242" y="320" width="29" height="31">
-   <properties>
-    <property name="enemyType" value="LAVA"/>
    </properties>
   </object>
   <object x="2604" y="22" width="37" height="53">
