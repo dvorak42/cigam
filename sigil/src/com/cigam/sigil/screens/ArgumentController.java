@@ -112,7 +112,24 @@ public class ArgumentController implements Controller {
 				pElement.hide();
 				e.layoutElements();
 			}
-		} else if(!full) {
+		} else if(full){
+			if(containingSpell != null) {
+				containingSpell.removeArgument((Spell)e.getUserData("currentSpell"));
+				Element pElement = e.getChildren().get(0);
+				pElement.markForRemoval();
+				pElement.hide();
+				e.layoutElements();
+			}
+			if(newSpell != null && containingSpell != null){
+				System.out.println(index);
+				containingSpell.addArgument(newSpell, index);
+				newSpell.gui.build(n, s, e);
+				//System.out.println(e.getChildrenCount());
+				e.setUserData("currentSpell", newSpell);
+				recursiveSetUserData("containingSpell", newSpell, e);
+			}
+		}
+		else {
 			//System.out.println("inp = " + newSpell);
 			//System.out.println("containtingSpell = " + containingSpell);
 			if(newSpell != null && containingSpell != null){

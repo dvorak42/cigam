@@ -114,36 +114,6 @@ public class AdventureScreen implements Screen {
 		spells.clear();
 		toDestroy.clear();
 
-		Texture helpTexture = new Texture(Gdx.files.internal("help/press h for help.png"));
-		helpTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		TextEntity helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(0,150));
-		helpText.add(helpTextEntity);
-		entities.add(helpTextEntity);
-
-		helpTexture = new Texture(Gdx.files.internal("help/press p to enter spell creation.png"));
-		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(800,150));
-		helpText.add(helpTextEntity);
-		entities.add(helpTextEntity);
-		
-		helpTexture = new Texture(Gdx.files.internal("help/keys1-9tochange.png"));
-		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(1600,150));
-		helpText.add(helpTextEntity);
-		entities.add(helpTextEntity);
-		
-		helpTexture = new Texture(Gdx.files.internal("help/stand here.png"));
-		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(2400,150));
-		helpText.add(helpTextEntity);
-		entities.add(helpTextEntity);
-		
-		helpTexture = new Texture(Gdx.files.internal("help/youwintext.png"));
-		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(6900,150));
-		helpText.add(helpTextEntity);
-		entities.add(helpTextEntity);
 		
 		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
@@ -154,7 +124,7 @@ public class AdventureScreen implements Screen {
 		
 		player = new Player(game, null, this);
 		
-        player.setPosition(new Vector2(4800, 400));
+        player.setPosition(new Vector2(300, 400));
         entities.add(player);
         
         int num_enemies = INIT_ENEMIES;
@@ -234,6 +204,32 @@ public class AdventureScreen implements Screen {
         	}
         }        
     	
+        Texture helpTexture = new Texture(Gdx.files.internal("help/press h for help.png"));
+		helpTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		TextEntity helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(0,150));
+		helpText.add(helpTextEntity);
+
+		helpTexture = new Texture(Gdx.files.internal("help/press p to enter spell creation.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(800,150));
+		helpText.add(helpTextEntity);
+		
+		helpTexture = new Texture(Gdx.files.internal("help/keys1-9tochange.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(1600,150));
+		helpText.add(helpTextEntity);
+		
+		helpTexture = new Texture(Gdx.files.internal("help/stand here.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(2400,150));
+		helpText.add(helpTextEntity);
+		
+		helpTexture = new Texture(Gdx.files.internal("help/youwintext.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(6900,150));
+		helpText.add(helpTextEntity);
+		entities.add(helpTextEntity);
     }
     
     public SpellEffect createSpellEffect(SpellDescriptor s) {
@@ -347,6 +343,14 @@ public class AdventureScreen implements Screen {
 		for(Entity e : entities)
 			drawQueue.add(e);
 		
+		game.batch.begin();
+		game.batch.setColor(Color.WHITE);
+		for(int i = 0; i < helpText.size();i++){
+			helpText.get(i).render(delta);
+		}
+		game.batch.setColor(Color.WHITE);
+		game.batch.end();
+		
 		while (drawQueue.size() != 0) {
 			game.batch.begin();
 			game.batch.setColor(Color.WHITE);
@@ -355,6 +359,8 @@ public class AdventureScreen implements Screen {
 			game.batch.end();
 		}
 
+
+		
 		hudCamera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		hudCamera.update(true);
 		sr.setProjectionMatrix(hudCamera.combined);

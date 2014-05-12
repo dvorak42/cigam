@@ -21,7 +21,12 @@ public class RadialEnd extends RadialMenu {
 		iconScale = .7f;
 		this.value = value;
 		this.icon = null;
-		String path = Utils.classesToMenuPaths.get(this.value);
+		String path;
+		if(value.equals(-1)){
+			path = "UI/cigam/DeleteSymbol512.png";
+		} else {
+			path = Utils.classesToMenuPaths.get(this.value);
+		}
 		if(path!=null){
 			Texture t = new Texture(Gdx.files.internal(path));
 			t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
@@ -36,7 +41,7 @@ public class RadialEnd extends RadialMenu {
 	}
 
 	public void renderPreview(ShapeRenderer sr, SpriteBatch b, Vector2 position, float radius) {
-		if(icon != null) {
+		if(icon != null && !value.equals(-1)) {
 			sr.end();
 			b.begin();
 			icon.setPosition(position.x-this.radius*2*iconScale, position.y-this.radius*2*iconScale);

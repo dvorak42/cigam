@@ -73,7 +73,7 @@ public class RadialMenu {
 			
 			if(selected == -1) {
 				float d = mouse.dst(position);
-				if(d > 1.4 * radius) {          //dictates how far the cursor goes before hiding the current menu.
+				if(d > 1.8 * radius) {          //dictates how far the cursor goes before hiding the current menu.
 					hide();
 				} else if(subMenus.size() > 0) {
 					float ax = 360 / subMenus.size();
