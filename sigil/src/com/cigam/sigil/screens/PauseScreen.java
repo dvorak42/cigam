@@ -106,7 +106,6 @@ public class PauseScreen implements Screen {
 	        }
 		    game.setScreen(parent);
 		}
-		
 		if (Gdx.input.isKeyPressed(Input.Keys.ENTER)){
 		    game.setScreen(parent);
 		}

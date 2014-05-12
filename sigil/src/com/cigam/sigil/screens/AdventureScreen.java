@@ -259,7 +259,7 @@ public class AdventureScreen implements Screen {
 		if(player == null || !player.active())
 			restartGame();
 		if(in.isKeyPressed(Input.Keys.P)) {
-			game.pauseScreen.createdSpell = SpellsArray[selectedSpell];
+			//game.pauseScreen.createdSpell = SpellsArray[selectedSpell];
 			game.pauseScreen.index = selectedSpell;
 			game.setScreen(game.pauseScreen);
 			return;
