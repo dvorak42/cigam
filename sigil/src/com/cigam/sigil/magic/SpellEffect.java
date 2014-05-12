@@ -82,7 +82,7 @@ public class SpellEffect extends PhysicalEntity {
 			damage(autoDamage);
 			autoDelay = 1;
 		}
-		if(active) {
+		if(this.active) {
 			elapsedTime += delta;
 		}
 	}

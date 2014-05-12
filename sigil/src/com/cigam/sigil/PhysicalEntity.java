@@ -55,7 +55,7 @@ public abstract class PhysicalEntity extends Entity {
 	
 	public void bind(PhysicalEntity p, float bindingValue){
 		totalManaCapacity += bindingValue;
-		System.out.println("binding");
+		System.out.println(this + " binding");
 		if(totalManaCapacity > totalManaBound+p.totalManaWeight&&initManaCapacity*2 > (totalManaBound+p.totalManaWeight)){
 			totalManaBound+=p.totalManaWeight;
 			boundEntities.add(p);
@@ -72,10 +72,10 @@ public abstract class PhysicalEntity extends Entity {
 	}
 	
 	public void unbind(PhysicalEntity p, float bindingValue){
-		System.out.println("unbinding");
+		System.out.println(this + "unbinding");
 		if(boundEntities.contains(p)){
 			boundEntities.remove(p);
-			p.body.setTransform(this.body.getWorldCenter(), p.body.getAngle());
+			p.body.setTransform(new Vector2((float)(this.body.getWorldCenter().x+Math.random()*5), (float)(this.body.getWorldCenter().y+Math.random()*5)), p.body.getAngle());
 			p.body.setLinearVelocity((float) (Math.random()*50), (float) (Math.random()*50));
 			p.setActive(true);
 			p.setVisible(true);

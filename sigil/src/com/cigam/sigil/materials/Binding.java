@@ -44,7 +44,7 @@ public class Binding extends MaterialDescriptor {
 
 	@Override
 	public void OnCollide(PhysicalEntity p) {
-		if(!objectsCollided.contains(p))
+		if(!objectsCollided.contains(p)&&p.active)
 			objectsCollided.add(p);
 	}
 
@@ -64,6 +64,12 @@ public class Binding extends MaterialDescriptor {
 		//System.out.println(entitiesToBind);
 		//Deal with new no-collisions
 		doUncollide();
+		//remove nonactive objects
+		for(int i = 0; i < objectsInRange.size();i ++){
+			if(!objectsInRange.get(i).active()||!objectsInRange.get(i).visible()){
+				objectsInRange.remove(objectsInRange.get(i));
+			}
+		}
 	}
 	@Override
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn) {
@@ -100,18 +106,21 @@ public class Binding extends MaterialDescriptor {
 	}
 	private void doBinding(){
 		if(toBindInto != null&&toBindInto.active){
-			ArrayList<MaterialDescriptor> keysToDelete = new ArrayList<MaterialDescriptor>();
+			ArrayList<MaterialDescriptor> boundTypes = new ArrayList<MaterialDescriptor>();
 			for(MaterialDescriptor m:entitiesToBind.keySet()){
 				if(entitiesToBind.get(m)!=null&&entitiesToBind.get(m).active&&entitiesToBind.get(m).visible){
 					//System.out.println("Binding is binding " + entitiesToBind.get(m) + " into " + toBindInto);
 					toBindInto.bind(entitiesToBind.get(m), bindingStrength);
+					objectsInRange.remove(entitiesToBind.get(m));
+					entitiesToBind.put(m, null);
+					boundTypes.add(m);
 					//keysToDelete.add(m);
 				}
 			}
-			for(MaterialDescriptor m: keysToDelete){
-				entitiesToBind.remove(m);
-				entitiesToBind.put(m, null);
+			for(MaterialDescriptor m:boundTypes){
+				entitiesToBind.keySet().remove(m);
 			}
+			boundTypes.clear();
 		} else { //Look for new toBindInto if necessary
 			findNewToBindInto();
 		}
@@ -129,15 +138,14 @@ public class Binding extends MaterialDescriptor {
 				}
 			}
 		}
-		System.out.println("toBindInto is " + toBindInto);
+		//System.out.println("toBindInto is " + toBindInto);
 	}
 	private void findThingsToBind(){
 		for(PhysicalEntity p:objectsInRange){
 			Object[] keySet =  entitiesToBind.keySet().toArray();
 			for(Object m: keySet){
-				System.out.println(p + " active state is " + p.active);
+				//System.out.println(p + " active state is " + p.active);
 				if(p == null || !p.active() || p.body == null || p.mat == null){
-					System.out.println(p);
 					continue;
 				}else{
 					if(p.mat.isSameMat((MaterialDescriptor) m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p)&&!p.equals(toBindInto)&&p.active)){
@@ -153,22 +161,24 @@ public class Binding extends MaterialDescriptor {
 				Object[] boundEntities = (Object[]) toBindInto.boundEntities.toArray();
 				for(Object q: boundEntities){
 					toBindInto.unbind((PhysicalEntity) q, bindingStrength);
+					entitiesToBind.put(((PhysicalEntity) q).mat, null);
+
 				}
 				Object[] imbuedEntities = (Object[]) toBindInto.imbuedEntities.toArray();
 				for(Object q: imbuedEntities){
 					toBindInto.unbind((PhysicalEntity) q, bindingStrength);
 				}
 				toBindInto = null;
-			}
-			objectsInRange.remove(p);
-			MaterialDescriptor toRemove = null;
-			for(MaterialDescriptor m:entitiesToBind.keySet()){
-				if(entitiesToBind.get(m)==p){
-					toRemove = m;
+				objectsInRange.clear();
+				for(MaterialDescriptor m:entitiesToBind.keySet()){
+					entitiesToBind.put(m, null);
 				}
 			}
-			if(toRemove != null){
-				entitiesToBind.remove(toRemove);
+			objectsInRange.remove(p);
+			for(MaterialDescriptor m:entitiesToBind.keySet()){
+				if(entitiesToBind.get(m)==p){
+					entitiesToBind.put(m, null);
+				}
 			}
 		}
 		objectsNoCollided.clear();
