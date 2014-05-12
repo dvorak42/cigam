@@ -253,7 +253,7 @@ public class AdventureScreen implements Screen {
 			
 		if(player == null || !player.active())
 			restartGame();
-		if(in.isKeyPressed(Input.Keys.O)) {
+		if(in.isKeyPressed(Input.Keys.P)) {
 			game.pauseScreen.createdSpell = SpellsArray[selectedSpell];
 			game.pauseScreen.index = selectedSpell;
 			game.setScreen(game.pauseScreen);
@@ -297,8 +297,8 @@ public class AdventureScreen implements Screen {
         	fireDelay = Constants.FIRE_DELAY;
         	if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
 	        	SpellsArray[selectedSpell].cast(this, player);
-	        else if(in.isKeyPressed(Input.Keys.I) && SpellsArray[selectedSpell] != null)
-	        	SpellsArray[selectedSpell] = null;
+	        //else if(in.isKeyPressed(Input.Keys.I) && SpellsArray[selectedSpell] != null)
+	        //	SpellsArray[selectedSpell] = null;
 	        else {
 	        	boolean cast = false;
 	        	for(int i = 0; i < 10; i++) {
