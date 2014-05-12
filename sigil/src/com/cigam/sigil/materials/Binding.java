@@ -81,7 +81,7 @@ public class Binding extends MaterialDescriptor {
 				toBindInto = p;
 			}
 		}*/
-		System.out.println("toBindInto is " + toBindInto);
+		//System.out.println("toBindInto is " + toBindInto);
 	}
 
 	@Override
@@ -99,11 +99,11 @@ public class Binding extends MaterialDescriptor {
 		objectsCollided.clear();
 	}
 	private void doBinding(){
-		if(toBindInto != null){
+		if(toBindInto != null&&toBindInto.active){
 			ArrayList<MaterialDescriptor> keysToDelete = new ArrayList<MaterialDescriptor>();
 			for(MaterialDescriptor m:entitiesToBind.keySet()){
 				if(entitiesToBind.get(m)!=null&&entitiesToBind.get(m).active&&entitiesToBind.get(m).visible){
-					System.out.println("Binding is binding " + entitiesToBind.get(m) + " into " + toBindInto);
+					//System.out.println("Binding is binding " + entitiesToBind.get(m) + " into " + toBindInto);
 					toBindInto.bind(entitiesToBind.get(m), bindingStrength);
 					//keysToDelete.add(m);
 				}
