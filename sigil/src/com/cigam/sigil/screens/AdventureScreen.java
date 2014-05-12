@@ -94,7 +94,7 @@ public class AdventureScreen implements Screen {
 		
 		parser = new Parser(new StringLexer());
 		
-		map = new TmxMapLoader().load("maps/MAP.tmx");
+		map = new TmxMapLoader().load("maps/MAPnewbackground.tmx");
 		float tileScale = 2;
 		mapRenderer = new OrthogonalTiledMapRenderer(map, tileScale, game.batch);
 		
@@ -136,6 +136,12 @@ public class AdventureScreen implements Screen {
 		helpTexture = new Texture(Gdx.files.internal("help/stand here.png"));
 		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
 		helpTextEntity.setPosition(new Vector2(2400,150));
+		helpText.add(helpTextEntity);
+		entities.add(helpTextEntity);
+		
+		helpTexture = new Texture(Gdx.files.internal("help/youwintext.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(7000,150));
 		helpText.add(helpTextEntity);
 		entities.add(helpTextEntity);
 		

@@ -28,17 +28,7 @@
  </layer>
  <layer name="Walls" width="280" height="28">
   <data encoding="base64" compression="zlib">
-   eJztmmtKw2AQRePPZgeCWrdR39vwsRGtG3FpVTciqHXyQwghk5DY1LmTc2AYaaCnWJp74ctmURSvNm/ssPvd5gUPHhs1PgQ/89z4XOzne8IT36PGYfnfnwD6OCr38z3hie9Rg/4Sn4w5jGecRw36S3wy5jCecR416C/xyZjDeMZ51KC/xCdjDleeL/v722Zb29uW1/p2cdDtmRr6iw/9JT4Zc7jyHNt94cRmWdvLltf69qlzf8n4f1OD/hKfjDlceS7tvnBtc/XHfUN/CQv9JT4Zc1jRs3GefaO/+NBf4pMxhxU93j2E/uJDf4mPat5n83j3EPqLD/0lPqp5n81DfxkO/SU+qnmfzUN/GQ79JT6qeZ/NQ38ZDv0lPqp5n81DfxkO/SU+qnmfzeO9F/3Fh/4SH9W8z+ZZ2e/7zOa8tquhv/jQX+KjmvfZPLf2Xnc2941Nf/Ghv8RHNe+zeR7t9/1ks25s+osP/SU+qnmPZ/ceNegv8VHNezy796hBf4lPxhzGM86jBv0lPhlzGM84jxr0l/hkzGE84zxqrBrn+W276xp7+n1Rtj97gWd+HjWqM/3meX5zd11jT78fSv/ZCzzz8qhRnemvy/Zz/d/ddY09/X4u/Wcv8MzLo8YPdIu17w==
-  </data>
- </layer>
- <layer name="Lava" width="280" height="28" visible="0">
-  <data encoding="base64" compression="zlib">
-   eJzt1rkNAkEQRNHR5u/AkghHIgskwhEAbU4AXYDxntQae5zSHwMAvmO3jLGvWxvew/Lr3wD/5FibcK47NbwX+wJMttqEW9214bUvwKyzX+72BZjoFyBFvwAp+gVI0S9Ain4BUvQLkKJfgBT9AqToFyBFvwAp+gVI0S9Ain4BUvQLkKJfgBT9AqToFyBFvwApnf1iX4DZozbhVfdseN/2BQAAAMYHNX1wgA==
-  </data>
- </layer>
- <layer name="Bridges" width="280" height="28" visible="0">
-  <data encoding="base64" compression="zlib">
-   eJzt2jEKgDAMBdDSW3sPB72no4NulkLBWgMi7y0ZsocP+SkBAMD/7TmlKV8T4C3LeVPWfE2At8gvQBT5BQAAAAAAAIBRZa9ldG5+10Ch7LWMztl9AQbp8QJR9HiBKPILEEV+AZ5q/YfqPUCv1n+o3gP0utt3Aeh1t+8C0EteAaLIKwAAAADwPQclx0r9
+   eJztmltKw2AQRutjQzcgqHUb9b4NL5vw8qJ1Iy6t6kYEtU4ehBIyLY1JnG9yDgwjDfQUS//vg2QxHo1ebd7YYfe7zQsePDZqfAh+5qHxOe7ne8IT36PGbvHfnwA2sVf08z3hie9Rg/4Sn75z+Hbiz92kPU/XZPSoQX+JT985fD/x56GF8yVjr6C/1EN/iU/GHMbTzKMG/SU+GXO49HzZ3982y5W9rHlt0x7trPd0Df3Fh/4Sn4w5XHr27Vw4sJmu7GnNa5v2oXO+ZPy/qUF/iU/GHC49p3YunNuc/XFf0F/CQn+JT8YcVvQsnGff6C8+9Jf4ZMxhRY93htBffOgv8VHN+2we7wyhv/jQX+KjmvfZPPSX7aG/xEc177N56C/bQ3+Jj2reZ/PQX7aH/hIf1bzP5qG/bA/9JT6qeZ/N470X/cWH/hIf1bzP5pnZ7/vI5nhll0N/8aG/xEc177N5Lu29rmyuK5v+4kN/iY9q3mfzPNrv+8lmXtn0Fx/6S3xU8x5P+x416C/xUc17PO171KC/xCdjDuNp5lGD/hKfjDmMp5lHDfpLfDLmMJ5mHjVmlfv5dXvdNXb3+6Sof/YCz/A8apT39Kv386t73TV29/um8J+9wDMsjxrlPf15UX9f/3evu8bufj8X/rMXeIblUeMHoY+90Q==
   </data>
  </layer>
  <layer name="Macguffins" width="280" height="28">
@@ -46,7 +36,7 @@
    eJzt27sNgDAMBUBLaVmWzwqwCWwCm8AcpKZCQoQI3Q1gu/Gr7AgAAOCuMUVM6espgNq0TUTXPKsx52xZ5Atw0edsGR7mCwAAAAAAAAAA/7KmiK3AvVmpPkA99rzzR4G9L9Xnr/w1AG/x1wAAAAAAAAAAAAAAAAAAUKcTDTANgw==
   </data>
  </layer>
- <layer name="Monsters" width="280" height="28">
+ <layer name="Monsters" width="280" height="28" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt3LkRwlAMQEFFTuxmOVqBTiCBLjB0AjEqgT8G7JF3YwWK3ihSBADUdugijt3cWwAVnbItZ30BfuCebXnoCyzKpY+49t+f/bdntuWlL7Aot+zF+GEzWmYBAAAAAAAAAAAAAAAAAAAq2wwR22HuLYCKdtmWvb7AarT+jJryY8r9AuvS+jNqyo8p9wsAAAAAANT3BsraF3k=
   </data>
@@ -70,7 +60,7 @@
   <object x="2019" y="191" width="29" height="33">
    <properties>
     <property name="destX" value="161"/>
-    <property name="destY" value="22"/>
+    <property name="destY" value="12"/>
    </properties>
   </object>
   <object x="2560" y="32" width="30" height="33">
@@ -120,7 +110,7 @@
    </properties>
   </object>
  </objectgroup>
- <imagelayer name="Help text" width="280" height="28">
+ <imagelayer name="Help text" width="280" height="28" visible="0">
   <image source="../help/help text.png"/>
  </imagelayer>
 </map>
