@@ -35,12 +35,12 @@
    eJzt2jEKgDAMBdDSW3sPB72no4NulkLBWgMi7y0ZsocP+SkBAMD/7TmlKV8T4C3LeVPWfE2At8gvQBT5BQAAAAAAAIBRZa9ldG5+10Ch7LWMztl9AQbp8QJR9HiBKPILEEV+AZ5q/YfqPUCv1n+o3gP0utt3Aeh1t+8C0EteAaLIKwAAAADwPQclx0r9
   </data>
  </layer>
- <layer name="Macguffins" width="280" height="28">
+ <layer name="Macguffins" width="280" height="28" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt27ENgEAIBVASZtdNdBPdROfw6qssFC/mvZ5Aw68gAgAAuGvKiDm/ngIYzRPZsLT6Vb4AHdkAAAAAAAAAAEBvy4i94Kakqg8wjqPt/Fmw91V9/spfA/AWt8sAAAAAAAAAAAAAAAAAAGO6AC7aDes=
   </data>
  </layer>
- <layer name="Monsters" width="280" height="28">
+ <layer name="Monsters" width="280" height="28" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt3LERglAQRdFNIKE27US70U4wkS5EOsHYrYDxjwoMnBNvsNENXwQAbNuljrjWS38BbFGbbbnpC/AHz2zLoC+wKvcmomt+fzu3Mdvy0hdYlUf2ov+wGSW3AAAAAAAAAAAAAAAAAAAAAJQ7VBHHaukvgLmUbkZ9szF1yrac9QV2o3QzysYUAAAAAAAw5Q1i6BUP
   </data>
@@ -63,31 +63,31 @@
  <objectgroup name="Goal" width="280" height="28">
   <object x="2019" y="191" width="29" height="33">
    <properties>
-    <property name="destX" value="75.0"/>
+    <property name="destX" value="133.0"/>
     <property name="destY" value="12.0"/>
    </properties>
   </object>
   <object x="2560" y="32" width="30" height="33">
    <properties>
-    <property name="destX" value="108.0"/>
+    <property name="destX" value="185"/>
     <property name="destY" value="14.0"/>
    </properties>
   </object>
   <object x="3295" y="209" width="35" height="34">
    <properties>
-    <property name="destX" value="134.0"/>
+    <property name="destX" value="213"/>
     <property name="destY" value="13.0"/>
    </properties>
   </object>
   <object x="1604" y="197" width="23" height="25">
    <properties>
-    <property name="destX" value="30.0"/>
+    <property name="destX" value="107"/>
     <property name="destY" value="12.0"/>
    </properties>
   </object>
   <object x="2290" y="48" width="30" height="32">
    <properties>
-    <property name="destX" value="89.0"/>
+    <property name="destX" value="160.0"/>
     <property name="destY" value="17.0"/>
    </properties>
   </object>

@@ -10,8 +10,8 @@ public class Constants {
 
     public static final Integer LAVA = new Integer(132423);
     
-	public static final int MAX_HEALTH = 80;
-	public static final int ENEMY_MAX_HEALTH = 1;
+	public static final int MAX_HEALTH = 100;
+	public static final int ENEMY_MAX_HEALTH = 20;
 	public static final int FIRE_LIFE = 500;
 	public static final double ENEMY_MOVE_SPEED = 500000;
 	public static final float AGGRO_RANGE = 10;
@@ -23,7 +23,6 @@ public class Constants {
 	public static final int FIRE_DELAY = 10;
 	public static final int VELOCITY_ITERS = 8;
 	public static final int POSITION_ITERS = 3;
-	public static final float DEFAULT_HEALTH = 100;
 	public static final float PLAYER_SCALE = 0.5f;
 
 	public static final int[][] SLOT_POSITION = new int[][]{{215, 215}, {74, 75}, {352, 75}, {74, 356}, {352, 356}};

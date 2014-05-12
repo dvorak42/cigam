@@ -99,6 +99,7 @@ public class AdventureScreen implements Screen {
 		mapRenderer = new OrthogonalTiledMapRenderer(map, tileScale, game.batch);
 		
 		restartGame();
+		player.setPosition(new Vector2(400, 300));
 		SpellsArray[0] = parser.parse("Create(fire)");
 		SpellsArray[1] = parser.parse("Summon(fire - - - self)");
 		SpellsArray[2] = parser.parse("Bind(self - - - fire))");
@@ -147,7 +148,7 @@ public class AdventureScreen implements Screen {
 		
 		player = new Player(game, null, this);
 		
-        player.setPosition(new Vector2(400, 300));
+        player.setPosition(new Vector2(2800, 400));
         entities.add(player);
         
         int num_enemies = INIT_ENEMIES;
@@ -367,7 +368,7 @@ public class AdventureScreen implements Screen {
 
 		sr.begin(ShapeType.Filled);
 		sr.setColor(Color.RED);
-		float percentHealth = 1.0f * player.health / Constants.DEFAULT_HEALTH;
+		float percentHealth = 1.0f * player.health / Constants.MAX_HEALTH;
 		if(percentHealth < 0) {
 			percentHealth = 0;
 		}

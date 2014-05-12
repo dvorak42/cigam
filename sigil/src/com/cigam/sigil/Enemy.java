@@ -25,7 +25,7 @@ public class Enemy extends PhysicalEntity {
 		position = pos;
 		initEntity();
 		initBehaviorTree(player);
-		health = Constants.DEFAULT_HEALTH;
+		health = Constants.ENEMY_MAX_HEALTH;
 	}
 
 	//Initializes the blackboard and behavior tree
@@ -58,9 +58,9 @@ public class Enemy extends PhysicalEntity {
 
 	@Override
 	public void render(float delta) {
-		super.render(delta);
 		if(!active)
 			return;
+		super.render(delta);
 		
 		/* for degbugging BT
 		 * if (Gdx.input.isKey(Input.Keys.M)){

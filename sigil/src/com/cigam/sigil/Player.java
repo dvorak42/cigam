@@ -35,7 +35,7 @@ public class Player extends PhysicalEntity {
 			}
 			animations[i] = new Animation(1/8f, textures[i]);
 		}
-		health = Constants.DEFAULT_HEALTH;
+		health = Constants.MAX_HEALTH;
 	}
 
 	@Override

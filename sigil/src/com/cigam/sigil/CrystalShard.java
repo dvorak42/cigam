@@ -18,20 +18,20 @@ public class CrystalShard extends PhysicalEntity {
         super(eg, sprite, a, mat);
         health = 10000000;
         position = pos;
-        teleportDelay = 10.0f;
+        teleportDelay = 5.0f;
         initEntity();
 	}
 
     @Override
 	public void initBody() {
 		BodyDef bd = new BodyDef();
-		bd.type = BodyType.KinematicBody;
+		bd.type = BodyType.DynamicBody;
 		bd.position.set(position.cpy().sub(new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2)));
 		
 		body = screen.world.createBody(bd);
 
 		FixtureDef fd = new FixtureDef();
-		fd.density = 10; 
+		fd.density = 2000000; 
 
 	    Utils.mainBodies.attachFixture(body, "crystal", fd, sprite.getWidth());
 	    modelOrigin = Utils.mainBodies.getOrigin("crystal", sprite.getWidth());
@@ -42,7 +42,7 @@ public class CrystalShard extends PhysicalEntity {
     @Override
     public void render(float delta) {
     	if(teleportTarget == null)
-    		teleportDelay = 10.0f;
+    		teleportDelay = 5.0f;
     	else {
     		teleportDelay -= delta;
     		if(Utils.dist(this, teleportTarget) > 50) {
