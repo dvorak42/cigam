@@ -141,7 +141,7 @@ public class AdventureScreen implements Screen {
 		
 		helpTexture = new Texture(Gdx.files.internal("help/youwintext.png"));
 		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(7000,150));
+		helpTextEntity.setPosition(new Vector2(6900,150));
 		helpText.add(helpTextEntity);
 		entities.add(helpTextEntity);
 		
@@ -154,7 +154,7 @@ public class AdventureScreen implements Screen {
 		
 		player = new Player(game, null, this);
 		
-        player.setPosition(new Vector2(2800, 400));
+        player.setPosition(new Vector2(4800, 400));
         entities.add(player);
         
         int num_enemies = INIT_ENEMIES;
