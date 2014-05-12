@@ -136,4 +136,7 @@
    </properties>
   </object>
  </objectgroup>
+ <imagelayer name="Help text" width="280" height="28">
+  <image source="../help/help text.png"/>
+ </imagelayer>
 </map>

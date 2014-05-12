@@ -40,6 +40,7 @@ import com.cigam.sigil.Player;
 import com.cigam.sigil.SigilContactFilter;
 import com.cigam.sigil.SigilContactListener;
 import com.cigam.sigil.SigilGame;
+import com.cigam.sigil.TextEntity;
 import com.cigam.sigil.Utils;
 import com.cigam.sigil.magic.Parser;
 import com.cigam.sigil.magic.Spell;
@@ -77,6 +78,7 @@ public class AdventureScreen implements Screen {
 	public boolean paused = false;
 	public Array<PhysicalEntity> toDestroy;
 	private int selectedSpell;
+	public ArrayList<TextEntity> helpText;
 	
 	public AdventureScreen(SigilGame g)
 	{
@@ -86,6 +88,7 @@ public class AdventureScreen implements Screen {
 		enemies = new ArrayList<Enemy>();
 		spells = new ArrayList<SpellEffect>();
 		toDestroy = new Array<PhysicalEntity>();
+		helpText = new ArrayList<TextEntity>();
 
 		SpellsArray = new Spell[10];
 		
@@ -109,6 +112,31 @@ public class AdventureScreen implements Screen {
 		enemies.clear();
 		spells.clear();
 		toDestroy.clear();
+
+		Texture helpTexture = new Texture(Gdx.files.internal("help/press h for help.png"));
+		helpTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+		TextEntity helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(0,150));
+		helpText.add(helpTextEntity);
+		entities.add(helpTextEntity);
+
+		helpTexture = new Texture(Gdx.files.internal("help/press p to enter spell creation.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(800,150));
+		helpText.add(helpTextEntity);
+		entities.add(helpTextEntity);
+		
+		helpTexture = new Texture(Gdx.files.internal("help/keys1-9tochange.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(1600,150));
+		helpText.add(helpTextEntity);
+		entities.add(helpTextEntity);
+		
+		helpTexture = new Texture(Gdx.files.internal("help/stand here.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(2500,150));
+		helpText.add(helpTextEntity);
+		entities.add(helpTextEntity);
 		
 		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
@@ -116,9 +144,10 @@ public class AdventureScreen implements Screen {
 		world.setContactListener(new SigilContactListener());
 		world.setContactFilter(new SigilContactFilter());
 		
+		
 		player = new Player(game, null, this);
 		
-        player.setPosition(new Vector2(128, 128));
+        player.setPosition(new Vector2(400, 300));
         entities.add(player);
         
         int num_enemies = INIT_ENEMIES;
@@ -230,16 +259,20 @@ public class AdventureScreen implements Screen {
 			game.setScreen(game.pauseScreen);
 			return;
 		}
+		if(in.isKeyPressed(Input.Keys.H)) {
+			game.setScreen(game.helpScreen);
+			return;
+		}
 
         //Moving the player
         Vector2 playerMoveVec = new Vector2();
-        if(in.isKeyPressed(Input.Keys.A))
+        if(in.isKeyPressed(Input.Keys.A)||in.isKeyPressed(Input.Keys.LEFT))
             playerMoveVec.x--;
-        if(in.isKeyPressed(Input.Keys.D))
+        if(in.isKeyPressed(Input.Keys.D)||in.isKeyPressed(Input.Keys.RIGHT))
             playerMoveVec.x++;
-        if(in.isKeyPressed(Input.Keys.S))
+        if(in.isKeyPressed(Input.Keys.S)||in.isKeyPressed(Input.Keys.DOWN))
             playerMoveVec.y--;
-        if(in.isKeyPressed(Input.Keys.W))
+        if(in.isKeyPressed(Input.Keys.W)||in.isKeyPressed(Input.Keys.UP))
             playerMoveVec.y++;
         
         
