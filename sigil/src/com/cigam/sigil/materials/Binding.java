@@ -134,7 +134,7 @@ public class Binding extends MaterialDescriptor {
 		for(PhysicalEntity p:objectsInRange){
 			Object[] keySet =  entitiesToBind.keySet().toArray();
 			for(Object m: keySet){
-				if(p.mat.isSameMat((MaterialDescriptor) m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p))){
+				if(p.mat.isSameMat((MaterialDescriptor) m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p)&&!p.equals(toBindInto))){
 					entitiesToBind.put((MaterialDescriptor) m, p);
 				}
 			}
