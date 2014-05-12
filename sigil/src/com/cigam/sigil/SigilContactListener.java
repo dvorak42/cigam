@@ -8,7 +8,6 @@ import com.cigam.sigil.magic.SpellEffect;
 import com.cigam.sigil.materials.SpikeyMat;
 
 public class SigilContactListener implements ContactListener {
-
 	@Override
 	public void beginContact(Contact c) {
 		if(c.getFixtureA().getBody().getUserData() instanceof PhysicalEntity && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
@@ -33,13 +32,15 @@ public class SigilContactListener implements ContactListener {
 			}
 			if(a instanceof SpellEffect) {
 				SpellEffect e = (SpellEffect)a;
-				if(e.sd != null && e.sd.mat instanceof SpikeyMat)
+				if(e.sd != null && e.sd.mat instanceof SpikeyMat){
 					b.addAutoDamage(4);
+				}
 			}
 			if(b instanceof SpellEffect) {
 				SpellEffect e = (SpellEffect)b;
-				if(e.sd != null && e.sd.mat instanceof SpikeyMat)
+				if(e.sd != null && e.sd.mat instanceof SpikeyMat){
 					a.addAutoDamage(4);
+				}
 			}
 		}
 		if(c.getFixtureA().getBody().getUserData() == Constants.LAVA && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
@@ -52,6 +53,7 @@ public class SigilContactListener implements ContactListener {
 
 	@Override
 	public void endContact(Contact c) {
+		
 		if(c!= null&&c.getFixtureA()!=null&&c.getFixtureB()!=null){
 			if(c.getFixtureA().getBody().getUserData() instanceof PhysicalEntity && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
 				PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
@@ -69,16 +71,17 @@ public class SigilContactListener implements ContactListener {
 				}
 				if(a instanceof SpellEffect) {
 					SpellEffect e = (SpellEffect)a;
-					if(e.sd != null && e.sd.mat instanceof SpikeyMat)
+					if(e.sd != null && e.sd.mat instanceof SpikeyMat){
 						b.addAutoDamage(-4);
+					}
 				}
 				if(b instanceof SpellEffect) {
 					SpellEffect e = (SpellEffect)b;
-					if(e.sd != null && e.sd.mat instanceof SpikeyMat)
+					if(e.sd != null && e.sd.mat instanceof SpikeyMat){
 						a.addAutoDamage(-4);
+					}
 				}
 			}
-			
 		}
 	}
 
