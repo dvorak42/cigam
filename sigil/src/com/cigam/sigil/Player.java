@@ -38,6 +38,7 @@ public class Player extends PhysicalEntity {
 			animations[i] = new Animation(1/8f, textures[i]);
 		}
 		health = Constants.MAX_HEALTH;
+		direction = Direction.FORWARD;
 	}
 
 	@Override
@@ -70,10 +71,10 @@ public class Player extends PhysicalEntity {
 			idle = true;
 		}
 		if(idle){
-			float width = animations[2].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;
-			float height = animations[2].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
+			float width = animations[direction.ordinal()].getKeyFrame(2).getRegionHeight()*Constants.PLAYER_SCALE;
+			float height = animations[direction.ordinal()].getKeyFrame(2).getRegionWidth()*Constants.PLAYER_SCALE;
 			if(visible)
-				game.batch.draw(animations[2].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height);
+				game.batch.draw(animations[direction.ordinal()].getKeyFrame(2, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height);
 		} else if(direction == Direction.BACKWARD||direction == Direction.LEFT||direction == Direction.RIGHT||direction == Direction.FORWARD){
 			float width = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;
 			float height = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
