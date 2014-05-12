@@ -90,7 +90,7 @@ public class AdventureScreen implements Screen {
 		toDestroy = new Array<PhysicalEntity>();
 		helpText = new ArrayList<TextEntity>();
 
-		SpellsArray = new Spell[10];
+		SpellsArray = new Spell[7];
 		
 		parser = new Parser(new StringLexer());
 		
@@ -310,7 +310,7 @@ public class AdventureScreen implements Screen {
 		        //	SpellsArray[selectedSpell] = null;
 		        else {
 		        	boolean cast = false;
-		        	for(int i = 0; i < 10; i++) {
+		        	for(int i = 0; i < 7; i++) {
 		        		int j = i != 9 ? i : -1;
 		        		if(in.isKeyPressed(Input.Keys.NUM_1 + j)) {
 		        			if(SpellsArray[i] != null && selectedSpell == i)
@@ -370,7 +370,7 @@ public class AdventureScreen implements Screen {
 		hudCamera.update(true);
 		sr.setProjectionMatrix(hudCamera.combined);
 
-		int spellSlotWidth = (Gdx.graphics.getWidth() - 2 * 60 - 10) / 10 - 10;
+		int spellSlotWidth = (Gdx.graphics.getWidth() - 2 * 60 - 10) / 7 - 10;
 		
 		sr.begin(ShapeType.Filled);
 		sr.setColor(Color.GRAY);
@@ -379,7 +379,7 @@ public class AdventureScreen implements Screen {
 		sr.begin(ShapeType.Line);
 		sr.setColor(Color.BLACK);
 		sr.rect(10, 10, 50, 100);
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < 7; i++) {
 			sr.rect(70 + i * (spellSlotWidth + 10), 10, spellSlotWidth, 100);
 		}
 		sr.rect(Gdx.graphics.getWidth() - 60, 10, 50, 100);
@@ -400,7 +400,7 @@ public class AdventureScreen implements Screen {
 		sr.rect(Gdx.graphics.getWidth() - 60, 11, 49, 1 + (int)(98.0f * percentMana));
 		sr.end();
 		
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < 7; i++) {
 			if(SpellsArray[i] != null) {
 				sr.begin(ShapeType.Filled);
 				if(i == selectedSpell)
