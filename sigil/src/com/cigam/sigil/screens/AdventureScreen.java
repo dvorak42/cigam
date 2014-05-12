@@ -210,9 +210,7 @@ public class AdventureScreen implements Screen {
     		Texture enemyTexture = new Texture(Gdx.files.internal("art/Enemy/EnemyOrb512.png"));
     		enemyTexture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
     		Sprite enemySprite = new Sprite(enemyTexture);
-    		enemySprite.scale(0.2f);
-    		enemySprite.setScale(Constants.SPELL_SCALE_FACTOR, 1/Constants.SPELL_SCALE_FACTOR);
-    		enemySprite.setSize(50*Constants.SPELL_SCALE_FACTOR, 50/Constants.SPELL_SCALE_FACTOR);
+    		enemySprite.setSize(50*Constants.SPELL_SCALE_FACTOR, 50);
         	Enemy enm = new Enemy(game, enemySprite, this, player, center);
             entities.add(enm);
             enemies.add(enm);
