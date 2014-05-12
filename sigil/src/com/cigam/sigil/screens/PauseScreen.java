@@ -62,6 +62,7 @@ public class PauseScreen implements Screen {
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
 		pauseImage = new Sprite(texture);
+		pauseImage.flip(false,true);
 		
 		assetManager = new AssetManager();
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -70,9 +71,9 @@ public class PauseScreen implements Screen {
 		rMenu = new RadialMenu();
 		rMenu.color = Color.BLACK;
 		RadialMenu verbMenu = new RadialMenu(Create.class, Banish.class, Bind.class, Summon.class);
-		verbMenu.color = Color.BLUE;
+		//verbMenu.color = Color.BLUE;
 		RadialMenu targetMenu = new RadialMenu(SelfRune.class, SpikeyRune.class, EnemyRune.class);
-		targetMenu.color = Color.RED;
+		//targetMenu.color = Color.WHITE;
 		//RadialMenu modifierMenu = new RadialMenu(AreaToDuration.class, AreaToEffect.class, DurationToArea.class, DurationToEffect.class, EffectToArea.class, EffectToDuration.class);
 		//modifierMenu.color = Color.GREEN;
 		RadialEnd deleteSelected = new RadialEnd(new Integer(-1));
@@ -92,8 +93,27 @@ public class PauseScreen implements Screen {
 		
 		
 		
-		if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
-			game.setScreen(parent);
+		if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+		    try{
+	            if(createdSpell.target!=null){
+	                createdSpell.resetDiagram();
+	                parent.SpellsArray[index] = createdSpell;
+	            }
+	            //System.out.println(parent.SpellsArray);
+	            index++;
+	            index = index%10;
+	        } catch (Exception e){
+	        }
+		    game.setScreen(parent);
+		}
+		
+		if (Gdx.input.isKeyPressed(Input.Keys.ENTER)){
+		    game.setScreen(parent);
+		}
+		
+		if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+		    Gdx.app.exit();
+		}
 		/*
 		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT))
 			wasDown = true;
@@ -101,14 +121,21 @@ public class PauseScreen implements Screen {
 			wasDown = false;
 			//System.out.println(rMenu.getValue());
 		}*/
+		game.batch.setProjectionMatrix(camera.combined);
+		game.batch.begin();
+        pauseImage.setColor(game.batch.getColor());
+        pauseImage.draw(game.batch);
+        pauseImage.setColor(Color.WHITE);
+        game.batch.end();
+		
 		rMenu.update(new Vector2(Gdx.input.getX(), Gdx.input.getY()), Gdx.input.isButtonPressed(Input.Buttons.LEFT));
 		camera.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.update(true);
-		game.batch.setProjectionMatrix(camera.combined);
-		sr.setProjectionMatrix(camera.combined);
-		sr.begin(ShapeType.Filled);
-		rMenu.render(sr, game.batch);
-		sr.end();
+		 
+        sr.setProjectionMatrix(camera.combined);
+        sr.begin(ShapeType.Filled);
+        rMenu.render(sr, game.batch);
+        sr.end();
 	}
 
 	@Override
@@ -130,7 +157,7 @@ public class PauseScreen implements Screen {
 	    		childLayoutCenter();
 	    		panel(new PanelBuilder(){{
 	    			//style("nifty-panel-simple");
-	    			this.backgroundColor("#099f");
+	    			this.backgroundColor("#000f");
 	    			childLayoutCenter();
 	                height("95%");
 	                width("72%");
@@ -157,16 +184,7 @@ public class PauseScreen implements Screen {
 
 	@Override
 	public void hide() {
-		try{
-			if(createdSpell.target!=null){
-				createdSpell.resetDiagram();
-				parent.SpellsArray[index] = createdSpell;
-			}
-			//System.out.println(parent.SpellsArray);
-			index++;
-			index = index%10;
-		} catch (Exception e){
-		}
+		
 	}
 
 	@Override

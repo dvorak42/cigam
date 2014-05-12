@@ -49,8 +49,8 @@ public class RadialEnd extends RadialMenu {
 			b.end();
 			sr.begin(ShapeType.Filled);
 		} else {
-			sr.setColor(Color.GRAY);
-			sr.circle(position.x, position.y, radius);		
+			//sr.setColor(Color.GRAY);
+			//sr.circle(position.x, position.y, radius);
 		}
 	}
 
@@ -64,13 +64,13 @@ public class RadialEnd extends RadialMenu {
 				b.end();
 				sr.begin(ShapeType.Filled);
 			} else {
-				sr.setColor(color);
-				sr.circle(position.x, position.y, radius);				
+				//sr.setColor(color);
+				//sr.circle(position.x, position.y, radius);				
 			}
 			for(int i = 0; i < subMenus.size(); i++) {
-				sr.setColor(Color.GRAY);
+				/*sr.setColor(Color.GRAY);
 				Vector2 sp = position.cpy().add(new Vector2(radius, 0).rotate(i * 360 / subMenus.size()));
-				sr.circle(sp.x, sp.y, 5);
+				sr.circle(sp.x, sp.y, 5);*/
 			}
 			if(selected >= 0)
 				subMenus.get(selected).render(sr, b);

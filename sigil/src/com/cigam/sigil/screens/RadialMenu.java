@@ -2,10 +2,16 @@ package com.cigam.sigil.screens;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
+import com.cigam.sigil.magic.targets.SelfRune;
 
 public class RadialMenu {
 	ArrayList<RadialMenu> subMenus;
@@ -15,6 +21,9 @@ public class RadialMenu {
 	Vector2 position;
 	float radius;
 	Color color;
+	Sprite icon;
+	String imagePath;
+	boolean isPrimary = true;
 	
 	public RadialMenu() {
 		subMenus = new ArrayList<RadialMenu>();
@@ -24,6 +33,13 @@ public class RadialMenu {
 		position = new Vector2();
 		radius = 128;
 		color = Color.WHITE;
+		
+		imagePath = "UI/cigam/RadialMenuBase512.png";
+        Texture t = new Texture(Gdx.files.internal(imagePath));
+        t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+        icon = new Sprite(t);
+        icon.flip(false, true);
+        icon.setSize(256, 256);
 	}
 	
 	public RadialMenu(Object... items) {
@@ -31,6 +47,18 @@ public class RadialMenu {
 		for(Object o : items) {
 			addMenu(new RadialEnd(o));
 		}
+		
+		isPrimary = false;
+		if (items[0].equals(SelfRune.class)){
+		    imagePath = "UI/cigam/RadialMenuBase512.png";
+		} else {
+		    imagePath = "UI/cigam/RadialMenuSecondary512.png";
+		}
+        Texture t = new Texture(Gdx.files.internal(imagePath));
+        t.setFilter(TextureFilter.Linear, TextureFilter.Linear);
+        icon = new Sprite(t);
+        icon.flip(false, true);
+        icon.setSize(128, 128);
 	}
 	
 	public void setRadius(float r) {
@@ -105,14 +133,27 @@ public class RadialMenu {
 	}
 
 	public void renderPreview(ShapeRenderer sr, SpriteBatch b, Vector2 position, float radius) {
-		sr.setColor(Color.GRAY);
-		sr.circle(position.x, position.y, radius);		
+		//sr.setColor(Color.GRAY);
+		//sr.circle(position.x, position.y, radius);		
 	}
 	
 	public void render(ShapeRenderer sr, SpriteBatch b) {
 		if(visible) {
-			sr.setColor(color);
-			sr.circle(position.x, position.y, radius);
+		    sr.end();
+            b.begin();
+            if (isPrimary){
+                icon.setPosition(position.x-128, position.y-128);
+                //icon.scale(1.5f);
+                icon.draw(b,.5f);
+            } else {
+                icon.setPosition(position.x-this.radius, position.y-this.radius);
+                icon.draw(b,1f);
+            } 
+            b.end();
+            sr.begin(ShapeType.Filled);
+		    
+			/*sr.setColor(color);
+			sr.circle(position.x, position.y, radius);*/
 			for(int i = 0; i < subMenus.size(); i++) {
 				Vector2 sp = position.cpy().add(new Vector2(radius, 0).rotate(i * 360 / subMenus.size()));
 				subMenus.get(i).renderPreview(sr, b, sp, 10); //this controls the menu indicator dots
