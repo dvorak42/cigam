@@ -303,24 +303,26 @@ public class AdventureScreen implements Screen {
         if(fireDelay <= 0)
         {
         	fireDelay = Constants.FIRE_DELAY;
-        	if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
-	        	SpellsArray[selectedSpell].cast(this, player);
-	        //else if(in.isKeyPressed(Input.Keys.I) && SpellsArray[selectedSpell] != null)
-	        //	SpellsArray[selectedSpell] = null;
-	        else {
-	        	boolean cast = false;
-	        	for(int i = 0; i < 10; i++) {
-	        		int j = i != 9 ? i : -1;
-	        		if(in.isKeyPressed(Input.Keys.NUM_1 + j)) {
-	        			if(SpellsArray[i] != null && selectedSpell == i)
-	        				SpellsArray[selectedSpell].cast(this, player);
-	        			selectedSpell = i;
-	    	        	cast = true;
-	        		}
-	        	}
-	        	if(!cast)
-	        		fireDelay = 0;
-	        }
+        	try{
+	        	if(in.isKeyPressed(Input.Keys.SPACE) && SpellsArray[selectedSpell] != null)
+		        	SpellsArray[selectedSpell].cast(this, player);
+		        //else if(in.isKeyPressed(Input.Keys.I) && SpellsArray[selectedSpell] != null)
+		        //	SpellsArray[selectedSpell] = null;
+		        else {
+		        	boolean cast = false;
+		        	for(int i = 0; i < 10; i++) {
+		        		int j = i != 9 ? i : -1;
+		        		if(in.isKeyPressed(Input.Keys.NUM_1 + j)) {
+		        			if(SpellsArray[i] != null && selectedSpell == i)
+		        				SpellsArray[selectedSpell].cast(this, player);
+		        			selectedSpell = i;
+		    	        	cast = true;
+		        		}
+		        	}
+		        	if(!cast)
+		        		fireDelay = 0;
+		        }
+        	} catch(Exception e) {}
         }
 
         fireDelay -= delta;
