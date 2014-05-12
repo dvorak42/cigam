@@ -493,6 +493,7 @@ public class AdventureScreen implements Screen {
 	public void show() {
 		sr = new ShapeRenderer();
 		fireDelay = Constants.FIRE_DELAY;
+		Gdx.input.setCursorCatched(true);
 	}
 
 

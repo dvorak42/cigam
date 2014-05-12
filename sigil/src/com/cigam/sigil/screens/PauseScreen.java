@@ -7,6 +7,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -24,6 +25,7 @@ import com.cigam.sigil.magic.verbs.Bind;
 import com.cigam.sigil.magic.verbs.Create;
 import com.cigam.sigil.magic.verbs.Summon;
 import com.cigam.sigil.magic.verbs.TopLevelSpell;
+
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.builder.LayerBuilder;
 import de.lessvoid.nifty.builder.PanelBuilder;
@@ -120,7 +122,6 @@ public class PauseScreen implements Screen {
 	    nifty = new Nifty(batchRenderDevice, new GdxSoundDevice(assetManager), new GdxInputSystem(Gdx.input), new AccurateTimeProvider());
 	    nifty.loadStyleFile("nifty-default-styles.xml");
 	    nifty.loadControlFile("nifty-default-controls.xml");
-	    	    
 	    // <screen>
 	    final PauseScreen p = this;
 	    nifty.addScreen("Pause", new ScreenBuilder("Hello Nifty Screen"){{
@@ -150,7 +151,9 @@ public class PauseScreen implements Screen {
 
 	    panel.setUserData("containingSpell", createdSpell);
 	    sr = new ShapeRenderer();
-	}
+		Gdx.input.setCursorPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+		Gdx.input.setCursorCatched(false);
+		}
 
 	@Override
 	public void hide() {
