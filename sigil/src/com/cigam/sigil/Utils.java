@@ -326,6 +326,9 @@ public class Utils {
 	}
 	
 	public static float dirToAngle(Direction d){
+		if(d==null){
+			d = Direction.FORWARD;
+		}
 		switch (d) {
 			case BACKWARD:
 				return 90;

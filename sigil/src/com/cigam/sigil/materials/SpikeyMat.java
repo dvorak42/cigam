@@ -11,10 +11,9 @@ public class SpikeyMat extends MaterialDescriptor {
 
 	public SpikeyMat() {
 		super();
-		this.init(null,3,0.2f,0);
 		ParticleEffect p = new ParticleEffect();
 		p.load(Gdx.files.internal("art/particles/Element2.p"), Gdx.files.internal("art/particles"));
-		this.init(p,0,0,0);
+		this.init(p,0.2f,0.2f,0);
 		this.scaleManifestation(1*(Constants.SPELL_SCALE_FACTOR), 1/(Constants.SPELL_SCALE_FACTOR));
 	}
 

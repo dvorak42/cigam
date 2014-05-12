@@ -102,9 +102,10 @@ public class Binding extends MaterialDescriptor {
 		if(toBindInto != null){
 			ArrayList<MaterialDescriptor> keysToDelete = new ArrayList<MaterialDescriptor>();
 			for(MaterialDescriptor m:entitiesToBind.keySet()){
-				if(entitiesToBind.get(m)!=null ){
+				if(entitiesToBind.get(m)!=null&&entitiesToBind.get(m).active&&entitiesToBind.get(m).visible){
+					System.out.println("Binding is binding " + entitiesToBind.get(m) + " into " + toBindInto);
 					toBindInto.bind(entitiesToBind.get(m), bindingStrength);
-					keysToDelete.add(m);
+					//keysToDelete.add(m);
 				}
 			}
 			for(MaterialDescriptor m: keysToDelete){
@@ -134,8 +135,14 @@ public class Binding extends MaterialDescriptor {
 		for(PhysicalEntity p:objectsInRange){
 			Object[] keySet =  entitiesToBind.keySet().toArray();
 			for(Object m: keySet){
-				if(p.mat.isSameMat((MaterialDescriptor) m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p)&&!p.equals(toBindInto))){
-					entitiesToBind.put((MaterialDescriptor) m, p);
+				System.out.println(p + " active state is " + p.active);
+				if(p == null || !p.active() || p.body == null || p.mat == null){
+					System.out.println(p);
+					continue;
+				}else{
+					if(p.mat.isSameMat((MaterialDescriptor) m)&&entitiesToBind.get(m)==null&&(!entitiesToBind.containsKey(p)&&!p.equals(toBindInto)&&p.active)){
+						entitiesToBind.put((MaterialDescriptor) m, p);
+					}
 				}
 			}
 		}
