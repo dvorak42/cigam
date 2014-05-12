@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.cigam.sigil.screens.AdventureScreen;
-import com.cigam.sigil.screens.HelpScreen1;
+import com.cigam.sigil.screens.HelpScreen;
 import com.cigam.sigil.screens.PauseScreen;
 
 public class SigilGame extends Game {
     public PauseScreen pauseScreen;
     public AdventureScreen gameScreen;
-    public HelpScreen1 helpScreen;
+    public HelpScreen helpScreen;
     public SpriteBatch batch;
     public SpriteBatch hudBatch;
     public BitmapFont font;
@@ -25,7 +25,9 @@ public class SigilGame extends Game {
 
 	gameScreen = new AdventureScreen(this);
 	pauseScreen = new PauseScreen(this, gameScreen);
-	helpScreen = new HelpScreen1(this, gameScreen);
+	helpScreen = new HelpScreen(this, "help/Help Menu 1.png", 
+			new HelpScreen(this, "help/Help Menu 2.png", 
+					new HelpScreen(this, "help/Help Menu 3.png", gameScreen)));
 	setScreen(gameScreen);
     }
     @Override

@@ -13,19 +13,20 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.cigam.sigil.SigilGame;
 
 
-public class HelpScreen1 implements Screen {
+public class HelpScreen implements Screen {
 	SigilGame game;
-	Screen parent;
 	Sprite bgImage;
-	
+	Screen child;
+	boolean spaceUnpressed;
 	AssetManager assetManager;
 	
 	OrthographicCamera camera;
 		
-	public HelpScreen1(final SigilGame game, final AdventureScreen parent) {
+	public HelpScreen(final SigilGame game, final String bg, final Screen child) {
 		this.game = game;
-		this.parent = parent;
-		Texture texture = new Texture(Gdx.files.internal("help/Help Menu 2.png"));
+		this.child = child;
+		spaceUnpressed = false;
+		Texture texture = new Texture(Gdx.files.internal(bg));
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
 		
 		bgImage = new Sprite(texture);
@@ -40,9 +41,13 @@ public class HelpScreen1 implements Screen {
 	public void render(float delta) {
         Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
-			game.setScreen(parent);
+		if(!Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+			spaceUnpressed = true;
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.SPACE)&&spaceUnpressed){
+			spaceUnpressed = false;
+			game.setScreen(child);
+		}
 		/*
 		if(Gdx.input.isButtonPressed(Input.Buttons.LEFT))
 			wasDown = true;

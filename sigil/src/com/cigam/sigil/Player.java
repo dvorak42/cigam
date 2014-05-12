@@ -48,7 +48,7 @@ public class Player extends PhysicalEntity {
 		body = screen.world.createBody(bd);
 		
 		FixtureDef fd = new FixtureDef();
-		fd.density = 0.1f; 
+		fd.density = 0.01f; 
 		PolygonShape p = new PolygonShape();
 		p.set(Utils.initSpellHitBox(24*Constants.PLAYER_SCALE, Constants.SPELL_SCALE_FACTOR));
 		fd.shape = p;
