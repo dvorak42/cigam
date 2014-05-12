@@ -98,7 +98,25 @@ public class TargetController implements Controller {
 				pElement.hide();
 				e.layoutElements();
 			}
-		} else if(!full) {
+		} else if(full){
+			if(containingSpell != null) {
+				containingSpell.removeTarget();
+				Element pElement = e.getChildren().get(0);
+				pElement.markForRemoval();
+				pElement.hide();
+				e.layoutElements();
+			}
+			if(newSpell != null && containingSpell != null){
+				if(containingSpell.addTarget(newSpell)){
+					newSpell.gui.build(n, s, e);
+					//System.out.println(e.getChildrenCount());
+					recursiveSetUserData("containingSpell", newSpell, e);
+				} else {
+					System.out.println("Invalid");
+				}
+			}
+		}
+		else  {
 			//System.out.println("inp = " + newSpell);
 			//System.out.println("containtingSpell = " + containingSpell);
 			if(newSpell != null && containingSpell != null){
