@@ -253,9 +253,9 @@ public class AdventureScreen implements Screen {
 	@Override
 	public void render(float delta) {
 		Input in = Gdx.input;
-
+		
 		if(!paused) {
-			
+		
 		if(player == null || !player.active())
 			restartGame();
 		if(in.isKeyPressed(Input.Keys.P)) {
@@ -267,6 +267,9 @@ public class AdventureScreen implements Screen {
 		if(in.isKeyPressed(Input.Keys.H)) {
 			game.setScreen(game.helpScreen);
 			return;
+		}
+		if (in.isKeyPressed(Input.Keys.ESCAPE)){
+		    Gdx.app.exit();
 		}
 
         //Moving the player
