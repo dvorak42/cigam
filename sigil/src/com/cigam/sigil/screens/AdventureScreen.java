@@ -115,13 +115,6 @@ public class AdventureScreen implements Screen {
 		toDestroy.clear();
 
 		
-		
-		helpTexture = new Texture(Gdx.files.internal("help/youwintext.png"));
-		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(7000,150));
-		helpText.add(helpTextEntity);
-		entities.add(helpTextEntity);
-		
 		resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		world = new World(new Vector2(), true);
@@ -231,6 +224,12 @@ public class AdventureScreen implements Screen {
 		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
 		helpTextEntity.setPosition(new Vector2(2400,150));
 		helpText.add(helpTextEntity);
+		
+		helpTexture = new Texture(Gdx.files.internal("help/youwintext.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(7000,150));
+		helpText.add(helpTextEntity);
+		entities.add(helpTextEntity);
     }
     
     public SpellEffect createSpellEffect(SpellDescriptor s) {

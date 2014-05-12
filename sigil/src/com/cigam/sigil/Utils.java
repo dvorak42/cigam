@@ -308,9 +308,9 @@ public class Utils {
 	}
 
 	public static Direction vecToDir(Vector2 v) {
-		if(v.epsilonEquals(0, 0, .001f)){
+		/*if(v.epsilonEquals(0, 0, .001f)){
 			return Direction.IDLE;
-		} else if(Math.abs(v.y)>Math.abs(v.x)){
+		} else*/ if(Math.abs(v.y)>Math.abs(v.x)){
 			if(v.y>0){
 				return Direction.BACKWARD;
 			} else {

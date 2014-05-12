@@ -20,11 +20,13 @@ public class Player extends PhysicalEntity {
     private TextureAtlas textureAtlas;
     private Animation[] animations;
     private TextureRegion[][] textures;
+    private boolean idle;
 	
 	//World world, MaterialDescriptor material, BodyDef bd, FixtureDef[] fds
 	public Player(SigilGame g, Sprite s,AdventureScreen a) {
 		super(g, s, a, new SelfMat());
 		initEntity();
+		idle = false;
 		animations = new Animation[5];
 		textures = new TextureRegion[5][];
 		textureAtlas = new TextureAtlas(Gdx.files.internal("art/PCAnimation/PC.atlas"));
@@ -61,8 +63,18 @@ public class Player extends PhysicalEntity {
 	@Override
 	public void render(float dt) {
 		super.render(dt);
-		direction = Utils.vecToDir(body.getLinearVelocity());
-		if(direction == Direction.BACKWARD||direction == Direction.LEFT||direction == Direction.RIGHT){
+		if(!body.getLinearVelocity().epsilonEquals(0, 0, 0.001f)){
+			idle = false;
+			direction = Utils.vecToDir(body.getLinearVelocity());
+		} else {
+			idle = true;
+		}
+		if(idle){
+			float width = animations[2].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;
+			float height = animations[2].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
+			if(visible)
+				game.batch.draw(animations[2].getKeyFrame(elapsedTime, true), this.getPosition().x-width/2, this.getPosition().y-height/6, width, height);
+		} else if(direction == Direction.BACKWARD||direction == Direction.LEFT||direction == Direction.RIGHT){
 			float width = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionHeight()*Constants.PLAYER_SCALE;
 			float height = animations[direction.ordinal()].getKeyFrame(elapsedTime).getRegionWidth()*Constants.PLAYER_SCALE;
 			if(visible)

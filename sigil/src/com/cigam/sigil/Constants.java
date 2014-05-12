@@ -3,7 +3,7 @@ package com.cigam.sigil;
 
 public class Constants {
     public enum Direction {
-    	FORWARD, BACKWARD, RIGHT, LEFT, IDLE;
+    	FORWARD, BACKWARD, RIGHT, LEFT;
     }
 
     // TODO: define specific subclasses of enemy, which should have their own definitions for aggro range, fire right, projectile speed, move speed, etc.
