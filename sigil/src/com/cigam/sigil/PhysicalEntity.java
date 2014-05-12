@@ -49,6 +49,8 @@ public abstract class PhysicalEntity extends Entity {
 		totalManaCapacity = initManaCapacity;
 		totalManaBound = 0;
 		totalManaWeight = mat.manaDensityFactor*this.body.getMass();
+		System.out.println(this + " manaweight " + totalManaWeight);
+		System.out.println(this + " manacapacity " + initManaCapacity);
 	}
 	
 	public void bind(PhysicalEntity p, float bindingValue){

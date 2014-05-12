@@ -15,7 +15,7 @@ public class SigilContactListener implements ContactListener {
 			PhysicalEntity a = ((PhysicalEntity) c.getFixtureA().getBody().getUserData());
 			PhysicalEntity b = ((PhysicalEntity) c.getFixtureB().getBody().getUserData());
 			if(a.mat != null && b.mat != null) {
-				System.out.println("collision started between " + a + " and " + b);
+				//System.out.println("collision started between " + a + " and " + b);
 				a.mat.OnCollide(b);
 				b.mat.OnCollide(a);
 			}

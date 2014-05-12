@@ -49,10 +49,8 @@ public class Enemy extends PhysicalEntity {
 		
 		FixtureDef fd = new FixtureDef();
 		fd.density = 0.5f; 
-
 	    Utils.mainBodies.attachFixture(body, "enemy", fd, sprite.getWidth());
 	    modelOrigin = Utils.mainBodies.getOrigin("enemy", sprite.getWidth());
-
 	    body.setUserData(this);
 	}
 
