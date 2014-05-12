@@ -12,7 +12,7 @@ public class EnemyMat extends MaterialDescriptor {
 	public EnemyMat() {
 		super();
 		ParticleEffect p = new ParticleEffect();
-		p.load(Gdx.files.internal("art/particles/Element3.p"), Gdx.files.internal("art/particles"));
+		p.load(Gdx.files.internal("art/particles/enemy.p"), Gdx.files.internal("art/particles"));
 		this.init(p,0.2f,0.2f,0);
 		this.scaleManifestation(1*(Constants.SPELL_SCALE_FACTOR), 1/(Constants.SPELL_SCALE_FACTOR));
 	}

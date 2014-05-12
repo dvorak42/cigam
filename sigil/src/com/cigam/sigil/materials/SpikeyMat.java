@@ -17,23 +17,7 @@ public class SpikeyMat extends MaterialDescriptor {
 		this.scaleManifestation(1*(Constants.SPELL_SCALE_FACTOR), 1/(Constants.SPELL_SCALE_FACTOR));
 	}
 
-	@Override
-	public void OnCollide(PhysicalEntity p) {
-		// TODO Does damage, sets things on fire, etc...
-	}
-
-
-	@Override
-	public void NoCollide(PhysicalEntity b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void Update() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	@Override
 	public void scaleManifestation(float x, float y){
 		for(int i = 0; i < image.getEmitters().size; i++){
