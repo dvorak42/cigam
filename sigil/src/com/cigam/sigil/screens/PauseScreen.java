@@ -150,6 +150,7 @@ public class PauseScreen implements Screen {
 	    nifty.loadControlFile("nifty-default-controls.xml");
 	    // <screen>
 	    final PauseScreen p = this;
+	    createdSpell = null;
 	    nifty.addScreen("Pause", new ScreenBuilder("Hello Nifty Screen"){{
 	    	controller(new PauseScreenController(p));
 	    	layer(new LayerBuilder("Layer_0"){{

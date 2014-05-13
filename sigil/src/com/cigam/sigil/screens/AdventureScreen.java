@@ -100,12 +100,12 @@ public class AdventureScreen implements Screen {
 		
 		restartGame();
 		player.setPosition(new Vector2(400, 300));
-		SpellsArray[0] = parser.parse("Create(fire)");
+		/*SpellsArray[0] = parser.parse("Create(fire)");
 		SpellsArray[1] = parser.parse("Summon(fire - - - self)");
 		SpellsArray[2] = parser.parse("Bind(self - - - fire))");
 		SpellsArray[3] = parser.parse("Create(Banish(fire - - - self))");
 		SpellsArray[4] = parser.parse("Create(Create(Create(Create(Create(fire)))))");
-		SpellsArray[5] = parser.parse("Create(Create(Create(Create(Create(Bind(self - - - fire))))))");
+		SpellsArray[5] = parser.parse("Create(Create(Create(Create(Create(Bind(self - - - fire))))))");*/
 	}
     
     public void restartGame() {
@@ -346,7 +346,9 @@ public class AdventureScreen implements Screen {
 		});
 		
 		for(Entity e : entities)
-			drawQueue.add(e);
+			if(e.destructable){
+				drawQueue.add(e);
+			}
 		
 		game.batch.begin();
 		game.batch.setColor(Color.WHITE);
@@ -355,7 +357,13 @@ public class AdventureScreen implements Screen {
 		}
 		game.batch.setColor(Color.WHITE);
 		game.batch.end();
-		
+		game.batch.begin();
+		game.batch.setColor(Color.WHITE);
+		for(int i = 0; i < spells.size();i++){
+			spells.get(i).render(delta);
+		}
+		game.batch.setColor(Color.WHITE);
+		game.batch.end();
 		while (drawQueue.size() != 0) {
 			game.batch.begin();
 			game.batch.setColor(Color.WHITE);
