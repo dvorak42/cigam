@@ -54,7 +54,7 @@ public class Binding extends MaterialDescriptor {
 			objectsNoCollided.add(p);
 	}
 	@Override
-	public void Update(){
+	public void Update(float delta){
 		//Add new collisions to objectsInRange
 		doCollisions();
 		//Bind things to be bound
@@ -76,7 +76,7 @@ public class Binding extends MaterialDescriptor {
 		toBindInto = null;
 		//float min = Float.MAX_VALUE;
 		this.manifestation = manifestation;
-		this.Update();
+		this.Update(0);
 		//System.out.println(objectsInRange);
 		/*for(PhysicalEntity p: objectsInRange){
 			if(p == null || !p.active() || p.body == null)

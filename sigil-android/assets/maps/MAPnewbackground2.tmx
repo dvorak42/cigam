@@ -31,7 +31,7 @@
    eJztmltKw2AQRutjQzcgqHUb9b4NL5vw8qJ1Iy6t6kYEtU4ehBIyLY1JnG9yDgwjDfQUS//vg2QxHo1ebd7YYfe7zQsePDZqfAh+5qHxOe7ne8IT36PGbvHfnwA2sVf08z3hie9Rg/4Sn75z+Hbiz92kPU/XZPSoQX+JT985fD/x56GF8yVjr6C/1EN/iU/GHMbTzKMG/SU+GXO49HzZ3982y5W9rHlt0x7trPd0Df3Fh/4Sn4w5XHr27Vw4sJmu7GnNa5v2oXO+ZPy/qUF/iU/GHC49p3YunNuc/XFf0F/CQn+JT8YcVvQsnGff6C8+9Jf4ZMxhRY93htBffOgv8VHN+2we7wyhv/jQX+KjmvfZPPSX7aG/xEc177N56C/bQ3+Jj2reZ/PQX7aH/hIf1bzP5qG/bA/9JT6qeZ/N470X/cWH/hIf1bzP5pnZ7/vI5nhll0N/8aG/xEc177N5Lu29rmyuK5v+4kN/iY9q3mfzPNrv+8lmXtn0Fx/6S3xU8x5P+x416C/xUc17PO171KC/xCdjDuNp5lGD/hKfjDmMp5lHDfpLfDLmMJ5mHjVmlfv5dXvdNXb3+6Sof/YCz/A8apT39Kv386t73TV29/um8J+9wDMsjxrlPf15UX9f/3evu8bufj8X/rMXeIblUeMHoY+90Q==
   </data>
  </layer>
- <layer name="Macguffins" width="280" height="28">
+ <layer name="Macguffins" width="280" height="28" visible="0">
   <data encoding="base64" compression="zlib">
    eJzt27sNgDAMBUBLaVmWzwqwCWwCm8AcpKZCQoQI3Q1gu/Gr7AgAAOCuMUVM6espgNq0TUTXPKsx52xZ5Atw0edsGR7mCwAAAAAAAAAA/7KmiK3AvVmpPkA99rzzR4G9L9Xnr/w1AG/x1wAAAAAAAAAAAAAAAAAAUKcTDTANgw==
   </data>
@@ -75,7 +75,7 @@
     <property name="destY" value="13.0"/>
    </properties>
   </object>
-  <object x="1604" y="197" width="23" height="25">
+  <object x="1428" y="275" width="23" height="25">
    <properties>
     <property name="destX" value="107"/>
     <property name="destY" value="12.0"/>

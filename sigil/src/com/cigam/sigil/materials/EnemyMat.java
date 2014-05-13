@@ -30,7 +30,7 @@ public class EnemyMat extends MaterialDescriptor {
 	}
 
 	@Override
-	public void Update() {
+	public void Update(float delta) {
 		// TODO Auto-generated method stub
 		
 	}

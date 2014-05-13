@@ -15,6 +15,8 @@ public abstract class Entity {
 	public int plane;
 	public float health;
     public Direction direction;
+	public boolean destructable;
+
 	
     public float damageFlash;
     
@@ -90,15 +92,17 @@ public abstract class Entity {
 	}
 	
 	public void damage(float dmg) {
-		if(health != -1) {
-			if(damageFlash < 0) {
-				health -= dmg;
-				if(health < 0) {
-					kill();
+		if(destructable){
+			if(health != -1) {
+				if(damageFlash < 0||true) {
+					health -= dmg;
+					if(dmg > 0)
+						damageFlash = 1.0f;
+					if(health < 0) {
+						kill();
+					}
 				}
 			}
-			if(dmg > 0)
-				damageFlash = 1.0f;
 		}
 	}
 	

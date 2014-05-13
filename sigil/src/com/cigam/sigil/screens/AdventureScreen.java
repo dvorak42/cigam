@@ -256,7 +256,7 @@ public class AdventureScreen implements Screen {
 		
 		if(!paused) {
 		
-		if(player == null || !player.active())
+		if(player == null || player.dead())
 			restartGame();
 		if(in.isKeyPressed(Input.Keys.P)) {
 			//game.pauseScreen.createdSpell = SpellsArray[selectedSpell];
@@ -289,10 +289,10 @@ public class AdventureScreen implements Screen {
         player.body.applyForceToCenter(playerMoveVec.scl((int)(player.body.getMass()*Constants.PLAYER_ACCELERATION_FACTOR)), true);
         
         for(int i = 0; i < spells.size(); i++){
-        	if(spells.get(i).duration > 0){
-        		spells.get(i).mat.Update();
+        	if(spells.get(i).duration > 0 && spells.get(i).active()){
+        		spells.get(i).mat.Update(delta);
         		spells.get(i).timeStep(delta);
-        	} else {
+        	} else if (spells.get(i).duration <= 0) {
         		destroySpellEffect(spells.get(i));
         	}
         }

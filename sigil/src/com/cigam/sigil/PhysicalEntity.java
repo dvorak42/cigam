@@ -21,8 +21,7 @@ public abstract class PhysicalEntity extends Entity {
 	public float totalManaCapacity;
 	public float totalManaWeight;
 	public float initManaCapacity;
-	public float totalManaBound;
-	
+	public float totalManaBound;	
 	public int autoDamage;
 	public float autoDelay;
 	
@@ -34,11 +33,14 @@ public abstract class PhysicalEntity extends Entity {
 		imbuedEntities  = new ArrayList<PhysicalEntity>();
 		autoDamage = 0;
 		autoDelay = 0.0f;
+		destructable = true;
 	}
 	
 	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen a, MaterialDescriptor material) {
 		this(g, s, a);
 		mat = material;
+		mat.manifestion = this;
+		destructable = true;
 	}
 	
 	public abstract void initBody();
@@ -72,7 +74,7 @@ public abstract class PhysicalEntity extends Entity {
 	}
 	
 	public void unbind(PhysicalEntity p, float bindingValue){
-		System.out.println(this + "unbinding");
+		System.out.println(this + " unbinding");
 		if(boundEntities.contains(p)){
 			boundEntities.remove(p);
 			p.body.setTransform(new Vector2((float)(this.body.getWorldCenter().x+Math.random()*5), (float)(this.body.getWorldCenter().y+Math.random()*5)), p.body.getAngle());

@@ -4,8 +4,7 @@ import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import com.cigam.sigil.magic.SpellEffect;
-import com.cigam.sigil.materials.SpikeyMat;
+
 
 public class SigilContactListener implements ContactListener {
 	@Override
@@ -30,7 +29,7 @@ public class SigilContactListener implements ContactListener {
 			if((b instanceof CrystalShard && a instanceof Player)) {
 				((CrystalShard)b).touchEntity((PhysicalEntity)a);
 			}
-			if(a instanceof SpellEffect) {
+			/*if(a instanceof SpellEffect) {
 				SpellEffect e = (SpellEffect)a;
 				if(e.sd != null && e.sd.mat instanceof SpikeyMat){
 					b.addAutoDamage(4);
@@ -41,7 +40,7 @@ public class SigilContactListener implements ContactListener {
 				if(e.sd != null && e.sd.mat instanceof SpikeyMat){
 					a.addAutoDamage(4);
 				}
-			}
+			}*/
 		}
 		if(c.getFixtureA().getBody().getUserData() == Constants.LAVA && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
 			((PhysicalEntity) c.getFixtureB().getBody().getUserData()).damage(1000);
@@ -69,6 +68,7 @@ public class SigilContactListener implements ContactListener {
 				if(b instanceof Enemy && a instanceof Player) {
 					((Player)a).addAutoDamage(-5);
 				}
+				/*
 				if(a instanceof SpellEffect) {
 					SpellEffect e = (SpellEffect)a;
 					if(e.sd != null && e.sd.mat instanceof SpikeyMat){
@@ -80,7 +80,7 @@ public class SigilContactListener implements ContactListener {
 					if(e.sd != null && e.sd.mat instanceof SpikeyMat){
 						a.addAutoDamage(-4);
 					}
-				}
+				}*/
 			}
 		}
 	}

@@ -19,6 +19,7 @@ public abstract class MaterialDescriptor {
 	//TODO: material cohesion
 	public float hardness;
 	public float density;
+	public PhysicalEntity manifestion;
 
 	
 	public MaterialDescriptor(){
@@ -36,7 +37,7 @@ public abstract class MaterialDescriptor {
 	}
 	public void OnCollide(PhysicalEntity p){};
 	public void NoCollide(PhysicalEntity b){};
-	public void Update(){};
+	public void Update(float delta){};
 	public void OnCreate(SpellEffect manifestation, AdventureScreen createdIn){};
 	public void onDestroy(AdventureScreen destroyedIn){};
 	public boolean isSameMat(MaterialDescriptor m){

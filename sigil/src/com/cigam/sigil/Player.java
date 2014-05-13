@@ -88,9 +88,18 @@ public class Player extends PhysicalEntity {
 		}
 	}
 	
+	boolean dead = false;
+	
+	public boolean dead() {
+		return dead;
+	}
+	
 	@Override
 	public void kill(){
-		textureAtlas.dispose();
-		super.kill();
+		if(!dead) {
+			dead = true;
+		}
+//		textureAtlas.dispose();
+//		super.kill();
 	}
 }

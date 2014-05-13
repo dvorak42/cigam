@@ -65,7 +65,7 @@
     <property name="destY" value="13.0"/>
    </properties>
   </object>
-  <object x="1604" y="197" width="23" height="25">
+  <object x="1387" y="277" width="23" height="25">
    <properties>
     <property name="destX" value="107"/>
     <property name="destY" value="12.0"/>

@@ -27,6 +27,7 @@ public class SpellEffect extends PhysicalEntity {
 		this.angle = s.angle;
 		this.arguments = s.arguments;
 		this.sd = s;
+		this.destructable = false;
 		//System.out.println(this.mat.image);
 		if(mat.image!=null){
 			mat.image.setPosition(s.position.x, s.position.y);
@@ -73,7 +74,7 @@ public class SpellEffect extends PhysicalEntity {
 	
 	public void render(float delta) {
 		//modelOrigin = new Vector2(sprite.getWidth() / 2, sprite.getHeight() / 2);
-		if(this.mat.image!=null&&this.active()&&this.visible){
+		if(this.mat.image != null && this.active() && this.visible){
 			mat.image.setPosition(this.body.getWorldCenter().x, this.body.getWorldCenter().y);
 			mat.image.draw(screen.game.batch, delta);
 		}

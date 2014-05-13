@@ -70,7 +70,7 @@ public class Banishment extends MaterialDescriptor {
 		}
 	}
 	@Override
-	public void Update(){
+	public void Update(float delta){
 		if(attractor != null){
 			if(!attractor.active()){
 				attractor = null;
