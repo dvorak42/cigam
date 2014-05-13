@@ -10,8 +10,8 @@ public class Constants {
 
     public static final Integer LAVA = new Integer(132423);
     
-	public static final int MAX_HEALTH = 100;
-	public static final int ENEMY_MAX_HEALTH = 20;
+	public static final int MAX_HEALTH = 60;
+	public static final int ENEMY_MAX_HEALTH = 15;
 	public static final int FIRE_LIFE = 500;
 	public static final double ENEMY_MOVE_SPEED = 100000;
 	public static final float AGGRO_RANGE = 10;
