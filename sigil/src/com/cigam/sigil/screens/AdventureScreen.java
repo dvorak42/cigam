@@ -99,7 +99,7 @@ public class AdventureScreen implements Screen {
 		mapRenderer = new OrthogonalTiledMapRenderer(map, tileScale, game.batch);
 		
 		restartGame();
-		//player.setPosition(new Vector2(400, 300));
+		player.setPosition(new Vector2(400, 300));
 		SpellsArray[0] = parser.parse("Create(fire)");
 		SpellsArray[1] = parser.parse("Summon(fire - - - self)");
 		SpellsArray[2] = parser.parse("Bind(self - - - fire))");
