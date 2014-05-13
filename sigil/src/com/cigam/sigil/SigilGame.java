@@ -12,6 +12,7 @@ public class SigilGame extends Game {
     public PauseScreen pauseScreen;
     public AdventureScreen gameScreen;
     public HelpScreen helpScreen;
+    public HelpScreen credits;
     public SpriteBatch batch;
     public SpriteBatch hudBatch;
     public BitmapFont font;
@@ -28,6 +29,7 @@ public class SigilGame extends Game {
 	helpScreen = new HelpScreen(this, "help/Help Menu 1.png", 
 			new HelpScreen(this, "help/Help Menu 2.png", 
 					new HelpScreen(this, "help/Help Menu 3.png", gameScreen)));
+	credits = new HelpScreen(this, "help/Credits.png", gameScreen);
 	setScreen(gameScreen);
     }
     @Override

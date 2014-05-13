@@ -229,7 +229,11 @@ public class AdventureScreen implements Screen {
 		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
 		helpTextEntity.setPosition(new Vector2(6900,150));
 		helpText.add(helpTextEntity);
-		entities.add(helpTextEntity);
+		
+		helpTexture = new Texture(Gdx.files.internal("help/C for credits.png"));
+		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
+		helpTextEntity.setPosition(new Vector2(1100,180));
+		helpText.add(helpTextEntity);
     }
     
     public SpellEffect createSpellEffect(SpellDescriptor s) {
@@ -266,6 +270,10 @@ public class AdventureScreen implements Screen {
 		}
 		if(in.isKeyPressed(Input.Keys.H)) {
 			game.setScreen(game.helpScreen);
+			return;
+		}
+		if(in.isKeyPressed(Input.Keys.C)) {
+			game.setScreen(game.credits);
 			return;
 		}
 		if (in.isKeyPressed(Input.Keys.ESCAPE)){
