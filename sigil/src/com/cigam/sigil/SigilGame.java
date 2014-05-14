@@ -27,8 +27,9 @@ public class SigilGame extends Game {
 	gameScreen = new AdventureScreen(this);
 	pauseScreen = new PauseScreen(this, gameScreen);
 	helpScreen = new HelpScreen(this, "help/Help Menu 1.png", 
-			new HelpScreen(this, "help/Help Menu 2.png", 
-					new HelpScreen(this, "help/Help Menu 3.png", gameScreen)));
+					new HelpScreen(this, "help/Help Menu 2.png", 
+					new HelpScreen(this, "help/Help Menu 3.png", 
+					new HelpScreen(this, "help/Help Menu 4.png", gameScreen))));
 	credits = new HelpScreen(this, "help/Credits.png", gameScreen);
 	setScreen(gameScreen);
     }
