@@ -18,10 +18,10 @@ public class SigilContactListener implements ContactListener {
 				b.mat.OnCollide(a);
 			}
 			if(a instanceof Enemy && b instanceof Player && a.active) {
-				((Player)b).addAutoDamage(5);
+				((Enemy)a).OnCollide((PhysicalEntity)b);
 			}
 			if(b instanceof Enemy && a instanceof Player && b.active) {
-				((Player)a).addAutoDamage(5);
+				((Enemy)b).OnCollide((PhysicalEntity)a);
 			}
 			if((a instanceof CrystalShard && b instanceof Player)) {
 				((CrystalShard)a).touchEntity((PhysicalEntity)b);
@@ -29,18 +29,6 @@ public class SigilContactListener implements ContactListener {
 			if((b instanceof CrystalShard && a instanceof Player)) {
 				((CrystalShard)b).touchEntity((PhysicalEntity)a);
 			}
-			/*if(a instanceof SpellEffect) {
-				SpellEffect e = (SpellEffect)a;
-				if(e.sd != null && e.sd.mat instanceof SpikeyMat){
-					b.addAutoDamage(4);
-				}
-			}
-			if(b instanceof SpellEffect) {
-				SpellEffect e = (SpellEffect)b;
-				if(e.sd != null && e.sd.mat instanceof SpikeyMat){
-					a.addAutoDamage(4);
-				}
-			}*/
 		}
 		if(c.getFixtureA().getBody().getUserData() == Constants.LAVA && c.getFixtureB().getBody().getUserData() instanceof PhysicalEntity) {
 			((PhysicalEntity) c.getFixtureB().getBody().getUserData()).damage(1000);
@@ -63,24 +51,11 @@ public class SigilContactListener implements ContactListener {
 					b.mat.NoCollide(a);
 				}
 				if(a instanceof Enemy && b instanceof Player) {
-					((Player)b).addAutoDamage(-5);
+					((Enemy)a).NoCollide((PhysicalEntity)b);
 				}
 				if(b instanceof Enemy && a instanceof Player) {
-					((Player)a).addAutoDamage(-5);
+					((Enemy)b).NoCollide((PhysicalEntity)a);
 				}
-				/*
-				if(a instanceof SpellEffect) {
-					SpellEffect e = (SpellEffect)a;
-					if(e.sd != null && e.sd.mat instanceof SpikeyMat){
-						b.addAutoDamage(-4);
-					}
-				}
-				if(b instanceof SpellEffect) {
-					SpellEffect e = (SpellEffect)b;
-					if(e.sd != null && e.sd.mat instanceof SpikeyMat){
-						a.addAutoDamage(-4);
-					}
-				}*/
 			}
 		}
 	}

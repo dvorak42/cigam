@@ -78,11 +78,7 @@ public class SpellEffect extends PhysicalEntity {
 			mat.image.setPosition(this.body.getWorldCenter().x, this.body.getWorldCenter().y);
 			mat.image.draw(screen.game.batch, delta);
 		}
-		autoDelay -= delta;
-		if(autoDelay <= 0) {
-			damage(autoDamage);
-			autoDelay = 1;
-		}
+
 		if(this.active) {
 			elapsedTime += delta;
 		}
