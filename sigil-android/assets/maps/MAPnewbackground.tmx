@@ -23,20 +23,20 @@
  </tileset>
  <layer name="Background" width="280" height="28">
   <data encoding="base64" compression="zlib">
-   eJztnVtuwjAQRfMLYgV0lTxWX34qq0Ikjh2IX3NtzkhHSWNrfCPcm2EQ7TT9x+X04npaXnv+vDf8nJcI14w1rOP3APA5t9OSe+S8xphFjtjvfCu2fAd0uSZirRva7hHfT1vjex70wT0Ra93Qdo+4o7XPwdr3352XmBcbe+cfuflLaGyRv7XG0Xj2PKx9DsK+v3VeYp5lfjSOX8+5+3Nh7XPQF6M/d1XpoQbzx6hfYC+jP3dV6aEG88fmXlMDa++19u8RNW69tioaVfPvydE77n7mXlMDa++19u8RNW69tioaVfPvydE78/oFALRQrav2jln7HACsUa2rUvovqt6nlAON42kMYaVtNOb9F0XvU8uBxvE0hrDSNhr0XwDWlK5ftq6P/vmRO1r7HIASpeuXrevf9PmRyvvn2vnRqN3nULonSMfvv6i8f66dH43afQ6le4J06L8ArFGsq0potKiJ+f4RwBLFuqqERoua+FNfVPJxNKKxZq9FUWuP+P2X2t43Wk8BjWNpVNbaI04/f/8FIJ9SNYlKLVdqjP4LQD6lahKVWq7UWMx7LLxOLQca0ZiT49vx+y/WXqeWA41ozMnx7Tz7L3t7MDmR64lq4f5n1uOwPIauPSLzYnND83LWqq1RWZfimrfA3latw3JyEHmBv+jrUl0z9LxXrMNychB5cT5O08/xtXfOx/ieTNmvLt+clLVaaFTT1cOa1v2RFvwBFKGgkw==
+   eJztnVtuwkAMRfktYgV0lW1ZffmpoioiTB6TTGbia+dc6YgoU8ylJLYxIlwuyIN+PyACP7d3HjPbLdYsYiAf+rpp8V2ItW849hhBPpTWPWsehVj7hmOPEeRDfT1I60Nuu2Qtlz/2xq/h8Yj4R3uMBv2LH/XnfFofctst1lRiRPMYDfoXP7KuRXP1GGz+76o9WLrWyTrPgS+i111VPPRg6dow17TAOvda5++IHpdeWxWPqvG3xPBO93yGuaYF1rnXOn9H9Lj02qp4VI2/JYZ3hv0LAGih2ldtXbPOcwAwRrWvKpm/qOY+pRh4jOdxCitv0RjOXxRzn1oMPMbzOIWVt2gwfwEYU7t/Wdof/fOj7tY6zwEoUbt/Wdp/ps+PVN4/t46PR+05h9JzgnLS+YvK++fW8fGoPedQek5QDvMXgDGKfVUNjxY9Md8/AnhHsa+q4dGiJ16bF5XyOB7x2HLWoujVI+n8pXXuizZTwGMsj8pePdL5b3ltka3XMllz/ZNcHJXrpyhetwXaUasnUenlaq0hH7KuRZCv1VPbubUacZR6rHQN+VC0uqYWo0X8s0P/4kfR6ppajBbxzw79ix/1v8/1TG6n9j1n9pXcb+lva8Q/wpfiY3bn31S9V+zD9sRAPkR+iZVfcr/lqNSH7YmBfOh+/efz+jpO79f54394PJfeb+05pejLw2Naz0eO4A/ZnXkc
   </data>
  </layer>
  <layer name="Walls" width="280" height="28">
   <data encoding="base64" compression="zlib">
-   eJztnFtKw1AURfvbSyYgOJGqE/ExCR8/Wifi0KpORPDD5LfktCTcXPc+WQsu5yPQlRCavSGPw3az+ezXF1N2fvfrAw+efrnxY7jPa+N32+Y84dH3uHFR/nsP4ByXpc15wqPvcYP+ok/rHH7s4vXU1fMsTUaPG/QXfVrn8HMXr5cK15eMvYL+Mg79RZ+MOYxnnscN+os+GXN48Fz167rSVDieFh436C/6ZMzhwXPX/1/uS52pcDwtPG7QX/TJmMOD561f+0pT4XhaeNygv+iTMYcdPYfg2Tf6Swz9RZ+MOezoia4h9JcY+os+rnmfzRNdQ+gvMfQXfVzzPpuH/jId+os+rnmfzUN/mQ79RR/XvM/mob9Mh/6ij2veZ/PQX6ZDf9HHNe+zeaLfor/E0F/0cc37bJ7dyLsJw6K/xNBf9HHN+2ye2+DdBPpLDP1FH9e8z+Z5Dd5NoL/E0F/0cc17PPU9btBf9HHNezz1PW7QX/TJmMN45nncoL/okzGH8czzuEF/0SdjDuOZ53FjV85/e7DmdwyZ0+dNGX/2As/6PG4M9/SP7+cfz1PbmMvPhxI/e4FnXR43hnv6+3L624OntjGXn+8lfvYCz7o8bvwB4Jm7PQ==
+   eJztm01KBDEQRnvboS8geJFRLzLqJfzZjHoRj+bPRQQXdrZDCkl3Vagq3oNQu3k0zOT7mHSmCSLwPk/T57q+DOf3jMe7B8CCnwHfrd8Zj3cPgAUXxd5xWfB49wBYMDKHHxZ5PS56HmsyegAsGJnDT4u8nhX2l4y9gv4CkcmWw3i2eaLxMeB/b+b+c4NsOVw9V+u6VpoenmeEJxoj9l3YR8Ycrp7b9fdyV3Smh+cZ4YnGiH0X9pExh6vnZV2vStPD84zwRIP+4p+MORzRI/2XQH+Rob/4J2MOR/RIewj9RYb+4p+oeZ/NI+0h9BcZ+ot/ouZ9Ng/9pR/6i3+i5n02D/2lH/qLf6LmfTYP/aUf+ot/ouZ9Ng/9pR/6i3+i5n02j/RZ9BcZ+ot/ouZ9Ns+hcTehLvqLDP3FP1HzPpvnKNxNoL/IHMr/d8c076Ex++dNiZn32Tyn0r6bQH+ROTb24/OpeQ+N2T/vS8y8x6PvicapsR+fT817aMz++VZi5j0efQ+ABdlyGM82D4AF2XIYzzYPgAXZchjPNg+ABa13LyzOqfD49gBYIL17oX1Ohce3B8AC6d0LzVnPqfD49kTjD+VZrV0=
   </data>
  </layer>
  <objectgroup name="WallObjects" width="280" height="28">
-  <object x="2" y="11" width="5" height="407"/>
-  <object x="2" y="402" width="3772" height="8"/>
+  <object x="2" y="98" width="8" height="208"/>
+  <object x="1698" y="402" width="2075" height="8"/>
   <object x="3767" y="2" width="7" height="407"/>
-  <object x="2" y="2" width="3770" height="8"/>
-  <object x="1688" y="3" width="16" height="406"/>
+  <object x="1698" y="2" width="2076" height="8"/>
+  <object x="1698" y="3" width="8" height="406"/>
   <object x="2103" y="3" width="16" height="407"/>
   <object x="2521" y="2" width="14" height="408"/>
   <object x="2521" y="98" width="326" height="45"/>
@@ -45,6 +45,8 @@
   <object x="3247" y="144" width="119" height="10"/>
   <object x="3248" y="145" width="11" height="174"/>
   <object x="3248" y="273" width="119" height="48"/>
+  <object x="2" y="96" width="1698" height="8"/>
+  <object x="1688" y="98" width="8" height="208"/>
  </objectgroup>
  <objectgroup name="Goal" width="280" height="28">
   <object x="2019" y="191" width="29" height="33">
@@ -65,14 +67,14 @@
     <property name="destY" value="13.0"/>
    </properties>
   </object>
-  <object x="1387" y="277" width="23" height="25">
+  <object x="1387" y="243" width="23" height="25">
    <properties>
     <property name="destX" value="107"/>
     <property name="destY" value="12.0"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="FireTile" width="280" height="28"/>
+ <objectgroup name="FireTile" width="280" height="28" visible="0"/>
  <objectgroup name="Enemy" width="280" height="28">
   <object x="1808" y="62" width="29" height="28">
    <properties>

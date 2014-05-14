@@ -19,7 +19,7 @@ public class Create extends Spell {
 	public Create(){
 		super();
 		arguments = new Spell[0];
-		defaultDuration = Constants.SPELL_DEFAULT_DURATION/10;
+		defaultDuration = Constants.SPELL_DEFAULT_DURATION*3/4.0f;
 		defaultRadius = Constants.SPELL_SHORT_RANGE;
 		area.set(Utils.initSpellHitBox(defaultRadius, Constants.SPELL_SCALE_FACTOR));
 		//area.setAsBox(10, 10);

@@ -232,7 +232,7 @@ public class AdventureScreen implements Screen {
 		
 		helpTexture = new Texture(Gdx.files.internal("help/C for credits.png"));
 		helpTextEntity = new TextEntity(game, new Sprite(helpTexture));
-		helpTextEntity.setPosition(new Vector2(1100,180));
+		helpTextEntity.setPosition(new Vector2(7100,180));
 		helpText.add(helpTextEntity);
     }
     

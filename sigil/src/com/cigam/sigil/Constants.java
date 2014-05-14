@@ -31,7 +31,7 @@ public class Constants {
 	public static int MAGIC = 17 * 22;
 	public static int TILE_SIZE = 128;
 	
-	public static float SPELL_DEFAULT_DURATION = 100;
+	public static float SPELL_DEFAULT_DURATION = 9;
 	public static float SPELL_LONG_RANGE = 300;
 	public static float SPELL_MEDIUM_RANGE = 150;
 	public static float SPELL_SHORT_RANGE = 50;
