@@ -42,6 +42,8 @@ public class PauseScreen implements Screen {
 	AdventureScreen parent;
 	Sprite pauseImage;
 	
+	Texture clickHelp;
+	
 	AssetManager assetManager;
 	Nifty nifty;
 
@@ -60,7 +62,7 @@ public class PauseScreen implements Screen {
 		this.parent = parent;
 		Texture texture = new Texture(Gdx.files.internal("art/screens/pause.png"));
 		texture.setFilter(TextureFilter.Linear, TextureFilter.Linear);
-		
+		clickHelp = new Texture(Gdx.files.internal("help/Click.png"));
 		pauseImage = new Sprite(texture);
 		pauseImage.flip(false,true);
 		
@@ -124,6 +126,8 @@ public class PauseScreen implements Screen {
 		game.batch.begin();
         pauseImage.setColor(game.batch.getColor());
         pauseImage.draw(game.batch);
+        if(createdSpell == null || createdSpell.target == null)
+        	game.batch.draw(clickHelp, Gdx.graphics.getWidth() / 2 - clickHelp.getWidth() / 2, Gdx.graphics.getHeight() / 2 - clickHelp.getHeight() / 2, clickHelp.getWidth(), clickHelp.getHeight(), 0, 0, clickHelp.getWidth(), clickHelp.getHeight(), false, true);
         pauseImage.setColor(Color.WHITE);
         game.batch.end();
 		
