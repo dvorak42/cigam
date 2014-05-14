@@ -22,8 +22,6 @@ public abstract class PhysicalEntity extends Entity {
 	public float totalManaWeight;
 	public float initManaCapacity;
 	public float totalManaBound;	
-	public int autoDamage;
-	public float autoDelay;
 	
 	public PhysicalEntity(SigilGame g, Sprite s, AdventureScreen screen) {
 		super(g, s);
@@ -31,8 +29,6 @@ public abstract class PhysicalEntity extends Entity {
 		this.world = screen.world;
 		boundEntities = new ArrayList<PhysicalEntity>();
 		imbuedEntities  = new ArrayList<PhysicalEntity>();
-		autoDamage = 0;
-		autoDelay = 0.0f;
 		destructable = true;
 	}
 	
@@ -137,11 +133,6 @@ public abstract class PhysicalEntity extends Entity {
 
 	@Override
 	public void render(float delta) {
-		autoDelay -= delta;
-		if(autoDelay <= 0) {
-			damage(autoDamage);
-			autoDelay = 1;
-		}
 		if(this.visible){
 			Vector2 spritePos = body.getPosition().sub(modelOrigin);
 			if(sprite!=null){
@@ -151,11 +142,5 @@ public abstract class PhysicalEntity extends Entity {
 			}
 			super.render(delta);
 		}
-	}
-
-	public void addAutoDamage(int d) {
-		autoDamage += d;
-		if(autoDamage <= 0)
-			autoDamage = 0;
 	}
 }

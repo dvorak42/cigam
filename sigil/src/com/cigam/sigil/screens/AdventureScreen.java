@@ -466,20 +466,10 @@ public class AdventureScreen implements Screen {
 							b.mat.NoCollide(a);
 						}
 						if(a instanceof Enemy && b instanceof Player) {
-							((Player)b).addAutoDamage(-5);
+							((Enemy)a).NoCollide((PhysicalEntity)b);
 						}
 						if(b instanceof Enemy && a instanceof Player) {
-							((Player)a).addAutoDamage(-5);
-						}
-						if(a instanceof SpellEffect) {
-							SpellEffect e = (SpellEffect)a;
-							if(e.sd != null && e.sd.mat instanceof SpikeyMat)
-								b.addAutoDamage(-4);
-						}
-						if(b instanceof SpellEffect) {
-							SpellEffect e = (SpellEffect)b;
-							if(e.sd != null && e.sd.mat instanceof SpikeyMat)
-								a.addAutoDamage(-4);
+							((Enemy)b).NoCollide((PhysicalEntity)a);
 						}
 					}
 				}
