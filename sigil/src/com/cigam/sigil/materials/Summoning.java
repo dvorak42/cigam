@@ -77,6 +77,7 @@ public class Summoning extends MaterialDescriptor {
 				attractor = null;
 			}
 			for(MaterialDescriptor m:entitiesToPush.keySet()){
+			    if (attractor != null){
 				if(entitiesToPush.get(m) != null && attractor.active() && attractor.body != null){
 					if(entitiesToPush.get(m).active() && entitiesToPush.get(m).body != null){
 						Vector2 dir = attractor.body.getWorldCenter().sub(entitiesToPush.get(m).body.getWorldCenter());
@@ -88,6 +89,7 @@ public class Summoning extends MaterialDescriptor {
 						getEntityToPush(m);
 					}
 				}
+			    }
 			}
 			if(this.image!=null){
 				//this.image.setPosition(attractor.getPosition().x, attractor.getPosition().y);
