@@ -445,7 +445,7 @@ public class AdventureScreen implements Screen {
 
 	public void runPhysics(float delta) {
 		debugRenderer.setDrawInactiveBodies(false);
-		debugRenderer.render(world, camera.combined);
+		//debugRenderer.render(world, camera.combined);
 		if(!paused) {
 			world.step(1/30f, 6, 2);
 			world.clearForces();
